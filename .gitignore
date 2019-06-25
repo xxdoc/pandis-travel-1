@@ -1,0 +1,6 @@
+/ActiveX/*.oca
+/Data/*.ldb
+/Reports/*.*
+
+*.exe
+*.tmp

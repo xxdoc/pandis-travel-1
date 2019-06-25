@@ -1,0 +1,1 @@
+c:\windows\system32\regsvr32 buttons.ocx dcButton.ocx iGrid300_10Tec.ocx ImageList.ocx ProgressBar.ocx userControls.ocx vbalExpBar6.ocx SSubTmr6.dll

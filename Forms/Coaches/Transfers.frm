@@ -107,7 +107,7 @@ Begin VB.Form Transfers
       Top             =   75
       Width           =   18540
       Begin VB.Frame frmCriteria 
-         BackColor       =   &H00FFC0FF&
+         BackColor       =   &H0080C0FF&
          BorderStyle     =   0  'None
          Height          =   2190
          Index           =   0
@@ -189,6 +189,7 @@ Begin VB.Form Transfers
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
+            ForeColor       =   0
             PicOpacity      =   0
          End
          Begin Dacara_dcButton.dcButton cmdButton 
@@ -214,6 +215,7 @@ Begin VB.Form Transfers
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
+            ForeColor       =   0
             PicOpacity      =   0
          End
          Begin VB.Label Label1 
@@ -314,6 +316,7 @@ Begin VB.Form Transfers
          Begin VB.Label lblCriteriaLabel 
             AutoSize        =   -1  'True
             BackColor       =   &H000080FF&
+            BackStyle       =   0  'Transparent
             Caption         =   "Οδηγός"
             ForeColor       =   &H00000000&
             Height          =   315
@@ -823,6 +826,7 @@ Begin VB.Form Transfers
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
+            ForeColor       =   0
             PicOpacity      =   0
          End
          Begin Dacara_dcButton.dcButton cmdButton 
@@ -1249,6 +1253,7 @@ Begin VB.Form Transfers
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   0
          PicOpacity      =   0
       End
       Begin Dacara_dcButton.dcButton cmdButton 
@@ -1274,6 +1279,7 @@ Begin VB.Form Transfers
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   0
          PicOpacity      =   0
       End
       Begin Dacara_dcButton.dcButton cmdButton 
@@ -1299,6 +1305,7 @@ Begin VB.Form Transfers
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   0
          PicOpacity      =   0
       End
       Begin Dacara_dcButton.dcButton cmdButton 
@@ -1324,6 +1331,7 @@ Begin VB.Form Transfers
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   0
          PicOpacity      =   0
       End
       Begin VB.Shape shpWedge 
@@ -1977,7 +1985,7 @@ Private Function CalculateSummaryPerDriver()
             DoEvents
             grdSummaryPerDriver.AddRow
             lngRow = lngRow + 1
-            grdSummaryPerDriver.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(5)
+            grdSummaryPerDriver.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(7)
             grdSummaryPerDriver.CellValue(lngRow, "DriverID") = !TransferDriverID
             grdSummaryPerDriver.CellValue(lngRow, "DriverDescription") = IIf(IsNull(!DriverDescription), "-", !DriverDescription)
             grdSummaryPerDriver.CellValue(lngRow, "TotalPersons") = !SumOfTransferPersons
@@ -2190,7 +2198,7 @@ Private Function DisplayAssignRoutesToDriverDialog()
     Dim IsRowSelected As Boolean
     
     For lngRow = 1 To grdCoachesReport.RowCount
-        If grdCoachesReport.CellIcon(lngRow, "Selected") = 3 Then
+        If grdCoachesReport.CellIcon(lngRow, "Selected") <> -1 Then
             IsRowSelected = True
             Exit For
         End If
@@ -2507,7 +2515,7 @@ Private Sub chkAllCustomers_Click()
     lngTotalPersonsForVisibleRows = 0
     
     For lngRow = 1 To grdSummaryPerCustomer.RowCount
-        grdSummaryPerCustomer.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllCustomers.Value = 0, 1, 3))
+        grdSummaryPerCustomer.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllCustomers.Value = 0, 1, 6))
         ScanGridsForSelectedRows
     Next lngRow
     
@@ -2621,7 +2629,7 @@ Private Sub chkAllDrivers_Click()
     lngTotalPersonsForVisibleRows = 0
     
     For lngRow = 1 To grdSummaryPerDriver.RowCount
-        grdSummaryPerDriver.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllDrivers.Value = 0, 1, 5))
+        grdSummaryPerDriver.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllDrivers.Value = 0, 1, 3))
         ScanGridsForSelectedRows
     Next lngRow
     
@@ -2719,8 +2727,6 @@ Private Function NewRecord()
     UpdateButtons Me, 11, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0
         
     InitializeFields mskAdults, mskKids, mskFree, mskTotal
-    
-    txtDestinationDescription.SetFocus
         
 End Function
 
@@ -3249,7 +3255,7 @@ End Sub
 Private Sub grdCoachesReport_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
     If KeyCode = vbKeySpace And grdCoachesReport.RowCount > 0 Then
-        grdCoachesReport.CellIcon(grdCoachesReport.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCoachesReport, 4, KeyCode, grdCoachesReport.CurRow, "TransferID"))
+        grdCoachesReport.CellIcon(grdCoachesReport.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCoachesReport, 3, KeyCode, grdCoachesReport.CurRow, "TransferID"))
         lblSelectedGridLines.Caption = SumSelectedGridRows(grdCoachesReport, False, "Σύνολο επιλεγμένων: ", "TransferTotal", "integer")
     End If
 
@@ -3277,7 +3283,7 @@ Private Sub grdSummaryPerCustomer_DblClick(ByVal lRow As Long, ByVal lCol As Lon
     grdCoachesReport.Redraw = False
 
     If grdSummaryPerCustomer.RowCount > 0 Then
-        grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = lstIconList.ItemIndex(IIf(grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = 2, 1, 3))
+        grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = lstIconList.ItemIndex(IIf(grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = 2, 1, 6))
         ScanGridsForSelectedRows
     End If
     
@@ -3296,7 +3302,7 @@ Private Sub grdSummaryPerCustomer_KeyDown(KeyCode As Integer, Shift As Integer, 
     grdCoachesReport.Redraw = False
     
     If KeyCode = vbKeySpace And grdSummaryPerCustomer.RowCount > 0 Then
-        grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerCustomer, 3, KeyCode, grdSummaryPerCustomer.CurRow, "CustomerID"))
+        grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerCustomer, 6, KeyCode, grdSummaryPerCustomer.CurRow, "CustomerID"))
         ScanGridsForSelectedRows
     End If
     
@@ -3337,7 +3343,7 @@ Private Sub grdSummaryPerDriver_DblClick(ByVal lRow As Long, ByVal lCol As Long,
     grdCoachesReport.Redraw = False
 
     If grdSummaryPerDriver.RowCount > 0 Then
-        grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = lstIconList.ItemIndex(IIf(grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = 4, 1, 5))
+        grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = lstIconList.ItemIndex(IIf(grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = 4, 1, 3))
         ScanGridsForSelectedRows
     End If
     
@@ -3356,7 +3362,7 @@ Private Sub grdSummaryPerDriver_KeyDown(KeyCode As Integer, Shift As Integer, bD
     grdCoachesReport.Redraw = False
     
     If KeyCode = vbKeySpace And grdSummaryPerDriver.RowCount > 0 Then
-        grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerDriver, 5, KeyCode, grdSummaryPerDriver.CurRow, "DriverID"))
+        grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerDriver, 3, KeyCode, grdSummaryPerDriver.CurRow, "DriverID"))
         ScanGridsForSelectedRows
     End If
 

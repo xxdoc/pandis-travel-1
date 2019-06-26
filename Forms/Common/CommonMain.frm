@@ -1340,7 +1340,6 @@ Begin VB.Form CommonMain
       Left            =   12825
       TabIndex        =   0
       Top             =   9600
-      Visible         =   0   'False
       Width           =   3690
    End
 End

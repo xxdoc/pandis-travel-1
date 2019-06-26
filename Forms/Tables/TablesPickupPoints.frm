@@ -1091,9 +1091,9 @@ Private Function ValidateGrid()
 
 End Function
 
-Private Sub cmdButton_Click(Index As Integer)
+Private Sub cmdButton_Click(index As Integer)
                                                                 
-    Select Case Index
+    Select Case index
         Case 0
             FindRecordsAndPopulateGrid
         Case 1
@@ -1116,12 +1116,12 @@ Private Sub cmdButton_Click(Index As Integer)
 
 End Sub
 
-Private Sub cmdIndex_Click(Index As Integer)
+Private Sub cmdIndex_Click(index As Integer)
 
     Dim tmpTableData As typTableData
     Dim tmpRecordset As Recordset
     
-    Select Case Index
+    Select Case index
         Case 0
             'Συντ. δρομολογίου
             Set tmpRecordset = CheckForMatch("CommonDB", "PickupRoutes", "PickupRouteShortDescription", "String", txtRouteShortDescription.text)

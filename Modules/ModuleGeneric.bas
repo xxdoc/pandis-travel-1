@@ -487,7 +487,8 @@ Public Function CreateUnisexPDF(fileName As String)
         pdf.fileName = Replace(pdf.fileName, "]", "")
         pdf.fileName = Replace(pdf.fileName, "  ", " ")
         pdf.fileName = strReportsPathName & Replace(pdf.fileName, ":", "") & ".pdf"
-        pdf.Export .Pages
+        .Export pdf
+        'pdf.Export .Pages
     End With
     
     CreateUnisexPDF = True
@@ -855,7 +856,6 @@ Function UpdateColors(thisForm As Form, formFullScreen As Boolean, Optional grdG
                 'Ετικέτα σε πλαίσιο κριτηρίων
                 Case "lblCriteriaLabel"
                     ctl.ForeColor = GetSetting(strApplicationName, "Colors", "Labels Criteria Foreground")
-                    'ctl.BackColor = GetSetting(strApplicationName, "Colors", "Labels Criteria Background")
                     ctl.BackStyle = 0
             End Select
         End If
@@ -1027,9 +1027,9 @@ Function PrintHeadings(tmpColumns, tmpPageNo, tmpReportTitle, tmpReportSubTitle1
     bytLeft = (tmpColumns / 2) - (Len(tmpReportTitle) / 2)
     Print #1, Space(bytLeft) & ConvertToSpecialUpperCase(tmpReportTitle)
     bytLeft = (tmpColumns / 2) - (Len(tmpReportSubTitle1) / 2)
-    If tmpReportSubTitle1 <> "" Then Print #1, Space(bytLeft) & ConvertToSpecialUpperCase(tmpReportSubTitle1)
+    Print #1, Space(bytLeft) & ConvertToSpecialUpperCase(tmpReportSubTitle1)
     bytLeft = (tmpColumns / 2) - (Len(tmpReportSubTitle2) / 2)
-    If tmpReportSubTitle2 <> "" Then Print #1, Space(bytLeft); ConvertToSpecialUpperCase(tmpReportSubTitle2)
+    Print #1, Space(bytLeft); ConvertToSpecialUpperCase(tmpReportSubTitle2)
     
     Print #1, ""
     
@@ -1702,7 +1702,7 @@ Sub LoadMessages()
     strAppMessages(5) = "Δεν μπορείτε να καταχωρήσετε" & Chr(13) & "με ημερομηνία" & Chr(13) & "μεγαλύτερη της σημερινής."
     strAppMessages(6) = "Η διαδικασία δεν ολοκληρώθηκε" & Chr(13) & "επειδή βρέθηκαν λάθη." & Chr(13)
     strAppMessages(7) = "Η εγγραφή αποθηκεύτηκε." & Chr(13) & "Θέλετε να εκτυπωθεί" & Chr(13) & "το παραστατικό;"
-    strAppMessages(8) = Chr(13) & "Αριθμός αναφοράς εγγραφής: "
+    strAppMessages(8) = Chr(13) & "Πρέπει να επιλέξετε μόνο έναν οδηγό"
     strAppMessages(9) = Chr(13) & "Πρέπει να συμπληρώσετε όλα τα κριτήρια"
     strAppMessages(10) = "Οι επιλεγμένες εγγραφές θα διαγραφούν" & Chr(13) & " οριστικά. Είστε σίγουροι ότι θέλετε" & Chr(13) & "να τις διαγράψετε;"
     strAppMessages(11) = Chr(13) & "Μα καλά, δουλεύετε ακόμα και"
@@ -2257,9 +2257,9 @@ Function PositionFullScreenControls(thisForm As Form, formFullScreen As Boolean,
     'Πλέγμα
     With grdGrid
         .Height = thisForm.shpBackground.Height + 180 - .Top + (thisForm.Top * 2)
-        .ForeColor = vbWhite
-        .HighlightForeColor = vbBlack
-        .HighlightBackColor = &HC0FFC0
+        '.ForeColor = vbWhite
+        '.HighlightForeColor = vbBlack
+        '.HighlightBackColor = &HC0FFC0
     End With
     
     For Each ctl In thisForm.Controls

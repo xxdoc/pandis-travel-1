@@ -21,9 +21,60 @@ Begin VB.Form CommonMain
       BackColor       =   &H00FFFFC0&
       BorderStyle     =   0  'None
       Height          =   1140
+      Index           =   5
+      Left            =   12300
+      TabIndex        =   63
+      Top             =   5925
+      Width           =   3915
+      Begin VB.Label menuOption 
+         BackColor       =   &H0080C0FF&
+         Caption         =   "Κινήσεις"
+         BeginProperty Font 
+            Name            =   "Ubuntu Condensed"
+            Size            =   11.25
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00000000&
+         Height          =   315
+         Index           =   21
+         Left            =   300
+         MousePointer    =   2  'Cross
+         TabIndex        =   65
+         Top             =   225
+         Width           =   3315
+      End
+      Begin VB.Label menuOption 
+         BackColor       =   &H0080C0FF&
+         Caption         =   "Κατάσταση επιβαινόντων"
+         BeginProperty Font 
+            Name            =   "Ubuntu Condensed"
+            Size            =   11.25
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00000000&
+         Height          =   315
+         Index           =   22
+         Left            =   300
+         TabIndex        =   64
+         Top             =   600
+         Width           =   3315
+      End
+   End
+   Begin VB.Frame menuFrame 
+      BackColor       =   &H00FFFFC0&
+      BorderStyle     =   0  'None
+      Height          =   1140
       Index           =   8
-      Left            =   24000
-      TabIndex        =   60
+      Left            =   24975
+      TabIndex        =   57
       Top             =   225
       Width           =   3915
       Begin VB.Label menuOption 
@@ -42,7 +93,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   52
          Left            =   300
-         TabIndex        =   62
+         TabIndex        =   59
          Top             =   600
          Width           =   3315
       End
@@ -63,7 +114,7 @@ Begin VB.Form CommonMain
          Index           =   51
          Left            =   300
          MousePointer    =   2  'Cross
-         TabIndex        =   61
+         TabIndex        =   58
          Top             =   225
          Width           =   3315
       End
@@ -73,9 +124,9 @@ Begin VB.Form CommonMain
       BorderStyle     =   0  'None
       Height          =   9615
       Index           =   7
-      Left            =   2850
-      TabIndex        =   35
-      Top             =   1950
+      Left            =   20025
+      TabIndex        =   32
+      Top             =   225
       Width           =   4890
       Begin VB.Label menuOption 
          BackColor       =   &H0080C0FF&
@@ -93,7 +144,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   4
          Left            =   300
-         TabIndex        =   65
+         TabIndex        =   62
          Top             =   2775
          Width           =   4290
       End
@@ -113,7 +164,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   49
          Left            =   315
-         TabIndex        =   59
+         TabIndex        =   56
          Top             =   4275
          Width           =   4290
       End
@@ -133,7 +184,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   47
          Left            =   300
-         TabIndex        =   58
+         TabIndex        =   55
          Top             =   8775
          Width           =   4290
       End
@@ -153,7 +204,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   46
          Left            =   315
-         TabIndex        =   57
+         TabIndex        =   54
          Top             =   8025
          Width           =   4290
       End
@@ -173,7 +224,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   48
          Left            =   300
-         TabIndex        =   56
+         TabIndex        =   53
          Top             =   9150
          Width           =   4290
       End
@@ -193,7 +244,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   44
          Left            =   315
-         TabIndex        =   55
+         TabIndex        =   52
          Top             =   7275
          Width           =   4290
       End
@@ -213,7 +264,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   45
          Left            =   315
-         TabIndex        =   54
+         TabIndex        =   51
          Top             =   7650
          Width           =   4290
       End
@@ -233,7 +284,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   42
          Left            =   315
-         TabIndex        =   53
+         TabIndex        =   50
          Top             =   6525
          Width           =   4290
       End
@@ -253,7 +304,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   43
          Left            =   315
-         TabIndex        =   52
+         TabIndex        =   49
          Top             =   6900
          Width           =   4290
       End
@@ -273,7 +324,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   41
          Left            =   315
-         TabIndex        =   51
+         TabIndex        =   48
          Top             =   6150
          Width           =   4290
       End
@@ -293,7 +344,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   39
          Left            =   315
-         TabIndex        =   50
+         TabIndex        =   47
          Top             =   5400
          Width           =   4290
       End
@@ -313,7 +364,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   40
          Left            =   315
-         TabIndex        =   49
+         TabIndex        =   46
          Top             =   5775
          Width           =   4290
       End
@@ -333,7 +384,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   37
          Left            =   315
-         TabIndex        =   48
+         TabIndex        =   45
          Top             =   4650
          Width           =   4290
       End
@@ -353,7 +404,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   38
          Left            =   315
-         TabIndex        =   47
+         TabIndex        =   44
          Top             =   5025
          Width           =   4290
       End
@@ -373,7 +424,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   31
          Left            =   315
-         TabIndex        =   46
+         TabIndex        =   43
          Top             =   1650
          Width           =   4290
       End
@@ -393,7 +444,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   21
          Left            =   300
-         TabIndex        =   45
+         TabIndex        =   42
          Top             =   1275
          Width           =   4290
       End
@@ -413,7 +464,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   20
          Left            =   300
-         TabIndex        =   44
+         TabIndex        =   41
          Top             =   150
          Width           =   4290
       End
@@ -434,7 +485,7 @@ Begin VB.Form CommonMain
          Index           =   29
          Left            =   300
          MousePointer    =   2  'Cross
-         TabIndex        =   43
+         TabIndex        =   40
          Top             =   525
          Width           =   4290
       End
@@ -454,7 +505,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   30
          Left            =   300
-         TabIndex        =   42
+         TabIndex        =   39
          Top             =   900
          Width           =   4290
       End
@@ -475,7 +526,7 @@ Begin VB.Form CommonMain
          Index           =   35
          Left            =   315
          MousePointer    =   2  'Cross
-         TabIndex        =   41
+         TabIndex        =   38
          Top             =   3525
          Width           =   4290
       End
@@ -495,7 +546,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   32
          Left            =   315
-         TabIndex        =   40
+         TabIndex        =   37
          Top             =   2025
          Width           =   4290
       End
@@ -515,7 +566,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   18
          Left            =   300
-         TabIndex        =   39
+         TabIndex        =   36
          Top             =   8400
          Width           =   4290
       End
@@ -535,7 +586,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   33
          Left            =   315
-         TabIndex        =   38
+         TabIndex        =   35
          Top             =   2400
          Width           =   4290
       End
@@ -555,7 +606,7 @@ Begin VB.Form CommonMain
          Height          =   315
          Index           =   34
          Left            =   315
-         TabIndex        =   37
+         TabIndex        =   34
          Top             =   3150
          Width           =   4290
       End
@@ -576,7 +627,7 @@ Begin VB.Form CommonMain
          Index           =   36
          Left            =   315
          MousePointer    =   2  'Cross
-         TabIndex        =   36
+         TabIndex        =   33
          Top             =   3900
          Width           =   4290
       End
@@ -586,9 +637,9 @@ Begin VB.Form CommonMain
       BorderStyle     =   0  'None
       Height          =   615
       Index           =   6
-      Left            =   20025
-      TabIndex        =   33
-      Top             =   600
+      Left            =   16050
+      TabIndex        =   30
+      Top             =   225
       Width           =   3915
       Begin VB.Label menuOption 
          BackColor       =   &H0080C0FF&
@@ -605,57 +656,6 @@ Begin VB.Form CommonMain
          ForeColor       =   &H00000000&
          Height          =   315
          Index           =   28
-         Left            =   300
-         MousePointer    =   2  'Cross
-         TabIndex        =   34
-         Top             =   150
-         Width           =   3315
-      End
-   End
-   Begin VB.Frame menuFrame 
-      BackColor       =   &H00FFFFC0&
-      BorderStyle     =   0  'None
-      Height          =   990
-      Index           =   5
-      Left            =   16050
-      TabIndex        =   30
-      Top             =   225
-      Width           =   3915
-      Begin VB.Label menuOption 
-         BackColor       =   &H0080C0FF&
-         Caption         =   "Κατάσταση επιβαινόντων"
-         BeginProperty Font 
-            Name            =   "Ubuntu Condensed"
-            Size            =   11.25
-            Charset         =   161
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00000000&
-         Height          =   315
-         Index           =   22
-         Left            =   300
-         TabIndex        =   32
-         Top             =   525
-         Width           =   3315
-      End
-      Begin VB.Label menuOption 
-         BackColor       =   &H0080C0FF&
-         Caption         =   "Κινήσεις"
-         BeginProperty Font 
-            Name            =   "Ubuntu Condensed"
-            Size            =   11.25
-            Charset         =   161
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00000000&
-         Height          =   315
-         Index           =   21
          Left            =   300
          MousePointer    =   2  'Cross
          TabIndex        =   31
@@ -689,7 +689,7 @@ Begin VB.Form CommonMain
          Index           =   3
          Left            =   300
          MousePointer    =   2  'Cross
-         TabIndex        =   64
+         TabIndex        =   61
          Top             =   1650
          Width           =   3315
       End
@@ -822,7 +822,7 @@ Begin VB.Form CommonMain
          Index           =   0
          Left            =   300
          MousePointer    =   2  'Cross
-         TabIndex        =   63
+         TabIndex        =   60
          Top             =   1650
          Width           =   3315
       End
@@ -1077,9 +1077,9 @@ Begin VB.Form CommonMain
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   1140
-      Left            =   10500
+      Left            =   600
       TabIndex        =   2
-      Top             =   5250
+      Top             =   3300
       Width           =   12840
       Begin GurhanButtonOCX.GurhanButton cmdMenu 
          Height          =   840
@@ -1762,7 +1762,7 @@ Private Sub menuOption_Click(index As Integer)
         Case 28
             With Transfers 'ΟΚ
                 .Tag = "True"
-                .grdCoachesReport.Tag = "grdCoachesReportStandard"
+                .grdCoachesReport.Tag = "grdCoachesReport"
                 .Show 1, Me
             End With
         'Βοηθητικά

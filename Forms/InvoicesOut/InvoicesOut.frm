@@ -2929,7 +2929,7 @@ Private Function UpdateCodes()
     If blnStatus And chkCodeHandID.Value = 0 Then
         Set rsCodes = CommonDB.OpenRecordset("Codes")
         With rsCodes
-            .Index = "CodeID"
+            .index = "CodeID"
             .Seek "=", txtInvoiceCodeID.text
             If Not .NoMatch Then
                 .Edit
@@ -3391,11 +3391,11 @@ Private Sub chkAgreement_KeyPress(KeyAscii As Integer)
 
 End Sub
 
-Private Sub cmdButton_Click(Index As Integer)
+Private Sub cmdButton_Click(index As Integer)
 
     Dim arrDummy()
     
-    Select Case Index
+    Select Case index
         Case 0
             NewRecord
         Case 1
@@ -3425,12 +3425,12 @@ Private Function FindRecords()
 
 End Function
 
-Private Sub cmdIndex_Click(Index As Integer)
+Private Sub cmdIndex_Click(index As Integer)
 
     Dim tmpTableData As typTableData
     Dim tmpRecordset As Recordset
     
-    Select Case Index
+    Select Case index
         Case 0
             'Παραστατικό - F2
             Set tmpRecordset = CheckForMatch("CommonDB", "Codes", "CodeShortDescriptionA, CodeMasterRefersTo", "String, String", txtCodeShortDescriptionA.text, txtInvoiceMasterRefersTo.text)

@@ -112,13 +112,13 @@ Begin VB.Form Transfers
          Height          =   2190
          Index           =   0
          Left            =   7950
-         TabIndex        =   62
+         TabIndex        =   61
          Top             =   4950
          Width           =   7290
          Begin UserControls.newText txtDriverDescriptionForRoutes 
             Height          =   465
             Left            =   1425
-            TabIndex        =   63
+            TabIndex        =   62
             TabStop         =   0   'False
             Top             =   825
             Width           =   4965
@@ -142,7 +142,7 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   0
             Left            =   6450
-            TabIndex        =   64
+            TabIndex        =   63
             TabStop         =   0   'False
             Top             =   825
             Width           =   390
@@ -170,7 +170,7 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   10
             Left            =   1575
-            TabIndex        =   70
+            TabIndex        =   69
             TabStop         =   0   'False
             Top             =   1650
             Width           =   2115
@@ -196,7 +196,7 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   11
             Left            =   3750
-            TabIndex        =   71
+            TabIndex        =   70
             TabStop         =   0   'False
             Top             =   1650
             Width           =   2115
@@ -233,7 +233,7 @@ Begin VB.Form Transfers
             Height          =   615
             Index           =   4
             Left            =   0
-            TabIndex        =   69
+            TabIndex        =   68
             Top             =   1575
             Width           =   7440
          End
@@ -253,7 +253,7 @@ Begin VB.Form Transfers
             Height          =   390
             Index           =   3
             Left            =   150
-            TabIndex        =   67
+            TabIndex        =   66
             Top             =   75
             Width           =   3615
          End
@@ -273,7 +273,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H0000FFFF&
             Height          =   390
             Left            =   4200
-            TabIndex        =   66
+            TabIndex        =   65
             Top             =   75
             Width           =   2940
          End
@@ -322,7 +322,7 @@ Begin VB.Form Transfers
             Height          =   315
             Index           =   11
             Left            =   450
-            TabIndex        =   65
+            TabIndex        =   64
             Top             =   900
             Width           =   540
          End
@@ -365,7 +365,7 @@ Begin VB.Form Transfers
             Height          =   540
             Index           =   0
             Left            =   0
-            TabIndex        =   68
+            TabIndex        =   67
             Top             =   0
             Width           =   7440
          End
@@ -377,7 +377,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Left            =   7875
-         TabIndex        =   61
+         TabIndex        =   60
          TabStop         =   0   'False
          Top             =   1050
          Width           =   2340
@@ -488,7 +488,7 @@ Begin VB.Form Transfers
             ForeColor       =   -2147483631
          End
          Begin iGrid300_10Tec.iGrid grdSummaryPerDestination 
-            Height          =   1720
+            Height          =   1725
             Left            =   0
             TabIndex        =   56
             TabStop         =   0   'False
@@ -527,7 +527,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   75
-            TabIndex        =   73
+            TabIndex        =   72
             TabStop         =   0   'False
             Text            =   "DriverIDForRoutes"
             Top             =   2700
@@ -540,7 +540,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   3675
-            TabIndex        =   72
+            TabIndex        =   71
             TabStop         =   0   'False
             Top             =   2700
             Width           =   780
@@ -727,11 +727,12 @@ Begin VB.Form Transfers
             _ExtentY        =   953
             IconSizeX       =   26
             IconSizeY       =   32
-            Size            =   24612
+            ColourDepth     =   8
+            Size            =   28128
             Images          =   "Transfers.frx":05D2
             Version         =   131072
-            KeyCount        =   7
-            Keys            =   "ÿÿÿÿÿÿ"
+            KeyCount        =   8
+            Keys            =   "ÿÿÿÿÿÿÿ"
          End
       End
       Begin VB.Frame frmButtonFrame 
@@ -833,7 +834,7 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   5
             Left            =   225
-            TabIndex        =   74
+            TabIndex        =   73
             TabStop         =   0   'False
             Top             =   75
             Width           =   3165
@@ -859,7 +860,7 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   7
             Left            =   6675
-            TabIndex        =   82
+            TabIndex        =   81
             TabStop         =   0   'False
             Top             =   75
             Width           =   3165
@@ -1093,7 +1094,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":6616
+         PicNormal       =   "Transfers.frx":73D2
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1121,7 +1122,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":6BB0
+         PicNormal       =   "Transfers.frx":796C
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1171,7 +1172,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":714A
+         PicNormal       =   "Transfers.frx":7F06
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1199,7 +1200,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":76E4
+         PicNormal       =   "Transfers.frx":84A0
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1207,7 +1208,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   0
          Left            =   3600
-         TabIndex        =   75
+         TabIndex        =   74
          Top             =   1125
          Width           =   390
          _ExtentX        =   688
@@ -1226,7 +1227,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   12583104
-         PicNormal       =   "Transfers.frx":7C7E
+         PicNormal       =   "Transfers.frx":8A3A
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1234,7 +1235,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   1
          Left            =   1050
-         TabIndex        =   77
+         TabIndex        =   76
          TabStop         =   0   'False
          Top             =   6075
          Width           =   1365
@@ -1260,7 +1261,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   3
          Left            =   3900
-         TabIndex        =   78
+         TabIndex        =   77
          TabStop         =   0   'False
          Top             =   6075
          Width           =   1365
@@ -1286,7 +1287,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   4
          Left            =   5325
-         TabIndex        =   79
+         TabIndex        =   78
          TabStop         =   0   'False
          Top             =   6075
          Width           =   1365
@@ -1312,7 +1313,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   2
          Left            =   2475
-         TabIndex        =   80
+         TabIndex        =   79
          TabStop         =   0   'False
          Top             =   6075
          Width           =   1365
@@ -1397,7 +1398,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H0000FFFF&
          Height          =   465
          Left            =   3900
-         TabIndex        =   81
+         TabIndex        =   80
          Top             =   3810
          Width           =   1215
       End
@@ -1418,30 +1419,9 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFF80&
          Height          =   1335
          Left            =   2850
-         TabIndex        =   76
+         TabIndex        =   75
          Top             =   3375
          Width           =   255
-      End
-      Begin VB.Label lblTotalPersonsForVisibleRows 
-         Alignment       =   1  'Right Justify
-         BackColor       =   &H00C0C0FF&
-         BackStyle       =   0  'Transparent
-         Caption         =   "Σύνολο φιλτραρισμένων"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   9.75
-            Charset         =   161
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00C0C0FF&
-         Height          =   315
-         Left            =   13500
-         TabIndex        =   60
-         Top             =   300
-         Width           =   5040
       End
       Begin VB.Label lblSelectedGridLines 
          Alignment       =   1  'Right Justify
@@ -1625,7 +1605,7 @@ Begin VB.Form Transfers
          Height          =   315
          Left            =   13500
          TabIndex        =   15
-         Top             =   0
+         Top             =   300
          Width           =   5040
       End
       Begin VB.Label lblTitle 
@@ -1685,7 +1665,6 @@ Dim lngMaximumSeperatorTop As Long
 Dim lngOldSeperatorTop As Long
 Dim blnIsMoving As Boolean
 
-Dim lngTotalPersonsForVisibleRows As Long
 Dim lngTotalPersonsForSelectedRows As Long
 
 Dim lngCurrentRow As Long
@@ -1710,7 +1689,7 @@ Private Function AssignRoutesToDriver()
     
     For lngRow = 1 To grdCoachesReport.RowCount
         DoEvents
-        If grdCoachesReport.CellIcon(lngRow, "Selected") = 3 Then
+        If grdCoachesReport.CellIcon(lngRow, "Selected") > 0 Then
             AssignDriverToThisRoute grdCoachesReport.CellValue(lngRow, "TransferID")
         End If
     Next lngRow
@@ -1745,7 +1724,7 @@ Private Function AssignDriverToThisRoute(TransferID)
 
 End Function
 
-Private Function CalculateSummaryPerCustomer()
+Private Function CalculateSummaryPerCustomerForSelectedDestinations()
 
     'SQL
     Dim intIndex As Byte
@@ -1760,6 +1739,12 @@ Private Function CalculateSummaryPerCustomer()
     Dim strSQL As String
     
     Dim lngRow As Long
+    Dim IsFirstItemProcessed As Boolean
+
+    Dim lngDestinationItem  As Long
+    Dim lngCustomerItem As Long
+    Dim IsDestinationSelected As Boolean
+    Dim IsCustomerSelected As Boolean
     
     'Recordsets
     Dim rstRecordset As Recordset
@@ -1775,6 +1760,22 @@ Private Function CalculateSummaryPerCustomer()
     strLogic = " AND "
     GoSub UpdateSQLString
     arrQuery(intIndex) = CDate(mskDate.text)
+    
+    'Προορισμός
+    IsDestinationSelected = False
+    IsFirstItemProcessed = True
+    For lngDestinationItem = 1 To grdSummaryPerDestination.RowCount
+        If grdSummaryPerDestination.CellIcon(lngDestinationItem, "Selected") <> 0 Then
+            IsDestinationSelected = True
+            strThisParameter = "lngDestinationID" & lngDestinationItem & " Long"
+            strThisQuery = "Transfers.TransferDestinationID = " & "lngDestinationID" & lngDestinationItem
+            strLogic = IIf(IsFirstItemProcessed, " AND (", " OR ")
+            IsFirstItemProcessed = False
+            GoSub UpdateSQLString
+            arrQuery(intIndex) = grdSummaryPerDestination.CellValue(lngDestinationItem, "DestinationID")
+        End If
+    Next lngDestinationItem
+    If IsDestinationSelected Then GoSub AddClosingParenthesis
                
     strGroupBy = " GROUP BY Customers.ID, Customers.Description "
     strOrder = " ORDER BY Sum(Transfers.TransferAdults+Transfers.TransferKids+Transfers.TransferFree) DESC, Description"
@@ -1796,12 +1797,20 @@ Private Function CalculateSummaryPerCustomer()
         Next intIndex
     End If
     
+    'Καθαρίζω το πλέγμα
+    ClearFields grdSummaryPerCustomer
+    
+    'Αν δεν έχω επιλέξει κανέναν προορισμό, βγαίνω
+    If Not IsDestinationSelected Then
+        blnError = False
+        grdCoachesReport.Redraw = True
+        Exit Function
+    End If
+    
     'Ανοίγω το recordset
     Set rstRecordset = TempQuery.OpenRecordset()
     
-    ClearFields grdSummaryPerCustomer
-    
-    'Γεμίζω το πλέγμα
+    'Γεμίζω το πλέγμα των πελατών
     With rstRecordset
         DoEvents
         Do While Not .EOF
@@ -1824,6 +1833,11 @@ UpdateSQLString:
     strParameters = strParameters & strThisParameter
     strParFields = strParFields & strThisQuery
     ReDim Preserve arrQuery(intIndex)
+    
+    Return
+    
+AddClosingParenthesis:
+    strParFields = strParFields & ")"
     
     Return
 
@@ -2012,6 +2026,165 @@ ErrTrap:
 
 End Function
 
+Private Function CalculateSummaryPerDriverForSelectedDestinationsAndCustomersAndRoutes()
+
+    'SQL
+    Dim intIndex As Byte
+    Dim strThisQuery As String
+    Dim strParameters As String
+    Dim strParFields As String
+    Dim strThisParameter As String
+    Dim strOrder As String
+    Dim strGroupBy As String
+    Dim strLogic As String
+    Dim arrQuery() As Variant
+    Dim strSQL As String
+    
+    Dim lngRow As Long
+    Dim IsFirstItemProcessed As Boolean
+
+    Dim lngDestinationItem  As Long
+    Dim lngCustomerItem As Long
+    Dim IsDestinationSelected As Boolean
+    Dim IsCustomerSelected As Boolean
+    Dim lngRouteItem As Long
+    Dim IsRouteSelected As Boolean
+    
+    'Recordsets
+    Dim rstRecordset As Recordset
+    
+    'SQL
+    strSQL = "SELECT " _
+        & "DriverID, DriverDescription, Sum(Transfers.TransferAdults+Transfers.TransferKids+Transfers.TransferFree) AS SumOfTransferPersons " _
+        & "FROM Transfers " _
+        & "LEFT JOIN Drivers ON Transfers.TransferDriverID = Drivers.DriverID "
+   
+    'Ημερομηνία
+    strThisParameter = "datDate Date"
+    strThisQuery = "Transfers.TransferDate = datDate"
+    strLogic = " AND "
+    GoSub UpdateSQLString
+    arrQuery(intIndex) = CDate(mskDate.text)
+    
+    'Προορισμός
+    IsDestinationSelected = False
+    IsFirstItemProcessed = True
+    For lngDestinationItem = 1 To grdSummaryPerDestination.RowCount
+        If grdSummaryPerDestination.CellIcon(lngDestinationItem, "Selected") <> 0 Then
+            IsDestinationSelected = True
+            strThisParameter = "lngDestinationID" & lngDestinationItem & " Long"
+            strThisQuery = "Transfers.TransferDestinationID = " & "lngDestinationID" & lngDestinationItem
+            strLogic = IIf(IsFirstItemProcessed, " AND (", " OR ")
+            IsFirstItemProcessed = False
+            GoSub UpdateSQLString
+            arrQuery(intIndex) = grdSummaryPerDestination.CellValue(lngDestinationItem, "DestinationID")
+        End If
+    Next lngDestinationItem
+    If IsDestinationSelected Then GoSub AddClosingParenthesis
+    
+    'Πελάτης
+    IsCustomerSelected = False
+    IsFirstItemProcessed = True
+    For lngCustomerItem = 1 To grdSummaryPerCustomer.RowCount
+        If grdSummaryPerCustomer.CellIcon(lngCustomerItem, "Selected") <> 0 Then
+            IsCustomerSelected = True
+            strThisParameter = "lngCustomerID" & lngCustomerItem & " Long"
+            strThisQuery = "Transfers.TransferCustomerID = " & "lngCustomerID" & lngCustomerItem
+            strLogic = IIf(IsFirstItemProcessed, " AND (", " OR ")
+            IsFirstItemProcessed = False
+            GoSub UpdateSQLString
+            arrQuery(intIndex) = grdSummaryPerCustomer.CellValue(lngCustomerItem, "CustomerID")
+        End If
+    Next lngCustomerItem
+    If IsCustomerSelected Then GoSub AddClosingParenthesis
+    
+    'Δρομολόγιο
+    IsRouteSelected = False
+    IsFirstItemProcessed = True
+    For lngRouteItem = 1 To grdSummaryPerRoute.RowCount
+        If grdSummaryPerRoute.CellIcon(lngRouteItem, "Selected") <> 0 Then
+            IsRouteSelected = True
+            strThisParameter = "lngRouteID" & lngRouteItem & " Long"
+            strThisQuery = "Transfers.TransferRouteID = " & "lngRouteID" & lngRouteItem
+            strLogic = IIf(IsFirstItemProcessed, " AND (", " OR ")
+            IsFirstItemProcessed = False
+            GoSub UpdateSQLString
+            arrQuery(intIndex) = grdSummaryPerRoute.CellValue(lngRouteItem, "RouteID")
+        End If
+    Next lngRouteItem
+    If IsRouteSelected Then GoSub AddClosingParenthesis
+    
+    strGroupBy = " GROUP BY DriverID, DriverDescription "
+    strOrder = " ORDER BY Sum(Transfers.TransferAdults+Transfers.TransferKids+Transfers.TransferFree) DESC, DriverDescription "
+    
+    Set TempQuery = CommonDB.CreateQueryDef("")
+    
+    'Προσθέτω τα κριτήρια
+    If strThisParameter <> "" Then
+        strParameters = "PARAMETERS " & strParameters & "; "
+        strParFields = "WHERE " & strParFields
+        strSQL = strParameters & strSQL & strParFields
+        TempQuery.SQL = strSQL & strGroupBy & strOrder
+    End If
+    
+    'Κριτήρια
+    If strThisParameter <> "" Then
+        For intIndex = 1 To UBound(arrQuery)
+            TempQuery.Parameters(intIndex - 1) = arrQuery(intIndex)
+        Next intIndex
+    End If
+    
+    'Καθαρίζω το πλέγμα
+    ClearFields grdSummaryPerDriver
+    
+    'Αν δεν έχω επιλέξει τουλάχιστον ένα προορισμό, έναν πελάτη και μία διαδρομή, βγαίνω
+    If Not IsDestinationSelected Or Not IsCustomerSelected Or Not IsRouteSelected Then
+        blnError = False
+        grdCoachesReport.Redraw = True
+        Exit Function
+    End If
+    
+    'Ανοίγω το recordset
+    Set rstRecordset = TempQuery.OpenRecordset()
+    
+    'Γεμίζω το πλέγμα
+    With rstRecordset
+        DoEvents
+        Do While Not .EOF
+            grdSummaryPerDriver.AddRow
+            lngRow = lngRow + 1
+            grdSummaryPerDriver.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(5)
+            grdSummaryPerDriver.CellValue(lngRow, "DriverID") = !DriverID
+            grdSummaryPerDriver.CellValue(lngRow, "DriverDescription") = !DriverDescription
+            grdSummaryPerDriver.CellValue(lngRow, "TotalPersons") = !SumOfTransferPersons
+            rstRecordset.MoveNext
+        Loop
+    End With
+    
+    Exit Function
+    
+UpdateSQLString:
+    intIndex = intIndex + 1
+    strParameters = IIf(intIndex > 1, strParameters & ", ", strParameters)
+    strParFields = IIf(intIndex > 1, strParFields & strLogic, strParFields)
+    strParameters = strParameters & strThisParameter
+    strParFields = strParFields & strThisQuery
+    ReDim Preserve arrQuery(intIndex)
+    
+    Return
+    
+AddClosingParenthesis:
+    strParFields = strParFields & ")"
+    
+    Return
+
+ErrTrap:
+    blnError = True
+    ClearFields grdSummaryPerDriver
+    DisplayErrorMessage True, Err.Description
+
+End Function
+
 Private Function CalculateSummaryPerRoute()
 
     'SQL
@@ -2075,7 +2248,7 @@ Private Function CalculateSummaryPerRoute()
             lngRow = lngRow + 1
             grdSummaryPerRoute.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(4)
             grdSummaryPerRoute.CellValue(lngRow, "RouteID") = !TransferRouteID
-            grdSummaryPerRoute.CellValue(lngRow, "RouteDescription") = !PickupRouteShortDescription
+            grdSummaryPerRoute.CellValue(lngRow, "RouteShortDescription") = !PickupRouteShortDescription
             grdSummaryPerRoute.CellValue(lngRow, "TotalPersons") = !SumOfTransferPersons
             rstRecordset.MoveNext
         Loop
@@ -2098,6 +2271,147 @@ ErrTrap:
     ClearFields grdSummaryPerRoute
     DisplayErrorMessage True, Err.Description
     
+End Function
+
+Private Function CalculateSummaryPerRouteForSelectedDestinationsAndCustomers()
+
+    'SQL
+    Dim intIndex As Byte
+    Dim strThisQuery As String
+    Dim strParameters As String
+    Dim strParFields As String
+    Dim strThisParameter As String
+    Dim strOrder As String
+    Dim strGroupBy As String
+    Dim strLogic As String
+    Dim arrQuery() As Variant
+    Dim strSQL As String
+    
+    Dim lngRow As Long
+    Dim IsFirstItemProcessed As Boolean
+
+    Dim lngDestinationItem  As Long
+    Dim lngCustomerItem As Long
+    Dim IsDestinationSelected As Boolean
+    Dim IsCustomerSelected As Boolean
+    
+    'Recordsets
+    Dim rstRecordset As Recordset
+    
+    'SQL
+    strSQL = "SELECT " _
+        & "PickupRouteID, PickupRouteShortDescription, Sum(Transfers.TransferAdults+Transfers.TransferKids+Transfers.TransferFree) AS SumOfTransferPersons " _
+        & "FROM Transfers " _
+        & "INNER JOIN PickupRoutes ON Transfers.TransferRouteID = PickupRoutes.PickupRouteID "
+   
+    'Ημερομηνία
+    strThisParameter = "datDate Date"
+    strThisQuery = "Transfers.TransferDate = datDate"
+    strLogic = " AND "
+    GoSub UpdateSQLString
+    arrQuery(intIndex) = CDate(mskDate.text)
+    
+    'Προορισμός
+    IsDestinationSelected = False
+    IsFirstItemProcessed = True
+    For lngDestinationItem = 1 To grdSummaryPerDestination.RowCount
+        If grdSummaryPerDestination.CellIcon(lngDestinationItem, "Selected") <> 0 Then
+            IsDestinationSelected = True
+            strThisParameter = "lngDestinationID" & lngDestinationItem & " Long"
+            strThisQuery = "Transfers.TransferDestinationID = " & "lngDestinationID" & lngDestinationItem
+            strLogic = IIf(IsFirstItemProcessed, " AND (", " OR ")
+            IsFirstItemProcessed = False
+            GoSub UpdateSQLString
+            arrQuery(intIndex) = grdSummaryPerDestination.CellValue(lngDestinationItem, "DestinationID")
+        End If
+    Next lngDestinationItem
+    If IsDestinationSelected Then GoSub AddClosingParenthesis
+    
+    'Πελάτης
+    IsCustomerSelected = False
+    IsFirstItemProcessed = True
+    For lngCustomerItem = 1 To grdSummaryPerCustomer.RowCount
+        If grdSummaryPerCustomer.CellIcon(lngCustomerItem, "Selected") <> 0 Then
+            IsCustomerSelected = True
+            strThisParameter = "lngCustomerID" & lngCustomerItem & " Long"
+            strThisQuery = "Transfers.TransferCustomerID = " & "lngCustomerID" & lngCustomerItem
+            strLogic = IIf(IsFirstItemProcessed, " AND (", " OR ")
+            IsFirstItemProcessed = False
+            GoSub UpdateSQLString
+            arrQuery(intIndex) = grdSummaryPerCustomer.CellValue(lngCustomerItem, "CustomerID")
+        End If
+    Next lngCustomerItem
+    If IsCustomerSelected Then GoSub AddClosingParenthesis
+    
+    strGroupBy = " GROUP BY PickupRouteID, PickupRouteShortDescription "
+    strOrder = " ORDER BY Sum(Transfers.TransferAdults+Transfers.TransferKids+Transfers.TransferFree) DESC, PickupRouteShortDescription "
+    
+    Set TempQuery = CommonDB.CreateQueryDef("")
+    
+    'Προσθέτω τα κριτήρια
+    If strThisParameter <> "" Then
+        strParameters = "PARAMETERS " & strParameters & "; "
+        strParFields = "WHERE " & strParFields
+        strSQL = strParameters & strSQL & strParFields
+        TempQuery.SQL = strSQL & strGroupBy & strOrder
+    End If
+    
+    'Κριτήρια
+    If strThisParameter <> "" Then
+        For intIndex = 1 To UBound(arrQuery)
+            TempQuery.Parameters(intIndex - 1) = arrQuery(intIndex)
+        Next intIndex
+    End If
+    
+    'Καθαρίζω το πλέγμα
+    ClearFields grdSummaryPerRoute
+    
+    'Αν δεν έχω επιλέξει τουλάχιστον ένα προορισμό και έναν πελάτη, βγαίνω
+    If Not IsCustomerSelected Or Not IsDestinationSelected Then
+        blnError = False
+        grdCoachesReport.Redraw = True
+        Exit Function
+    End If
+    
+    'Ανοίγω το recordset
+    Set rstRecordset = TempQuery.OpenRecordset()
+    
+    'Γεμίζω το πλέγμα
+    With rstRecordset
+        DoEvents
+        Do While Not .EOF
+            grdSummaryPerRoute.AddRow
+            lngRow = lngRow + 1
+            grdSummaryPerRoute.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(4)
+            grdSummaryPerRoute.CellValue(lngRow, "RouteID") = !PickupRouteID
+            grdSummaryPerRoute.CellValue(lngRow, "RouteShortDescription") = !PickupRouteShortDescription
+            grdSummaryPerRoute.CellValue(lngRow, "TotalPersons") = !SumOfTransferPersons
+            rstRecordset.MoveNext
+        Loop
+    End With
+    
+    Exit Function
+    
+UpdateSQLString:
+    intIndex = intIndex + 1
+    strParameters = IIf(intIndex > 1, strParameters & ", ", strParameters)
+    strParFields = IIf(intIndex > 1, strParFields & strLogic, strParFields)
+    strParameters = strParameters & strThisParameter
+    strParFields = strParFields & strThisQuery
+    ReDim Preserve arrQuery(intIndex)
+    
+    Return
+    
+AddClosingParenthesis:
+    strParFields = strParFields & ")"
+    
+    Return
+
+ErrTrap:
+    blnError = True
+    ClearFields grdSummaryPerRoute
+    DisplayErrorMessage True, Err.Description
+
 End Function
 
 Private Function CalculateTotalPersons()
@@ -2155,7 +2469,6 @@ Private Function CalculateTotalPersons()
     Set rstRecordset = TempQuery.OpenRecordset()
     
     CalculateTotalPersons = rstRecordset.Fields(0)
-    lngTotalPersonsForVisibleRows = rstRecordset.Fields(0)
     
     Exit Function
     
@@ -2198,7 +2511,7 @@ Private Function DisplayAssignRoutesToDriverDialog()
     Dim IsRowSelected As Boolean
     
     For lngRow = 1 To grdCoachesReport.RowCount
-        If grdCoachesReport.CellIcon(lngRow, "Selected") <> -1 Then
+        If grdCoachesReport.CellIcon(lngRow, "Selected") > 0 Then
             IsRowSelected = True
             Exit For
         End If
@@ -2221,22 +2534,20 @@ End Function
 Private Function FindRecordsAndPopulateGrid()
 
     If ValidateFields(False) Then
-        If RefreshList > 0 Then
+        'Σύνολα
+        CalculateSummaryPerDestination
+        CalculateSummaryPerCustomerForSelectedDestinations
+        CalculateSummaryPerRoute
+        CalculateSummaryPerDriver
+        'Επιλογή όλων
+        chkAllDestinations.Value = 1
+        chkAllCustomers.Value = 1
+        chkAllRoutes.Value = 1
+        chkAllDrivers.Value = 1
+        'Κεντρικό πλέγμα
+        If RefreshList Then
             lblTotalPersons.Caption = "Σύνολο ημέρας: " & format(CalculateTotalPersons, "#,##0")
-            lblTotalPersonsForVisibleRows.Caption = "Συνολο φιλτραρισμένων: " & format(lngTotalPersonsForVisibleRows, "#,##0")
             lblSelectedGridLines.Caption = "Σύνολο επιλεγμένων: 0"
-            'Σύνολα
-            CalculateSummaryPerCustomer
-            CalculateSummaryPerDestination
-            CalculateSummaryPerRoute
-            CalculateSummaryPerDriver
-            'Επιλογή όλων
-            chkAllDestinations.Value = 1
-            chkAllCustomers.Value = 1
-            chkAllRoutes.Value = 1
-            chkAllDrivers.Value = 1
-            'Εμφανίζω ή όχι εγγραφές
-            ScanGridsForSelectedRows
             'Υπόλοιπα
             EnableGrid grdCoachesReport, False
             EnableFields chkAllVisibleTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
@@ -2269,7 +2580,7 @@ Private Function GetDriverName()
     Dim intDriversSelected As Integer
     
     For lngRow = 1 To grdSummaryPerDriver.RowCount
-        If grdSummaryPerDriver.CellIcon(lngRow, "Selected") <> 0 Then
+        If grdSummaryPerDriver.CellIcon(lngRow, "Selected") > 0 Then
             intDriversSelected = intDriversSelected + 1
             GetDriverName = grdSummaryPerDriver.CellValue(lngRow, "DriverDescription")
         End If
@@ -2371,6 +2682,15 @@ Private Function RefreshList()
     
     'Local variables
     Dim lngRow As Long
+    Dim IsFirstItemProcessed As Boolean
+    Dim lngDestinationItem As Long
+    Dim IsDestinationSelected  As Boolean
+    Dim lngCustomerItem As Long
+    Dim IsCustomerSelected  As Boolean
+    Dim lngRouteItem As Long
+    Dim IsRouteSelected  As Boolean
+    Dim lngDriverItem As Long
+    Dim IsDriverSelected  As Boolean
     
     'Recordsets
     Dim rstRecordset As Recordset
@@ -2407,6 +2727,70 @@ Private Function RefreshList()
     GoSub UpdateSQLString
     arrQuery(intIndex) = CDate(mskDate.text)
     
+    'Προορισμός
+    IsDestinationSelected = False
+    IsFirstItemProcessed = True
+    For lngDestinationItem = 1 To grdSummaryPerDestination.RowCount
+        If grdSummaryPerDestination.CellIcon(lngDestinationItem, "Selected") <> 0 Then
+            IsDestinationSelected = True
+            strThisParameter = "lngDestinationID" & lngDestinationItem & " Long"
+            strThisQuery = "Transfers.TransferDestinationID = " & "lngDestinationID" & lngDestinationItem
+            strLogic = IIf(IsFirstItemProcessed, " AND (", " OR ")
+            IsFirstItemProcessed = False
+            GoSub UpdateSQLString
+            arrQuery(intIndex) = grdSummaryPerDestination.CellValue(lngDestinationItem, "DestinationID")
+        End If
+    Next lngDestinationItem
+    If IsDestinationSelected Then GoSub AddClosingParenthesis
+    
+    'Πελάτης
+    IsCustomerSelected = False
+    IsFirstItemProcessed = True
+    For lngCustomerItem = 1 To grdSummaryPerCustomer.RowCount
+        If grdSummaryPerCustomer.CellIcon(lngCustomerItem, "Selected") <> 0 Then
+            IsCustomerSelected = True
+            strThisParameter = "lngCustomerID" & lngCustomerItem & " Long"
+            strThisQuery = "Transfers.TransferCustomerID = " & "lngCustomerID" & lngCustomerItem
+            strLogic = IIf(IsFirstItemProcessed, " AND (", " OR ")
+            IsFirstItemProcessed = False
+            GoSub UpdateSQLString
+            arrQuery(intIndex) = grdSummaryPerCustomer.CellValue(lngCustomerItem, "CustomerID")
+        End If
+    Next lngCustomerItem
+    If IsCustomerSelected Then GoSub AddClosingParenthesis
+    
+    'Δρομολόγιο
+    IsRouteSelected = False
+    IsFirstItemProcessed = True
+    For lngRouteItem = 1 To grdSummaryPerRoute.RowCount
+        If grdSummaryPerRoute.CellIcon(lngRouteItem, "Selected") <> 0 Then
+            IsRouteSelected = True
+            strThisParameter = "lngRouteID" & lngRouteItem & " Long"
+            strThisQuery = "Transfers.TransferRouteID = " & "lngRouteID" & lngRouteItem
+            strLogic = IIf(IsFirstItemProcessed, " AND (", " OR ")
+            IsFirstItemProcessed = False
+            GoSub UpdateSQLString
+            arrQuery(intIndex) = grdSummaryPerRoute.CellValue(lngRouteItem, "RouteID")
+        End If
+    Next lngRouteItem
+    If IsRouteSelected Then GoSub AddClosingParenthesis
+    
+    'Οδηγός
+    IsDriverSelected = False
+    IsFirstItemProcessed = True
+    For lngDriverItem = 1 To grdSummaryPerDriver.RowCount
+        If grdSummaryPerDriver.CellIcon(lngDriverItem, "Selected") <> 0 Then
+            IsDriverSelected = True
+            strThisParameter = "lngDriverID" & lngDriverItem & " Long"
+            strThisQuery = "Transfers.TransferDriverID = " & "lngDriverID" & lngDriverItem
+            strLogic = IIf(IsFirstItemProcessed, " AND (", " OR ")
+            IsFirstItemProcessed = False
+            GoSub UpdateSQLString
+            arrQuery(intIndex) = grdSummaryPerDriver.CellValue(lngDriverItem, "DriverID")
+        End If
+    Next lngDriverItem
+    If IsDriverSelected Then GoSub AddClosingParenthesis
+    
     'Ταξινόμηση
     strOrder = "ORDER BY PickupRouteDescription, PickupPointTime, PickUpPointHotelDescription"
 
@@ -2429,18 +2813,26 @@ Private Function RefreshList()
         Next intIndex
     End If
     
+    'Αν έχω μόνο την ημερομηνία και κανένα άλλο κριτήριο, βγαίνω
+    If Not IsDestinationSelected Or Not IsCustomerSelected Or Not IsRouteSelected Or Not IsDriverSelected Then
+        blnError = False
+        RefreshList = False
+        grdCoachesReport.Redraw = True
+        Exit Function
+    End If
+    
     'Ανοίγω το recordset
     Set rstRecordset = TempQuery.OpenRecordset()
     
     'Αν δεν έχω εγγραφές, βγαίνω
-    If rstRecordset.RecordCount = 0 Then blnError = False: RefreshList = False: Exit Function
+    If rstRecordset.RecordCount = 0 Then blnError = False: RefreshList = False: grdCoachesReport.Redraw = True: Exit Function
     
     'Προετοιμάζω τη μπάρα προόδου
-    InitializeProgressBar Me, strApplicationName, rstRecordset
+    'InitializeProgressBar Me, strApplicationName, rstRecordset
     
     'Προσωρινά
-    UpdateButtons Me, 11, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0
-    cmdButton(8).Caption = "Διακοπή επεξεργασίας"
+    'UpdateButtons Me, 11, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0
+    'cmdButton(8).Caption = "Διακοπή επεξεργασίας"
     blnProcessing = True
     
     'Γεμίζω το πλέγμα
@@ -2448,7 +2840,7 @@ Private Function RefreshList()
         Do While Not .EOF
             grdCoachesReport.AddRow
             lngRowCount = rstRecordset.RecordCount
-            UpdateProgressBar Me
+            'UpdateProgressBar Me
             lngRow = lngRow + 1
             grdCoachesReport.CellValue(lngRow, "TransferID") = !TransferID
             grdCoachesReport.CellValue(lngRow, "TransferDate") = !transferDate
@@ -2481,12 +2873,14 @@ Private Function RefreshList()
     Else
         blnProcessing = False
         RefreshList = lngRowCount
+        grdCoachesReport.Redraw = True
     End If
     
     'Τελικές ενέργειες
-    frmProgress.Visible = False
+    'frmProgress.Visible = False
+    chkAllVisibleTransfers.Value = 0
     Me.Refresh
-    cmdButton(8).Caption = "Νέα αναζήτηση"
+    'cmdButton(8).Caption = "Νέα αναζήτηση"
    
     Exit Function
     
@@ -2500,6 +2894,11 @@ UpdateSQLString:
     
     Return
 
+AddClosingParenthesis:
+    strParFields = strParFields & ")"
+    
+    Return
+
 ErrTrap:
     blnError = True
     ClearFields grdCoachesReport
@@ -2507,117 +2906,60 @@ ErrTrap:
 
 End Function
 
+Private Function ToggleCheckBox(grid As iGrid, initialValue)
+
+    Dim lngRow As Long
+    Dim lngSelectedRows As Long
+    Dim lngNotSelectedRows As Long
+    Dim lngRowCount As Long
+    
+    lngRowCount = grid.RowCount
+    
+    For lngRow = 1 To grid.RowCount
+        If grid.CellIcon(lngRow, "Selected") > 0 Then
+            lngSelectedRows = lngSelectedRows + 1
+        End If
+        If grid.CellIcon(lngRow, "Selected") = 0 Then
+            lngNotSelectedRows = lngNotSelectedRows + 1
+        End If
+    Next lngRow
+    
+    ToggleCheckBox = initialValue
+    
+    If lngSelectedRows = lngRowCount Then ToggleCheckBox = 1
+    If lngNotSelectedRows = lngRowCount Then ToggleCheckBox = 0
+
+End Function
+
 Private Sub chkAllCustomers_Click()
 
     Dim lngRow As Long
     
-    grdCoachesReport.Redraw = False
-    lngTotalPersonsForVisibleRows = 0
-    
     For lngRow = 1 To grdSummaryPerCustomer.RowCount
-        grdSummaryPerCustomer.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllCustomers.Value = 0, 1, 6))
-        ScanGridsForSelectedRows
+        grdSummaryPerCustomer.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllCustomers.Value <= 0, 1, 3))
     Next lngRow
     
-    grdCoachesReport.Redraw = True
+    CalculateSummaryPerRouteForSelectedDestinationsAndCustomers
+    
+    chkAllRoutes.Value = chkAllCustomers.Value
+    
+    RefreshList
 
 End Sub
-
-Private Function ScanGridsForSelectedRows()
-
-    Dim lngRow As Long
-    Dim lngCoachesReport As Long
-    Dim lngTotalPersonsForVisibleRows As Long
-    
-    'Μηδενίζω το πλέγμα των εγγραφών
-    chkAllVisibleTransfers.Value = 0
-    For lngRow = 1 To grdCoachesReport.RowCount
-        grdCoachesReport.CellValue(lngRow, "TotalCriteria") = 0
-    Next lngRow
-    
-    'Για κάθε μία εγγραφή των προορισμών
-    For lngRow = 1 To grdSummaryPerDestination.RowCount
-        'Αν την έχω επιλέξει
-        If grdSummaryPerDestination.CellIcon(lngRow, "Selected") <> 0 Then
-            'Σκανάρω το πλέγμα των εγγραφών
-            For lngCoachesReport = 1 To grdCoachesReport.RowCount
-                'Αν ο προορισμός είναι ο ίδιος
-                If grdCoachesReport.CellValue(lngCoachesReport, "DestinationDescription") = grdSummaryPerDestination.CellValue(lngRow, "DestinationDescription") Then
-                    'Αυξάνω το μετρητή κατά 1
-                    grdCoachesReport.CellValue(lngCoachesReport, "TotalCriteria") = grdCoachesReport.CellValue(lngCoachesReport, "TotalCriteria") + 1
-                End If
-            Next lngCoachesReport
-        End If
-    Next lngRow
-
-    'Για κάθε μία εγγραφή των πελατών
-    For lngRow = 1 To grdSummaryPerCustomer.RowCount
-        'Αν την έχω επιλέξει
-        If grdSummaryPerCustomer.CellIcon(lngRow, "Selected") <> 0 Then
-            'Σκανάρω το πλέγμα των εγγραφών
-            For lngCoachesReport = 1 To grdCoachesReport.RowCount
-                'Αν ο πελάτης είναι ο ίδιος
-                If grdCoachesReport.CellValue(lngCoachesReport, "CustomerDescription") = grdSummaryPerCustomer.CellValue(lngRow, "CustomerDescription") Then
-                    'Αυξάνω το μετρητή κατά 1
-                    grdCoachesReport.CellValue(lngCoachesReport, "TotalCriteria") = grdCoachesReport.CellValue(lngCoachesReport, "TotalCriteria") + 1
-                End If
-            Next lngCoachesReport
-        End If
-    Next lngRow
-
-    'Για κάθε μία εγγραφή των δρομολογίων
-    For lngRow = 1 To grdSummaryPerRoute.RowCount
-        'Αν την έχω επιλέξει
-        If grdSummaryPerRoute.CellIcon(lngRow, "Selected") <> 0 Then
-            'Σκανάρω το πλέγμα των εγγραφών
-            For lngCoachesReport = 1 To grdCoachesReport.RowCount
-                'Αν η δρομολόγιο είναι η ίδια
-                If grdCoachesReport.CellValue(lngCoachesReport, "RouteShortDescription") = grdSummaryPerRoute.CellValue(lngRow, "RouteDescription") Then
-                    'Αυξάνω το μετρητή κατά 1
-                    grdCoachesReport.CellValue(lngCoachesReport, "TotalCriteria") = grdCoachesReport.CellValue(lngCoachesReport, "TotalCriteria") + 1
-                End If
-            Next lngCoachesReport
-        End If
-    Next lngRow
-
-    'Για κάθε μία εγγραφή των οδηγών
-    For lngRow = 1 To grdSummaryPerDriver.RowCount
-        'Αν την έχω επιλέξει
-        If grdSummaryPerDriver.CellIcon(lngRow, "Selected") <> 0 Then
-            'Σκανάρω το πλέγμα των εγγραφών
-            For lngCoachesReport = 1 To grdCoachesReport.RowCount
-                'Αν ο οδηγός είναι ο ίδιος
-                If grdCoachesReport.CellValue(lngCoachesReport, "DriverDescription") = grdSummaryPerDriver.CellValue(lngRow, "DriverDescription") Then
-                    'Αυξάνω το μετρητή κατά 1
-                    grdCoachesReport.CellValue(lngCoachesReport, "TotalCriteria") = grdCoachesReport.CellValue(lngCoachesReport, "TotalCriteria") + 1
-                End If
-            Next lngCoachesReport
-        End If
-    Next lngRow
-    
-    'Σκανάρω το πλέγμα των εγγραφών για >=3  στο άθροισμα
-    For lngCoachesReport = 1 To grdCoachesReport.RowCount
-        grdCoachesReport.RowVisible(lngCoachesReport) = IIf(grdCoachesReport.CellValue(lngCoachesReport, "TotalCriteria") = 4, True, False)
-        If grdCoachesReport.RowVisible(lngCoachesReport) Then lngTotalPersonsForVisibleRows = lngTotalPersonsForVisibleRows + grdCoachesReport.CellValue(lngCoachesReport, "TransferTotal")
-    Next lngCoachesReport
-    
-    lblTotalPersonsForVisibleRows.Caption = "Συνολο με βάση τα επιλεγμένα φίλτρα: " & format(lngTotalPersonsForVisibleRows, "#,##0")
-
-End Function
 
 Private Sub chkAllDestinations_Click()
 
     Dim lngRow As Long
     
-    grdCoachesReport.Redraw = False
-    lngTotalPersonsForVisibleRows = 0
-    
     For lngRow = 1 To grdSummaryPerDestination.RowCount
-        grdSummaryPerDestination.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllDestinations.Value = 0, 1, 2))
-        ScanGridsForSelectedRows
+        grdSummaryPerDestination.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllDestinations.Value <= 0, 1, 2))
     Next lngRow
     
-    grdCoachesReport.Redraw = True
+    CalculateSummaryPerCustomerForSelectedDestinations
+    
+    chkAllCustomers.Value = chkAllDestinations.Value
+    
+    RefreshList
 
 End Sub
 
@@ -2625,32 +2967,28 @@ Private Sub chkAllDrivers_Click()
 
     Dim lngRow As Long
     
-    grdCoachesReport.Redraw = False
-    lngTotalPersonsForVisibleRows = 0
-    
     For lngRow = 1 To grdSummaryPerDriver.RowCount
-        grdSummaryPerDriver.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllDrivers.Value = 0, 1, 3))
-        ScanGridsForSelectedRows
+        grdSummaryPerDriver.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllDrivers.Value <= 0, 1, 5))
     Next lngRow
     
-    grdCoachesReport.Redraw = True
-
+    RefreshList
+    
 End Sub
 
 Private Sub chkAllRoutes_Click()
     
     Dim lngRow As Long
     
-    grdCoachesReport.Redraw = False
-    lngTotalPersonsForVisibleRows = 0
-    
     For lngRow = 1 To grdSummaryPerRoute.RowCount
-        grdSummaryPerRoute.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllRoutes.Value = 0, 1, 4))
-        ScanGridsForSelectedRows
+        grdSummaryPerRoute.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllRoutes.Value <= 0, 1, 4))
     Next lngRow
     
-    grdCoachesReport.Redraw = True
-
+    CalculateSummaryPerDriverForSelectedDestinationsAndCustomersAndRoutes
+    
+    chkAllDrivers.Value = chkAllRoutes.Value
+    
+    RefreshList
+    
 End Sub
 
 Private Sub chkAllVisibleTransfers_Click()
@@ -2661,8 +2999,8 @@ Private Sub chkAllVisibleTransfers_Click()
     lngTotalPersonsForSelectedRows = 0
     
     For lngRow = 1 To grdCoachesReport.RowCount
-        grdCoachesReport.CellIcon(lngRow, "Selected") = IIf(grdCoachesReport.RowVisible(lngRow), lstIconList.ItemIndex(IIf(chkAllVisibleTransfers.Value = 0, 1, 4)), lstIconList.ItemIndex(1))
-        lngTotalPersonsForSelectedRows = lngTotalPersonsForSelectedRows + IIf(grdCoachesReport.CellIcon(lngRow, "Selected") = 3, grdCoachesReport.CellValue(lngRow, "TransferTotal"), 0)
+        grdCoachesReport.CellIcon(lngRow, "Selected") = IIf(grdCoachesReport.RowVisible(lngRow), lstIconList.ItemIndex(IIf(chkAllVisibleTransfers.Value = 0, 1, 8)), lstIconList.ItemIndex(1))
+        lngTotalPersonsForSelectedRows = lngTotalPersonsForSelectedRows + IIf(grdCoachesReport.CellIcon(lngRow, "Selected") > 0, grdCoachesReport.CellValue(lngRow, "TransferTotal"), 0)
     Next lngRow
     
     grdCoachesReport.Redraw = True
@@ -2943,7 +3281,7 @@ Private Function AbortProcedure(blnStatus)
     If Not blnStatus And Not cmdButton(9).Enabled Then
         ClearFields grdCoachesReport
         ClearFields grdSummaryPerDestination, grdSummaryPerCustomer, grdSummaryPerRoute, grdSummaryPerDriver
-        ClearFields lblTotalPersons, lblTotalPersonsForVisibleRows, lblSelectedGridLines
+        ClearFields lblTotalPersons, lblSelectedGridLines
         ClearFields chkAllVisibleTransfers, chkAllVisibleTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
         DisableFields chkAllVisibleTransfers, chkAllVisibleTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
         UpdateButtons Me, 11, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0
@@ -3068,7 +3406,7 @@ Private Sub Form_Activate()
             "04NCNSelected,05NCNCustomerID,40NLNCustomerDescription,10NRITotalPersons", _
             "E,CustomerID,Πελάτης,Ατομα"
         AddColumnsToGrid grdSummaryPerRoute, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerRoute"), _
-            "04NCNSelected,05NCNRouteID,40NLNRouteDescription,10NRITotalPersons", _
+            "04NCNSelected,05NCNRouteID,40NLNRouteShortDescription,10NRITotalPersons", _
             "E,RouteID,Δρομολόγιο,Ατομα"
         AddColumnsToGrid grdSummaryPerDriver, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerDriver"), _
             "04NCNSelected,05NCNDriverID,40NLNDriverDescription,10NRITotalPersons", _
@@ -3113,9 +3451,9 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
             If cmdButton(8).Enabled Then cmdButton_Click 8: Exit Function 'Νέα αναζήτηση (επιστροφή στην ημερομηνία)
             If cmdButton(9).Enabled Then cmdButton_Click 9: Exit Function 'Εξοδος
             If cmdButton(10).Enabled Then cmdButton_Click 10 'Κλείσιμο φόρμας Σύνδεσης δρομολογίου με οδηγό
-        Case vbKeyM And CtrlDown = 4 And grdCoachesReport.Enabled
+        Case vbKeyM And CtrlDown = 4 And grdCoachesReport.RowCount > 0
+            grdSummaryPerCustomer.SetCurCell 1, 1
             grdCoachesReport.SetFocus
-            grdCoachesReport.EnsureVisibleRow (grdCoachesReport.CurRow)
         Case vbKeyC And CtrlDown = 4 And grdSummaryPerCustomer.RowCount > 0
             grdSummaryPerCustomer.SetCurCell 1, 1
             grdSummaryPerCustomer.SetFocus
@@ -3155,7 +3493,7 @@ Private Sub Form_Load()
     ClearFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
     ClearFields mskTotal
     ClearFields chkAllVisibleTransfers, chkAllVisibleTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
-    ClearFields lblTotalPersons, lblTotalPersonsForVisibleRows, lblSelectedGridLines
+    ClearFields lblTotalPersons, lblSelectedGridLines
     
     DisableFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
     DisableFields cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
@@ -3255,7 +3593,7 @@ End Sub
 Private Sub grdCoachesReport_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
     If KeyCode = vbKeySpace And grdCoachesReport.RowCount > 0 Then
-        grdCoachesReport.CellIcon(grdCoachesReport.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCoachesReport, 3, KeyCode, grdCoachesReport.CurRow, "TransferID"))
+        grdCoachesReport.CellIcon(grdCoachesReport.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCoachesReport, 8, KeyCode, grdCoachesReport.CurRow, "TransferID"))
         lblSelectedGridLines.Caption = SumSelectedGridRows(grdCoachesReport, False, "Σύνολο επιλεγμένων: ", "TransferTotal", "integer")
     End If
 
@@ -3278,19 +3616,6 @@ ErrTrap:
     
 End Sub
 
-Private Sub grdSummaryPerCustomer_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
-
-    grdCoachesReport.Redraw = False
-
-    If grdSummaryPerCustomer.RowCount > 0 Then
-        grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = lstIconList.ItemIndex(IIf(grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = 2, 1, 6))
-        ScanGridsForSelectedRows
-    End If
-    
-    grdCoachesReport.Redraw = True
-
-End Sub
-
 Private Sub grdSummaryPerCustomer_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
@@ -3299,27 +3624,26 @@ End Sub
 
 Private Sub grdSummaryPerCustomer_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
-    grdCoachesReport.Redraw = False
+    'Customers Grid
     
-    If KeyCode = vbKeySpace And grdSummaryPerCustomer.RowCount > 0 Then
-        grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerCustomer, 6, KeyCode, grdSummaryPerCustomer.CurRow, "CustomerID"))
-        ScanGridsForSelectedRows
+    If KeyCode = vbKeySpace And grdSummaryPerDestination.RowCount > 0 Then
+        
+        'Toggle selected line
+        grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerCustomer, 3, 32, grdSummaryPerCustomer.CurRow, "CustomerDescription"))
+        
+        'Routes
+        CalculateSummaryPerRouteForSelectedDestinationsAndCustomers
+        
+        'Drivers
+        CalculateSummaryPerDriverForSelectedDestinationsAndCustomersAndRoutes
+        
+        'Toggle checkbox
+        chkAllCustomers.Value = ToggleCheckBox(grdSummaryPerCustomer, chkAllCustomers.Value)
+        
+        'Main grid
+        RefreshList
+        
     End If
-    
-    grdCoachesReport.Redraw = True
-
-End Sub
-
-Private Sub grdSummaryPerDestination_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
-
-    grdCoachesReport.Redraw = False
-
-    If grdSummaryPerDestination.RowCount > 0 Then
-        grdSummaryPerDestination.CellIcon(grdSummaryPerDestination.CurRow, "Selected") = lstIconList.ItemIndex(IIf(grdSummaryPerDestination.CellIcon(grdSummaryPerDestination.CurRow, "Selected") = 1, 1, 2))
-        ScanGridsForSelectedRows
-    End If
-    
-    grdCoachesReport.Redraw = True
 
 End Sub
 
@@ -3331,24 +3655,30 @@ End Sub
 
 Private Sub grdSummaryPerDestination_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
+    'Destinations Grid
+        
     If KeyCode = vbKeySpace And grdSummaryPerDestination.RowCount > 0 Then
-        grdSummaryPerDestination.CellIcon(grdSummaryPerDestination.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerDestination, 2, KeyCode, grdSummaryPerDestination.CurRow, "DestinationID"))
-        ScanGridsForSelectedRows
-    End If
-
-End Sub
-
-Private Sub grdSummaryPerDriver_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
-
-    grdCoachesReport.Redraw = False
-
-    If grdSummaryPerDriver.RowCount > 0 Then
-        grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = lstIconList.ItemIndex(IIf(grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = 4, 1, 3))
-        ScanGridsForSelectedRows
-    End If
+        
+        'Toggle selected line
+        grdSummaryPerDestination.CellIcon(grdSummaryPerDestination.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerDestination, 2, 32, grdSummaryPerDestination.CurRow, "DestinationDescription"))
+        
+        'Customers
+        CalculateSummaryPerCustomerForSelectedDestinations
+        
+        'Routes
+        CalculateSummaryPerRouteForSelectedDestinationsAndCustomers
+        
+        'Drivers
+        CalculateSummaryPerDriverForSelectedDestinationsAndCustomersAndRoutes
+        
+        'Toggle checkbox
+        chkAllDestinations.Value = ToggleCheckBox(grdSummaryPerDestination, chkAllDestinations.Value)
+        
+        'Main grid
+        RefreshList
     
-    grdCoachesReport.Redraw = True
-
+    End If
+ 
 End Sub
 
 Private Sub grdSummaryPerDriver_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
@@ -3359,30 +3689,23 @@ End Sub
 
 Private Sub grdSummaryPerDriver_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
-    grdCoachesReport.Redraw = False
+    'Drivers Grid
     
-    If KeyCode = vbKeySpace And grdSummaryPerDriver.RowCount > 0 Then
-        grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerDriver, 3, KeyCode, grdSummaryPerDriver.CurRow, "DriverID"))
-        ScanGridsForSelectedRows
+    If KeyCode = vbKeySpace And grdSummaryPerRoute.RowCount > 0 Then
+        
+        'Toggle selected line
+        grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerDriver, 5, KeyCode, grdSummaryPerDriver.CurRow, "DriverDescription"))
+        
+        'Toggle checkbox
+        chkAllDrivers.Value = ToggleCheckBox(grdSummaryPerDriver, chkAllDrivers.Value)
+        
+        'Main grid
+        RefreshList
+    
     End If
-
-    grdCoachesReport.Redraw = True
 
 End Sub
 
-
-Private Sub grdSummaryPerRoute_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
-
-    grdCoachesReport.Redraw = False
-
-    If grdSummaryPerRoute.RowCount > 0 Then
-        grdSummaryPerRoute.CellIcon(grdSummaryPerRoute.CurRow, "Selected") = lstIconList.ItemIndex(IIf(grdSummaryPerRoute.CellIcon(grdSummaryPerRoute.CurRow, "Selected") = 3, 1, 4))
-        ScanGridsForSelectedRows
-    End If
-    
-    grdCoachesReport.Redraw = True
-
-End Sub
 
 Private Sub grdSummaryPerRoute_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
@@ -3392,14 +3715,23 @@ End Sub
 
 Private Sub grdSummaryPerRoute_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
-    grdCoachesReport.Redraw = False
+    'Routes Grid
     
     If KeyCode = vbKeySpace And grdSummaryPerRoute.RowCount > 0 Then
-        grdSummaryPerRoute.CellIcon(grdSummaryPerRoute.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerRoute, 4, KeyCode, grdSummaryPerRoute.CurRow, "RouteID"))
-        ScanGridsForSelectedRows
+        
+        'Toggle selected line
+        grdSummaryPerRoute.CellIcon(grdSummaryPerRoute.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerRoute, 4, KeyCode, grdSummaryPerRoute.CurRow, "RouteShortDescription"))
+        
+        'Drivers
+        CalculateSummaryPerDriverForSelectedDestinationsAndCustomersAndRoutes
+        
+        'Toggle checkbox
+        chkAllRoutes.Value = ToggleCheckBox(grdSummaryPerRoute, chkAllRoutes.Value)
+        
+        'Main grid
+        RefreshList
+    
     End If
-
-    grdCoachesReport.Redraw = True
 
 End Sub
 

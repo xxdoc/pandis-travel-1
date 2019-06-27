@@ -1562,27 +1562,20 @@ Sub UpdateProgressBar(frmForm)
        
 End Sub
 
-Function SelectRow(grdGrid, colorIndex, strKeyCode, lngRow, lngCol)
+Function SelectRow(grdGrid As iGrid, colorIndex, strKeyCode, lngRow, lngCol)
 
     'Βγαίνω
     If grdGrid.RowCount = 0 Then Exit Function
-    If grdGrid.CellText(lngRow, lngCol) = "" Then SelectRow = 1: Exit Function
+    If grdGrid.CellValue(lngRow, lngCol) = "" Then SelectRow = 1: Exit Function
     
-    'Μαρκάρω τη γραμμή
+    'Μαρκάρω - Ξεμαρκάρω τη γραμμή με space
     With grdGrid
-        If strKeyCode = 45 Or strKeyCode = 32 Then
+        If strKeyCode = 32 Then
             If .CellIcon(lngRow, "Selected") = "-1" Or .CellIcon(lngRow, "Selected") = "0" Then
                 SelectRow = colorIndex
             Else
                 SelectRow = 1
             End If
-        End If
-    End With
-
-    'Ξεμαρκάρω τη γραμμή
-    With grdGrid
-        If strKeyCode = 46 Then
-            SelectRow = 1: Exit Function
         End If
     End With
 

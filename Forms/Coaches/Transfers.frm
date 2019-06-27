@@ -1367,7 +1367,7 @@ Begin VB.Form Transfers
          Height          =   840
          Index           =   8
          Left            =   18300
-         Top             =   3150
+         Top             =   1800
          Visible         =   0   'False
          Width           =   240
       End
@@ -1652,7 +1652,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Option Explicit
+ Option Explicit
 
 Dim blnStatus As Boolean
 Dim blnCancel As Boolean
@@ -3077,7 +3077,7 @@ Private Function SaveRecord()
 
     If Not ValidateFields(True) Then Exit Function
     
-    txtTransferID.text = MainSaveRecord("CommonDB", "Transfers", blnStatus, strApplicationName, "ID", txtTransferID.text, mskDate.text, txtDestinationID.text, txtCustomerID.text, txtRouteID.text, txtPickupPointID.text, mskAdults.text, mskKids.text, mskFree.text, txtRemarks.text, IIf(txtDriverID.text = "", "8", txtDriverID.text), 1, strCurrentUser)
+    txtTransferID.text = MainSaveRecord("CommonDB", "Transfers", blnStatus, strApplicationName, "ID", txtTransferID.text, mskDate.text, txtDestinationID.text, txtCustomerID.text, txtRouteID.text, txtPickupPointID.text, mskAdults.text, mskKids.text, mskFree.text, txtRemarks.text, IIf(txtDriverID.text = "", "28", txtDriverID.text), 1, strCurrentUser)
     
     If txtTransferID.text <> "" Then
         SaveRecord = True
@@ -3118,7 +3118,7 @@ Private Function DoReport(action As String)
         If SelectPrinter("PrinterPrintsReports") Then
             CreateUnicodeFile "¡Ì·ˆÔÒ‹ ·Ò·Î·‚˛Ì „È·: " & mskDate.text, "œ‰Á„¸Ú: " & strDriverName, "", intPrinterReportDetailLines
             With rptOneLiner
-                .oneLongField.Font.Size = 8
+                .oneLongField.Font.Size = 9
                 If intPreviewReports = 1 Then
                     .Restart
                     .Zoom = -2
@@ -3778,8 +3778,8 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
     Open strUnicodeFile For Output As #1
 
     '≈ÈÍÂˆ·Îﬂ‰ÂÚ
-    PrintHeadings 124, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
-    PrintColumnHeadings 1, "Ÿ—¡", 7, "”«Ã≈…œ –¡—¡À¡¬«”", 39, "≈", 42, "–", 45, "ƒ", 49, "”", 51, "–≈À¡‘«”", 72, "–¡—¡‘«—«”≈…”", 123, "–"
+    PrintHeadings 106, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+    PrintColumnHeadings 1, "Ÿ—¡", 7, "”«Ã≈…œ –¡—¡À¡¬«”", 39, "≈", 42, "–", 45, "ƒ", 49, "”", 51, "–≈À¡‘«”", 72, "–¡—¡‘«—«”≈…”", 105, "–"
     Print #1, ""
     
     '≈„„Ò·ˆ›Ú
@@ -3833,8 +3833,8 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
                     Tab(46 - Len((format(.CellText(lngRow, "TransferFree"), "#,##0")))); format(.CellText(lngRow, "TransferFree"), "#,##0"); _
                     Tab(50 - Len((format(.CellText(lngRow, "TransferTotal"), "#,##0")))); format(.CellText(lngRow, "TransferTotal"), "#,##0"); _
                     Tab(51); Left(.CellText(lngRow, "CustomerDescription"), 20); _
-                    Tab(72); Left(.CellText(lngRow, "TransferRemarks"), 50); _
-                    Tab(123); Left(.CellText(lngRow, "DestinationShortDescription"), 2)
+                    Tab(72); Left(.CellText(lngRow, "TransferRemarks"), 32); _
+                    Tab(105); Left(.CellText(lngRow, "DestinationShortDescription"), 2)
                 
                 '”˝ÌÔÎ· ÛÁÏÂﬂÔı ·Ò·Î·‚ﬁÚ
                 lngPickupPointAdults = lngPickupPointAdults + IIf(.CellValue(lngRow, "TransferAdults") <> "", .CellValue(lngRow, "TransferAdults"), 0)
@@ -3896,12 +3896,12 @@ CheckToEject:
         Print #1, ""
         Print #1, Tab(7); "« ≈ ‘’–Ÿ”« ”’Õ≈◊…∆≈‘¡…..."
         intPageNo = intPageNo + 1
-        PrintHeadings 124, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
-        PrintColumnHeadings 1, "Ÿ—¡", 7, "”«Ã≈…œ –¡—¡À¡¬«”", 39, "≈", 42, "–", 45, "ƒ", 49, "”", 51, "–≈À¡‘«”", 72, "–¡—¡‘«—«”≈…”", 123, "–"
+        PrintHeadings 106, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+        PrintColumnHeadings 1, "Ÿ—¡", 7, "”«Ã≈…œ –¡—¡À¡¬«”", 39, "≈", 42, "–", 45, "ƒ", 49, "”", 51, "–≈À¡‘«”", 72, "–¡—¡‘«—«”≈…”", 105, "–"
         Print #1, ""
         Print #1, Tab(7); "”’Õ≈◊≈…¡ ≈ ‘’–Ÿ”«” ¡–œ –—œ«√œ’Ã≈Õ« ”≈À…ƒ¡..."
         Print #1, ""
-        intProcessedDetailLines = 12
+        intProcessedDetailLines = 11
     End If
     
     Return

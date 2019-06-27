@@ -2362,7 +2362,7 @@ End Sub
 
 Public Function DoPostFoundJobs(rstRecordset As Recordset, strPaymentInOrPaymentOut, strCustomersOrSuppliers)
 
-    'On Error GoTo ErrTrap
+    On Error GoTo ErrTrap
 
     blnStatus = False
     

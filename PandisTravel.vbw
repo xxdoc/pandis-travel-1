@@ -1,7 +1,7 @@
 ModuleGeneric = 175, 175, 1503, 707, C
 rptOneLiner = 0, 0, 0, 0, C, 25, 25, 1040, 793, C
 rptShipsRouteReport = 0, 0, 0, 0, C, 50, 50, 1970, 1130, C
-ModuleParticular = 0, 0, 0, 0, C
+ModuleParticular = 250, 250, 1503, 903, C
 Transfers = 75, 75, 965, 541, C, 100, 100, 623, 483, C
 CommonLogin = 125, 125, 1453, 657, C, 125, 125, 648, 508, C
 CommonSelectPrinter = 0, 0, 0, 0, C, 150, 150, 673, 533, C
@@ -13,7 +13,7 @@ PersonsTransactionsIndex = 0, 0, 0, 0, C, 75, 75, 598, 458, C
 PersonsIndex = 0, 0, 1054, 532, C, 100, 100, 623, 483, C
 ChecksIndex = 25, 25, 1079, 557, C, 125, 125, 648, 508, C
 PersonsLedger = 50, 50, 1104, 582, C, 150, 150, 673, 533, C
-PersonsTransactions = 0, 0, 0, 0, C, 175, 175, 698, 558, C
+PersonsTransactions = 75, 75, 1403, 607, C, 175, 175, 698, 558, C
 InvoicesInIndex = 0, 0, 0, 0, C, 0, 0, 523, 383, C
 InvoicesIn = 25, 25, 1079, 557, C, 25, 25, 548, 408, C
 ShipsRouteReport = 0, 0, 1328, 532, C, 50, 50, 573, 433, C

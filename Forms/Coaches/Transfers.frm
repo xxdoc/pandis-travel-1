@@ -1999,7 +1999,7 @@ Private Function CalculateSummaryPerDriver()
             DoEvents
             grdSummaryPerDriver.AddRow
             lngRow = lngRow + 1
-            grdSummaryPerDriver.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(7)
+            grdSummaryPerDriver.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(5)
             grdSummaryPerDriver.CellValue(lngRow, "DriverID") = !TransferDriverID
             grdSummaryPerDriver.CellValue(lngRow, "DriverDescription") = IIf(IsNull(!DriverDescription), "-", !DriverDescription)
             grdSummaryPerDriver.CellValue(lngRow, "TotalPersons") = !SumOfTransferPersons
@@ -2877,10 +2877,8 @@ Private Function RefreshList()
     End If
     
     'Τελικές ενέργειες
-    'frmProgress.Visible = False
-    chkAllVisibleTransfers.Value = 0
+    chkAllVisibleTransfers_Click
     Me.Refresh
-    'cmdButton(8).Caption = "Νέα αναζήτηση"
    
     Exit Function
     
@@ -3042,28 +3040,29 @@ End Sub
 
 Private Function NewRecord()
 
-    If True Then
-        If txtTransferID.text <> "" Then
-            DisplayLastRecord txtTransferID.text
-            ClearFields txtTransferID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID
-            ClearFields txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
-            ClearFields mskTotal
-            txtCustomerDescription.SetFocus
-        End If
-    Else
-        ClearFields txtTransferID, txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID
-        ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
-        ClearFields mskTotal
-        txtCustomerDescription.SetFocus
-    End If
-
-    blnStatus = True
     blnCancel = False
     DisableFields mskDate
     EnableFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
     EnableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
     UpdateButtons Me, 11, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0
         
+    If True Then
+        If txtTransferID.text <> "" Then
+            DisplayLastRecord txtTransferID.text
+            blnStatus = True
+            ClearFields txtTransferID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID
+            ClearFields txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
+            ClearFields mskTotal
+            txtCustomerDescription.SetFocus
+        Else
+            blnStatus = True
+            ClearFields txtTransferID, txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID
+            ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
+            ClearFields mskTotal
+            txtDestinationDescription.SetFocus
+        End If
+    End If
+    
     InitializeFields mskAdults, mskKids, mskFree, mskTotal
         
 End Function
@@ -3078,7 +3077,7 @@ Private Function SaveRecord()
 
     If Not ValidateFields(True) Then Exit Function
     
-    txtTransferID.text = MainSaveRecord("CommonDB", "Transfers", blnStatus, strApplicationName, "ID", txtTransferID.text, mskDate.text, txtDestinationID.text, txtCustomerID.text, txtRouteID.text, txtPickupPointID.text, mskAdults.text, mskKids.text, mskFree.text, txtRemarks.text, IIf(txtDriverID.text = "", Null, txtDriverID.text), 1, strCurrentUser)
+    txtTransferID.text = MainSaveRecord("CommonDB", "Transfers", blnStatus, strApplicationName, "ID", txtTransferID.text, mskDate.text, txtDestinationID.text, txtCustomerID.text, txtRouteID.text, txtPickupPointID.text, mskAdults.text, mskKids.text, mskFree.text, txtRemarks.text, IIf(txtDriverID.text = "", "8", txtDriverID.text), 1, strCurrentUser)
     
     If txtTransferID.text <> "" Then
         SaveRecord = True

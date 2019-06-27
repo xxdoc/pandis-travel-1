@@ -1273,7 +1273,7 @@ End Function
 
 Function MainSeekRecord(SelectedDB, Table, IndexField, CodeToSeek, DisplayNotFoundMessage, ParamArray Fields())
 
-    'On Error GoTo ErrTrap
+    On Error GoTo ErrTrap
     
     Dim bytLoop As Byte
     Dim rsTable As Recordset

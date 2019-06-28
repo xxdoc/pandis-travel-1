@@ -471,13 +471,14 @@ ErrTrap:
 End Function
 
 
-Public Function CreateUnisexPDF(fileName As String)
+Public Function CreateUnisexPDF(fileName As String, fontSize As Integer)
 
     On Error GoTo ErrTrap
     
     Dim pdf As New ARExportPDF
 
     With rptOneLiner
+        .oneLongField.Font.Size = fontSize
         .Restart
         .Run False
         pdf.AcrobatVersion = 2
@@ -488,7 +489,6 @@ Public Function CreateUnisexPDF(fileName As String)
         pdf.fileName = Replace(pdf.fileName, "  ", " ")
         pdf.fileName = strReportsPathName & Replace(pdf.fileName, ":", "") & ".pdf"
         .Export pdf
-        'pdf.Export .Pages
     End With
     
     CreateUnisexPDF = True
@@ -1480,7 +1480,7 @@ Function MainSaveRecord(SelectedDB, Table, Status, FormTitle, IndexField, CodeTo
             End If
         End If
         For lngFieldNo = 0 To UBound(Fields)
-            Debug.Print .Fields(lngFieldNo + 1).Name & " " & Fields(lngFieldNo)
+            'Debug.Print .Fields(lngFieldNo + 1).Name & " " & Fields(lngFieldNo)
             .Fields(lngFieldNo + 1).Value = Trim(Fields(lngFieldNo))
         Next
         .Update

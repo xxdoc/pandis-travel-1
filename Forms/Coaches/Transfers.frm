@@ -370,7 +370,7 @@ Begin VB.Form Transfers
             Width           =   7440
          End
       End
-      Begin VB.CheckBox chkAllVisibleTransfers 
+      Begin VB.CheckBox chkAllTransfers 
          Appearance      =   0  'Flat
          BackColor       =   &H00000000&
          Caption         =   "Επιλογή όλων"
@@ -2550,7 +2550,7 @@ Private Function FindRecordsAndPopulateGrid()
             lblSelectedGridLines.Caption = "Σύνολο επιλεγμένων: 0"
             'Υπόλοιπα
             EnableGrid grdCoachesReport, False
-            EnableFields chkAllVisibleTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
+            EnableFields chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
             DisableFields mskDate
             HighlightRow txtTransferID.text
             UpdateButtons Me, 11, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0
@@ -2586,10 +2586,10 @@ Private Function GetDriverName()
         End If
     Next lngRow
     
-    If intDriversSelected > 1 Then
-        MyMsgBox 4, strApplicationName, strAppMessages(8), 1
-        GetDriverName = ""
-    End If
+    'If intDriversSelected > 1 Then
+    '    MyMsgBox 4, strApplicationName, strAppMessages(8), 1
+    '    GetDriverName = ""
+    'End If
 
 End Function
 
@@ -2649,13 +2649,13 @@ Private Function RecolorizeControls()
     
     Seperator.BackColor = Me.BackColor
             
-    chkAllVisibleTransfers.BackColor = shpBackground.BackColor
+    chkAllTransfers.BackColor = shpBackground.BackColor
     chkAllDestinations.BackColor = shpBackground.BackColor
     chkAllCustomers.BackColor = shpBackground.BackColor
     chkAllRoutes.BackColor = shpBackground.BackColor
     chkAllDrivers.BackColor = shpBackground.BackColor
     
-    chkAllVisibleTransfers.ForeColor = vbWhite
+    chkAllTransfers.ForeColor = vbWhite
     chkAllDestinations.ForeColor = vbWhite
     chkAllCustomers.ForeColor = vbWhite
     chkAllRoutes.ForeColor = vbWhite
@@ -2874,10 +2874,11 @@ Private Function RefreshList()
         blnProcessing = False
         RefreshList = lngRowCount
         grdCoachesReport.Redraw = True
+        grdCoachesReport.SetCurCell 1, 1
     End If
     
     'Τελικές ενέργειες
-    chkAllVisibleTransfers_Click
+    chkAllTransfers_Click
     Me.Refresh
    
     Exit Function
@@ -2989,7 +2990,7 @@ Private Sub chkAllRoutes_Click()
     
 End Sub
 
-Private Sub chkAllVisibleTransfers_Click()
+Private Sub chkAllTransfers_Click()
 
     Dim lngRow As Long
     
@@ -2997,7 +2998,7 @@ Private Sub chkAllVisibleTransfers_Click()
     lngTotalPersonsForSelectedRows = 0
     
     For lngRow = 1 To grdCoachesReport.RowCount
-        grdCoachesReport.CellIcon(lngRow, "Selected") = IIf(grdCoachesReport.RowVisible(lngRow), lstIconList.ItemIndex(IIf(chkAllVisibleTransfers.Value = 0, 1, 8)), lstIconList.ItemIndex(1))
+        grdCoachesReport.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllTransfers.Value = 0, 1, 8))
         lngTotalPersonsForSelectedRows = lngTotalPersonsForSelectedRows + IIf(grdCoachesReport.CellIcon(lngRow, "Selected") > 0, grdCoachesReport.CellValue(lngRow, "TransferTotal"), 0)
     Next lngRow
     
@@ -3109,33 +3110,49 @@ Private Function DoReport(action As String)
     
     On Error GoTo ErrTrap
     
+    'Οδηγοί
+    Dim lngDriverRow As Long
+    
     Dim strDriverName As String
     
     strDriverName = GetDriverName
     If strDriverName = "" Then Exit Function
     
+    grdCoachesReport.SortObject.colCount = 2
+    grdCoachesReport.SortObject.SortCol(1) = grdCoachesReport.ColIndex("DriverDescription")
+    grdCoachesReport.SortObject.SortCol(2) = grdCoachesReport.ColIndex("PickupPointTime")
+    grdCoachesReport.Sort
+    
     If action = "Print" Then
         If SelectPrinter("PrinterPrintsReports") Then
-            CreateUnicodeFile "Αναφορά παραλαβών για: " & mskDate.text, "Οδηγός: " & strDriverName, "", intPrinterReportDetailLines
-            With rptOneLiner
-                .oneLongField.Font.Size = 9
-                If intPreviewReports = 1 Then
-                    .Restart
-                    .Zoom = -2
-                    .WindowState = vbMaximized
-                    .Show 1
-                Else
-                    .Printer.DeviceName = strPrinterName
-                    .PrintReport False
-                    .Run True
+            For lngDriverRow = 1 To grdSummaryPerDriver.RowCount
+                If grdSummaryPerDriver.CellIcon(lngDriverRow, "Selected") > 0 Then
+                    CreateUnicodeFile "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text, "ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), "", intPrinterReportDetailLines - 9, lngDriverRow
+                    With rptOneLiner
+                        .oneLongField.Font.Size = 10
+                        If intPreviewReports = 1 Then
+                            .Restart
+                            .Zoom = -2
+                            .WindowState = vbMaximized
+                            .Show 1
+                        Else
+                            .Printer.DeviceName = strPrinterName
+                            .PrintReport False
+                            .Run True
+                        End If
+                    End With
                 End If
-            End With
+            Next lngDriverRow
         End If
     End If
     
     If action = "CreatePDF" Then
-        CreateUnicodeFile "Αναφορά παραλαβών για: " & mskDate.text, "Οδηγός: " & strDriverName, "", GetSetting(strApplicationName, "Settings", "Export Report Height")
-        CreateUnisexPDF "Transfers " & format(mskDate.text, "yyyy.mm.dd") & "-" & format(Time, "hh.mm.ss") & " " & strDriverName
+        For lngDriverRow = 1 To grdSummaryPerDriver.RowCount
+            If grdSummaryPerDriver.CellIcon(lngDriverRow, "Selected") > 0 Then
+                CreateUnicodeFile "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text, "ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), "", intPrinterReportDetailLines - 9, lngDriverRow
+                CreateUnisexPDF "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text & " ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), 10
+            End If
+        Next lngDriverRow
         If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
         End If
     End If
@@ -3281,8 +3298,8 @@ Private Function AbortProcedure(blnStatus)
         ClearFields grdCoachesReport
         ClearFields grdSummaryPerDestination, grdSummaryPerCustomer, grdSummaryPerRoute, grdSummaryPerDriver
         ClearFields lblTotalPersons, lblSelectedGridLines
-        ClearFields chkAllVisibleTransfers, chkAllVisibleTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
-        DisableFields chkAllVisibleTransfers, chkAllVisibleTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
+        ClearFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
+        DisableFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
         UpdateButtons Me, 11, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0
         EnableFields mskDate
         mskDate.SetFocus
@@ -3442,27 +3459,27 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
         Case vbKeyD And CtrlDown = 4 And cmdButton(3).Enabled
             cmdButton_Click 3
         Case vbKeyP And CtrlDown = 4 And cmdButton(6).Enabled
-            cmdButton_Click 4
+            cmdButton_Click 6
         Case vbKeyP And CtrlDown = 5 And cmdButton(7).Enabled
-            cmdButton_Click 5
+            cmdButton_Click 7
         Case vbKeyEscape
             If cmdButton(4).Enabled Then cmdButton_Click 4: Exit Function 'Ακύρωση επεξεργασίας
             If cmdButton(8).Enabled Then cmdButton_Click 8: Exit Function 'Νέα αναζήτηση (επιστροφή στην ημερομηνία)
             If cmdButton(9).Enabled Then cmdButton_Click 9: Exit Function 'Εξοδος
             If cmdButton(10).Enabled Then cmdButton_Click 10 'Κλείσιμο φόρμας Σύνδεσης δρομολογίου με οδηγό
-        Case vbKeyM And CtrlDown = 4 And grdCoachesReport.RowCount > 0
+        Case vbKey0 And CtrlDown = 4 And grdCoachesReport.RowCount > 0
             grdSummaryPerCustomer.SetCurCell 1, 1
             grdCoachesReport.SetFocus
-        Case vbKeyC And CtrlDown = 4 And grdSummaryPerCustomer.RowCount > 0
-            grdSummaryPerCustomer.SetCurCell 1, 1
-            grdSummaryPerCustomer.SetFocus
-        Case vbKeyD And CtrlDown = 4 And grdSummaryPerDestination.RowCount > 0
+        Case vbKey1 And CtrlDown = 4 And grdSummaryPerDestination.RowCount > 0
             grdSummaryPerDestination.SetCurCell 1, 1
             grdSummaryPerDestination.SetFocus
-        Case vbKeyR And CtrlDown = 4 And grdSummaryPerRoute.RowCount > 0
+        Case vbKey2 And CtrlDown = 4 And grdSummaryPerCustomer.RowCount > 0
+            grdSummaryPerCustomer.SetCurCell 1, 1
+            grdSummaryPerCustomer.SetFocus
+        Case vbKey3 And CtrlDown = 4 And grdSummaryPerRoute.RowCount > 0
             grdSummaryPerRoute.SetCurCell 1, 1
             grdSummaryPerRoute.SetFocus
-        Case vbKeyV And CtrlDown = 4 And grdSummaryPerDriver.RowCount > 0
+        Case vbKey4 And CtrlDown = 4 And grdSummaryPerDriver.RowCount > 0
             grdSummaryPerDriver.SetCurCell 1, 1
             grdSummaryPerDriver.SetFocus
         Case vbKeyF12 And CtrlDown = 4
@@ -3491,12 +3508,12 @@ Private Sub Form_Load()
     ClearFields txtTransferID, txtCustomerID, txtPickupPointID, txtRouteID, txtDestinationID, txtDriverID
     ClearFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
     ClearFields mskTotal
-    ClearFields chkAllVisibleTransfers, chkAllVisibleTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
+    ClearFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
     ClearFields lblTotalPersons, lblSelectedGridLines
     
     DisableFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
     DisableFields cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
-    DisableFields chkAllVisibleTransfers, chkAllVisibleTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
+    DisableFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
     
     UpdateButtons Me, 11, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0
     
@@ -3745,7 +3762,7 @@ Private Sub mnuΑποθήκευσηΠλάτουςΣτηλών_Click()
 
 End Sub
 
-Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReportSubTitle2, intReportDetailLines)
+Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReportSubTitle2, intReportDetailLines, lngDriverRow)
 
     On Error GoTo ErrTrap
     
@@ -3767,7 +3784,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
     'PickupPoint
     Dim intPickupPointCount As Integer
     Dim strPickupPoint As String
-
+    
     'Αρχικές τιμές
     intPageNo = 1
     lngTotalAdults = 0
@@ -3778,18 +3795,19 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
     Open strUnicodeFile For Output As #1
 
     'Επικεφαλίδες
-    PrintHeadings 106, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
-    PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 105, "Π"
+    PrintHeadings 100, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+    PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 99, "Π"
     Print #1, ""
     
     'Εγγραφές
     intProcessedDetailLines = 10
     intPickupPointCount = 0
     
+    'Πλέγμα εγγραφών
     With grdCoachesReport
         For lngRow = 1 To .RowCount
-            'Αν η γραμμή είναι ορατή
-            If .RowVisible(lngRow) Then
+            'Αν ο οδηγός είναι ο ίδιος με αυτόν του πλέγματος των συνόλων
+            If .CellValue(lngRow, "DriverDescription") = grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription") Then
                 'Αν το σημείο παραλαβής που βρίσκομαι είναι ίδιο με αυτό που έχω ήδη κρατήσει ή βρίσκομαι στην πρώτη εγγραφή
                 If .CellValue(lngRow, "PickupPointHotelDescription") = strPickupPoint Or strPickupPoint = "" Then
                     'Ενημερώνω τη μεταβλητή που κρατάει το σημείο παραλαβής
@@ -3798,7 +3816,6 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
                     intPickupPointCount = intPickupPointCount + 1
                 Else
                     'Αν το σημείο παραλαβής που βρίσκομαι δεν είναι ίδιο με αυτό που έχω κρατήσει
-                    'Αυτό συμβαίνει όταν έχω αλλαγή σημείου παραλαβής
                     'Αν έχω μετρήσει παραπάνω από ένα σημεία παραλαβής
                     If intPickupPointCount > 1 Then
                         'Τυπώνω τα σύνολα του σημείου παραλαβής
@@ -3823,7 +3840,6 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
                     lngPickupPointFree = 0
                     lngPickupPointPersons = 0
                 End If
-            
                 'Τυπώνω το σημείο παραλαβής που βρίσκομαι
                 Print #1, _
                     Tab(1); .CellText(lngRow, "PickupPointTime"); _
@@ -3833,52 +3849,50 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
                     Tab(46 - Len((format(.CellText(lngRow, "TransferFree"), "#,##0")))); format(.CellText(lngRow, "TransferFree"), "#,##0"); _
                     Tab(50 - Len((format(.CellText(lngRow, "TransferTotal"), "#,##0")))); format(.CellText(lngRow, "TransferTotal"), "#,##0"); _
                     Tab(51); Left(.CellText(lngRow, "CustomerDescription"), 20); _
-                    Tab(72); Left(.CellText(lngRow, "TransferRemarks"), 32); _
-                    Tab(105); Left(.CellText(lngRow, "DestinationShortDescription"), 2)
-                
+                    Tab(72); Left(.CellText(lngRow, "TransferRemarks"), 26); _
+                    Tab(99); Left(.CellText(lngRow, "DestinationShortDescription"), 2)
+                'Εκτυπωμένες γραμμές
+                intProcessedDetailLines = intProcessedDetailLines + 1
                 'Σύνολα σημείου παραλαβής
                 lngPickupPointAdults = lngPickupPointAdults + IIf(.CellValue(lngRow, "TransferAdults") <> "", .CellValue(lngRow, "TransferAdults"), 0)
                 lngPickupPointKids = lngPickupPointKids + IIf(.CellValue(lngRow, "TransferKids") <> "", .CellValue(lngRow, "TransferKids"), 0)
                 lngPickupPointFree = lngPickupPointFree + IIf(.CellValue(lngRow, "TransferFree") <> "", .CellValue(lngRow, "TransferFree"), 0)
                 lngPickupPointPersons = lngPickupPointAdults + lngPickupPointKids + lngPickupPointFree
-
                 'Σύνολα οδηγού
                 lngTotalAdults = lngTotalAdults + IIf(.CellValue(lngRow, "TransferAdults") <> "", .CellValue(lngRow, "TransferAdults"), 0)
                 lngTotalKids = lngTotalKids + IIf(.CellValue(lngRow, "TransferKids") <> "", .CellValue(lngRow, "TransferKids"), 0)
                 lngTotalFree = lngTotalFree + IIf(.CellValue(lngRow, "TransferFree") <> "", .CellValue(lngRow, "TransferFree"), 0)
                 lngTotalPersons = lngTotalAdults + lngTotalKids + lngTotalFree
-
-                intProcessedDetailLines = intProcessedDetailLines + 1
-                
+                'Eject (Y/N)
                 GoSub CheckToEject
-
             End If
-            
         Next lngRow
+            
+        'Αν έχω μετρήσει παραπάνω από ένα σημεία παραλαβής
+        If intPickupPointCount > 1 Then
+            'Τυπώνω τα σύνολα του σημείου παραλαβής
+            Print #1, _
+                Tab(12); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 18); _
+                Tab(40 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
+                Tab(43 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
+                Tab(46 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
+                Tab(50 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), "")
+            'Εκτυπωμένες γραμμές
+            intProcessedDetailLines = intProcessedDetailLines + 1
+        End If
+        
+        'Τυπώνω τα σύνολα του οδηγού
+        Print #1, ""
+        Print #1, _
+            Tab(40 - Len(format(lngTotalAdults, "#,##0"))); format(lngTotalAdults, "#,##0"); _
+            Tab(43 - Len(format(lngTotalKids, "#,##0"))); format(lngTotalKids, "#,##0"); _
+            Tab(46 - Len(format(lngTotalFree, "#,##0"))); format(lngTotalFree, "#,##0"); _
+            Tab(50 - Len(format(lngTotalPersons, "#,##0"))); format(lngTotalPersons, "#,##0")
         
     End With
-        
-    'Αν έχω μετρήσει παραπάνω από ένα σημεία παραλαβής
-    If intPickupPointCount > 1 Then
-        'Τυπώνω τα σύνολα του σημείου παραλαβής
-        Print #1, _
-            Tab(12); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 18); _
-            Tab(40 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
-            Tab(43 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
-            Tab(46 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
-            Tab(50 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), "")
-    End If
     
-    'Τυπώνω τα σύνολα του οδηγού
-    Print #1, ""
-    Print #1, _
-        Tab(40 - Len(format(lngTotalAdults, "#,##0"))); format(lngTotalAdults, "#,##0"); _
-        Tab(43 - Len(format(lngTotalKids, "#,##0"))); format(lngTotalKids, "#,##0"); _
-        Tab(46 - Len(format(lngTotalFree, "#,##0"))); format(lngTotalFree, "#,##0"); _
-        Tab(50 - Len(format(lngTotalPersons, "#,##0"))); format(lngTotalPersons, "#,##0")
-        
     Print #1, Tab(7); "ΤΕΛΟΣ ΕΚΤΥΠΩΣΗΣ"
-    
+        
     Close #1
 
     CreateUnicodeFile = True
@@ -3896,12 +3910,12 @@ CheckToEject:
         Print #1, ""
         Print #1, Tab(7); "Η ΕΚΤΥΠΩΣΗ ΣΥΝΕΧΙΖΕΤΑΙ..."
         intPageNo = intPageNo + 1
-        PrintHeadings 106, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
-        PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 105, "Π"
+        PrintHeadings 100, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+        PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 99, "Π"
         Print #1, ""
         Print #1, Tab(7); "ΣΥΝΕΧΕΙΑ ΕΚΤΥΠΩΣΗΣ ΑΠΟ ΠΡΟΗΓΟΥΜΕΝΗ ΣΕΛΙΔΑ..."
         Print #1, ""
-        intProcessedDetailLines = 11
+        intProcessedDetailLines = 12
     End If
     
     Return

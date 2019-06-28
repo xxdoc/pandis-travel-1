@@ -1284,7 +1284,7 @@ Private Function DoReport(action As String)
     
     If action = "CreatePDF" Then
         CreateUnicodeFile lblTitle.Caption, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, "", GetSetting(strApplicationName, "Settings", "Export Report Height")
-        CreateUnisexPDF lblTitle.Caption & " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text
+        CreateUnisexPDF lblTitle.Caption & " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, 7
         If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
         End If
     End If

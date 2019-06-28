@@ -947,7 +947,7 @@ Private Function DoReport(action As String)
     
     If action = "CreatePDF" Then
         CreateUnicodeFile lblTitle.Caption, " από " & mskCheckExpireDateFrom.text & " έως " & mskCheckExpireDateTo.text, "", GetSetting(strApplicationName, "Settings", "Export Report Height")
-        CreateUnisexPDF lblTitle.Caption & " από " & mskCheckExpireDateFrom.text & " έως " & mskCheckExpireDateTo.text
+        CreateUnisexPDF lblTitle.Caption & " από " & mskCheckExpireDateFrom.text & " έως " & mskCheckExpireDateTo.text, 7
         If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
         End If
     End If

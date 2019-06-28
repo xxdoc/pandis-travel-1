@@ -250,12 +250,12 @@ Begin VB.Form TablesPickupPoints
             Left            =   2475
             TabIndex        =   1
             Top             =   825
-            Width           =   765
-            _ExtentX        =   1349
+            Width           =   1365
+            _ExtentX        =   2408
             _ExtentY        =   820
             Alignment       =   2
             ForeColor       =   4194304
-            MaxLength       =   3
+            MaxLength       =   10
             Text            =   "ΑΑΑ"
             BackColor       =   4210688
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -293,7 +293,7 @@ Begin VB.Form TablesPickupPoints
          Begin Dacara_dcButton.dcButton cmdIndex 
             Height          =   465
             Index           =   0
-            Left            =   3300
+            Left            =   3900
             TabIndex        =   18
             TabStop         =   0   'False
             Top             =   825
@@ -1126,7 +1126,7 @@ Private Sub cmdIndex_Click(index As Integer)
             'Συντ. δρομολογίου
             Set tmpRecordset = CheckForMatch("CommonDB", "PickupRoutes", "PickupRouteShortDescription", "String", txtRouteShortDescription.text)
             If tmpRecordset.RecordCount > 0 Then
-                tmpTableData = DisplayIndex(tmpRecordset, 3, True, 3, 0, 1, 2, "ID", "Συντ.", "Περιγραφή", 0, 5, 60, 1, 1, 0)
+                tmpTableData = DisplayIndex(tmpRecordset, 3, True, 3, 0, 1, 2, "ID", "Συντ.", "Περιγραφή", 0, 10, 60, 1, 1, 0)
                 txtPickupRouteID.text = tmpTableData.strCode
                 txtRouteShortDescription.text = tmpTableData.strFirstField
                 txtRouteDescription.text = tmpTableData.strSecondField
@@ -1135,7 +1135,7 @@ Private Sub cmdIndex_Click(index As Integer)
             'Περιγραφή δρομολογίου
             Set tmpRecordset = CheckForMatch("CommonDB", "PickupRoutes", "PickupRouteDescription", "String", txtRouteDescription.text)
             If tmpRecordset.RecordCount > 0 Then
-                tmpTableData = DisplayIndex(tmpRecordset, 3, True, 3, 0, 1, 2, "ID", "Συντ.", "Περιγραφή", 0, 5, 60, 1, 1, 0)
+                tmpTableData = DisplayIndex(tmpRecordset, 3, True, 3, 0, 1, 2, "ID", "Συντ.", "Περιγραφή", 0, 10, 60, 1, 1, 0)
                 txtPickupRouteID.text = tmpTableData.strCode
                 txtRouteShortDescription.text = tmpTableData.strFirstField
                 txtRouteDescription.text = tmpTableData.strSecondField

@@ -1502,7 +1502,7 @@ Private Function CreateUnicodeFileForSuppliers(strReportTitle, strReportSubTitle
             
             'Eject
             If intProcessedDetailLines > intReportDetailLines Then
-                Print #1, ""
+                Print #1, "."
                 Print #1, Space(23) & "се летажояа"; _
                 Tab(105 - Len(format(curDebit, "#,##0.00"))); format(curDebit, "#,##0.00"); _
                 Tab(116 - Len(format(curCredit, "#,##0.00"))); format(curCredit, "#,##0.00"); _
@@ -1514,7 +1514,7 @@ Private Function CreateUnicodeFileForSuppliers(strReportTitle, strReportSubTitle
                     Tab(105 - Len(format(curDebit, "#,##0.00"))); format(curDebit, "#,##0.00"); _
                     Tab(116 - Len(format(curCredit, "#,##0.00"))); format(curCredit, "#,##0.00"); _
                     Tab(128 - Len(format(curBalance, "#,##0.00"))); format(curBalance, "#,##0.00")
-                'Print #1, ""
+                Print #1, "."
                 intProcessedDetailLines = intProcessedDetailLines + 2
             End If
             
@@ -1531,7 +1531,7 @@ Headers:
     PrintHeadings 127, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
     PrintColumnHeadings 10, "стоивеио"
     PrintColumnHeadings 1, "глея/миа", 10, "сеияа - мО", 24, "пеяицяажг енодоу", 99, "вяеысг", 109, "пистысг", 120, "упокоипо"
-    Print #1, ""
+    Print #1, "."
     intProcessedDetailLines = 7
       
     Return
@@ -1801,7 +1801,7 @@ Private Function CreateUnicodeFileForCustomers(strReportTitle, strReportSubTitle
             
             'Eject
             If intProcessedDetailLines > intReportDetailLines Then
-                Print #1, ""
+                Print #1, "."
                 Print #1, Space(23) & "се летажояа"; _
                 Tab(53 - Len(format(intAdults, "#,##0"))); format(intAdults, "#,##0"); _
                 Tab(61 - Len(format(intKids, "#,##0"))); format(intKids, "#,##0"); _
@@ -1823,7 +1823,7 @@ Private Function CreateUnicodeFileForCustomers(strReportTitle, strReportSubTitle
                     Tab(109 - Len(format(curDebit, "#,##0.00"))); format(curDebit, "#,##0.00"); _
                     Tab(123 - Len(format(curCredit, "#,##0.00"))); format(curCredit, "#,##0.00"); _
                     Tab(137 - Len(format(curBalance, "#,##0.00"))); format(curBalance, "#,##0.00")
-                Print #1, ""
+                Print #1, "."
                 intProcessedDetailLines = intProcessedDetailLines + 2
             End If
             
@@ -1839,8 +1839,8 @@ Headers:
     PrintHeadings 136, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
     PrintColumnHeadings 10, "стоивеио", 47, "емгки-", 57, "паи-", 64, "ды-", 73, "вяеысеис", 87, "вяеысеис", 103, "сумоко"
     PrintColumnHeadings 1, "глея/миа", 10, "сеияа - мО", 24, "пяоояислос", 50, "йес", 58, "диа", 63, "яеам", 73, "емгкийым", 88, "паидиым", 102, "вяеысгс", 116, "пистысг", 129, "упокоипо"
-    Print #1, ""
-    intProcessedDetailLines = 7
+    Print #1, "."
+    intProcessedDetailLines = 11
       
     Return
     
@@ -2007,9 +2007,9 @@ Private Function DoReport(action As String, Persons As String)
     
     If action = "CreatePDF" Then
         If Persons = "Customers" Then CreateUnicodeFileForCustomers lblTitle.Caption & " " & txtPersonDescription.text, " АПЭ " & mskInvoiceDateIssueFrom.text & " щЫР " & mskInvoiceDateIssueTo.text, "", GetSetting(strApplicationName, "Settings", "Export Report Height")
-        If Persons = "Customers" Then CreateUnisexPDF lblTitle.Caption & " " & txtPersonDescription.text
+        If Persons = "Customers" Then CreateUnisexPDF lblTitle.Caption & " " & txtPersonDescription.text, 7
         If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers lblTitle.Caption & " " & txtPersonDescription.text, " АПЭ " & mskInvoiceDateIssueFrom.text & " щЫР " & mskInvoiceDateIssueTo.text, "", GetSetting(strApplicationName, "Settings", "Export Report Height")
-        If Persons = "Suppliers" Then CreateUnisexPDF lblTitle.Caption & " " & txtPersonDescription.text
+        If Persons = "Suppliers" Then CreateUnisexPDF lblTitle.Caption & " " & txtPersonDescription.text, 7
         If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
         End If
     End If

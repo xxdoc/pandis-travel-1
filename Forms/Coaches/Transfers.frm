@@ -3425,44 +3425,46 @@ End Sub
 
 Private Function CheckFunctionKeys(KeyCode, Shift)
 
-    Dim CtrlDown
+    Dim ShiftDown, AltDown, CtrlDown
     
-    CtrlDown = Shift + vbCtrlMask
+    ShiftDown = (Shift And vbShiftMask) > 0
+    AltDown = (Shift And vbAltMask) > 0
+    CtrlDown = (Shift And vbCtrlMask) > 0
     
     Select Case KeyCode
-        Case vbKeyC And CtrlDown = 4 And cmdButton(0).Enabled
+        Case vbKeyC And CtrlDown And cmdButton(0).Enabled
             cmdButton_Click 0
-        Case vbKeyN And CtrlDown = 4 And cmdButton(1).Enabled
+        Case vbKeyN And CtrlDown And cmdButton(1).Enabled
             cmdButton_Click 1
-        Case vbKeyS And CtrlDown = 4 And cmdButton(2).Enabled
+        Case vbKeyS And CtrlDown And cmdButton(2).Enabled
             cmdButton_Click 2
-        Case vbKeyD And CtrlDown = 4 And cmdButton(3).Enabled
+        Case vbKeyD And CtrlDown And cmdButton(3).Enabled
             cmdButton_Click 3
-        Case vbKeyP And CtrlDown = 4 And cmdButton(6).Enabled
+        Case vbKeyP And CtrlDown And Not AltDown And cmdButton(6).Enabled
             cmdButton_Click 6
-        Case vbKeyP And CtrlDown = 5 And cmdButton(7).Enabled
+        Case vbKeyP And CtrlDown And AltDown And cmdButton(7).Enabled
             cmdButton_Click 7
         Case vbKeyEscape
             If cmdButton(4).Enabled Then cmdButton_Click 4: Exit Function 'Ακύρωση επεξεργασίας
             If cmdButton(8).Enabled Then cmdButton_Click 8: Exit Function 'Νέα αναζήτηση (επιστροφή στην ημερομηνία)
             If cmdButton(9).Enabled Then cmdButton_Click 9: Exit Function 'Εξοδος
             If cmdButton(10).Enabled Then cmdButton_Click 10 'Κλείσιμο φόρμας Σύνδεσης δρομολογίου με οδηγό
-        Case vbKey0 And CtrlDown = 4 And grdCoachesReport.RowCount > 0
+        Case vbKey0 And CtrlDown And grdCoachesReport.RowCount > 0
             grdSummaryPerCustomer.SetCurCell 1, 1
             grdCoachesReport.SetFocus
-        Case vbKey1 And CtrlDown = 4 And grdSummaryPerDestination.RowCount > 0
+        Case vbKey1 And CtrlDown And grdSummaryPerDestination.RowCount > 0
             grdSummaryPerDestination.SetCurCell 1, 1
             grdSummaryPerDestination.SetFocus
-        Case vbKey2 And CtrlDown = 4 And grdSummaryPerCustomer.RowCount > 0
+        Case vbKey2 And CtrlDown And grdSummaryPerCustomer.RowCount > 0
             grdSummaryPerCustomer.SetCurCell 1, 1
             grdSummaryPerCustomer.SetFocus
-        Case vbKey3 And CtrlDown = 4 And grdSummaryPerRoute.RowCount > 0
+        Case vbKey3 And CtrlDown And grdSummaryPerRoute.RowCount > 0
             grdSummaryPerRoute.SetCurCell 1, 1
             grdSummaryPerRoute.SetFocus
-        Case vbKey4 And CtrlDown = 4 And grdSummaryPerDriver.RowCount > 0
+        Case vbKey4 And CtrlDown And grdSummaryPerDriver.RowCount > 0
             grdSummaryPerDriver.SetCurCell 1, 1
             grdSummaryPerDriver.SetFocus
-        Case vbKeyF12 And CtrlDown = 4
+        Case vbKeyF12 And CtrlDown
             ToggleInfoPanel Me
     End Select
 
@@ -3870,7 +3872,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
 
     'Επικεφαλίδες
     PrintHeadings 99, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
-    PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 98, "Π"
+    PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 98, "Π ^"
     Print #1, ""
     
     'Εγγραφές

@@ -47,8 +47,6 @@ Private Sub ActiveReport_FetchData(EOF As Boolean)
     
     Line Input #1, strLine
     
-    Debug.Print strLine
-    
     If strLine <> "" Then
         If Right(strLine, 1) = "^" Then
             Fields("OneLongField").Value = RTrim(Left(strLine, Len(strLine) - 1))
@@ -60,6 +58,8 @@ Private Sub ActiveReport_FetchData(EOF As Boolean)
     End If
     
     DateSeperator.Visible = IIf(Mid(strLine, 3, 1) = ":", True, False)
+    DestinationSeperator.Visible = IIf(Mid(strLine, 3, 1) = ":", True, False)
+    
     Seperator.Visible = IIf(Right(strLine, 1) = "^", True, False)
     
 End Sub

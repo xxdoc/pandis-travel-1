@@ -3122,16 +3122,17 @@ Private Function DoReport(action As String)
     strDriverName = GetDriverName
     If strDriverName = "" Then Exit Function
     
-    grdCoachesReport.SortObject.colCount = 2
+    grdCoachesReport.SortObject.colCount = 3
     grdCoachesReport.SortObject.SortCol(1) = grdCoachesReport.ColIndex("DriverDescription")
     grdCoachesReport.SortObject.SortCol(2) = grdCoachesReport.ColIndex("PickupPointTime")
+    grdCoachesReport.SortObject.SortCol(3) = grdCoachesReport.ColIndex("PickupPointHotelDescription")
     grdCoachesReport.Sort
     
     If action = "Print" Then
         If SelectPrinter("PrinterPrintsReports") Then
             For lngDriverRow = 1 To grdSummaryPerDriver.RowCount
                 If grdSummaryPerDriver.CellIcon(lngDriverRow, "Selected") > 0 Then
-                    CreateUnicodeFile "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text, "ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), "", intPrinterReportDetailLines - 9, lngDriverRow
+                    CreateUnicodeFile "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text, "ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), "", intPrinterReportDetailLines - 11, lngDriverRow
                     With rptOneLiner
                         .oneLongField.Font.Size = 10
                         If intPreviewReports = 1 Then
@@ -3153,7 +3154,7 @@ Private Function DoReport(action As String)
     If action = "CreatePDF" Then
         For lngDriverRow = 1 To grdSummaryPerDriver.RowCount
             If grdSummaryPerDriver.CellIcon(lngDriverRow, "Selected") > 0 Then
-                CreateUnicodeFile "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text, "ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), "", GetSetting(strApplicationName, "Settings", "Export Report Height") - 9, lngDriverRow
+                CreateUnicodeFile "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text, "ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), "", GetSetting(strApplicationName, "Settings", "Export Report Height") - 11, lngDriverRow
                 CreateUnisexPDF "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text & " ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), 10
             End If
         Next lngDriverRow
@@ -3854,18 +3855,22 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
     Dim intPickupPointCount As Integer
     Dim strPickupPoint As String
     
+    Dim blnMustPrintSeperator As Boolean
+    Dim strSeperator As String
+    
     'Αρχικές τιμές
     intPageNo = 1
     lngTotalAdults = 0
     lngTotalKids = 0
     lngTotalFree = 0
     lngTotalPersons = 0
+    strSeperator = "^"
     
     Open strUnicodeFile For Output As #1
 
     'Επικεφαλίδες
-    PrintHeadings 100, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
-    PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 99, "Π"
+    PrintHeadings 99, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+    PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 98, "Π"
     Print #1, ""
     
     'Εγγραφές
@@ -3889,11 +3894,12 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
                     If intPickupPointCount > 1 Then
                         'Τυπώνω τα σύνολα του σημείου παραλαβής
                         Print #1, _
-                            Tab(12); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 18); _
+                            Tab(7); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 22); _
                             Tab(40 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
                             Tab(43 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
                             Tab(46 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
-                            Tab(50 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), "")
+                            Tab(50 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), ""); _
+                            Tab(100); strSeperator
                         'Εκτυπωμένες γραμμές
                         intProcessedDetailLines = intProcessedDetailLines + 1
                         'Ελέγχω για αλλαγή σελίδας
@@ -3909,6 +3915,14 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
                     lngPickupPointFree = 0
                     lngPickupPointPersons = 0
                 End If
+                'Αν το σημείο παραλαβής της επόμενης γραμμής είναι διαφορετικό από το τρέχον, η γραμμη θα τυπωθεί με διαχωριστική γραμμή
+                If lngRow + 1 <= .RowCount Then
+                    blnMustPrintSeperator = IIf(.CellValue(lngRow + 1, "PickupPointHotelDescription") <> strPickupPoint, True, False)
+                End If
+                'Αν είμαι στην τελευταία γραμμή του πλέγματος, η γραμμη θα τυπωθεί με διαχωριστική γραμμή
+                If lngRow = .RowCount Then
+                    blnMustPrintSeperator = True
+                End If
                 'Τυπώνω το σημείο παραλαβής που βρίσκομαι
                 Print #1, _
                     Tab(1); .CellText(lngRow, "PickupPointTime"); _
@@ -3918,8 +3932,9 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
                     Tab(46 - Len((format(.CellText(lngRow, "TransferFree"), "#,##0")))); format(.CellText(lngRow, "TransferFree"), "#,##0"); _
                     Tab(50 - Len((format(.CellText(lngRow, "TransferTotal"), "#,##0")))); format(.CellText(lngRow, "TransferTotal"), "#,##0"); _
                     Tab(51); Left(.CellText(lngRow, "CustomerDescription"), 20); _
-                    Tab(72); Left(.CellText(lngRow, "TransferRemarks"), 26); _
-                    Tab(99); Left(.CellText(lngRow, "DestinationShortDescription"), 2)
+                    Tab(72); Left(.CellText(lngRow, "TransferRemarks"), 25); _
+                    Tab(98); Left(.CellText(lngRow, "DestinationShortDescription"), 2); _
+                    Tab(100); IIf(blnMustPrintSeperator, strSeperator, "")
                 'Εκτυπωμένες γραμμές
                 intProcessedDetailLines = intProcessedDetailLines + 1
                 'Σύνολα σημείου παραλαβής
@@ -3941,18 +3956,19 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
         If intPickupPointCount > 1 Then
             'Τυπώνω τα σύνολα του σημείου παραλαβής
             Print #1, _
-                Tab(12); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 18); _
+                Tab(7); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 22); _
                 Tab(40 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
                 Tab(43 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
                 Tab(46 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
-                Tab(50 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), "")
+                Tab(50 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), ""); _
+                Tab(100); strSeperator
             'Εκτυπωμένες γραμμές
             intProcessedDetailLines = intProcessedDetailLines + 1
         End If
         
         'Τυπώνω τα σύνολα του οδηγού
-        Print #1, ""
-        Print #1, _
+        Print #1, "", _
+            Tab(7); "ΣΥΝΟΛΑ ΟΔΗΓΟΥ "; _
             Tab(40 - Len(format(lngTotalAdults, "#,##0"))); format(lngTotalAdults, "#,##0"); _
             Tab(43 - Len(format(lngTotalKids, "#,##0"))); format(lngTotalKids, "#,##0"); _
             Tab(46 - Len(format(lngTotalFree, "#,##0"))); format(lngTotalFree, "#,##0"); _
@@ -3960,8 +3976,6 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
         
     End With
     
-    Print #1, Tab(7); "ΤΕΛΟΣ ΕΚΤΥΠΩΣΗΣ"
-        
     Close #1
 
     CreateUnicodeFile = True
@@ -3979,8 +3993,8 @@ CheckToEject:
         Print #1, ""
         Print #1, Tab(7); "Η ΕΚΤΥΠΩΣΗ ΣΥΝΕΧΙΖΕΤΑΙ..."
         intPageNo = intPageNo + 1
-        PrintHeadings 100, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
-        PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 99, "Π"
+        PrintHeadings 99, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+        PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 98, "Π"
         Print #1, ""
         Print #1, Tab(7); "ΣΥΝΕΧΕΙΑ ΕΚΤΥΠΩΣΗΣ ΑΠΟ ΠΡΟΗΓΟΥΜΕΝΗ ΣΕΛΙΔΑ..."
         Print #1, ""

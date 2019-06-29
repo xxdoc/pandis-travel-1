@@ -1278,7 +1278,7 @@ End Sub
 
 Private Sub txtPersonDescription_Validate(Cancel As Boolean)
 
-    If txtPersonID.text = "" And txtPersonDescription.text <> "" Then cmdIndex_Click 0
+    If txtPersonID.text = "" And txtPersonDescription.text <> "" Then cmdIndex_Click 0: If txtPersonID.text = "" Then Cancel = True
 
 End Sub
 

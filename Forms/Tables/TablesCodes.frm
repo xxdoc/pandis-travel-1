@@ -1440,7 +1440,7 @@ End Sub
 
 Private Sub txtCodeHandDescription_Validate(Cancel As Boolean)
 
-    If txtCodeHandID.text = "" And txtCodeHandDescription.text <> "" Then cmdIndex_Click 0
+    If txtCodeHandID.text = "" And txtCodeHandDescription.text <> "" Then cmdIndex_Click 0: If txtCodeHandID.text = "" Then Cancel = True
     
 End Sub
 

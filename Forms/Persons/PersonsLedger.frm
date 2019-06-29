@@ -2478,7 +2478,7 @@ End Sub
 
 Private Sub txtDestinationDescription_Validate(Cancel As Boolean)
 
-    If txtDestinationID.text = "" And txtDestinationDescription.text <> "" Then cmdIndex_Click 1
+    If txtDestinationID.text = "" And txtDestinationDescription.text <> "" Then cmdIndex_Click 1: If txtDestinationID.text = "" Then Cancel = True
 
 End Sub
 
@@ -2496,7 +2496,7 @@ End Sub
 
 Private Sub txtPersonDescription_Validate(Cancel As Boolean)
 
-    If txtInvoicePersonID.text = "" And txtPersonDescription.text <> "" Then cmdIndex_Click 0
+    If txtInvoicePersonID.text = "" And txtPersonDescription.text <> "" Then cmdIndex_Click 0: If txtInvoicePersonID.text = "" Then Cancel = True
 
 End Sub
 

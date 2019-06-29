@@ -798,7 +798,7 @@ End Sub
 
 Private Sub txtPaymentTermCreditDescription_Validate(Cancel As Boolean)
 
-    If txtPaymentTermCreditID.text = "" And txtPaymentTermCreditDescription.text <> "" Then cmdIndex_Click 0
+    If txtPaymentTermCreditID.text = "" And txtPaymentTermCreditDescription.text <> "" Then cmdIndex_Click 0: If txtPaymentTermCreditID.text = "" Then Cancel = True
     
 End Sub
 

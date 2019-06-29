@@ -1619,9 +1619,9 @@ Private Function ValidateFields()
 
 End Function
 
-Private Sub cmdButton_Click(Index As Integer)
+Private Sub cmdButton_Click(index As Integer)
                                                                                                                                 
-    Select Case Index
+    Select Case index
         Case 0
             NewRecord
         Case 1
@@ -1647,12 +1647,12 @@ Private Function FindRecords()
     
 End Function
 
-Private Sub cmdIndex_Click(Index As Integer)
+Private Sub cmdIndex_Click(index As Integer)
 
     Dim tmpTableData As typTableData
     Dim tmpRecordset As Recordset
     
-    Select Case Index
+    Select Case index
         Case 0
             'Δρομολόγιο
             Set tmpRecordset = CheckForMatch("CommonDB", "Routes", "RouteDescription", "String", txtRoute.text)
@@ -1861,7 +1861,7 @@ End Sub
 
 Private Sub txtAge_Validate(Cancel As Boolean)
 
-    If txtAgeID.text = "" And txtAge.text <> "" Then cmdIndex_Click 5
+    If txtAgeID.text = "" And txtAge.text <> "" Then cmdIndex_Click 5: If txtAgeID.text = "" Then Cancel = True
 
 End Sub
 
@@ -1881,7 +1881,7 @@ End Sub
 
 Private Sub txtSex_Validate(Cancel As Boolean)
 
-    If txtSexID.text = "" And txtSex.text <> "" Then cmdIndex_Click 4
+    If txtSexID.text = "" And txtSex.text <> "" Then cmdIndex_Click 4: If txtSexID.text = "" Then Cancel = True
 
 End Sub
 
@@ -1902,7 +1902,7 @@ End Sub
 
 Private Sub txtProperty_Validate(Cancel As Boolean)
 
-    If txtPropertyID.text = "" And txtProperty.text <> "" Then cmdIndex_Click 3
+    If txtPropertyID.text = "" And txtProperty.text <> "" Then cmdIndex_Click 3: If txtPropertyID.text = "" Then Cancel = True
 
 End Sub
 
@@ -1923,7 +1923,7 @@ End Sub
 
 Private Sub txtRoute_Validate(Cancel As Boolean)
 
-    If txtRouteID.text = "" And txtRoute.text <> "" Then cmdIndex_Click 0
+    If txtRouteID.text = "" And txtRoute.text <> "" Then cmdIndex_Click 0: If txtRouteID.text = "" Then Cancel = True
 
 End Sub
 
@@ -1944,7 +1944,7 @@ End Sub
 
 Private Sub txtShip_Validate(Cancel As Boolean)
 
-    If txtShipID.text = "" And txtShip.text <> "" Then cmdIndex_Click 2
+    If txtShipID.text = "" And txtShip.text <> "" Then cmdIndex_Click 2: If txtShipID.text = "" Then Cancel = True
 
 End Sub
 
@@ -1965,7 +1965,7 @@ End Sub
 
 Private Sub txtDestination_Validate(Cancel As Boolean)
 
-    If txtDestinationID.text = "" And txtDestination.text <> "" Then cmdIndex_Click 1
+    If txtDestinationID.text = "" And txtDestination.text <> "" Then cmdIndex_Click 1: If txtDestinationID.text = "" Then Cancel = True
     
 End Sub
 

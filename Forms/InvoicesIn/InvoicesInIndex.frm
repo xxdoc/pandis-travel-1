@@ -1912,7 +1912,7 @@ End Sub
 
 Private Sub txtCodeShortDescriptionA_Validate(Cancel As Boolean)
 
-    If txtCodeID.text = "" And txtCodeShortDescriptionA.text <> "" Then cmdIndex_Click 2
+    If txtCodeID.text = "" And txtCodeShortDescriptionA.text <> "" Then cmdIndex_Click 2: If txtCodeID.text = "" Then Cancel = True
 
 End Sub
 
@@ -1930,7 +1930,7 @@ End Sub
 
 Private Sub txtExpenseDescription_Validate(Cancel As Boolean)
 
-    If txtExpenseID.text = "" And txtExpenseDescription.text <> "" Then cmdIndex_Click 0
+    If txtExpenseID.text = "" And txtExpenseDescription.text <> "" Then cmdIndex_Click 0: If txtExpenseID.text = "" Then Cancel = True
 
 End Sub
 
@@ -1948,7 +1948,7 @@ End Sub
 
 Private Sub txtSupplierDescription_Validate(Cancel As Boolean)
 
-    If txtPersonID.text = "" And txtSupplierDescription.text <> "" Then cmdIndex_Click 1
+    If txtPersonID.text = "" And txtSupplierDescription.text <> "" Then cmdIndex_Click 1: If txtPersonID.text = "" Then Cancel = True
 
 End Sub
 

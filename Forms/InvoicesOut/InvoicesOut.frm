@@ -3760,7 +3760,7 @@ End Sub
 
 Private Sub txtCodeShortDescriptionA_Validate(Cancel As Boolean)
 
-    If txtInvoiceCodeID.text = "" And txtCodeShortDescriptionA.text <> "" Then cmdIndex_Click 0
+    If txtInvoiceCodeID.text = "" And txtCodeShortDescriptionA.text <> "" Then cmdIndex_Click 0: If txtInvoiceCodeID.text = "" Then Cancel = True
 
 End Sub
 
@@ -3781,7 +3781,7 @@ End Sub
 
 Private Sub txtPaymentTermDescription_Validate(Cancel As Boolean)
 
-    If txtInvoiceOutPaymentTermID.text = "" And txtPaymentTermDescription.text <> "" Then cmdIndex_Click 4
+    If txtInvoiceOutPaymentTermID.text = "" And txtPaymentTermDescription.text <> "" Then cmdIndex_Click 4: If txtInvoiceOutPaymentTermID.text = "" Then Cancel = True
 
 End Sub
 
@@ -3803,7 +3803,7 @@ End Sub
 
 Private Sub txtShipDescription_Validate(Cancel As Boolean)
 
-    If txtInvoiceOutShipID.text = "0" And txtShipDescription.text <> "" Then cmdIndex_Click 3
+    If txtInvoiceOutShipID.text = "0" And txtShipDescription.text <> "" Then cmdIndex_Click 3: If txtInvoiceOutShipID.text = "0" Then Cancel = True
     
 End Sub
 
@@ -3834,7 +3834,7 @@ End Sub
 
 Private Sub txtCustomerDescription_Validate(Cancel As Boolean)
 
-    If txtInvoicePersonID.text = "" And txtCustomerDescription.text <> "" Then cmdIndex_Click 1
+    If txtInvoicePersonID.text = "" And txtCustomerDescription.text <> "" Then cmdIndex_Click 1: If txtInvoicePersonID.text = "" Then Cancel = True
     
     If Not blnCancel Then
         If chkAgreement.Value = 0 Then
@@ -3875,7 +3875,7 @@ End Sub
 
 Private Sub txtDestinationDescription_Validate(Cancel As Boolean)
 
-    If txtInvoiceOutDestinationID.text = "" And txtDestinationDescription.text <> "" Then cmdIndex_Click 2
+    If txtInvoiceOutDestinationID.text = "" And txtDestinationDescription.text <> "" Then cmdIndex_Click 2: If txtInvoiceOutDestinationID.text = "" Then Cancel = True
     
     If Not blnCancel Then
         If chkAgreement.Value = 0 Then

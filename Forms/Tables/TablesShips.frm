@@ -22,13 +22,230 @@ Begin VB.Form TablesShips
    ScaleWidth      =   17760
    ShowInTaskbar   =   0   'False
    Begin VB.Frame frmFrame 
+      BackColor       =   &H00C0C0C0&
+      BorderStyle     =   0  'None
+      Height          =   6465
+      Index           =   3
+      Left            =   4500
+      TabIndex        =   53
+      Top             =   1725
+      Width           =   12465
+      Begin VB.Frame Frame 
+         Appearance      =   0  'Flat
+         BackColor       =   &H00E0E0E0&
+         Caption         =   " Καταχώρηση επιβατών "
+         BeginProperty Font 
+            Name            =   "Ubuntu Condensed"
+            Size            =   9.75
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H80000008&
+         Height          =   1890
+         Index           =   0
+         Left            =   450
+         TabIndex        =   54
+         Top             =   450
+         Width           =   11565
+         Begin UserControls.newText txtShipRepeatedEntriesDescription 
+            Height          =   465
+            Left            =   3975
+            TabIndex        =   55
+            Top             =   525
+            Width           =   615
+            _ExtentX        =   1085
+            _ExtentY        =   820
+            Alignment       =   2
+            ForeColor       =   0
+            Text            =   "ΝΑΙ"
+            BackColor       =   4210688
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   11.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+         End
+         Begin Dacara_dcButton.dcButton cmdIndex 
+            Height          =   465
+            Index           =   0
+            Left            =   4650
+            TabIndex        =   56
+            TabStop         =   0   'False
+            Top             =   525
+            Width           =   390
+            _ExtentX        =   688
+            _ExtentY        =   820
+            BackColor       =   16777215
+            ButtonShape     =   3
+            ButtonStyle     =   2
+            Caption         =   ""
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PicNormal       =   "TablesShips.frx":000C
+            PicSizeH        =   16
+            PicSizeW        =   16
+         End
+         Begin UserControls.newText txtShipSaveAndNewDescription 
+            Height          =   465
+            Left            =   3975
+            TabIndex        =   57
+            Top             =   1050
+            Width           =   615
+            _ExtentX        =   1085
+            _ExtentY        =   820
+            Alignment       =   2
+            ForeColor       =   0
+            Text            =   "ΝΑΙ"
+            BackColor       =   4210688
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   11.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+         End
+         Begin Dacara_dcButton.dcButton cmdIndex 
+            Height          =   465
+            Index           =   1
+            Left            =   4650
+            TabIndex        =   58
+            TabStop         =   0   'False
+            Top             =   1050
+            Width           =   390
+            _ExtentX        =   688
+            _ExtentY        =   820
+            BackColor       =   16777215
+            ButtonShape     =   3
+            ButtonStyle     =   2
+            Caption         =   ""
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PicNormal       =   "TablesShips.frx":05A6
+            PicSizeH        =   16
+            PicSizeW        =   16
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   840
+            Index           =   6
+            Left            =   0
+            Top             =   600
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H00C0C0FF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   540
+            Index           =   7
+            Left            =   4200
+            Top             =   0
+            Visible         =   0   'False
+            Width           =   390
+         End
+         Begin VB.Label lblLabel 
+            BackColor       =   &H000080FF&
+            Caption         =   "Επαναλαμβανόμενη καταχώρηση"
+            BeginProperty Font 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   315
+            Index           =   1
+            Left            =   450
+            TabIndex        =   60
+            Top             =   600
+            Width           =   3090
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   840
+            Index           =   8
+            Left            =   3525
+            Top             =   675
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Label lblLabel 
+            BackColor       =   &H000080FF&
+            Caption         =   "Αποθήκευση και δημιουργία με μία εντολή"
+            BeginProperty Font 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   315
+            Index           =   6
+            Left            =   450
+            TabIndex        =   59
+            Top             =   1125
+            Width           =   3090
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H00C0C0FF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   390
+            Index           =   9
+            Left            =   4125
+            Top             =   1500
+            Visible         =   0   'False
+            Width           =   465
+         End
+      End
+   End
+   Begin VB.Frame frmFrame 
       BackColor       =   &H000000C0&
       BorderStyle     =   0  'None
       Height          =   6465
       Index           =   0
-      Left            =   15975
+      Left            =   750
       TabIndex        =   20
-      Top             =   4500
+      Top             =   4050
       Width           =   12540
       Begin UserControls.newText txtShipDescription 
          Height          =   465
@@ -521,9 +738,9 @@ Begin VB.Form TablesShips
       BorderStyle     =   0  'None
       Height          =   6465
       Index           =   2
-      Left            =   16125
+      Left            =   3525
       TabIndex        =   34
-      Top             =   675
+      Top             =   300
       Width           =   12465
       Begin VB.Frame Frame 
          Appearance      =   0  'Flat
@@ -1402,227 +1619,10 @@ Begin VB.Form TablesShips
          _ExtentX        =   953
          _ExtentY        =   953
          Size            =   4592
-         Images          =   "TablesShips.frx":000C
+         Images          =   "TablesShips.frx":0B40
          Version         =   131072
          KeyCount        =   4
          Keys            =   "ÿÿÿ"
-      End
-   End
-   Begin VB.Frame frmFrame 
-      BackColor       =   &H00C0C0C0&
-      BorderStyle     =   0  'None
-      Height          =   6465
-      Index           =   3
-      Left            =   15150
-      TabIndex        =   53
-      Top             =   2475
-      Width           =   12465
-      Begin VB.Frame Frame 
-         Appearance      =   0  'Flat
-         BackColor       =   &H00E0E0E0&
-         Caption         =   " Καταχώρηση επιβατών "
-         BeginProperty Font 
-            Name            =   "Ubuntu Condensed"
-            Size            =   9.75
-            Charset         =   161
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H80000008&
-         Height          =   1890
-         Index           =   0
-         Left            =   450
-         TabIndex        =   54
-         Top             =   450
-         Width           =   11565
-         Begin UserControls.newText txtShipRepeatedEntriesDescription 
-            Height          =   465
-            Left            =   3975
-            TabIndex        =   55
-            Top             =   525
-            Width           =   615
-            _ExtentX        =   1085
-            _ExtentY        =   820
-            Alignment       =   2
-            ForeColor       =   0
-            Text            =   "ΝΑΙ"
-            BackColor       =   4210688
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Ubuntu Condensed"
-               Size            =   11.25
-               Charset         =   161
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-         End
-         Begin Dacara_dcButton.dcButton cmdIndex 
-            Height          =   465
-            Index           =   0
-            Left            =   4650
-            TabIndex        =   56
-            TabStop         =   0   'False
-            Top             =   525
-            Width           =   390
-            _ExtentX        =   688
-            _ExtentY        =   820
-            BackColor       =   16777215
-            ButtonShape     =   3
-            ButtonStyle     =   2
-            Caption         =   ""
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Ubuntu Condensed"
-               Size            =   9.75
-               Charset         =   161
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            PicNormal       =   "TablesShips.frx":121C
-            PicSizeH        =   16
-            PicSizeW        =   16
-         End
-         Begin UserControls.newText txtShipSaveAndNewDescription 
-            Height          =   465
-            Left            =   3975
-            TabIndex        =   57
-            Top             =   1050
-            Width           =   615
-            _ExtentX        =   1085
-            _ExtentY        =   820
-            Alignment       =   2
-            ForeColor       =   0
-            Text            =   "ΝΑΙ"
-            BackColor       =   4210688
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Ubuntu Condensed"
-               Size            =   11.25
-               Charset         =   161
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-         End
-         Begin Dacara_dcButton.dcButton cmdIndex 
-            Height          =   465
-            Index           =   1
-            Left            =   4650
-            TabIndex        =   58
-            TabStop         =   0   'False
-            Top             =   1050
-            Width           =   390
-            _ExtentX        =   688
-            _ExtentY        =   820
-            BackColor       =   16777215
-            ButtonShape     =   3
-            ButtonStyle     =   2
-            Caption         =   ""
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Ubuntu Condensed"
-               Size            =   9.75
-               Charset         =   161
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            PicNormal       =   "TablesShips.frx":17B6
-            PicSizeH        =   16
-            PicSizeW        =   16
-         End
-         Begin VB.Shape shpWedge 
-            BackColor       =   &H0000FFFF&
-            BackStyle       =   1  'Opaque
-            BorderStyle     =   0  'Transparent
-            FillColor       =   &H00008000&
-            Height          =   840
-            Index           =   6
-            Left            =   0
-            Top             =   600
-            Visible         =   0   'False
-            Width           =   465
-         End
-         Begin VB.Shape shpWedge 
-            BackColor       =   &H00C0C0FF&
-            BackStyle       =   1  'Opaque
-            BorderStyle     =   0  'Transparent
-            FillColor       =   &H00008000&
-            Height          =   540
-            Index           =   7
-            Left            =   4200
-            Top             =   0
-            Visible         =   0   'False
-            Width           =   390
-         End
-         Begin VB.Label lblLabel 
-            BackColor       =   &H000080FF&
-            Caption         =   "Επαναλαμβανόμενη καταχώρηση"
-            BeginProperty Font 
-               Name            =   "Ubuntu Condensed"
-               Size            =   9.75
-               Charset         =   161
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   315
-            Index           =   1
-            Left            =   450
-            TabIndex        =   60
-            Top             =   600
-            Width           =   3090
-         End
-         Begin VB.Shape shpWedge 
-            BackColor       =   &H0000FFFF&
-            BackStyle       =   1  'Opaque
-            BorderStyle     =   0  'Transparent
-            FillColor       =   &H00008000&
-            Height          =   840
-            Index           =   8
-            Left            =   3525
-            Top             =   675
-            Visible         =   0   'False
-            Width           =   465
-         End
-         Begin VB.Label lblLabel 
-            BackColor       =   &H000080FF&
-            Caption         =   "Αποθήκευση και δημιουργία με μία εντολή"
-            BeginProperty Font 
-               Name            =   "Ubuntu Condensed"
-               Size            =   9.75
-               Charset         =   161
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00FFFFFF&
-            Height          =   315
-            Index           =   6
-            Left            =   450
-            TabIndex        =   59
-            Top             =   1125
-            Width           =   3090
-         End
-         Begin VB.Shape shpWedge 
-            BackColor       =   &H00C0C0FF&
-            BackStyle       =   1  'Opaque
-            BorderStyle     =   0  'Transparent
-            FillColor       =   &H00008000&
-            Height          =   390
-            Index           =   9
-            Left            =   4125
-            Top             =   1500
-            Visible         =   0   'False
-            Width           =   465
-         End
       End
    End
    Begin VB.Frame frmFrame 
@@ -2272,7 +2272,7 @@ Private Function SeekRecord()
     
 End Function
 
-Private Sub btnPanel_Click(index As Integer)
+Private Sub btnPanel_Click(Index As Integer)
 
     Dim intLoop As Integer
     
@@ -2282,11 +2282,11 @@ Private Sub btnPanel_Click(index As Integer)
         shpBridge(intLoop).Visible = False
     Next intLoop
     
-    btnPanel(index).Enabled = False
-    frmFrame(index).Visible = True
-    shpBridge(index).Visible = True
+    btnPanel(Index).Enabled = False
+    frmFrame(Index).Visible = True
+    shpBridge(Index).Visible = True
     
-    Select Case index
+    Select Case Index
         'Στοιχεία πλοίου
         Case 0
             If txtShipDescription.Enabled Then txtShipDescription.SetFocus
@@ -2308,9 +2308,9 @@ Private Sub btnPanel_Click(index As Integer)
 
 End Sub
 
-Private Sub cmdButton_Click(index As Integer)
+Private Sub cmdButton_Click(Index As Integer)
                                                                 
-    Select Case index
+    Select Case Index
         Case 0
             NewRecord
         Case 1
@@ -2329,13 +2329,13 @@ Private Sub cmdButton_Click(index As Integer)
 
 End Sub
    
-Private Sub cmdIndex_Click(index As Integer)
+Private Sub cmdIndex_Click(Index As Integer)
 
     'Local variables
     Dim tmpTableData As typTableData
     Dim tmpRecordset As Recordset
     
-    Select Case index
+    Select Case Index
         Case 0
             'Επαναλαμβανόμενη καταχώρηση (Εύρεση τελευταίας εγγραφής)
             Set tmpRecordset = CheckForMatch("CommonDB", "YesOrNo", "YesOrNoDescription", "String", txtShipRepeatedEntriesDescription.text)
@@ -2685,7 +2685,7 @@ End Sub
 
 Private Sub txtShipRepeatedEntriesDescription_Validate(Cancel As Boolean)
 
-    If txtShipRepeatedEntriesID.text = "" And txtShipRepeatedEntriesDescription.text <> "" Then cmdIndex_Click 0
+    If txtShipRepeatedEntriesID.text = "" And txtShipRepeatedEntriesDescription.text <> "" Then cmdIndex_Click 0: If txtShipRepeatedEntriesID.text = "" Then Cancel = True
 
 End Sub
 
@@ -2705,7 +2705,7 @@ End Sub
 
 Private Sub txtShipSaveAndNewDescription_Validate(Cancel As Boolean)
 
-    If txtShipSaveAndNewID.text = "" And txtShipSaveAndNewDescription.text <> "" Then cmdIndex_Click 1
+    If txtShipSaveAndNewID.text = "" And txtShipSaveAndNewDescription.text <> "" Then cmdIndex_Click 1: If txtShipSaveAndNewID.text = "" Then Cancel = True
 
 End Sub
 

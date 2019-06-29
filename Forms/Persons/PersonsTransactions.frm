@@ -2297,7 +2297,7 @@ End Sub
 
 Private Sub txtBankDescription_Validate(Cancel As Boolean)
 
-    If txtBankDescription.text <> "" And txtPaymentBankID.text = "" Then cmdIndex_Click 6
+    If txtBankDescription.text <> "" And txtPaymentBankID.text = "" Then cmdIndex_Click 6: If txtPaymentBankID.text = "" Then Cancel = True
 
 End Sub
 
@@ -2323,21 +2323,21 @@ End Sub
 
 Private Sub txtPersonDescription_Validate(Cancel As Boolean)
 
-    If txtPersonDescription.text <> "" And txtInvoicePersonID.text = "" Then cmdIndex_Click 2
+    If txtPersonDescription.text <> "" And txtInvoicePersonID.text = "" Then cmdIndex_Click 2: If txtInvoicePersonID.text = "" Then Cancel = True
 
 End Sub
 
 Private Sub txtCodeShortDescriptionA_Change()
 
     If txtCodeShortDescriptionA.text = "" Then
-        ClearFields txtInvoiceID, txtInvoiceTrnID, txtInvoiceCodeID, txtInvoicePersonID, lblCodeDescription, lblCodeBatch, lblCodeHand
+        ClearFields txtInvoiceID, txtInvoiceTrnID, txtInvoiceNo, txtInvoiceCodeID, txtInvoicePersonID, lblCodeDescription, lblCodeBatch, lblCodeHand
     End If
 
 End Sub
 
 Private Sub txtCodeShortDescriptionA_Validate(Cancel As Boolean)
 
-    If txtCodeShortDescriptionA.text <> "" And txtInvoiceCodeID.text = "" Then cmdIndex_Click 0
+    If txtCodeShortDescriptionA.text <> "" And txtInvoiceCodeID.text = "" Then cmdIndex_Click 0: If txtInvoiceCodeID.text = "" Then Cancel = True
 
 End Sub
 
@@ -2356,7 +2356,7 @@ End Sub
 
 Private Sub txtPaymentWayDescription_Validate(Cancel As Boolean)
 
-    If txtPaymentWayDescription.text <> "" And txtPaymentPaymentWayID.text = "" Then cmdIndex_Click 4
+    If txtPaymentWayDescription.text <> "" And txtPaymentPaymentWayID.text = "" Then cmdIndex_Click 4: If txtPaymentPaymentWayID.text = "" Then Cancel = True
 
 End Sub
 

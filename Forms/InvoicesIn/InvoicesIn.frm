@@ -2670,7 +2670,7 @@ End Sub
 
 Private Sub txtCodeShortDescriptionA_Validate(Cancel As Boolean)
 
-    If txtInvoiceCodeID.text = "" And txtCodeShortDescriptionA.text <> "" Then cmdIndex_Click 4
+    If txtInvoiceCodeID.text = "" And txtCodeShortDescriptionA.text <> "" Then cmdIndex_Click 4: If txtInvoiceCodeID.text = "" Then Cancel = True
 
 End Sub
 
@@ -2691,7 +2691,7 @@ End Sub
 
 Private Sub txtExpenseDescription_Validate(Cancel As Boolean)
 
-    If txtInvoiceInExpenseCategoryID.text = "" And txtExpenseDescription.text <> "" Then cmdIndex_Click 0
+    If txtInvoiceInExpenseCategoryID.text = "" And txtExpenseDescription.text <> "" Then cmdIndex_Click 0: If txtInvoiceInExpenseCategoryID.text = "" Then Cancel = True
 
 End Sub
 
@@ -2718,7 +2718,7 @@ End Sub
 
 Private Sub txtPaymentTermDescription_Validate(Cancel As Boolean)
 
-    If txtInvoiceInPaymentTermID.text = "" And txtPaymentTermDescription.text <> "" Then cmdIndex_Click 6
+    If txtInvoiceInPaymentTermID.text = "" And txtPaymentTermDescription.text <> "" Then cmdIndex_Click 6: If txtInvoiceInPaymentTermID.text = "" Then Cancel = True
 
 End Sub
 
@@ -2739,7 +2739,7 @@ End Sub
 
 Private Sub txtSupplierDescription_Validate(Cancel As Boolean)
 
-    If txtInvoicePersonID.text = "" And txtSupplierDescription.text <> "" Then cmdIndex_Click 2
+    If txtInvoicePersonID.text = "" And txtSupplierDescription.text <> "" Then cmdIndex_Click 2: If txtInvoicePersonID.text = "" Then Cancel = True
 
 End Sub
 

@@ -1714,7 +1714,7 @@ Private Function AssignDriverToThisRoute(TransferID)
     Set rsTable = CommonDB.OpenRecordset("Transfers")
     
     With rsTable
-        .index = "ID"
+        .Index = "ID"
         .Seek "=", TransferID
         If Not .NoMatch Then
             .Edit
@@ -3014,9 +3014,9 @@ Private Sub chkAllTransfers_Click()
 
 End Sub
 
-Private Sub cmdButton_Click(index As Integer)
+Private Sub cmdButton_Click(Index As Integer)
                                 
-    Select Case index
+    Select Case Index
         Case 0
             FindRecordsAndPopulateGrid
         Case 1
@@ -3155,7 +3155,7 @@ Private Function DoReport(action As String)
     If action = "CreatePDF" Then
         For lngDriverRow = 1 To grdSummaryPerDriver.RowCount
             If grdSummaryPerDriver.CellIcon(lngDriverRow, "Selected") > 0 Then
-                CreateUnicodeFile "¡Õ¡÷œ—¡ –¡—¡À¡¬ŸÕ √…¡ : " & mskDate.text, "œƒ«√œ”: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), "", intPrinterReportDetailLines - 9, lngDriverRow
+                CreateUnicodeFile "¡Õ¡÷œ—¡ –¡—¡À¡¬ŸÕ √…¡ : " & mskDate.text, "œƒ«√œ”: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), "", GetSetting(strApplicationName, "Settings", "Export Report Height") - 9, lngDriverRow
                 CreateUnisexPDF "¡Õ¡÷œ—¡ –¡—¡À¡¬ŸÕ √…¡ : " & mskDate.text & " œƒ«√œ”: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), 10
             End If
         Next lngDriverRow
@@ -3167,34 +3167,6 @@ Private Function DoReport(action As String)
     
 ErrTrap:
     Close #1
-    DisplayErrorMessage True, Err.Description
-    
-End Function
-
-Private Function CreatePDF(fileName)
-
-    On Error GoTo ErrTrap
-    
-    Dim pdf As New ARExportPDF
-    
-    'With rptCoachesReport
-    '    .Restart
-    '    .Run False
-    '    pdf.SemiDelimitedNeverEmbedFonts = ""
-    '    pdf.fileName = Replace(fileName, "/", "-")
-    '    pdf.fileName = Replace(pdf.fileName, "[", "")
-    '    pdf.fileName = Replace(pdf.fileName, "]", "")
-    '    pdf.fileName = Replace(pdf.fileName, "  ", " ")
-    '    pdf.fileName = strReportsPathName & Replace(pdf.fileName, ":", "") & ".pdf"
-    '    pdf.Export .Pages
-    'End With
-    
-    CreatePDF = True
-    
-    Exit Function
-    
-ErrTrap:
-    CreatePDF = False
     DisplayErrorMessage True, Err.Description
     
 End Function
@@ -3317,7 +3289,7 @@ Private Function AbortProcedure(blnStatus)
 
 End Function
 
-Private Sub cmdIndex_Click(index As Integer)
+Private Sub cmdIndex_Click(Index As Integer)
 
     Dim strShowInList As String
     Dim tmpTableData As typTableData
@@ -3325,7 +3297,7 @@ Private Sub cmdIndex_Click(index As Integer)
     Dim strSQL As String
     Dim intSize As Integer
 
-    Select Case index
+    Select Case Index
         'œ‰Á„¸Ú ÛÂ Û˝Ì‰ÂÛÁ ‰ÒÔÏÔÎÔ„ﬂÔı
         Case 0
             Set tmpRecordset = CheckForMatch("CommonDB", "Drivers", "DriverDescription", "String", txtDriverDescriptionForRoutes.text)
@@ -3394,7 +3366,7 @@ Private Function FindRoute()
     Set rsTable = CommonDB.OpenRecordset("PickupRoutes")
     
     With rsTable
-        .index = "PickupRouteID"
+        .Index = "PickupRouteID"
         .Seek "=", Val(txtRouteID.text)
         If Not .NoMatch Then
             txtRouteID.text = !PickupRouteID
@@ -4046,7 +4018,7 @@ End Sub
 
 Private Sub txtCustomerDescription_Validate(Cancel As Boolean)
 
-    If txtCustomerID.text = "" And txtCustomerDescription.text <> "" Then cmdIndex_Click 2
+    If txtCustomerID.text = "" And txtCustomerDescription.text <> "" Then cmdIndex_Click 2: If txtCustomerID.text = "" Then Cancel = True
     
 End Sub
 
@@ -4064,7 +4036,7 @@ End Sub
 
 Private Sub txtDestinationDescription_Validate(Cancel As Boolean)
 
-    If txtDestinationID.text = "" And txtDestinationDescription.text <> "" Then cmdIndex_Click 1
+    If txtDestinationID.text = "" And txtDestinationDescription.text <> "" Then cmdIndex_Click 1: If txtDestinationID.text = "" Then Cancel = True
     
 End Sub
 
@@ -4082,8 +4054,8 @@ End Sub
 
 Private Sub txtDriverDescription_Validate(Cancel As Boolean)
 
-    If txtDriverID.text = "" And txtDriverDescription.text <> "" Then cmdIndex_Click 4
-
+    If txtDriverID.text = "" And txtDriverDescription.text <> "" Then cmdIndex_Click 4: If txtDriverID.text = "" Then Cancel = True
+    
 End Sub
 
 Private Sub txtDriverDescriptionForRoutes_Change()
@@ -4102,7 +4074,7 @@ End Sub
 
 Private Sub txtDriverDescriptionForRoutes_Validate(Cancel As Boolean)
 
-    If txtDriverIDForRoutes.text = "" And txtDriverDescriptionForRoutes.text <> "" Then cmdIndex_Click 0
+    If txtDriverIDForRoutes.text = "" And txtDriverDescriptionForRoutes.text <> "" Then cmdIndex_Click 0: If txtDriverIDForRoutes.text = "" Then Cancel = True
 
 End Sub
 
@@ -4122,7 +4094,7 @@ End Sub
 
 Private Sub txtPickupPointDescription_Validate(Cancel As Boolean)
 
-    If txtPickupPointID.text = "" And txtPickupPointDescription.text <> "" Then cmdIndex_Click 3
+    If txtPickupPointID.text = "" And txtPickupPointDescription.text <> "" Then cmdIndex_Click 3: If txtPickupPointID.text = "" Then Cancel = True
 
 End Sub
 

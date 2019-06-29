@@ -787,7 +787,7 @@ End Sub
 
 Private Sub txtPaymentWayCashDescription_Validate(Cancel As Boolean)
 
-    If txtPaymentWayCashID.text = "" And txtPaymentWayCashDescription.text <> "" Then cmdIndex_Click 0
+    If txtPaymentWayCashID.text = "" And txtPaymentWayCashDescription.text <> "" Then cmdIndex_Click 0: If txtPaymentWayCashID.text = "" Then Cancel = True
     
 End Sub
 

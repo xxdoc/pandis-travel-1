@@ -1451,9 +1451,9 @@ Private Function ValidateFields()
 
 End Function
 
-Private Sub cmdButton_Click(Index As Integer)
+Private Sub cmdButton_Click(index As Integer)
                                 
-    Select Case Index
+    Select Case index
         Case 0
             NewRecord
         Case 1
@@ -1472,21 +1472,21 @@ Private Sub cmdButton_Click(Index As Integer)
 
 End Sub
 
-Private Sub cmdHalf_Click(Index As Integer)
+Private Sub cmdHalf_Click(index As Integer)
 
     'Ενήλικες
-    If Index = 0 And mskPriceAdultWithTransfer.text <> "" Then mskPriceKidWithTransfer.text = format(CCur(mskPriceAdultWithTransfer.text / 2), "#,##0.00")
+    If index = 0 And mskPriceAdultWithTransfer.text <> "" Then mskPriceKidWithTransfer.text = format(CCur(mskPriceAdultWithTransfer.text / 2), "#,##0.00")
     'Παιδιά
-    If Index = 1 And mskPriceAdultWithoutTransfer.text <> "" Then mskPriceKidWithoutTransfer.text = format(CCur(mskPriceAdultWithoutTransfer.text / 2), "#,##0.00")
+    If index = 1 And mskPriceAdultWithoutTransfer.text <> "" Then mskPriceKidWithoutTransfer.text = format(CCur(mskPriceAdultWithoutTransfer.text / 2), "#,##0.00")
     
 End Sub
 
-Private Sub cmdIndex_Click(Index As Integer)
+Private Sub cmdIndex_Click(index As Integer)
 
     Dim tmpTableData As typTableData
     Dim tmpRecordset As Recordset
     
-    Select Case Index
+    Select Case index
         Case 0
             'Πελάτης - F2
             Set tmpRecordset = CheckForMatch("CommonDB", "Customers", "Description", "String", txtPriceCustomerDescription.text)
@@ -1655,7 +1655,7 @@ End Sub
 
 Private Sub txtPriceCustomerDescription_Validate(Cancel As Boolean)
 
-    If txtPriceCustomerID.text = "" And txtPriceCustomerDescription.text <> "" Then cmdIndex_Click 0
+    If txtPriceCustomerID.text = "" And txtPriceCustomerDescription.text <> "" Then cmdIndex_Click 0: If txtPriceCustomerID.text = "" Then Cancel = True
     
 End Sub
 
@@ -1675,7 +1675,7 @@ End Sub
 
 Private Sub txtPriceDestinationDescription_Validate(Cancel As Boolean)
 
-    If txtPriceDestinationID.text = "" And txtPriceDestinationDescription.text <> "" Then cmdIndex_Click 1
+    If txtPriceDestinationID.text = "" And txtPriceDestinationDescription.text <> "" Then cmdIndex_Click 1: If txtPriceDestinationID.text = "" Then Cancel = True
 
 End Sub
 

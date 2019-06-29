@@ -1745,7 +1745,7 @@ End Sub
 
 Private Sub txtFilterDescription_Validate(Cancel As Boolean)
 
-    If txtFilterID = "" And txtFilterDescription.text <> "" Then cmdIndex_Click 0
+    If txtFilterID = "" And txtFilterDescription.text <> "" Then cmdIndex_Click 0: If txtFilterID = "" Then Cancel = True
 
 End Sub
 

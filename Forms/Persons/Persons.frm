@@ -1298,7 +1298,7 @@ End Sub
 
 Private Sub txtTaxOfficeDescription_Validate(Cancel As Boolean)
 
-    If txtPersonTaxOfficeID.text = "" And txtTaxOfficeDescription.text <> "" Then cmdIndex_Click 0
+    If txtPersonTaxOfficeID.text = "" And txtTaxOfficeDescription.text <> "" Then cmdIndex_Click 0:    If txtPersonTaxOfficeID.text = "" Then Cancel = True
 
 End Sub
 
@@ -1318,7 +1318,7 @@ End Sub
 
 Private Sub txtVATStateDescription_Validate(Cancel As Boolean)
 
-    If txtPersonVATStateID.text = "" And txtVATStateDescription.text <> "" Then cmdIndex_Click 2
+    If txtPersonVATStateID.text = "" And txtVATStateDescription.text <> "" Then cmdIndex_Click 2: If txtPersonVATStateID.text = "" Then Cancel = True
 
 End Sub
 

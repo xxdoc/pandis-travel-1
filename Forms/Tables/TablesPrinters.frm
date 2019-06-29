@@ -1841,7 +1841,7 @@ End Sub
 
 Private Sub txtEafdssDescription_Validate(Cancel As Boolean)
 
-    If txtPrinterEAFDSSID.text = "" And txtEafdssDescription.text <> "" Then cmdIndex_Click 2
+    If txtPrinterEAFDSSID.text = "" And txtEafdssDescription.text <> "" Then cmdIndex_Click 2: If txtPrinterEAFDSSID.text = "" Then Cancel = True
 
 End Sub
 
@@ -1861,7 +1861,7 @@ End Sub
 
 Private Sub txtPrintsInvoicesDescription_Validate(Cancel As Boolean)
 
-    If txtPrinterPrintsInvoicesID.text = "" And txtPrintsInvoicesDescription.text <> "" Then cmdIndex_Click 1
+    If txtPrinterPrintsInvoicesID.text = "" And txtPrintsInvoicesDescription.text <> "" Then cmdIndex_Click 1: If txtPrinterPrintsInvoicesID.text = "" Then Cancel = True
 
 End Sub
 
@@ -1881,7 +1881,7 @@ End Sub
 
 Private Sub txtPrintsReportsDescription_Validate(Cancel As Boolean)
 
-    If txtPrinterPrintsReportsID.text = "" And txtPrintsReportsDescription.text <> "" Then cmdIndex_Click 3
+    If txtPrinterPrintsReportsID.text = "" And txtPrintsReportsDescription.text <> "" Then cmdIndex_Click 3: If txtPrinterPrintsReportsID.text = "" Then Cancel = True
     
 End Sub
 
@@ -1901,7 +1901,7 @@ End Sub
 
 Private Sub txtPrinterTypeDescription_Validate(Cancel As Boolean)
 
-    If txtPrinterTypeID.text = "" And txtPrinterTypeDescription.text <> "" Then cmdIndex_Click 0
+    If txtPrinterTypeID.text = "" And txtPrinterTypeDescription.text <> "" Then cmdIndex_Click 0: If txtPrinterTypeID.text = "" Then Cancel = True
 
 End Sub
 

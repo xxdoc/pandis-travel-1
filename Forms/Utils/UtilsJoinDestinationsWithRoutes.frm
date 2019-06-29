@@ -1000,9 +1000,9 @@ Private Function SaveRecord()
     
 End Function
 
-Private Sub cmdButton_Click(index As Integer)
+Private Sub cmdButton_Click(Index As Integer)
                                                                 
-    Select Case index
+    Select Case Index
         Case 0
             FindRecordsAndPopulateGrid
         Case 1
@@ -1039,12 +1039,12 @@ Private Function ExportRecords()
 End Function
 
 
-Private Sub cmdIndex_Click(index As Integer)
+Private Sub cmdIndex_Click(Index As Integer)
 
     Dim tmpTableData As typTableData
     Dim tmpRecordset As Recordset
     
-    Select Case index
+    Select Case Index
         Case 0
             'Συντ. προορισμού
             Set tmpRecordset = CheckForMatch("CommonDB", "Destinations", "DestinationShortDescription", "String", txtDestinationShortDescription.text)
@@ -1067,7 +1067,7 @@ Private Sub cmdIndex_Click(index As Integer)
 
 End Sub
 
-Private Sub cmdIndex_Validate(index As Integer, Cancel As Boolean)
+Private Sub cmdIndex_Validate(Index As Integer, Cancel As Boolean)
 
     If txtDestinationShortDescription.text <> "" Then cmdIndex_Click 0
     
@@ -1168,7 +1168,7 @@ End Sub
 
 Private Sub txtDestinationDescription_Validate(Cancel As Boolean)
 
-    If txtDestinationID.text = "" And txtDestinationDescription.text <> "" Then cmdIndex_Click 1
+    If txtDestinationID.text = "" And txtDestinationDescription.text <> "" Then cmdIndex_Click 1: If txtDestinationID.text = "" Then Cancel = True
     
 End Sub
 
@@ -1282,7 +1282,7 @@ End Sub
 
 Private Sub txtDestinationShortDescription_Validate(Cancel As Boolean)
 
-    If txtDestinationID.text = "" And txtDestinationShortDescription.text <> "" Then cmdIndex_Click 0
+    If txtDestinationID.text = "" And txtDestinationShortDescription.text <> "" Then cmdIndex_Click 0: If txtDestinationID.text = "" Then Cancel = True
 
 End Sub
 

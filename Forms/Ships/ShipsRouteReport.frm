@@ -1909,7 +1909,7 @@ End Sub
 
 Private Sub txtShip_Validate(Cancel As Boolean)
 
-    If txtShipID = "" And txtShip.text <> "" Then cmdIndex_Click 0
+    If txtShipID = "" And txtShip.text <> "" Then cmdIndex_Click 0: If txtShipID = "" Then Cancel = True
     
 End Sub
 

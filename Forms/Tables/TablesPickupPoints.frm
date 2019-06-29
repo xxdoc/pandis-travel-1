@@ -1279,7 +1279,7 @@ End Sub
 
 Private Sub txtRouteDescription_Validate(Cancel As Boolean)
 
-    If txtPickupRouteID.text = "" And txtRouteDescription.text <> "" Then cmdIndex_Click 1
+    If txtPickupRouteID.text = "" And txtRouteDescription.text <> "" Then cmdIndex_Click 1: If txtPickupRouteID.text = "" Then Cancel = True
     
 End Sub
 
@@ -1299,7 +1299,7 @@ End Sub
 
 Private Sub txtRouteShortDescription_Validate(Cancel As Boolean)
 
-    If txtPickupRouteID.text = "" And txtRouteShortDescription.text <> "" Then cmdIndex_Click 0
+    If txtPickupRouteID.text = "" And txtRouteShortDescription.text <> "" Then cmdIndex_Click 0: If txtPickupRouteID.text = "" Then Cancel = True
     
 End Sub
 

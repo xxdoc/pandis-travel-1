@@ -787,7 +787,7 @@ End Sub
 
 Private Sub txtOccupantDescriptionStatisticDescription_Validate(Cancel As Boolean)
 
-    If txtOccupantDescriptionStatisticID.text = "" And txtOccupantDescriptionStatisticDescription.text <> "" Then cmdIndex_Click 0
+    If txtOccupantDescriptionStatisticID.text = "" And txtOccupantDescriptionStatisticDescription.text <> "" Then cmdIndex_Click 0: If txtOccupantDescriptionStatisticID.text = "" Then Cancel = True
 
 End Sub
 

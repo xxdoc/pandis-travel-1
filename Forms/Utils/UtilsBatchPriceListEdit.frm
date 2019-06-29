@@ -1071,7 +1071,7 @@ End Sub
 
 Private Sub txtCustomerDescription_Validate(Cancel As Boolean)
 
-    If txtCustomerID.text = "" And txtCustomerDescription.text <> "" Then cmdIndex_Click 0
+    If txtCustomerID.text = "" And txtCustomerDescription.text <> "" Then cmdIndex_Click 0: If txtCustomerID.text = "" Then Cancel = True
 
 End Sub
 

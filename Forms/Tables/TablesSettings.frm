@@ -391,9 +391,9 @@ Begin VB.Form TablesSettings
       BorderStyle     =   0  'None
       Height          =   4890
       Index           =   2
-      Left            =   11475
+      Left            =   14850
       TabIndex        =   25
-      Top             =   5475
+      Top             =   5700
       Width           =   9240
       Begin UserControls.newText txtSalesAccountsCode 
          Height          =   465
@@ -660,9 +660,9 @@ Begin VB.Form TablesSettings
       ForeColor       =   &H00800080&
       Height          =   6090
       Index           =   0
-      Left            =   2100
+      Left            =   8850
       TabIndex        =   21
-      Top             =   7350
+      Top             =   3675
       Width           =   9165
       Begin VB.Frame Frame 
          Appearance      =   0  'Flat
@@ -2227,7 +2227,7 @@ End Sub
 
 Private Sub txtPreviewInvoicesDescription_Validate(Cancel As Boolean)
 
-    If txtPreviewInvoicesID.text = "" And txtPreviewInvoicesDescription.text <> "" Then cmdIndex_Click 0
+    If txtPreviewInvoicesID.text = "" And txtPreviewInvoicesDescription.text <> "" Then cmdIndex_Click 0: If txtPreviewInvoicesID.text = "" Then Cancel = True
 
 End Sub
 
@@ -2247,7 +2247,7 @@ End Sub
 
 Private Sub txtPreviewReportsDescription_Validate(Cancel As Boolean)
 
-    If txtPreviewReportsID.text = "" And txtPreviewReportsDescription.text <> "" Then cmdIndex_Click 2
+    If txtPreviewReportsID.text = "" And txtPreviewReportsDescription.text <> "" Then cmdIndex_Click 2: If txtPreviewReportsID.text = "" Then Cancel = True
 
 End Sub
 
@@ -2267,7 +2267,7 @@ End Sub
 
 Private Sub txtUsualPaymentTermDescription_Validate(Cancel As Boolean)
 
-    If txtUsualPaymentTermID.text = "" And txtUsualPaymentTermDescription.text <> "" Then cmdIndex_Click 1
+    If txtUsualPaymentTermID.text = "" And txtUsualPaymentTermDescription.text <> "" Then cmdIndex_Click 1: If txtUsualPaymentTermID.text = "" Then Cancel = True
 
 End Sub
 

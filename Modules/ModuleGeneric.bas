@@ -623,7 +623,7 @@ Function AddColumnsToGrid(grdGrid As iGrid, headerHeight, strLayoutCol, tmpEleme
         With grdGrid.AddCol(sKey:=IIf(Left(arrKey(intLoop), 1) <> "X", arrKey(intLoop), Right(arrKey(intLoop), Len(arrKey(intLoop)) - 1)), sHeader:=strHeader, lWidth:=arrWidth(intLoop), eHdrTextFlags:=igTextCenter)
             Select Case arrJustification(intLoop)
                 Case "L": .eTextFlags = 0
-                Case "C": .eTextFlags = 1
+                Case "C": .eTextFlags = 1:
                 Case "R": .eTextFlags = 2
             End Select
             Select Case arrFormat(intLoop)

@@ -725,14 +725,12 @@ Begin VB.Form Transfers
             Top             =   3075
             _ExtentX        =   953
             _ExtentY        =   953
-            IconSizeX       =   26
-            IconSizeY       =   32
             ColourDepth     =   8
-            Size            =   28128
+            Size            =   6888
             Images          =   "Transfers.frx":05D2
             Version         =   131072
-            KeyCount        =   8
-            Keys            =   "ÿÿÿÿÿÿÿ"
+            KeyCount        =   6
+            Keys            =   "ÿÿÿÿÿ"
          End
       End
       Begin VB.Frame frmButtonFrame 
@@ -1094,7 +1092,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":73D2
+         PicNormal       =   "Transfers.frx":20DA
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1122,7 +1120,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":796C
+         PicNormal       =   "Transfers.frx":2674
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1172,7 +1170,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":7F06
+         PicNormal       =   "Transfers.frx":2C0E
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1200,7 +1198,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":84A0
+         PicNormal       =   "Transfers.frx":31A8
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1227,7 +1225,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   12583104
-         PicNormal       =   "Transfers.frx":8A3A
+         PicNormal       =   "Transfers.frx":3742
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1714,7 +1712,7 @@ Private Function AssignDriverToThisRoute(TransferID)
     Set rsTable = CommonDB.OpenRecordset("Transfers")
     
     With rsTable
-        .Index = "ID"
+        .index = "ID"
         .Seek "=", TransferID
         If Not .NoMatch Then
             .Edit
@@ -3004,7 +3002,7 @@ Private Sub chkAllTransfers_Click()
     lngTotalPersonsForSelectedRows = 0
     
     For lngRow = 1 To grdCoachesReport.RowCount
-        grdCoachesReport.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllTransfers.Value = 0, 1, 8))
+        grdCoachesReport.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllTransfers.Value = 0, 1, 6))
         lngTotalPersonsForSelectedRows = lngTotalPersonsForSelectedRows + IIf(grdCoachesReport.CellIcon(lngRow, "Selected") > 0, grdCoachesReport.CellValue(lngRow, "TransferTotal"), 0)
     Next lngRow
     
@@ -3014,9 +3012,9 @@ Private Sub chkAllTransfers_Click()
 
 End Sub
 
-Private Sub cmdButton_Click(Index As Integer)
+Private Sub cmdButton_Click(index As Integer)
                                 
-    Select Case Index
+    Select Case index
         Case 0
             FindRecordsAndPopulateGrid
         Case 1
@@ -3289,7 +3287,7 @@ Private Function AbortProcedure(blnStatus)
 
 End Function
 
-Private Sub cmdIndex_Click(Index As Integer)
+Private Sub cmdIndex_Click(index As Integer)
 
     Dim strShowInList As String
     Dim tmpTableData As typTableData
@@ -3297,7 +3295,7 @@ Private Sub cmdIndex_Click(Index As Integer)
     Dim strSQL As String
     Dim intSize As Integer
 
-    Select Case Index
+    Select Case index
         'Οδηγός σε σύνδεση δρομολογίου
         Case 0
             Set tmpRecordset = CheckForMatch("CommonDB", "Drivers", "DriverDescription", "String", txtDriverDescriptionForRoutes.text)
@@ -3366,7 +3364,7 @@ Private Function FindRoute()
     Set rsTable = CommonDB.OpenRecordset("PickupRoutes")
     
     With rsTable
-        .Index = "PickupRouteID"
+        .index = "PickupRouteID"
         .Seek "=", Val(txtRouteID.text)
         If Not .NoMatch Then
             txtRouteID.text = !PickupRouteID
@@ -3590,7 +3588,7 @@ End Sub
 Private Sub grdCoachesReport_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
     If KeyCode = vbKeySpace And grdCoachesReport.RowCount > 0 Then
-        grdCoachesReport.CellIcon(grdCoachesReport.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCoachesReport, 8, KeyCode, grdCoachesReport.CurRow, "TransferID"))
+        grdCoachesReport.CellIcon(grdCoachesReport.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCoachesReport, 6, KeyCode, grdCoachesReport.CurRow, "TransferID"))
         lblSelectedGridLines.Caption = SumSelectedGridRows(grdCoachesReport, False, "Σύνολο επιλεγμένων: ", "TransferTotal", "integer")
     End If
 
@@ -3613,17 +3611,11 @@ ErrTrap:
     
 End Sub
 
-Private Sub grdSummaryPerCustomer_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
-
-    PopupMenu mnuHdrPopUp
-    
-End Sub
-
-Private Sub grdSummaryPerCustomer_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
+Private Sub grdSummaryPerCustomer_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
 
     'Customers Grid
     
-    If KeyCode = vbKeySpace And grdSummaryPerDestination.RowCount > 0 Then
+    If grdSummaryPerDestination.RowCount > 0 Then
         
         'Toggle selected line
         grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerCustomer, 3, 32, grdSummaryPerCustomer.CurRow, "CustomerDescription"))
@@ -3641,20 +3633,44 @@ Private Sub grdSummaryPerCustomer_KeyDown(KeyCode As Integer, Shift As Integer, 
         RefreshList
         
     End If
-
 End Sub
 
-Private Sub grdSummaryPerDestination_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdSummaryPerCustomer_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
     
 End Sub
 
-Private Sub grdSummaryPerDestination_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
+Private Sub grdSummaryPerCustomer_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
+
+    'Customers Grid
+    
+    If KeyCode = vbKeySpace And grdSummaryPerDestination.RowCount > 0 Then
+        
+        'Toggle selected line
+        grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerCustomer, 3, KeyCode, grdSummaryPerCustomer.CurRow, "CustomerDescription"))
+        
+        'Routes
+        CalculateSummaryPerRouteForSelectedDestinationsAndCustomers
+        
+        'Drivers
+        CalculateSummaryPerDriverForSelectedDestinationsAndCustomersAndRoutes
+        
+        'Toggle checkbox
+        chkAllCustomers.Value = ToggleCheckBox(grdSummaryPerCustomer, chkAllCustomers.Value)
+        
+        'Main grid
+        RefreshList
+        
+    End If
+
+End Sub
+
+Private Sub grdSummaryPerDestination_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
 
     'Destinations Grid
         
-    If KeyCode = vbKeySpace And grdSummaryPerDestination.RowCount > 0 Then
+    If grdSummaryPerDestination.RowCount > 0 Then
         
         'Toggle selected line
         grdSummaryPerDestination.CellIcon(grdSummaryPerDestination.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerDestination, 2, 32, grdSummaryPerDestination.CurRow, "DestinationDescription"))
@@ -3675,7 +3691,57 @@ Private Sub grdSummaryPerDestination_KeyDown(KeyCode As Integer, Shift As Intege
         RefreshList
     
     End If
+End Sub
+
+Private Sub grdSummaryPerDestination_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+
+    PopupMenu mnuHdrPopUp
+    
+End Sub
+
+Private Sub grdSummaryPerDestination_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
+
+    'Destinations Grid
+        
+    If KeyCode = vbKeySpace And grdSummaryPerDestination.RowCount > 0 Then
+        
+        'Toggle selected line
+        grdSummaryPerDestination.CellIcon(grdSummaryPerDestination.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerDestination, 2, KeyCode, grdSummaryPerDestination.CurRow, "DestinationDescription"))
+        
+        'Customers
+        CalculateSummaryPerCustomerForSelectedDestinations
+        
+        'Routes
+        CalculateSummaryPerRouteForSelectedDestinationsAndCustomers
+        
+        'Drivers
+        CalculateSummaryPerDriverForSelectedDestinationsAndCustomersAndRoutes
+        
+        'Toggle checkbox
+        chkAllDestinations.Value = ToggleCheckBox(grdSummaryPerDestination, chkAllDestinations.Value)
+        
+        'Main grid
+        RefreshList
+    
+    End If
  
+End Sub
+
+Private Sub grdSummaryPerDriver_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
+
+    If grdSummaryPerRoute.RowCount > 0 Then
+        
+        'Toggle selected line
+        grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerDriver, 5, 32, grdSummaryPerDriver.CurRow, "DriverDescription"))
+        
+        'Toggle checkbox
+        chkAllDrivers.Value = ToggleCheckBox(grdSummaryPerDriver, chkAllDrivers.Value)
+        
+        'Main grid
+        RefreshList
+    
+    End If
+
 End Sub
 
 Private Sub grdSummaryPerDriver_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
@@ -3703,6 +3769,28 @@ Private Sub grdSummaryPerDriver_KeyDown(KeyCode As Integer, Shift As Integer, bD
 
 End Sub
 
+
+Private Sub grdSummaryPerRoute_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
+
+    'Routes Grid
+    
+    If grdSummaryPerRoute.RowCount > 0 Then
+        
+        'Toggle selected line
+        grdSummaryPerRoute.CellIcon(grdSummaryPerRoute.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerRoute, 4, 32, grdSummaryPerRoute.CurRow, "RouteShortDescription"))
+        
+        'Drivers
+        CalculateSummaryPerDriverForSelectedDestinationsAndCustomersAndRoutes
+        
+        'Toggle checkbox
+        chkAllRoutes.Value = ToggleCheckBox(grdSummaryPerRoute, chkAllRoutes.Value)
+        
+        'Main grid
+        RefreshList
+    
+    End If
+
+End Sub
 
 Private Sub grdSummaryPerRoute_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 

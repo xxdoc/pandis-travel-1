@@ -1668,6 +1668,7 @@ Dim blnIsMoving As Boolean
 Dim lngTotalPersonsForSelectedRows As Long
 
 Dim lngCurrentRow As Long
+Dim IsFirstReadFromDatabase As Boolean
 
 Private Function AssignRoutesToDriver()
 
@@ -2534,6 +2535,8 @@ End Function
 Private Function FindRecordsAndPopulateGrid()
 
     If ValidateFields(False) Then
+        'Init
+        IsFirstReadFromDatabase = True
         'Σύνολα
         CalculateSummaryPerDestination
         CalculateSummaryPerCustomerForSelectedDestinations
@@ -2544,8 +2547,11 @@ Private Function FindRecordsAndPopulateGrid()
         chkAllCustomers.Value = 1
         chkAllRoutes.Value = 1
         chkAllDrivers.Value = 1
+        'Upate Init
+        IsFirstReadFromDatabase = False
         'Κεντρικό πλέγμα
-        If RefreshList Then
+        RefreshList
+        If grdCoachesReport.RowCount > 0 Then
             lblTotalPersons.Caption = "Σύνολο ημέρας: " & format(CalculateTotalPersons, "#,##0")
             lblSelectedGridLines.Caption = "Σύνολο επιλεγμένων: 0"
             'Υπόλοιπα
@@ -2942,7 +2948,7 @@ Private Sub chkAllCustomers_Click()
     
     chkAllRoutes.Value = chkAllCustomers.Value
     
-    RefreshList
+    If Not IsFirstReadFromDatabase Then RefreshList
 
 End Sub
 
@@ -2958,7 +2964,7 @@ Private Sub chkAllDestinations_Click()
     
     chkAllCustomers.Value = chkAllDestinations.Value
     
-    RefreshList
+    If Not IsFirstReadFromDatabase Then RefreshList
 
 End Sub
 
@@ -2970,7 +2976,7 @@ Private Sub chkAllDrivers_Click()
         grdSummaryPerDriver.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(IIf(chkAllDrivers.Value <= 0, 1, 5))
     Next lngRow
     
-    RefreshList
+    If Not IsFirstReadFromDatabase Then RefreshList
     
 End Sub
 
@@ -2986,7 +2992,7 @@ Private Sub chkAllRoutes_Click()
     
     chkAllDrivers.Value = chkAllRoutes.Value
     
-    RefreshList
+    If Not IsFirstReadFromDatabase Then RefreshList
     
 End Sub
 
@@ -3295,6 +3301,7 @@ Private Function AbortProcedure(blnStatus)
     
     'Νέα αναζήτηση
     If Not blnStatus And Not cmdButton(9).Enabled Then
+        IsFirstReadFromDatabase = True
         ClearFields grdCoachesReport
         ClearFields grdSummaryPerDestination, grdSummaryPerCustomer, grdSummaryPerRoute, grdSummaryPerDriver
         ClearFields lblTotalPersons, lblSelectedGridLines

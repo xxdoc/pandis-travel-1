@@ -152,13 +152,15 @@ Function CheckForMatch(DBToUse, TableToUse, FieldNames, FieldTypes, ParamArray F
     arrFieldTypes() = Split(Replace(FieldTypes, " ", ""), ",")
     
     For intLoop = 0 To UBound(arrFieldNames)
-        
+        FieldValues(intLoop) = Replace(FieldValues(intLoop), "'", """") 'Replace single quotes, which causes things to break, with double
+    Next intLoop
+    
+    For intLoop = 0 To UBound(arrFieldNames)
+    
         If Len(FieldValues(intLoop)) >= 1 Then
         
             If arrFieldTypes(intLoop) = "String" Then strSingleQuotes = "'" Else strSingleQuotes = "" 'Add quotes if type is string, add nothing if type is numeric
              
-            FieldValues(intLoop) = Replace(FieldValues(intLoop), "'", "") 'Replace single quotes, which causes things to break, with nothing
-            
             If Left(FieldValues(intLoop), 1) <> "*" Then 'If the leftmost character is not "star"
                 If arrFieldTypes(intLoop) = "String" Then 'If the field type is a string
                     strCriteria = strCriteria & "Left(" & arrFieldNames(intLoop) & ", " & Len(FieldValues(intLoop)) & ")" & " = " & strSingleQuotes & FieldValues(intLoop) & strSingleQuotes 'Assemble the criteria with left characters as input with quotes
@@ -178,7 +180,7 @@ Function CheckForMatch(DBToUse, TableToUse, FieldNames, FieldTypes, ParamArray F
             strCriteria = strCriteria & IIf(intLoop + 1 <= UBound(arrFieldNames), " AND ", "") 'If there are more fields, add logical condition
             
         End If
-        
+            
     Next intLoop
     
     TempQuery.SQL = "SELECT * FROM " & TableToUse & IIf(strCriteria <> "", " WHERE " & strCriteria, "")
@@ -190,7 +192,6 @@ Function CheckForMatch(DBToUse, TableToUse, FieldNames, FieldTypes, ParamArray F
     Exit Function
     
 ErrTrap:
-    'Set CheckForMatch = rstTempRecordset
     DisplayErrorMessage True, Err.Description
 
 End Function

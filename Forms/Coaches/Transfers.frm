@@ -3347,9 +3347,11 @@ Private Sub cmdIndex_Click(index As Integer)
         Case 3
             'Σημείο παραλαβής
             If txtDestinationID.text <> "" Then
+                txtPickupPointDescription.text = Replace(txtPickupPointDescription.text, "'", "")
                 'Δεν έχω δώσει δρομολόγιο, βρίσκω τα σημεία παραλαβής που είναι συνδεδεμένα με τον δοσμένο προορισμό
                 If txtRouteID.text = "" Then
                     intSize = Len(txtPickupPointDescription.text)
+                    If intSize = 0 Then Exit Sub
                     strSQL = "SELECT DestinationID, RouteID, DestinationsRoutesPickupPoints.PickupPointID, PickupPointHotelDescription, PickupPointTime " _
                         & "FROM DestinationsRoutesPickupPoints " _
                         & "INNER JOIN PickupPoints ON DestinationsRoutesPickupPoints.PickupPointID = PickupPoints.PickupPointID " _

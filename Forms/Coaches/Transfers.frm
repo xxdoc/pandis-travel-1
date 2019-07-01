@@ -3132,9 +3132,9 @@ Private Function DoReport(action As String)
         If SelectPrinter("PrinterPrintsReports") Then
             For lngDriverRow = 1 To grdSummaryPerDriver.RowCount
                 If grdSummaryPerDriver.CellIcon(lngDriverRow, "Selected") > 0 Then
-                    CreateUnicodeFile "амажояа паяакабым циа : " & mskDate.text, "одгцос: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), intPrinterReportDetailLines - 11, lngDriverRow
+                    CreateUnicodeFile "амажояа паяакабым циа : " & mskDate.text, "одгцос: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), GetSetting(strApplicationName, "Settings", "Export Report Transfers Height") - 11, lngDriverRow
                     With rptTransfers
-                        .oneLongField.Font.Size = 10
+                        .oneLongField.Font.Size = 11
                         If intPreviewReports = 1 Then
                             .Restart
                             .Zoom = -2
@@ -3155,8 +3155,8 @@ Private Function DoReport(action As String)
     If action = "CreatePDF" Then
         For lngDriverRow = 1 To grdSummaryPerDriver.RowCount
             If grdSummaryPerDriver.CellIcon(lngDriverRow, "Selected") > 0 Then
-                CreateUnicodeFile "амажояа паяакабым циа : " & mskDate.text, "одгцос: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), GetSetting(strApplicationName, "Settings", "Export Report Height"), lngDriverRow
-                CreateUnisexPDF "амажояа паяакабым циа : " & mskDate.text & " одгцос: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), rptTransfers, 10
+                CreateUnicodeFile "амажояа паяакабым циа : " & mskDate.text, "одгцос: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), GetSetting(strApplicationName, "Settings", "Export Report Transfers Height") - 11, lngDriverRow
+                CreateUnisexPDF "амажояа паяакабым циа : " & mskDate.text & " одгцос: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), rptTransfers, 11
             End If
         Next lngDriverRow
         If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
@@ -3924,8 +3924,8 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
     Open strUnicodeFile For Output As #1
 
     'еПИЙЕЖАКъДЕР
-    PrintHeadings 99, intPageNo, strReportTitle, strReportSubTitle1
-    PrintColumnHeadings 1, "ыяа", 7, "сглеио паяакабгс", 39, "е", 42, "п", 45, "д", 49, "с", 51, "пекатгс", 72, "паяатгягсеис", 98, "п ^"
+    PrintHeadings 91, intPageNo, strReportTitle, strReportSubTitle1
+    PrintColumnHeadings 1, "ыяа", 7, "сглеио паяакабгс", 35, "е", 38, "п", 41, "д", 45, "с", 47, "пекатгс", 68, "паяатгягсеис", 89, "п ^"
     Print #1, "^"
     
     'еЦЦЯАЖщР
@@ -3949,12 +3949,12 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
                     If intPickupPointCount > 1 Then
                         'тУПЧМЫ ТА СЩМОКА ТОУ СГЛЕъОУ ПАЯАКАБчР
                         Print #1, _
-                            Tab(7); "сумока " & Left(strPickupPoint, 22); _
-                            Tab(40 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
-                            Tab(43 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
-                            Tab(46 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
-                            Tab(50 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), ""); _
-                            Tab(100); strSeperator
+                            Tab(7); "сумока " & Left(strPickupPoint, 18); _
+                            Tab(36 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
+                            Tab(39 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
+                            Tab(42 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
+                            Tab(46 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), ""); _
+                            Tab(91); strSeperator
                         'еЙТУПЫЛщМЕР ЦЯАЛЛщР
                         intProcessedDetailLines = intProcessedDetailLines + 1
                         'еКщЦВЫ ЦИА АККАЦч СЕКъДАР
@@ -3982,14 +3982,14 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
                 Print #1, _
                     Tab(1); .CellText(lngRow, "PickupPointTime"); _
                     Tab(7); Left(.CellText(lngRow, "PickupPointHotelDescription"), 20); _
-                    Tab(40 - Len((format(.CellText(lngRow, "TransferAdults"), "#,##0")))); format(.CellText(lngRow, "TransferAdults"), "#,##0"); _
-                    Tab(43 - Len((format(.CellText(lngRow, "TransferKids"), "#,##0")))); format(.CellText(lngRow, "TransferKids"), "#,##0"); _
-                    Tab(46 - Len((format(.CellText(lngRow, "TransferFree"), "#,##0")))); format(.CellText(lngRow, "TransferFree"), "#,##0"); _
-                    Tab(50 - Len((format(.CellText(lngRow, "TransferTotal"), "#,##0")))); format(.CellText(lngRow, "TransferTotal"), "#,##0"); _
-                    Tab(51); Left(.CellText(lngRow, "CustomerDescription"), 20); _
-                    Tab(72); Left(.CellText(lngRow, "TransferRemarks"), 25); _
-                    Tab(98); Left(.CellText(lngRow, "DestinationShortDescription"), 2); _
-                    Tab(100); IIf(blnMustPrintSeperator, strSeperator, "")
+                    Tab(36 - Len((format(.CellText(lngRow, "TransferAdults"), "#,##0")))); format(.CellText(lngRow, "TransferAdults"), "#,##0"); _
+                    Tab(39 - Len((format(.CellText(lngRow, "TransferKids"), "#,##0")))); format(.CellText(lngRow, "TransferKids"), "#,##0"); _
+                    Tab(42 - Len((format(.CellText(lngRow, "TransferFree"), "#,##0")))); format(.CellText(lngRow, "TransferFree"), "#,##0"); _
+                    Tab(46 - Len((format(.CellText(lngRow, "TransferTotal"), "#,##0")))); format(.CellText(lngRow, "TransferTotal"), "#,##0"); _
+                    Tab(47); Left(.CellText(lngRow, "CustomerDescription"), 20); _
+                    Tab(68); Left(.CellText(lngRow, "TransferRemarks"), 20); _
+                    Tab(89); Left(.CellText(lngRow, "DestinationShortDescription"), 2); _
+                    Tab(91); IIf(blnMustPrintSeperator, strSeperator, "")
                 'еЙТУПЫЛщМЕР ЦЯАЛЛщР
                 intProcessedDetailLines = intProcessedDetailLines + 1
                 'сЩМОКА СГЛЕъОУ ПАЯАКАБчР
@@ -4011,12 +4011,12 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
         If intPickupPointCount > 1 Then
             'тУПЧМЫ ТА СЩМОКА ТОУ СГЛЕъОУ ПАЯАКАБчР
             Print #1, _
-                Tab(7); "сумока " & Left(strPickupPoint, 22); _
-                Tab(40 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
-                Tab(43 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
-                Tab(46 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
-                Tab(50 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), ""); _
-                Tab(100); strSeperator
+                Tab(7); "сумока " & Left(strPickupPoint, 18); _
+                Tab(36 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
+                Tab(39 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
+                Tab(42 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
+                Tab(46 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), ""); _
+                Tab(91); strSeperator
             'еЙТУПЫЛщМЕР ЦЯАЛЛщР
             intProcessedDetailLines = intProcessedDetailLines + 1
         End If
@@ -4024,10 +4024,10 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
         'тУПЧМЫ ТА СЩМОКА ТОУ ОДГЦОЩ
         Print #1, "", _
             Tab(7); "сумока одгцоу "; _
-            Tab(40 - Len(format(lngTotalAdults, "#,##0"))); format(lngTotalAdults, "#,##0"); _
-            Tab(43 - Len(format(lngTotalKids, "#,##0"))); format(lngTotalKids, "#,##0"); _
-            Tab(46 - Len(format(lngTotalFree, "#,##0"))); format(lngTotalFree, "#,##0"); _
-            Tab(50 - Len(format(lngTotalPersons, "#,##0"))); format(lngTotalPersons, "#,##0")
+            Tab(36 - Len(format(lngTotalAdults, "#,##0"))); format(lngTotalAdults, "#,##0"); _
+            Tab(39 - Len(format(lngTotalKids, "#,##0"))); format(lngTotalKids, "#,##0"); _
+            Tab(42 - Len(format(lngTotalFree, "#,##0"))); format(lngTotalFree, "#,##0"); _
+            Tab(46 - Len(format(lngTotalPersons, "#,##0"))); format(lngTotalPersons, "#,##0")
         
     End With
     
@@ -4048,8 +4048,8 @@ CheckToEject:
         Print #1, ""
         Print #1, Tab(7); "г ейтупысг сумевифетаи..."
         intPageNo = intPageNo + 1
-        PrintHeadings 99, intPageNo, strReportTitle, strReportSubTitle1
-        PrintColumnHeadings 1, "ыяа", 7, "сглеио паяакабгс", 39, "е", 42, "п", 45, "д", 49, "с", 51, "пекатгс", 72, "паяатгягсеис", 98, "п ^"
+        PrintHeadings 91, intPageNo, strReportTitle, strReportSubTitle1
+        PrintColumnHeadings 1, "ыяа", 7, "сглеио паяакабгс", 35, "е", 38, "п", 41, "д", 45, "с", 47, "пекатгс", 68, "паяатгягсеис", 93, "п ^"
         Print #1, ""
         Print #1, Tab(7); "сумевеиа ейтупысгс апо пяогцоулемг секида..."
         Print #1, "^"

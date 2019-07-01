@@ -124,7 +124,7 @@ Function LinesHaveBeenSelected(grdGrid As iGrid)
     LinesHaveBeenSelected = False
     
     For lngRow = 1 To grdGrid.RowCount
-        If grdGrid.CellIcon(lngRow, "Selected") = 3 Then
+        If grdGrid.CellIcon(lngRow, "Selected") >= 1 Then
             LinesHaveBeenSelected = True
             Exit Function
         End If
@@ -472,13 +472,13 @@ ErrTrap:
 End Function
 
 
-Public Function CreateUnisexPDF(fileName As String, fontSize As Integer)
+Public Function CreateUnisexPDF(fileName As String, reportName As ActiveReport, fontSize As Integer)
 
     On Error GoTo ErrTrap
     
     Dim pdf As New ARExportPDF
 
-    With rptOneLiner
+    With reportName
         .oneLongField.Font.Size = fontSize
         .Restart
         .Run False
@@ -502,17 +502,6 @@ ErrTrap:
 
 End Function
 
-
-Public Function CreateAndShowPDF()
-
-    With rptOneLiner
-        .Zoom = -2
-        .Printer.ColorMode = vbPRCMMonochrome
-        .WindowState = vbMaximized
-        .Show 1
-    End With
-
-End Function
 
 Function ChangeEditButtonStatus(grdGrid, strTag, lngRow, lngCol)
 
@@ -542,7 +531,7 @@ Function EnableGrid(grid As iGrid, canEdit As Boolean)
 
 End Function
 
-Function AddColumnsToGrid(grdGrid As iGrid, headerHeight, strLayoutCol, tmpElements, tmpTitles)
+Function AddColumnsToGrid(grdGrid As iGrid, blnShowGridLines As Boolean, headerHeight, strLayoutCol, tmpElements, tmpTitles)
 
     On Error GoTo ErrTrap
     
@@ -558,7 +547,7 @@ Function AddColumnsToGrid(grdGrid As iGrid, headerHeight, strLayoutCol, tmpEleme
     With grdGrid
         .Clear True
         .Redraw = False
-        .GridLines = igGridLinesNone
+        .GridLines = IIf(blnShowGridLines, igGridLinesBoth, igGridLinesNone)
         .Visible = False
     End With
     
@@ -1011,7 +1000,7 @@ Sub PrintColumnHeadings(ParamArray columns() As Variant)
 
 End Sub
 
-Function PrintHeadings(tmpColumns, tmpPageNo, tmpReportTitle, tmpReportSubTitle1, tmpReportSubTitle2)
+Function PrintHeadings(tmpColumns, tmpPageNo, tmpReportTitle, tmpReportSubTitle1)
 
     Dim bytLeft As Byte
     Dim bytPageLen As Byte
@@ -1029,10 +1018,8 @@ Function PrintHeadings(tmpColumns, tmpPageNo, tmpReportTitle, tmpReportSubTitle1
     Print #1, Space(bytLeft) & ConvertToSpecialUpperCase(tmpReportTitle)
     bytLeft = (tmpColumns / 2) - (Len(tmpReportSubTitle1) / 2)
     Print #1, Space(bytLeft) & ConvertToSpecialUpperCase(tmpReportSubTitle1)
-    bytLeft = (tmpColumns / 2) - (Len(tmpReportSubTitle2) / 2)
-    Print #1, Space(bytLeft); ConvertToSpecialUpperCase(tmpReportSubTitle2)
     
-    Print #1, ""
+    Print #1, "^"
     
 End Function
 
@@ -1096,6 +1083,7 @@ Function SetUpGrid(myIconList As vbalImageList, ParamArray myGrid() As Variant)
             .Editable = False
             .DefaultRowHeight = 22
             .RowMode = True
+            .GridLines = igGridLinesBoth
             .GridLinesExtend = igGridLinesExtendBoth
             .ScrollBarStyle = 2
             .Top = .Top - 6

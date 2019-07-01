@@ -236,11 +236,11 @@ Begin VB.Form TablesVATPercents
          Top             =   450
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
+         Size            =   2296
          Images          =   "TablesVATPercents.frx":0000
          Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
+         KeyCount        =   2
+         Keys            =   "ÿ"
       End
    End
    Begin iGrid300_10Tec.iGrid grdVATPercents 
@@ -560,7 +560,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdVATPercents, 25, GetSetting(strApplicationName, "Layout Strings", "grdVATPercents"), "04NCNID,40NRFDescription", "ID,Ποσοστό"
+        AddColumnsToGrid grdVATPercents, False, 25, GetSetting(strApplicationName, "Layout Strings", "grdVATPercents"), "04NCNID,40NRFDescription", "ID,Ποσοστό"
         Me.Refresh
         PopulateGrid
     End If

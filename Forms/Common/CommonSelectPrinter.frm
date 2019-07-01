@@ -133,17 +133,6 @@ Begin VB.Form CommonSelectPrinter
          Top             =   225
          Width           =   3540
       End
-      Begin vbalIml6.vbalImageList lstIconList 
-         Left            =   75
-         Top             =   600
-         _ExtentX        =   953
-         _ExtentY        =   953
-         Size            =   4592
-         Images          =   "CommonSelectPrinter.frx":0000
-         Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
-      End
    End
    Begin iGrid300_10Tec.iGrid grdPrinterSelect 
       Height          =   3315
@@ -164,6 +153,12 @@ Begin VB.Form CommonSelectPrinter
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   -2147483631
+   End
+   Begin vbalIml6.vbalImageList lstIconList 
+      Left            =   4200
+      Top             =   3300
+      _ExtentX        =   953
+      _ExtentY        =   953
    End
    Begin VB.Shape shpBottomEdge 
       BackColor       =   &H00800080&
@@ -303,7 +298,7 @@ Private Sub Form_Activate()
                 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdPrinterSelect, 25, GetSetting(strApplicationName, "Layout Strings", "grdPrinterSelect"), "40NLNName,04NLNDetailLines,04NLNTopMargin,04NLNLeftMargin,40NLNFontName,04NLNFontSize,40NLNType", "Ονομα,ΑΓ,ΕΠ,ΑΠ,Γραμματοσειρά,Μ,Τύπος"
+        AddColumnsToGrid grdPrinterSelect, False, 25, GetSetting(strApplicationName, "Layout Strings", "grdPrinterSelect"), "40NLNName,04NLNDetailLines,04NLNTopMargin,04NLNLeftMargin,40NLNFontName,04NLNFontSize,40NLNType", "Ονομα,ΑΓ,ΕΠ,ΑΠ,Γραμματοσειρά,Μ,Τύπος"
         Me.Refresh
         PopulateGrid
     End If

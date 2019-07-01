@@ -26,9 +26,9 @@ Begin VB.Form TablesShips
       BorderStyle     =   0  'None
       Height          =   6465
       Index           =   3
-      Left            =   4500
+      Left            =   16875
       TabIndex        =   53
-      Top             =   1725
+      Top             =   825
       Width           =   12465
       Begin VB.Frame Frame 
          Appearance      =   0  'Flat
@@ -243,9 +243,9 @@ Begin VB.Form TablesShips
       BorderStyle     =   0  'None
       Height          =   6465
       Index           =   0
-      Left            =   750
+      Left            =   1650
       TabIndex        =   20
-      Top             =   4050
+      Top             =   3000
       Width           =   12540
       Begin UserControls.newText txtShipDescription 
          Height          =   465
@@ -2272,7 +2272,7 @@ Private Function SeekRecord()
     
 End Function
 
-Private Sub btnPanel_Click(Index As Integer)
+Private Sub btnPanel_Click(index As Integer)
 
     Dim intLoop As Integer
     
@@ -2282,11 +2282,11 @@ Private Sub btnPanel_Click(Index As Integer)
         shpBridge(intLoop).Visible = False
     Next intLoop
     
-    btnPanel(Index).Enabled = False
-    frmFrame(Index).Visible = True
-    shpBridge(Index).Visible = True
+    btnPanel(index).Enabled = False
+    frmFrame(index).Visible = True
+    shpBridge(index).Visible = True
     
-    Select Case Index
+    Select Case index
         'Στοιχεία πλοίου
         Case 0
             If txtShipDescription.Enabled Then txtShipDescription.SetFocus
@@ -2308,9 +2308,9 @@ Private Sub btnPanel_Click(Index As Integer)
 
 End Sub
 
-Private Sub cmdButton_Click(Index As Integer)
+Private Sub cmdButton_Click(index As Integer)
                                                                 
-    Select Case Index
+    Select Case index
         Case 0
             NewRecord
         Case 1
@@ -2329,13 +2329,13 @@ Private Sub cmdButton_Click(Index As Integer)
 
 End Sub
    
-Private Sub cmdIndex_Click(Index As Integer)
+Private Sub cmdIndex_Click(index As Integer)
 
     'Local variables
     Dim tmpTableData As typTableData
     Dim tmpRecordset As Recordset
     
-    Select Case Index
+    Select Case index
         Case 0
             'Επαναλαμβανόμενη καταχώρηση (Εύρεση τελευταίας εγγραφής)
             Set tmpRecordset = CheckForMatch("CommonDB", "YesOrNo", "YesOrNoDescription", "String", txtShipRepeatedEntriesDescription.text)
@@ -2360,7 +2360,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdShips, 25, GetSetting(strApplicationName, "Layout Strings", "grdShips"), "04LNID,40LNDescription", "ID,Ονομασία"
+        AddColumnsToGrid grdShips, False, 25, GetSetting(strApplicationName, "Layout Strings", "grdShips"), "04LNID,40LNDescription", "ID,Ονομασία"
         AddColumnsAndCombosToCrewGrid
         Me.Refresh
         PopulateGrid

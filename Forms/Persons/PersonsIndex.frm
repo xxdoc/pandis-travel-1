@@ -346,11 +346,11 @@ Begin VB.Form PersonsIndex
             Top             =   825
             _ExtentX        =   953
             _ExtentY        =   953
-            Size            =   4592
+            Size            =   2296
             Images          =   "PersonsIndex.frx":0038
             Version         =   131072
-            KeyCount        =   4
-            Keys            =   "ÿÿÿ"
+            KeyCount        =   2
+            Keys            =   "ÿ"
          End
       End
       Begin VB.Frame frmCriteria 
@@ -987,7 +987,7 @@ Private Sub Form_Activate()
                 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdPersonsIndex, 44, GetSetting(strApplicationName, "Layout Strings", "grdPersonsIndex"), _
+        AddColumnsToGrid grdPersonsIndex, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdPersonsIndex"), _
             "04NCIID,40NLNDescription,50NLNProfession,50NLNAddress,50NLNPhones,50NLNPersonInCharge,15NLNEmail,15NCNTaxNo,05NCNTaxOfficeID,05NCNXVATStateID,15NCNXAccountCode,05NCNSelected", _
             "ID,Επωνυμία,Δραστηριότητα,Διεύθυνση,Τηλέφωνα,Υπεύθυνος,E-mail,Α.Φ.Μ.,Δ.Ο.Υ.,Καθεστώς Φ.Π.Α.,Κωδ. Γεν. Λογιστικής,Ε"
         Me.Refresh
@@ -1070,7 +1070,7 @@ End Sub
 Private Sub grdPersonsIndex_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
     If KeyCode = vbKeySpace And grdPersonsIndex.RowCount > 0 Then
-        grdPersonsIndex.CellIcon(grdPersonsIndex.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdPersonsIndex, 4, KeyCode, grdPersonsIndex.CurRow, "ID"))
+        grdPersonsIndex.CellIcon(grdPersonsIndex.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdPersonsIndex, 2, KeyCode, grdPersonsIndex.CurRow, "ID"))
         lblSelectedGridLines.Caption = CountSelected(grdPersonsIndex)
     End If
 

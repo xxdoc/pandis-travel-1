@@ -17,6 +17,12 @@ Begin VB.Form CommonIndex
    ScaleHeight     =   8415
    ScaleWidth      =   3240
    StartUpPosition =   2  'CenterScreen
+   Begin vbalIml6.vbalImageList lstIconList 
+      Left            =   375
+      Top             =   6450
+      _ExtentX        =   953
+      _ExtentY        =   953
+   End
    Begin VB.Frame frmButtonFrame 
       Appearance      =   0  'Flat
       BackColor       =   &H0000FFFF&
@@ -80,17 +86,6 @@ Begin VB.Form CommonIndex
          PicOpacity      =   0
       End
    End
-   Begin vbalIml6.vbalImageList lstIconList 
-      Left            =   375
-      Top             =   6450
-      _ExtentX        =   953
-      _ExtentY        =   953
-      Size            =   4592
-      Images          =   "CommonIndex.frx":0000
-      Version         =   131072
-      KeyCount        =   4
-      Keys            =   "ÿÿÿ"
-   End
    Begin iGrid300_10Tec.iGrid grdGrid 
       Height          =   6165
       Left            =   300
@@ -153,9 +148,9 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Private Sub cmdButton_Click(Index As Integer)
+Private Sub cmdButton_Click(index As Integer)
 
-    Select Case Index
+    Select Case index
         Case 0
             Me.Hide
         Case 1
@@ -177,7 +172,7 @@ Private Function AbortProcedure()
     Dim lngCol As Long
     
     If cmdButton(1).Enabled Then
-        For lngCol = 1 To grdGrid.ColCount
+        For lngCol = 1 To grdGrid.colCount
             grdGrid.CellValue(CommonIndex.grdGrid.CurRow, lngCol) = ""
         Next lngCol
     End If

@@ -812,11 +812,6 @@ Begin VB.Form InvoicesIn
          Top             =   4950
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
-         Images          =   "InvoicesIn.frx":0038
-         Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
       End
    End
    Begin UserControls.newDate mskDateIssue 
@@ -953,7 +948,7 @@ Begin VB.Form InvoicesIn
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "InvoicesIn.frx":1248
+      PicNormal       =   "InvoicesIn.frx":0038
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -981,7 +976,7 @@ Begin VB.Form InvoicesIn
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "InvoicesIn.frx":17E2
+      PicNormal       =   "InvoicesIn.frx":05D2
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -1009,7 +1004,7 @@ Begin VB.Form InvoicesIn
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "InvoicesIn.frx":1D7C
+      PicNormal       =   "InvoicesIn.frx":0B6C
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -1037,7 +1032,7 @@ Begin VB.Form InvoicesIn
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "InvoicesIn.frx":2316
+      PicNormal       =   "InvoicesIn.frx":1106
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -1065,7 +1060,7 @@ Begin VB.Form InvoicesIn
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "InvoicesIn.frx":28B0
+      PicNormal       =   "InvoicesIn.frx":16A0
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -1093,7 +1088,7 @@ Begin VB.Form InvoicesIn
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "InvoicesIn.frx":2E4A
+      PicNormal       =   "InvoicesIn.frx":1C3A
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -1121,7 +1116,7 @@ Begin VB.Form InvoicesIn
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "InvoicesIn.frx":33E4
+      PicNormal       =   "InvoicesIn.frx":21D4
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -1149,7 +1144,7 @@ Begin VB.Form InvoicesIn
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "InvoicesIn.frx":397E
+      PicNormal       =   "InvoicesIn.frx":276E
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -2541,7 +2536,7 @@ End Function
 Private Sub Form_Load()
 
     UpdateColors Me, False
-    AddColumnsToGrid grdInvoicesIn, 44, GetSetting(strApplicationName, "Layout Strings", "grdInvoicesIn"), "04NCNID,04NCNVATPercentID,04NRFDescription,10YRFNet,04NRFTax,04NRFGross", "ID,VATPercentID,Ποσοστό,Καθαρή αξία,Αξία Φ.Π.Α.,Συνολική αξία"
+    AddColumnsToGrid grdInvoicesIn, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdInvoicesIn"), "04NCNID,04NCNVATPercentID,04NRFDescription,10YRFNet,04NRFTax,04NRFGross", "ID,VATPercentID,Ποσοστό,Καθαρή αξία,Αξία Φ.Π.Α.,Συνολική αξία"
     SetUpGrid lstIconList, grdInvoicesIn
     ClearFields txtInvoiceID, txtInvoiceTrnID, txtInvoiceCodeID, txtInvoicePersonID, txtInvoiceDateIn, txtCodeLastNo, txtCodeLastDate, txtCodePersonsPlusOrMinus, chkCodeHandID
     ClearFields lblCodeDescription

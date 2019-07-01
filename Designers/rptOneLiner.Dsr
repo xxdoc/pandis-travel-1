@@ -18,18 +18,11 @@ Option Explicit
 
 Private Sub ActiveReport_DataInitialize()
 
-    On Error GoTo ErrTrap
-    
     Open strUnicodeFile For Input As #1
     
     Fields.RemoveAll
     
     Fields.Add "OneLongField"
-    
-    Exit Sub
-    
-ErrTrap:
-    Exit Sub
     
 End Sub
 
@@ -56,11 +49,6 @@ Private Sub ActiveReport_FetchData(EOF As Boolean)
     Else
         Fields("OneLongField").Value = strLine
     End If
-    
-    DateSeperator.Visible = IIf(Mid(strLine, 3, 1) = ":", True, False)
-    DestinationSeperator.Visible = IIf(Mid(strLine, 3, 1) = ":", True, False)
-    
-    Seperator.Visible = IIf(Right(strLine, 1) = "^", True, False)
     
 End Sub
 

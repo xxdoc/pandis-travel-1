@@ -401,11 +401,11 @@ Begin VB.Form TablesPrices
          Top             =   1575
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
+         Size            =   2296
          Images          =   "TablesPriceLists.frx":0442
          Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
+         KeyCount        =   2
+         Keys            =   "ÿ"
       End
    End
    Begin VB.Frame frmFrame 
@@ -1041,7 +1041,7 @@ Begin VB.Form TablesPrices
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "TablesPriceLists.frx":1652
+      PicNormal       =   "TablesPriceLists.frx":0D5A
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -1069,7 +1069,7 @@ Begin VB.Form TablesPrices
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "TablesPriceLists.frx":1BEC
+      PicNormal       =   "TablesPriceLists.frx":12F4
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -1513,7 +1513,7 @@ Private Sub Form_Activate()
         Me.Tag = "False"
         DisableFields mskPriceFrom, mskPriceTo, mskPriceAdultWithTransfer, mskPriceKidWithTransfer, mskPriceAdultWithoutTransfer, mskPriceKidWithoutTransfer, cmdHalf(0), cmdHalf(1)
         EnableFields txtPriceCustomerDescription, txtPriceDestinationDescription
-        AddColumnsToGrid grdPrices, 44, GetSetting(strApplicationName, "Layout Strings", "grdPrices"), "04NCIPriceID,04NCICompanyID,04NCIDestinationID,10NCDFrom,10NCDTo,10NRFXAdultWithTransfer,10NRFXKidWithTransfer,10NRFXAdultWithoutTransfer,10NRFXKidWithoutTransfer", "ID,CompanyID,DestinationID,Από,Έως,Ενήλικες Με Μεταφορά,Παιδιά Με Μεταφορά,Ενήλικες Χωρίς Μεταφορά,Παιδιά Χωρίς Μεταφορά"
+        AddColumnsToGrid grdPrices, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdPrices"), "04NCIPriceID,04NCICompanyID,04NCIDestinationID,10NCDFrom,10NCDTo,10NRFXAdultWithTransfer,10NRFXKidWithTransfer,10NRFXAdultWithoutTransfer,10NRFXKidWithoutTransfer", "ID,CompanyID,DestinationID,Από,Έως,Ενήλικες Με Μεταφορά,Παιδιά Με Μεταφορά,Ενήλικες Χωρίς Μεταφορά,Παιδιά Χωρίς Μεταφορά"
         txtPriceCustomerDescription.SetFocus
     End If
     

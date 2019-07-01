@@ -201,11 +201,11 @@ Begin VB.Form UtilsSalesExport
          Top             =   75
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
+         Size            =   2296
          Images          =   "UtilsSalesExport.frx":0038
          Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
+         KeyCount        =   2
+         Keys            =   "ÿ"
       End
    End
    Begin VB.Frame frmCriteria 
@@ -1060,7 +1060,7 @@ End Sub
 
 Private Function AddColumns()
 
-    AddColumnsToGrid grdSalesExport, 44, GetSetting(strApplicationName, "Layout Strings", "grdSalesExport"), "04NCILine,15NCNXAccountCode,10NCDInvoiceDateIssue,15NCNShowInList,15NLNCustomerDescription,05NLNCodeShortDescriptionB,05NLNCodeShortDescriptionBSmaller,10NRFDebit,10NCND/C,15NLNTaxNo", "Γ,Κωδ. Γεν. Λογιστικής,Ημερομηνία,Τ,Επωνυμία,Παραστατικό,Παραστατικό,Αξία,Χ/Π,Α.Φ.Μ."
+    AddColumnsToGrid grdSalesExport, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdSalesExport"), "04NCILine,15NCNXAccountCode,10NCDInvoiceDateIssue,15NCNShowInList,15NLNCustomerDescription,05NLNCodeShortDescriptionB,05NLNCodeShortDescriptionBSmaller,10NRFDebit,10NCND/C,15NLNTaxNo", "Γ,Κωδ. Γεν. Λογιστικής,Ημερομηνία,Τ,Επωνυμία,Παραστατικό,Παραστατικό,Αξία,Χ/Π,Α.Φ.Μ."
     
 End Function
 

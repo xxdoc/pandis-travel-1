@@ -471,11 +471,11 @@ Begin VB.Form TablesPrinters
          Top             =   1950
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
+         Size            =   2296
          Images          =   "TablesPrinters.frx":1998
          Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
+         KeyCount        =   2
+         Keys            =   "ÿ"
       End
    End
    Begin UserControls.newInteger mskPrinterInvoiceHeight 
@@ -1229,7 +1229,7 @@ Begin VB.Form TablesPrinters
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "TablesPrinters.frx":2BA8
+      PicNormal       =   "TablesPrinters.frx":22B0
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -1743,7 +1743,7 @@ Private Sub Form_Activate()
     If Me.Tag = "True" Then
         FindPrinters
         Me.Tag = "False"
-        AddColumnsToGrid grdAppPrinters, 25, GetSetting(strApplicationName, "Layout Strings", "grdPrinters"), "04NCIID,40NLNDescription", "ID,Όνομα"
+        AddColumnsToGrid grdAppPrinters, False, 25, GetSetting(strApplicationName, "Layout Strings", "grdPrinters"), "04NCIID,40NLNDescription", "ID,Όνομα"
         Me.Refresh
         PopulateGrid
     End If

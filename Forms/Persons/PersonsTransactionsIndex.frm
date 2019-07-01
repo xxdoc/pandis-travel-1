@@ -362,11 +362,6 @@ Begin VB.Form PersonsTransactionsIndex
          Top             =   1950
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
-         Images          =   "PersonsTransactionsIndex.frx":0000
-         Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
       End
    End
    Begin VB.Frame frmCriteria 
@@ -444,7 +439,7 @@ Begin VB.Form PersonsTransactionsIndex
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "PersonsTransactionsIndex.frx":1210
+         PicNormal       =   "PersonsTransactionsIndex.frx":0000
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -668,10 +663,10 @@ Begin VB.Form PersonsTransactionsIndex
          Width           =   3765
          _ExtentX        =   6641
          _ExtentY        =   1085
-         Picture         =   "PersonsTransactionsIndex.frx":17AA
+         Picture         =   "PersonsTransactionsIndex.frx":059A
          ForeColor       =   0
          Appearance      =   0
-         BarPicture      =   "PersonsTransactionsIndex.frx":17C6
+         BarPicture      =   "PersonsTransactionsIndex.frx":05B6
          BarPictureMode  =   0
          BackPictureMode =   0
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1132,7 +1127,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdPersonsTransactionsIndex, 44, GetSetting(strApplicationName, "Layout Strings", "grdPersonsTransactionsIndex"), _
+        AddColumnsToGrid grdPersonsTransactionsIndex, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdPersonsTransactionsIndex"), _
             "05NCNTrnID,12NCDDateIssue,40NCNFullInvoice,40NLNCodeDescription,40NLNPersonDescription,10NRFAmount,04NCNMasterRefersTo,04NCNSecondaryRefersTo", _
             "TrnID,Εκδοση,Παραστατικό,Περιγραφή παραστατικού,Επωνυμία,Ποσό,A,B"
         Me.Refresh

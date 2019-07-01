@@ -857,11 +857,11 @@ Begin VB.Form PersonsLedger
             Top             =   1950
             _ExtentX        =   953
             _ExtentY        =   953
-            Size            =   4592
+            Size            =   2296
             Images          =   "PersonsLedger.frx":0B6C
             Version         =   131072
-            KeyCount        =   4
-            Keys            =   "ÿÿÿ"
+            KeyCount        =   2
+            Keys            =   "ÿ"
          End
       End
       Begin iGrid300_10Tec.iGrid grdCustomersLedger 
@@ -1460,7 +1460,7 @@ Private Function CalculateSoFarTotals(rstTransactions As Recordset)
 
 End Function
 
-Private Function CreateUnicodeFileForSuppliers(strReportTitle, strReportSubTitle1, strReportSubTitle2, intReportDetailLines)
+Private Function CreateUnicodeFileForSuppliers(strReportTitle, strReportSubTitle1, intReportDetailLines)
 
     'ÅêôõðùôÞò
     Dim lngRow As Long
@@ -1502,7 +1502,7 @@ Private Function CreateUnicodeFileForSuppliers(strReportTitle, strReportSubTitle
             
             'Eject
             If intProcessedDetailLines > intReportDetailLines Then
-                Print #1, "."
+                Print #1, ""
                 Print #1, Space(23) & "ÓÅ ÌÅÔÁÖÏÑÁ"; _
                 Tab(105 - Len(format(curDebit, "#,##0.00"))); format(curDebit, "#,##0.00"); _
                 Tab(116 - Len(format(curCredit, "#,##0.00"))); format(curCredit, "#,##0.00"); _
@@ -1514,7 +1514,7 @@ Private Function CreateUnicodeFileForSuppliers(strReportTitle, strReportSubTitle
                     Tab(105 - Len(format(curDebit, "#,##0.00"))); format(curDebit, "#,##0.00"); _
                     Tab(116 - Len(format(curCredit, "#,##0.00"))); format(curCredit, "#,##0.00"); _
                     Tab(128 - Len(format(curBalance, "#,##0.00"))); format(curBalance, "#,##0.00")
-                Print #1, "."
+                Print #1, ""
                 intProcessedDetailLines = intProcessedDetailLines + 2
             End If
             
@@ -1528,10 +1528,10 @@ Private Function CreateUnicodeFileForSuppliers(strReportTitle, strReportSubTitle
 Headers:
 
     intPageNo = intPageNo + 1
-    PrintHeadings 127, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+    PrintHeadings 127, intPageNo, strReportTitle, strReportSubTitle1
     PrintColumnHeadings 10, "ÓÔÏÉ×ÅÉÏ"
     PrintColumnHeadings 1, "ÇÌÅÑ/ÍÉÁ", 10, "ÓÅÉÑÁ - Íï", 24, "ÐÅÑÉÃÑÁÖÇ ÅÎÏÄÏÕ", 99, "×ÑÅÙÓÇ", 109, "ÐÉÓÔÙÓÇ", 120, "ÕÐÏËÏÉÐÏ"
-    Print #1, "."
+    Print #1, ""
     intProcessedDetailLines = 7
       
     Return
@@ -1744,7 +1744,7 @@ Private Function EditRecord()
     
 End Function
 
-Private Function CreateUnicodeFileForCustomers(strReportTitle, strReportSubTitle1, strReportSubTitle2, intReportDetailLines)
+Private Function CreateUnicodeFileForCustomers(strReportTitle, strReportSubTitle1, intReportDetailLines)
 
     'ÅêôõðùôÞò
     Dim lngRow As Long
@@ -1801,7 +1801,7 @@ Private Function CreateUnicodeFileForCustomers(strReportTitle, strReportSubTitle
             
             'Eject
             If intProcessedDetailLines > intReportDetailLines Then
-                Print #1, "."
+                Print #1, ""
                 Print #1, Space(23) & "ÓÅ ÌÅÔÁÖÏÑÁ"; _
                 Tab(53 - Len(format(intAdults, "#,##0"))); format(intAdults, "#,##0"); _
                 Tab(61 - Len(format(intKids, "#,##0"))); format(intKids, "#,##0"); _
@@ -1823,7 +1823,7 @@ Private Function CreateUnicodeFileForCustomers(strReportTitle, strReportSubTitle
                     Tab(109 - Len(format(curDebit, "#,##0.00"))); format(curDebit, "#,##0.00"); _
                     Tab(123 - Len(format(curCredit, "#,##0.00"))); format(curCredit, "#,##0.00"); _
                     Tab(137 - Len(format(curBalance, "#,##0.00"))); format(curBalance, "#,##0.00")
-                Print #1, "."
+                Print #1, ""
                 intProcessedDetailLines = intProcessedDetailLines + 2
             End If
             
@@ -1836,10 +1836,10 @@ Private Function CreateUnicodeFileForCustomers(strReportTitle, strReportSubTitle
     
 Headers:
     intPageNo = intPageNo + 1
-    PrintHeadings 136, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+    PrintHeadings 136, intPageNo, strReportTitle, strReportSubTitle1
     PrintColumnHeadings 10, "ÓÔÏÉ×ÅÉÏ", 47, "ÅÍÇËÉ-", 57, "ÐÁÉ-", 64, "ÄÙ-", 73, "×ÑÅÙÓÅÉÓ", 87, "×ÑÅÙÓÅÉÓ", 103, "ÓÕÍÏËÏ"
     PrintColumnHeadings 1, "ÇÌÅÑ/ÍÉÁ", 10, "ÓÅÉÑÁ - Íï", 24, "ÐÑÏÏÑÉÓÌÏÓ", 50, "ÊÅÓ", 58, "ÄÉÁ", 63, "ÑÅÁÍ", 73, "ÅÍÇËÉÊÙÍ", 88, "ÐÁÉÄÉÙÍ", 102, "×ÑÅÙÓÇÓ", 116, "ÐÉÓÔÙÓÇ", 129, "ÕÐÏËÏÉÐÏ"
-    Print #1, "."
+    Print #1, ""
     intProcessedDetailLines = 11
       
     Return
@@ -1988,8 +1988,8 @@ Private Function DoReport(action As String, Persons As String)
     
     If action = "Print" Then
         If SelectPrinter("PrinterPrintsReports") Then
-            If Persons = "Customers" Then CreateUnicodeFileForCustomers lblTitle.Caption & " " & txtPersonDescription.text, " áðü " & mskInvoiceDateIssueFrom.text & " Ýùò " & mskInvoiceDateIssueTo.text, "", intPrinterReportDetailLines
-            If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers lblTitle.Caption & " " & txtPersonDescription.text, " áðü " & mskInvoiceDateIssueFrom.text & " Ýùò " & mskInvoiceDateIssueTo.text, "", intPrinterReportDetailLines
+            If Persons = "Customers" Then CreateUnicodeFileForCustomers lblTitle.Caption & " " & txtPersonDescription.text, " áðü " & mskInvoiceDateIssueFrom.text & " Ýùò " & mskInvoiceDateIssueTo.text, intPrinterReportDetailLines - 11
+            If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers lblTitle.Caption & " " & txtPersonDescription.text, " áðü " & mskInvoiceDateIssueFrom.text & " Ýùò " & mskInvoiceDateIssueTo.text, intPrinterReportDetailLines - 15
             With rptOneLiner
                 If intPreviewReports = 1 Then
                     .Restart
@@ -1997,6 +1997,7 @@ Private Function DoReport(action As String, Persons As String)
                     .WindowState = vbMaximized
                     .Show 1
                 Else
+                    .Restart
                     .Printer.DeviceName = strPrinterName
                     .PrintReport False
                     .Run True
@@ -2006,10 +2007,10 @@ Private Function DoReport(action As String, Persons As String)
     End If
     
     If action = "CreatePDF" Then
-        If Persons = "Customers" Then CreateUnicodeFileForCustomers lblTitle.Caption & " " & txtPersonDescription.text, " áðü " & mskInvoiceDateIssueFrom.text & " Ýùò " & mskInvoiceDateIssueTo.text, "", GetSetting(strApplicationName, "Settings", "Export Report Height")
-        If Persons = "Customers" Then CreateUnisexPDF lblTitle.Caption & " " & txtPersonDescription.text, 7
-        If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers lblTitle.Caption & " " & txtPersonDescription.text, " áðü " & mskInvoiceDateIssueFrom.text & " Ýùò " & mskInvoiceDateIssueTo.text, "", GetSetting(strApplicationName, "Settings", "Export Report Height")
-        If Persons = "Suppliers" Then CreateUnisexPDF lblTitle.Caption & " " & txtPersonDescription.text, 7
+        If Persons = "Customers" Then CreateUnicodeFileForCustomers lblTitle.Caption & " " & txtPersonDescription.text, " áðü " & mskInvoiceDateIssueFrom.text & " Ýùò " & mskInvoiceDateIssueTo.text, GetSetting(strApplicationName, "Settings", "Export Report Height")
+        If Persons = "Customers" Then CreateUnisexPDF lblTitle.Caption & " " & txtPersonDescription.text, rptOneLiner, 7
+        If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers lblTitle.Caption & " " & txtPersonDescription.text, " áðü " & mskInvoiceDateIssueFrom.text & " Ýùò " & mskInvoiceDateIssueTo.text, GetSetting(strApplicationName, "Settings", "Export Report Height") - 4
+        If Persons = "Suppliers" Then CreateUnisexPDF lblTitle.Caption & " " & txtPersonDescription.text, rptOneLiner, 7
         If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
         End If
     End If
@@ -2133,6 +2134,10 @@ Private Function RefreshList()
     
     'ÐëÝãìá
     With grdCustomersLedger
+        .Clear
+        .Redraw = False
+    End With
+    With grdSuppliersLedger
         .Clear
         .Redraw = False
     End With
@@ -2311,10 +2316,10 @@ Private Sub Form_Activate()
                 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdCustomersLedger, 44, GetSetting(strApplicationName, "Layout Strings", "grdCustomersLedger"), _
+        AddColumnsToGrid grdCustomersLedger, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdCustomersLedger"), _
             "12NCDDate,50NLNInvoiceDetails,40NLNDestination,10NRIAdults,10NRIKids,10NRIFree,10NRFXAdultsAmount,10NRFXKidsAmount,10NRFXDirectAmount,10NRFXDebit,10NRFCredit,10NRFBalance,04NCNMasterRefersTo,04NCNSecondaryRefersTo,04NCNSelected,05NCITrnID", _
             "Åêäïóç,Ðáñáóôáôéêü,Ðñïïñéóìüò,ÅíÞëéêåò,ÐáéäéÜ,ÄùñåÜí,×ñÝùóç åíçëßêùí,×ñÝùóç ðáéäéþí,Áðåõèåßáò ðïóü,Óýíïëï ÷ñÝùóçò,Ðßóôùóç,Õðüëïéðï,A,B,E,TrnID"
-        AddColumnsToGrid grdSuppliersLedger, 44, GetSetting(strApplicationName, "Layout Strings", "grdSuppliersLedger"), _
+        AddColumnsToGrid grdSuppliersLedger, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdSuppliersLedger"), _
             "12NCDDate,50NLNInvoiceDetails,40NLNExpenseDescription,10NRFDebit,10NRFCredit,10NRFBalance,04NCNMasterRefersTo,04NCNSecondaryRefersTo,04NCNSelected,05NCITrnID", _
             "Åêäïóç,Ðáñáóôáôéêü,Êáôçãïñßá åîüäïõ,×ñÝùóç,Ðßóôùóç,Õðüëïéðï,A,B,E,TrnID"
         Me.Refresh
@@ -2325,7 +2330,7 @@ Private Sub Form_Activate()
     End If
             
     'AddDummyLines grdCustomersLedger, "99/99/9999", "ÁÁÁÁÁÁÁÁÁÁÁÁ", "ÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁ", "999999", "999999", "999999", "-9999999", "-9999999", "-9999999", "-9999999", "-9999999", "-9999999", "", "", "", ""
-    'AddDummyLines grdSuppliersLedger, "99999", "A99/99/9999A", "ÁÁÁÁÁÁÁÁÁÁÁÁ", "ÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁ", "-9999999", "-9999999", "-9999999"
+    'AddDummyLines grdSuppliersLedger, "A99/99/9999A", "ÁÁÁÁÁÁÁÁÁÁÁÁ", "ÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁ", "-9999999", "-9999999", "-9999999"
     
 End Sub
 
@@ -2403,7 +2408,7 @@ End Sub
 Private Sub grdCustomersLedger_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
     If KeyCode = vbKeySpace And grdCustomersLedger.RowCount > 0 Then
-        grdCustomersLedger.CellIcon(grdCustomersLedger.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCustomersLedger, 4, KeyCode, grdCustomersLedger.CurRow, "TrnID"))
+        grdCustomersLedger.CellIcon(grdCustomersLedger.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCustomersLedger, 2, KeyCode, grdCustomersLedger.CurRow, "TrnID"))
         lblSelectedGridLines.Caption = CountSelected(grdCustomersLedger)
         lblSelectedGridTotals.Caption = SumSelectedGridRows(grdCustomersLedger, True, "", "AdultsAmount", "decimal", "KidsAmount", "decimal", "DirectAmount", "decimal", "Debit", "decimal", "Credit", "decimal", "Balance", "decimal")
     End If
@@ -2443,7 +2448,7 @@ End Sub
 Private Sub grdSuppliersLedger_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
     If KeyCode = vbKeySpace And grdSuppliersLedger.RowCount > 0 Then
-        grdSuppliersLedger.CellIcon(grdSuppliersLedger.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSuppliersLedger, 4, KeyCode, grdSuppliersLedger.CurRow, "TrnID"))
+        grdSuppliersLedger.CellIcon(grdSuppliersLedger.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSuppliersLedger, 2, KeyCode, grdSuppliersLedger.CurRow, "TrnID"))
         lblSelectedGridLines.Caption = CountSelected(grdSuppliersLedger)
         lblSelectedGridTotals.Caption = SumSelectedGridRows(grdSuppliersLedger, True, "", "Debit", "decimal", "Credit", "decimal", "Balance", "decimal")
     End If

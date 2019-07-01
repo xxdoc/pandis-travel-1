@@ -696,11 +696,12 @@ Begin VB.Form TablesPickupPoints
             Top             =   825
             _ExtentX        =   953
             _ExtentY        =   953
-            Size            =   4592
+            ColourDepth     =   8
+            Size            =   6888
             Images          =   "TablesPickupPoints.frx":0B6C
             Version         =   131072
-            KeyCount        =   4
-            Keys            =   "ЪЪЪ"
+            KeyCount        =   6
+            Keys            =   "ЪЪЪЪЪ"
          End
       End
       Begin iGrid300_10Tec.iGrid grdPickupPoints 
@@ -1148,7 +1149,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdPickupPoints, 44, GetSetting(strApplicationName, "Layout Strings", "grdPickupPoints"), _
+        AddColumnsToGrid grdPickupPoints, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdPickupPoints"), _
             "04NCIID,04NCIRouteID,04NCIDestinationID,50NLNHotelDescription,50NLNExactPoint,07NCTTime,05NCNStatus,05NCNDeleted", _
             "ID,RouteID,DestinationID,пЕЯИЦЯАЖч,сГЛЕъО,©ЯА,м,д"
         Me.Refresh
@@ -1306,7 +1307,7 @@ End Sub
 Private Function PrintRecords()
 
     If SelectPrinter("PrinterPrintsReports") Then
-        CreateUnicodeFile "сглеиа паяакабгс дяолокоциоу", txtRouteDescription.text, "", intPrinterReportDetailLines
+        CreateUnicodeFile "сглеиа паяакабгс дяолокоциоу", txtRouteDescription.text, intPrinterReportDetailLines - 15
         With rptOneLiner
             If intPreviewReports = 1 Then
                 .Restart
@@ -1314,6 +1315,7 @@ Private Function PrintRecords()
                 .WindowState = vbMaximized
                 .Show 1
             Else
+                .Restart
                 .Printer.DeviceName = strPrinterName
                 .PrintReport False
                 .Run True
@@ -1323,7 +1325,7 @@ Private Function PrintRecords()
 
 End Function
 
-Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReportSubTitle2, intReportDetailLines)
+Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReportDetailLines)
 
     'еЙТУПЫТчР
     Dim lngRow As Long
@@ -1371,7 +1373,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
     
 Headers:
     intPageNo = intPageNo + 1
-    PrintHeadings 107, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+    PrintHeadings 107, intPageNo, strReportTitle, strReportSubTitle1
     PrintColumnHeadings 1, "пеяицяажг", 52, "сглеио", 103, "ыяа"
     Print #1, ""
     intProcessedDetailLines = 6
@@ -1384,7 +1386,7 @@ Private Function ExportRecords()
 
     Dim pdf As New ARExportPDF
     
-    CreateUnicodeFile "сглеиа паяакабгс дяолокоциоу", txtRouteDescription.text, "", GetSetting(strApplicationName, "Settings", "Export Report Height")
+    CreateUnicodeFile "сглеиа паяакабгс дяолокоциоу", txtRouteDescription.text, GetSetting(strApplicationName, "Settings", "Export Report Height") - 4
     
     With rptOneLiner
         .Restart

@@ -215,11 +215,11 @@ Begin VB.Form TablesTaxOffices
          Top             =   450
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
+         Size            =   2296
          Images          =   "TablesTaxOffices.frx":0000
          Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
+         KeyCount        =   2
+         Keys            =   "ÿ"
       End
    End
    Begin iGrid300_10Tec.iGrid grdTaxOffices 
@@ -562,7 +562,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdTaxOffices, 25, GetSetting(strApplicationName, "Layout Strings", "grdTaxOffices"), "04NCIID,40NLNDescription", "ID,Ονομασία"
+        AddColumnsToGrid grdTaxOffices, False, 25, GetSetting(strApplicationName, "Layout Strings", "grdTaxOffices"), "04NCIID,40NLNDescription", "ID,Ονομασία"
         Me.Refresh
         PopulateGrid
     End If

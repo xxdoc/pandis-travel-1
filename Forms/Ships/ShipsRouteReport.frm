@@ -664,11 +664,11 @@ Begin VB.Form ShipsRouteReport
             Top             =   2700
             _ExtentX        =   953
             _ExtentY        =   953
-            Size            =   4592
+            Size            =   2296
             Images          =   "ShipsRouteReport.frx":0038
             Version         =   131072
-            KeyCount        =   4
-            Keys            =   "ÿÿÿ"
+            KeyCount        =   2
+            Keys            =   "ÿ"
          End
          Begin MSComDlg.CommonDialog OpenFileDialog 
             Left            =   675
@@ -777,7 +777,7 @@ Begin VB.Form ShipsRouteReport
                Strikethrough   =   0   'False
             EndProperty
             ForeColor       =   0
-            PicNormal       =   "ShipsRouteReport.frx":1248
+            PicNormal       =   "ShipsRouteReport.frx":0950
             PicSizeH        =   16
             PicSizeW        =   16
          End
@@ -805,7 +805,7 @@ Begin VB.Form ShipsRouteReport
                Strikethrough   =   0   'False
             EndProperty
             ForeColor       =   0
-            PicNormal       =   "ShipsRouteReport.frx":17E2
+            PicNormal       =   "ShipsRouteReport.frx":0EEA
             PicSizeH        =   16
             PicSizeW        =   16
          End
@@ -1279,7 +1279,7 @@ Private Function DeleteRecord()
     'Διαγραφή επιλεγμένων εγγραφών
     With grdShipsRouteReport
         For lngRow = 1 To .RowCount
-            If .CellIcon(lngRow, "Selected") = 3 Then
+            If .CellIcon(lngRow, "Selected") >= 1 Then
                 If Not MainDeleteRecord("CommonDB", "Manifest", strApplicationName, "TripID", .CellValue(lngRow, "ID"), False) Then
                     Print #1, .CellValue(lngRow, "ID"); " " & .CellValue(lngRow, "Date") & " " & .CellValue(lngRow, "LastName") & " " & .CellValue(lngRow, "FirstName")
                     blnErrors = True
@@ -1388,12 +1388,14 @@ Private Function RunActiveReport()
         .Caption = lblCriteria.Caption
         .Restart
         If intPreviewReports = 1 Then
+            .Restart
             .Zoom = -2
             .Printer.ColorMode = vbPRCMMonochrome
             .WindowState = vbMaximized
             .Run False
             .Show 1
         Else
+            .Restart
             .Printer.DeviceName = strPrinterName
             .PrintReport False
             .Run True
@@ -1717,7 +1719,7 @@ Private Sub Form_Activate()
         
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdShipsRouteReport, 44, GetSetting(strApplicationName, "Layout Strings", "grdShipsRouteReport"), _
+        AddColumnsToGrid grdShipsRouteReport, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdShipsRouteReport"), _
             "05NRNID,05NRNAA,10NCDDate,40NLNLastName,10NLNFirstName,40NLNRemarks,40NLNCare,40NLNOccupantDescription,40NLNGender,40NLNAge,05NLNRouteID,05NLNDestinationID,05NLNShipID,05NLNOccupantDescriptionID,05NLNGenderID,05NLNAgeID,05NLNShowInList,05NLNUser,05NCNSelected", _
             "ID,Α/Α,Ημερομηνία,Επώνυμο,Ονομα,Παρατηρήσεις,Ειδική φροντίδα,Ιδιότητα,Φύλο,Ηλικία,RouteID,DestinationID,ShipID,OccupantDescriptionID,GenderID,AgeID,ShowInList,User,Ε"
         Me.Refresh
@@ -1828,7 +1830,7 @@ Private Sub grdShipsRouteReport_KeyDown(KeyCode As Integer, Shift As Integer, bD
     'Επιλογή γραμμής
     If KeyCode = vbKeySpace Then
         With grdShipsRouteReport
-            .CellIcon(grdShipsRouteReport.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdShipsRouteReport, 4, KeyCode, .CurRow, 1))
+            .CellIcon(grdShipsRouteReport.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdShipsRouteReport, 2, KeyCode, .CurRow, 1))
             cmdButton(2).Enabled = False
             For lngRow = 1 To .RowCount
                 If .CellIcon(lngRow, "Selected") >= 1 Then
@@ -1843,7 +1845,7 @@ Private Sub grdShipsRouteReport_KeyDown(KeyCode As Integer, Shift As Integer, bD
     If grdShipsRouteReport.RowCount > 0 Then
         If KeyCode = vbKeyAdd And CtrlDown = 4 Then
             For lngRow = 1 To grdShipsRouteReport.RowCount
-                grdShipsRouteReport.CellIcon(lngRow, "Selected") = 3
+                grdShipsRouteReport.CellIcon(lngRow, "Selected") = 2
             Next lngRow
             cmdButton(2).Enabled = True
         End If

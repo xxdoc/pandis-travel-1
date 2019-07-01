@@ -659,9 +659,9 @@ Private Function AddNextOrLastPageFooter(intProcessedDetailLines, intReportDetai
 
 End Function
 
-Private Function AddPageHeader(intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2)
+Private Function AddPageHeader(intPageNo, strReportTitle, strReportSubTitle1)
 
-    PrintHeadings 107, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+    PrintHeadings 107, intPageNo, strReportTitle, strReportSubTitle1
     PrintColumnHeadings 1, "ΠΕΡΙΓΡΑΦΗ", 52, "ΣΗΜΕΙΟ", 103, "ΩΡΑ"
     Print #1, ""
 
@@ -670,7 +670,7 @@ End Function
 Private Function PrintRecords()
 
     If SelectPrinter("PrinterPrintsReports") Then
-        CreateUnicodeFile "ΣΗΜΕΙΑ ΠΑΡΑΛΑΒΗΣ ΠΡΟΟΡΙΣΜΟΥ", txtDestinationDescription.text, "", intPrinterReportDetailLines
+        CreateUnicodeFile "ΣΗΜΕΙΑ ΠΑΡΑΛΑΒΗΣ ΠΡΟΟΡΙΣΜΟΥ", txtDestinationDescription.text, intPrinterReportDetailLines - 15
         With rptOneLiner
             If intPreviewReports = 1 Then
                 .Restart
@@ -678,6 +678,7 @@ Private Function PrintRecords()
                 .WindowState = vbMaximized
                 .Show 1
             Else
+                .Restart
                 .Printer.DeviceName = strPrinterName
                 .PrintReport False
                 .Run True
@@ -840,7 +841,7 @@ ErrTrap:
     
 End Function
 
-Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReportSubTitle2, intReportDetailLines)
+Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReportDetailLines)
 
     Dim lngRow As Long
     Dim intProcessedDetailLines As Integer
@@ -877,7 +878,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
                     If blnFirstPage Then
                         'Προσθέτω νέα σελίδα
                         intPageNo = intPageNo + 1
-                        AddPageHeader intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+                        AddPageHeader intPageNo, strReportTitle, strReportSubTitle1
                         intProcessedDetailLines = 4
                         'Δεν είμαι πλέον στην πρώτη σελίδα
                         blnFirstPage = False
@@ -888,7 +889,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
                             AddNextOrLastPageFooter intProcessedDetailLines, intReportDetailLines, lngTotalDetailLines, 24
                             'Προσθέτω νέα σελίδα
                             intPageNo = intPageNo + 1
-                            AddPageHeader intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+                            AddPageHeader intPageNo, strReportTitle, strReportSubTitle1
                             intProcessedDetailLines = 4
                         End If
                     End If
@@ -914,7 +915,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
                 AddNextOrLastPageFooter intProcessedDetailLines, intReportDetailLines, lngTotalDetailLines, 24
                 'Προσθέτω νέα σελίδα
                 intPageNo = intPageNo + 1
-                AddPageHeader intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+                AddPageHeader intPageNo, strReportTitle, strReportSubTitle1
                 'Προσθέτω την περιγραφή του δρομολογίου (συνέχεια από την προηγούμενη σελίδα)
                 AddPickupRouteDescription strPickupRouteDescription & " (συνέχεια)"
                 intProcessedDetailLines = 8
@@ -1000,9 +1001,9 @@ Private Function SaveRecord()
     
 End Function
 
-Private Sub cmdButton_Click(Index As Integer)
+Private Sub cmdButton_Click(index As Integer)
                                                                 
-    Select Case Index
+    Select Case index
         Case 0
             FindRecordsAndPopulateGrid
         Case 1
@@ -1023,7 +1024,7 @@ Private Function ExportRecords()
 
     Dim pdf As New ARExportPDF
     
-    CreateUnicodeFile "ΣΗΜΕΙΑ ΠΑΡΑΛΑΒΗΣ ΠΡΟΟΡΙΣΜΟΥ", txtDestinationDescription.text, "", GetSetting(strApplicationName, "Settings", "Export Report Height")
+    CreateUnicodeFile "ΣΗΜΕΙΑ ΠΑΡΑΛΑΒΗΣ ΠΡΟΟΡΙΣΜΟΥ", txtDestinationDescription.text, GetSetting(strApplicationName, "Settings", "Export Report Height") - 4
     
     With rptOneLiner
         .Restart
@@ -1039,12 +1040,12 @@ Private Function ExportRecords()
 End Function
 
 
-Private Sub cmdIndex_Click(Index As Integer)
+Private Sub cmdIndex_Click(index As Integer)
 
     Dim tmpTableData As typTableData
     Dim tmpRecordset As Recordset
     
-    Select Case Index
+    Select Case index
         Case 0
             'Συντ. προορισμού
             Set tmpRecordset = CheckForMatch("CommonDB", "Destinations", "DestinationShortDescription", "String", txtDestinationShortDescription.text)
@@ -1067,7 +1068,7 @@ Private Sub cmdIndex_Click(Index As Integer)
 
 End Sub
 
-Private Sub cmdIndex_Validate(Index As Integer, Cancel As Boolean)
+Private Sub cmdIndex_Validate(index As Integer, Cancel As Boolean)
 
     If txtDestinationShortDescription.text <> "" Then cmdIndex_Click 0
     
@@ -1077,7 +1078,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdDestinationsJoinRoutes, 44, GetSetting(strApplicationName, "Layout Strings", "grdDestinationsJoinRoutes"), "04NCISelectedPickupRouteID,04NCISelectedPickupPointID,04NCIPickupRouteID,04NCIPickupPointID,40NLNPickupRouteDescription,40NLNPickupPointDescription,40NLNPickupPointExactPoint,06NCTPickupPointTime", "-,-,-,-,-,Περιγραφή,Σημείο,Ώρα"
+        AddColumnsToGrid grdDestinationsJoinRoutes, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdDestinationsJoinRoutes"), "04NCISelectedPickupRouteID,04NCISelectedPickupPointID,04NCIPickupRouteID,04NCIPickupPointID,40NLNPickupRouteDescription,40NLNPickupPointDescription,40NLNPickupPointExactPoint,06NCTPickupPointTime", "-,-,-,-,-,Περιγραφή,Σημείο,Ώρα"
         Me.Refresh
         frmCriteria(0).Visible = True
         txtDestinationShortDescription.SetFocus

@@ -3132,8 +3132,8 @@ Private Function DoReport(action As String)
         If SelectPrinter("PrinterPrintsReports") Then
             For lngDriverRow = 1 To grdSummaryPerDriver.RowCount
                 If grdSummaryPerDriver.CellIcon(lngDriverRow, "Selected") > 0 Then
-                    CreateUnicodeFile "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text, "ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), "", intPrinterReportDetailLines - 11, lngDriverRow
-                    With rptOneLiner
+                    CreateUnicodeFile "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text, "ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), intPrinterReportDetailLines - 11, lngDriverRow
+                    With rptTransfers
                         .oneLongField.Font.Size = 10
                         If intPreviewReports = 1 Then
                             .Restart
@@ -3141,6 +3141,7 @@ Private Function DoReport(action As String)
                             .WindowState = vbMaximized
                             .Show 1
                         Else
+                            .Restart
                             .Printer.DeviceName = strPrinterName
                             .PrintReport False
                             .Run True
@@ -3154,8 +3155,8 @@ Private Function DoReport(action As String)
     If action = "CreatePDF" Then
         For lngDriverRow = 1 To grdSummaryPerDriver.RowCount
             If grdSummaryPerDriver.CellIcon(lngDriverRow, "Selected") > 0 Then
-                CreateUnicodeFile "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text, "ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), "", GetSetting(strApplicationName, "Settings", "Export Report Height") - 11, lngDriverRow
-                CreateUnisexPDF "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text & " ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), 10
+                CreateUnicodeFile "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text, "ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), GetSetting(strApplicationName, "Settings", "Export Report Height"), lngDriverRow
+                CreateUnisexPDF "ΑΝΑΦΟΡΑ ΠΑΡΑΛΑΒΩΝ ΓΙΑ : " & mskDate.text & " ΟΔΗΓΟΣ: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), rptTransfers, 10
             End If
         Next lngDriverRow
         If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
@@ -3392,19 +3393,19 @@ Private Sub Form_Activate()
     
         Me.Tag = "False"
         
-        AddColumnsToGrid grdCoachesReport, 44, GetSetting(strApplicationName, "Layout Strings", grdCoachesReport.Tag), _
+        AddColumnsToGrid grdCoachesReport, True, 44, GetSetting(strApplicationName, "Layout Strings", grdCoachesReport.Tag), _
             "05NCNTransferID,12NCDTransferDate,40NLNCustomerDescription,40NCNDestinationShortDescription,40NLNDestinationDescription,50NCNRouteShortDescription,50NLNRouteDescription,40NLNPickupPointHotelDescription,10NLNPickUpPointExactPoint,10NCTPickupPointTime,10NRITransferAdults,10NRITransferKids,10NRITransferFree,10NLNTransferRemarks,10NLNDriverDescription,10NRITransferTotal,04NCNTotalCriteria,04NCNSelected", _
             "TransferID,Ημερομηνία,Πελάτης,Π,Προορισμός,Δρομολόγιο,Δρομολόγιο,Σημείο παραλαβής,Ακριβές σημείο,Ωρα,Ε,Π,Δ,Παρατηρήσεις,Οδηγός,Σύνολο,Κριτήρια,Ε"
-        AddColumnsToGrid grdSummaryPerDestination, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerDestination"), _
+        AddColumnsToGrid grdSummaryPerDestination, True, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerDestination"), _
             "04NCNSelected,05NCNDestinationID,40NLNDestinationDescription,10NRITotalPersons", _
             "E,DestinationID,Προορισμός,Ατομα"
-        AddColumnsToGrid grdSummaryPerCustomer, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerCustomer"), _
+        AddColumnsToGrid grdSummaryPerCustomer, True, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerCustomer"), _
             "04NCNSelected,05NCNCustomerID,40NLNCustomerDescription,10NRITotalPersons", _
             "E,CustomerID,Πελάτης,Ατομα"
-        AddColumnsToGrid grdSummaryPerRoute, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerRoute"), _
+        AddColumnsToGrid grdSummaryPerRoute, True, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerRoute"), _
             "04NCNSelected,05NCNRouteID,40NLNRouteShortDescription,10NRITotalPersons", _
             "E,RouteID,Δρομολόγιο,Ατομα"
-        AddColumnsToGrid grdSummaryPerDriver, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerDriver"), _
+        AddColumnsToGrid grdSummaryPerDriver, True, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerDriver"), _
             "04NCNSelected,05NCNDriverID,40NLNDriverDescription,10NRITotalPersons", _
             "E,DriverID,Οδηγός,Ατομα"
         
@@ -3614,6 +3615,19 @@ ErrTrap:
     
 End Sub
 
+Private Sub grdSummaryPerCustomer_ColHeaderMouseEnter(ByVal lCol As Long)
+
+    grdSummaryPerCustomer.Header.Buttons = True
+    
+End Sub
+
+Private Sub grdSummaryPerCustomer_ColHeaderMouseLeave(ByVal lCol As Long)
+
+    grdSummaryPerCustomer.Header.Buttons = False
+    
+End Sub
+
+
 Private Sub grdSummaryPerCustomer_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
 
     'Customers Grid
@@ -3668,6 +3682,19 @@ Private Sub grdSummaryPerCustomer_KeyDown(KeyCode As Integer, Shift As Integer, 
     End If
 
 End Sub
+
+Private Sub grdSummaryPerDestination_ColHeaderMouseEnter(ByVal lCol As Long)
+
+    grdSummaryPerDestination.Header.Buttons = True
+    
+End Sub
+
+Private Sub grdSummaryPerDestination_ColHeaderMouseLeave(ByVal lCol As Long)
+
+    grdSummaryPerDestination.Header.Buttons = False
+    
+End Sub
+
 
 Private Sub grdSummaryPerDestination_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
 
@@ -3730,6 +3757,19 @@ Private Sub grdSummaryPerDestination_KeyDown(KeyCode As Integer, Shift As Intege
  
 End Sub
 
+Private Sub grdSummaryPerDriver_ColHeaderMouseEnter(ByVal lCol As Long)
+
+    grdSummaryPerDriver.Header.Buttons = True
+    
+End Sub
+
+Private Sub grdSummaryPerDriver_ColHeaderMouseLeave(ByVal lCol As Long)
+
+    grdSummaryPerDriver.Header.Buttons = False
+    
+End Sub
+
+
 Private Sub grdSummaryPerDriver_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
 
     If grdSummaryPerRoute.RowCount > 0 Then
@@ -3770,6 +3810,19 @@ Private Sub grdSummaryPerDriver_KeyDown(KeyCode As Integer, Shift As Integer, bD
     
     End If
 
+End Sub
+
+
+Private Sub grdSummaryPerRoute_ColHeaderMouseEnter(ByVal lCol As Long)
+
+    grdSummaryPerRoute.Header.Buttons = True
+    
+End Sub
+
+Private Sub grdSummaryPerRoute_ColHeaderMouseLeave(ByVal lCol As Long)
+
+    grdSummaryPerRoute.Header.Buttons = False
+    
 End Sub
 
 
@@ -3834,7 +3887,7 @@ Private Sub mnuΑποθήκευσηΠλάτουςΣτηλών_Click()
 
 End Sub
 
-Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReportSubTitle2, intReportDetailLines, lngDriverRow)
+Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReportDetailLines, lngDriverRow)
 
     On Error GoTo ErrTrap
     
@@ -3871,9 +3924,9 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
     Open strUnicodeFile For Output As #1
 
     'Επικεφαλίδες
-    PrintHeadings 99, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+    PrintHeadings 99, intPageNo, strReportTitle, strReportSubTitle1
     PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 98, "Π ^"
-    Print #1, ""
+    Print #1, "^"
     
     'Εγγραφές
     intProcessedDetailLines = 10
@@ -3995,11 +4048,11 @@ CheckToEject:
         Print #1, ""
         Print #1, Tab(7); "Η ΕΚΤΥΠΩΣΗ ΣΥΝΕΧΙΖΕΤΑΙ..."
         intPageNo = intPageNo + 1
-        PrintHeadings 99, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
-        PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 98, "Π"
+        PrintHeadings 99, intPageNo, strReportTitle, strReportSubTitle1
+        PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 39, "Ε", 42, "Π", 45, "Δ", 49, "Σ", 51, "ΠΕΛΑΤΗΣ", 72, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 98, "Π ^"
         Print #1, ""
         Print #1, Tab(7); "ΣΥΝΕΧΕΙΑ ΕΚΤΥΠΩΣΗΣ ΑΠΟ ΠΡΟΗΓΟΥΜΕΝΗ ΣΕΛΙΔΑ..."
-        Print #1, ""
+        Print #1, "^"
         intProcessedDetailLines = 12
     End If
     

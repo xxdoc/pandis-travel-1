@@ -1093,11 +1093,11 @@ Begin VB.Form InvoicesOutIndex
             Top             =   2325
             _ExtentX        =   953
             _ExtentY        =   953
-            Size            =   4592
+            Size            =   2296
             Images          =   "InvoicesOutIndex.frx":16A0
             Version         =   131072
-            KeyCount        =   4
-            Keys            =   "ÿÿÿ"
+            KeyCount        =   2
+            Keys            =   "ÿ"
          End
       End
       Begin iGrid300_10Tec.iGrid grdInvoicesOutIndex 
@@ -1354,7 +1354,7 @@ Private Function PrintSelectedInvoices()
     End If
     
     For lngRow = 1 To grdInvoicesOutIndex.RowCount
-        If grdInvoicesOutIndex.CellIcon(lngRow, "Selected") = 3 Then
+        If grdInvoicesOutIndex.CellIcon(lngRow, "Selected") >= 1 Then
             intIndex = intIndex + 1
             ReDim Preserve arrInvoicesTrnID(intIndex)
             arrInvoicesTrnID(intIndex) = grdInvoicesOutIndex.CellValue(lngRow, "TrnID")
@@ -1716,7 +1716,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdInvoicesOutIndex, 44, GetSetting(strApplicationName, "Layout Strings", "grdInvoicesOutIndex"), _
+        AddColumnsToGrid grdInvoicesOutIndex, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdInvoicesOutIndex"), _
             "05NCNTrnID,12NCDXInvoiceDateIssue,50NCNFullInvoice,40NLNCustomerDescription,40NLNShipDescription,40NLNDestinationDescription,10NRFInvoiceTotalAmount,10NRIInvoiceTotalPersons,05NCNSelected", _
             "TrnID,Ημερομηνία έκδοσης,Παραστατικό,Πελάτης,Πλοίο,Προορισμός,Ποσό,Ατομα,Ε"
         Me.Refresh
@@ -1805,7 +1805,7 @@ End Sub
 Private Sub grdInvoicesOutIndex_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
     If KeyCode = vbKeySpace And grdInvoicesOutIndex.RowCount > 0 Then
-        grdInvoicesOutIndex.CellIcon(grdInvoicesOutIndex.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdInvoicesOutIndex, 4, KeyCode, grdInvoicesOutIndex.CurRow, "TrnID"))
+        grdInvoicesOutIndex.CellIcon(grdInvoicesOutIndex.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdInvoicesOutIndex, 2, KeyCode, grdInvoicesOutIndex.CurRow, "TrnID"))
         lblSelectedGridLines.Caption = CountSelected(grdInvoicesOutIndex)
         lblSelectedGridTotals.Caption = SumSelectedGridRows(grdInvoicesOutIndex, False, "", "InvoiceTotalAmount", "decimal", "InvoiceTotalPersons", "integer")
      End If

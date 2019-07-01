@@ -371,11 +371,11 @@ Begin VB.Form TablesCodes
          Top             =   1575
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
+         Size            =   2296
          Images          =   "TablesCodes.frx":0000
          Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
+         KeyCount        =   2
+         Keys            =   "ÿ"
       End
    End
    Begin UserControls.newDate mskCodeLastDate 
@@ -679,7 +679,7 @@ Begin VB.Form TablesCodes
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "TablesCodes.frx":1210
+      PicNormal       =   "TablesCodes.frx":0918
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -1349,7 +1349,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdCodes, 25, GetSetting(strApplicationName, "Layout Strings", "grdCodes"), "04NCIID,04NCNShortDescription,40NLNDescription,05NCNBatch", "ID,Συντ. Α,Περιγραφή,Σειρά"
+        AddColumnsToGrid grdCodes, False, 25, GetSetting(strApplicationName, "Layout Strings", "grdCodes"), "04NCIID,04NCNShortDescription,40NLNDescription,05NCNBatch", "ID,Συντ. Α,Περιγραφή,Σειρά"
         Me.Refresh
         PopulateGrid
     End If

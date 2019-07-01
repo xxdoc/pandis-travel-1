@@ -213,11 +213,11 @@ Begin VB.Form TablesUsers
          Top             =   450
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
+         Size            =   2296
          Images          =   "TablesUsers.frx":0000
          Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
+         KeyCount        =   2
+         Keys            =   "ÿ"
       End
    End
    Begin iGrid300_10Tec.iGrid grdUsers 
@@ -618,7 +618,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdUsers, 25, GetSetting(strApplicationName, "Layout Strings", "grdUsers"), "04NCIID,40NLNName", "ID,Ονομα"
+        AddColumnsToGrid grdUsers, False, 25, GetSetting(strApplicationName, "Layout Strings", "grdUsers"), "04NCIID,40NLNName", "ID,Ονομα"
         Me.Refresh
         PopulateGrid
     End If

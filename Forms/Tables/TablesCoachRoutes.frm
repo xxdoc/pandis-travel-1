@@ -214,11 +214,11 @@ Begin VB.Form TablesCoachRoutes
          Top             =   450
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
+         Size            =   2296
          Images          =   "TablesCoachRoutes.frx":0000
          Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
+         KeyCount        =   2
+         Keys            =   "ÿ"
       End
    End
    Begin UserControls.newText txtPickupRouteDescription 
@@ -580,9 +580,9 @@ Private Function SeekRecord()
     
 End Function
 
-Private Sub cmdButton_Click(Index As Integer)
+Private Sub cmdButton_Click(index As Integer)
                                 
-    Select Case Index
+    Select Case index
         Case 0
             NewRecord
         Case 1
@@ -601,7 +601,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdPickupRoutes, 25, GetSetting(strApplicationName, "Layout Strings", "grdPickupRoutes"), "04NCIID,04NCNShortDescription,40NLNDescription", "ID,Συντ.,Περιγραφή"
+        AddColumnsToGrid grdPickupRoutes, False, 25, GetSetting(strApplicationName, "Layout Strings", "grdPickupRoutes"), "04NCIID,04NCNShortDescription,40NLNDescription", "ID,Συντ.,Περιγραφή"
         Me.Refresh
         PopulateGrid
     End If

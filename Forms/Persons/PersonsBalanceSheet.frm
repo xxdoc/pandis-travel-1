@@ -460,11 +460,11 @@ Begin VB.Form PersonsBalanceSheet
             Top             =   1575
             _ExtentX        =   953
             _ExtentY        =   953
-            Size            =   4592
+            Size            =   2296
             Images          =   "PersonsBalanceSheet.frx":0038
             Version         =   131072
-            KeyCount        =   4
-            Keys            =   "ÿÿÿ"
+            KeyCount        =   2
+            Keys            =   "ÿ"
          End
       End
       Begin VB.Frame frmCriteria 
@@ -564,7 +564,7 @@ Begin VB.Form PersonsBalanceSheet
                Strikethrough   =   0   'False
             EndProperty
             ForeColor       =   0
-            PicNormal       =   "PersonsBalanceSheet.frx":1248
+            PicNormal       =   "PersonsBalanceSheet.frx":0950
             PicSizeH        =   16
             PicSizeW        =   16
          End
@@ -1266,7 +1266,7 @@ Private Function DoReport(action As String)
     
     If action = "Print" Then
         If SelectPrinter("PrinterPrintsReports") Then
-            CreateUnicodeFile lblTitle.Caption, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, "", intPrinterReportDetailLines
+            CreateUnicodeFile lblTitle.Caption, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, intPrinterReportDetailLines - 15
             With rptOneLiner
                 If intPreviewReports = 1 Then
                     .Restart
@@ -1274,6 +1274,7 @@ Private Function DoReport(action As String)
                     .WindowState = vbMaximized
                     .Show 1
                 Else
+                    .Restart
                     .Printer.DeviceName = strPrinterName
                     .PrintReport False
                     .Run True
@@ -1283,8 +1284,8 @@ Private Function DoReport(action As String)
     End If
     
     If action = "CreatePDF" Then
-        CreateUnicodeFile lblTitle.Caption, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, "", GetSetting(strApplicationName, "Settings", "Export Report Height")
-        CreateUnisexPDF lblTitle.Caption & " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, 7
+        CreateUnicodeFile lblTitle.Caption, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, GetSetting(strApplicationName, "Settings", "Export Report Height") - 4
+        CreateUnisexPDF lblTitle.Caption & " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, rptOneLiner, 7
         If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
         End If
     End If
@@ -1297,7 +1298,7 @@ ErrTrap:
     
 End Function
 
-Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReportSubTitle2, intReportDetailLines)
+Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReportDetailLines)
 
     'Εκτυπωτής
     Dim lngRow As Long
@@ -1385,7 +1386,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
     
 Headers:
     intPageNo = intPageNo + 1
-    PrintHeadings 124, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+    PrintHeadings 124, intPageNo, strReportTitle, strReportSubTitle1
     PrintColumnHeadings 42, "--------- ΠΡΟΗΓΟΥΜΕΝΗ ΠΕΡΙΟΔΟΣ ---------- ---------- ΖΗΤΟΥΜΕΝΗ ΠΕΡΙΟΔΟΣ -----------"
     PrintColumnHeadings 1, "ΕΠΩΝΥΜΙΑ", 49, "ΧΡΕΩΣΗ       ΠΙΣΤΩΣΗ      ΥΠΟΛΟΙΠΟ        ΧΡΕΩΣΗ       ΠΙΣΤΩΣΗ      ΥΠΟΛΟΙΠΟ"
     Print #1, ""
@@ -1641,7 +1642,7 @@ Private Sub Form_Activate()
                 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdPersonsBalanceSheet, 62, GetSetting(strApplicationName, "Layout Strings", "grdPersonsBalanceSheet"), _
+        AddColumnsToGrid grdPersonsBalanceSheet, False, 62, GetSetting(strApplicationName, "Layout Strings", "grdPersonsBalanceSheet"), _
             "05NCNID,40NLNDescription,10NRFXDebitSoFar,10NRFXCreditSoFar,10NRFXBalanceSoFar,10NRFXDebitPeriod,10NRFXCreditPeriod,10NRFBalance,04NCNSelected", _
             "ID, Επωνυμία,Χρέωση προηγούμενης περιόδου,Πίστωση προηγούμενης περιόδου,Υπόλοιπο προηγούμενης περιόδου,Χρέωση ζητούμενης περιόδου,Πίστωση ζητούμενης περιόδου,Υπόλοιπο,E"
         Me.Refresh
@@ -1716,7 +1717,7 @@ End Sub
 Private Sub grdPersonsBalanceSheet_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
     If KeyCode = vbKeySpace And grdPersonsBalanceSheet.RowCount > 0 Then
-        grdPersonsBalanceSheet.CellIcon(grdPersonsBalanceSheet.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdPersonsBalanceSheet, 4, KeyCode, grdPersonsBalanceSheet.CurRow, "ID"))
+        grdPersonsBalanceSheet.CellIcon(grdPersonsBalanceSheet.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdPersonsBalanceSheet, 2, KeyCode, grdPersonsBalanceSheet.CurRow, "ID"))
         lblSelectedGridLines.Caption = CountSelected(grdPersonsBalanceSheet)
         lblSelectedGridTotals.Caption = SumSelectedGridRows(grdPersonsBalanceSheet, False, "", "BalanceSoFar", "decimal", "DebitPeriod", "decimal", "CreditPeriod", "decimal", "Balance", "decimal")
     End If

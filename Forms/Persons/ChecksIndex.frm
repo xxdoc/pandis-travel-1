@@ -341,11 +341,11 @@ Begin VB.Form ChecksIndex
             Top             =   1575
             _ExtentX        =   953
             _ExtentY        =   953
-            Size            =   4592
+            Size            =   2296
             Images          =   "ChecksIndex.frx":0038
             Version         =   131072
-            KeyCount        =   4
-            Keys            =   "ÿÿÿ"
+            KeyCount        =   2
+            Keys            =   "ÿ"
          End
       End
       Begin VB.Frame frmCriteria 
@@ -445,7 +445,7 @@ Begin VB.Form ChecksIndex
                Strikethrough   =   0   'False
             EndProperty
             ForeColor       =   0
-            PicNormal       =   "ChecksIndex.frx":1248
+            PicNormal       =   "ChecksIndex.frx":0950
             PicSizeH        =   16
             PicSizeW        =   16
          End
@@ -923,44 +923,7 @@ ErrTrap:
     
 End Function
 
-Private Function DoReport(action As String)
-    
-    On Error GoTo ErrTrap
-    
-    If action = "Print" Then
-        If SelectPrinter("PrinterPrintsReports") Then
-            CreateUnicodeFile lblTitle.Caption, " áðü " & mskCheckExpireDateFrom.text & " Ýùò " & mskCheckExpireDateTo.text, "", intPrinterReportDetailLines
-            With rptOneLiner
-                If intPreviewReports = 1 Then
-                    .Restart
-                    .Zoom = -2
-                    .WindowState = vbMaximized
-                    .Show 1
-                Else
-                    .Printer.DeviceName = strPrinterName
-                    .PrintReport False
-                    .Run True
-                End If
-            End With
-        End If
-    End If
-    
-    If action = "CreatePDF" Then
-        CreateUnicodeFile lblTitle.Caption, " áðü " & mskCheckExpireDateFrom.text & " Ýùò " & mskCheckExpireDateTo.text, "", GetSetting(strApplicationName, "Settings", "Export Report Height")
-        CreateUnisexPDF lblTitle.Caption & " áðü " & mskCheckExpireDateFrom.text & " Ýùò " & mskCheckExpireDateTo.text, 7
-        If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
-        End If
-    End If
-    
-    Exit Function
-    
-ErrTrap:
-    Close #1
-    DisplayErrorMessage True, Err.Description
-    
-End Function
-
-Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReportSubTitle2, intReportDetailLines)
+Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReportDetailLines)
 
     'ÅêôõðùôÞò
     Dim lngRow As Long
@@ -1048,7 +1011,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, strReport
     
 Headers:
     intPageNo = intPageNo + 1
-    PrintHeadings 124, intPageNo, strReportTitle, strReportSubTitle1, strReportSubTitle2
+    PrintHeadings 124, intPageNo, strReportTitle, strReportSubTitle1
     PrintColumnHeadings 42, "--------- ÐÑÏÇÃÏÕÌÅÍÇ ÐÅÑÉÏÄÏÓ ---------- ---------- ÆÇÔÏÕÌÅÍÇ ÐÅÑÉÏÄÏÓ -----------"
     PrintColumnHeadings 1, "ÅÐÙÍÕÌÉÁ", 49, "×ÑÅÙÓÇ       ÐÉÓÔÙÓÇ      ÕÐÏËÏÉÐÏ        ×ÑÅÙÓÇ       ÐÉÓÔÙÓÇ      ÕÐÏËÏÉÐÏ"
     Print #1, ""
@@ -1284,7 +1247,7 @@ Private Sub Form_Activate()
                 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdChecksIndex, 44, GetSetting(strApplicationName, "Layout Strings", "grdChecksIndex"), _
+        AddColumnsToGrid grdChecksIndex, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdChecksIndex"), _
             "40NLNBankDescription,40NLNPersonDescription,10NLNCheckNo,12NCDXExpireDate,10NRFAmount,05NCNTrnID,04NCNSelected", _
             "ÔñÜðåæá,Óõíáëëáóüìåíïò,Íï åðéôáãÞò,Çìåñïìçíßá ëÞîçò,Ðïóü,ID,E"
         Me.Refresh
@@ -1351,7 +1314,7 @@ End Sub
 Private Sub grdChecksIndex_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
     If KeyCode = vbKeySpace And grdChecksIndex.RowCount > 0 Then
-        grdChecksIndex.CellIcon(grdChecksIndex.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdChecksIndex, 4, KeyCode, grdChecksIndex.CurRow, "TrnID"))
+        grdChecksIndex.CellIcon(grdChecksIndex.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdChecksIndex, 2, KeyCode, grdChecksIndex.CurRow, "TrnID"))
         lblSelectedGridLines.Caption = CountSelected(grdChecksIndex)
         lblSelectedGridTotals.Caption = SumSelectedGridRows(grdChecksIndex, False, "", "Amount", "decimal")
     End If

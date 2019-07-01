@@ -259,11 +259,11 @@ Begin VB.Form TablesPaymentTerms
          Top             =   825
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
+         Size            =   2296
          Images          =   "TablesPaymentTerms.frx":0000
          Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
+         KeyCount        =   2
+         Keys            =   "ÿ"
       End
    End
    Begin iGrid300_10Tec.iGrid grdPaymentTerms 
@@ -355,7 +355,7 @@ Begin VB.Form TablesPaymentTerms
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   0
-      PicNormal       =   "TablesPaymentTerms.frx":1210
+      PicNormal       =   "TablesPaymentTerms.frx":0918
       PicSizeH        =   16
       PicSizeW        =   16
    End
@@ -702,7 +702,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdPaymentTerms, 25, GetSetting(strApplicationName, "Layout Strings", "grdPaymentTerms"), "04NCNID,40NLNDescription", "ID,Περιγραφή"
+        AddColumnsToGrid grdPaymentTerms, False, 25, GetSetting(strApplicationName, "Layout Strings", "grdPaymentTerms"), "04NCNID,40NLNDescription", "ID,Περιγραφή"
         Me.Refresh
         PopulateGrid
     End If

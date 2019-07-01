@@ -490,11 +490,11 @@ Begin VB.Form UtilsBatchPriceListEdit
             Top             =   450
             _ExtentX        =   953
             _ExtentY        =   953
-            Size            =   4592
+            Size            =   2296
             Images          =   "UtilsBatchPriceListEdit.frx":05D2
             Version         =   131072
-            KeyCount        =   4
-            Keys            =   "ÿÿÿ"
+            KeyCount        =   2
+            Keys            =   "ÿ"
          End
       End
       Begin iGrid300_10Tec.iGrid grdBatchPriceEdit 
@@ -659,9 +659,9 @@ Private Function ValidateGrid()
     
 End Function
 
-Private Sub cmdButton_Click(Index As Integer)
+Private Sub cmdButton_Click(index As Integer)
 
-    Select Case Index
+    Select Case index
         Case 0
             FindRecordsAndPopulateGrid
         Case 1
@@ -830,13 +830,13 @@ ErrTrap:
     
 End Function
 
-Private Sub cmdIndex_Click(Index As Integer)
+Private Sub cmdIndex_Click(index As Integer)
 
     'Local variables
     Dim tmpTableData As typTableData
     Dim tmpRecordset As Recordset
     
-    Select Case Index
+    Select Case index
         Case 0
             'Πελάτης
             Set tmpRecordset = CheckForMatch("CommonDB", "Customers", "CustomerDescription", "String", txtCustomerDescription.text)
@@ -853,7 +853,7 @@ Private Sub Form_Activate()
                 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdBatchPriceEdit, 44, GetSetting(strApplicationName, "Layout Strings", "grdBatchPriceEdit"), _
+        AddColumnsToGrid grdBatchPriceEdit, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdBatchPriceEdit"), _
         "05NCIPriceID,05NCICustomerID,05NCIDestinationID,40NLNCustomerDescription,40NLNDestinationDescription,10NRFPriceFrom,10NRFPriceTo,10NRFXPriceAdultWithTransfer,10NRFXPriceKidWithTransfer,10NRFXPriceAdultWithoutTransfer,10NRFXPriceKidWithoutTransfer,05ShowInList", _
         "ID,CustomerID,DestinationID,Πελάτης,Προορισμός,Από,Εως,Ενήλικες με μεταφορά,Παιδιά με μεταφορά,Ενήλικες χωρίς μεταφορά,Παιδιά χωρίς μεταφορά,Αφορά"
         Me.Refresh

@@ -214,11 +214,11 @@ Begin VB.Form TablesShipRoutes
          Top             =   450
          _ExtentX        =   953
          _ExtentY        =   953
-         Size            =   4592
+         Size            =   2296
          Images          =   "TablesShipRoutes.frx":0000
          Version         =   131072
-         KeyCount        =   4
-         Keys            =   "ÿÿÿ"
+         KeyCount        =   2
+         Keys            =   "ÿ"
       End
    End
    Begin iGrid300_10Tec.iGrid grdShipRoutes 
@@ -729,7 +729,7 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdShipRoutes, 25, GetSetting(strApplicationName, "Layout Strings", "grdShipRoutes"), "04NCIID,40NLNShortDescription,40NLNFrom,40NLNVia,40NLNTo,06NCTTime", "ID,Συντ.,Λιμένας εκκίνησης,Ενδιάμεσοι λιμένες προσέγγισης,Λιμένας τελικού προορισμού,Ώρα"
+        AddColumnsToGrid grdShipRoutes, False, 25, GetSetting(strApplicationName, "Layout Strings", "grdShipRoutes"), "04NCIID,40NLNShortDescription,40NLNFrom,40NLNVia,40NLNTo,06NCTTime", "ID,Συντ.,Λιμένας εκκίνησης,Ενδιάμεσοι λιμένες προσέγγισης,Λιμένας τελικού προορισμού,Ώρα"
         Me.Refresh
         PopulateGrid
     End If

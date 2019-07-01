@@ -864,11 +864,11 @@ Begin VB.Form InvoicesInIndex
             Top             =   1950
             _ExtentX        =   953
             _ExtentY        =   953
-            Size            =   4592
+            Size            =   2296
             Images          =   "InvoicesInIndex.frx":1106
             Version         =   131072
-            KeyCount        =   4
-            Keys            =   "ÿÿÿ"
+            KeyCount        =   2
+            Keys            =   "ÿ"
          End
       End
       Begin VB.Frame frmButtonFrame 
@@ -1788,10 +1788,10 @@ Private Sub Form_Activate()
 
     If Me.Tag = "True" Then
         Me.Tag = "False"
-        AddColumnsToGrid grdInvoicesInIndex, 44, GetSetting(strApplicationName, "Layout Strings", "grdInvoicesInIndex"), _
+        AddColumnsToGrid grdInvoicesInIndex, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdInvoicesInIndex"), _
             "05ΝCNTrnID,12NCDXDateIssue,40NLNSupplier,10NCNInvoiceNo,05NCNCodeSuppliers,40NLNCodeDescription,10NRFInvoiceNet,10NRFInvoiceVAT,10NRFInvoiceGross,05NCNSelected", _
             "TrnID,Ημερομηνία έκδοσης,Πιστωτής,Νο παραστατικού,+/-,Παραστατικό,Καθαρή αξία, Αξία Φ.Π.Α.,Συνολική αξία,E"
-        AddColumnsToGrid grdTotals, 44, GetSetting(strApplicationName, "Layout Strings", "grdInvoicesInIndex"), _
+        AddColumnsToGrid grdTotals, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdInvoicesInIndex"), _
             "40NLNSupplier,10NRFTotalNet,10NRFTotalVAT,10NRFTotalGross", _
             "Πιστωτής,Καθαρή αξία, Αξία Φ.Π.Α.,Συνολική αξία"
         Me.Refresh
@@ -1879,7 +1879,7 @@ End Sub
 Private Sub grdInvoicesInIndex_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
     If KeyCode = vbKeySpace And grdInvoicesInIndex.RowCount > 0 Then
-        grdInvoicesInIndex.CellIcon(grdInvoicesInIndex.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdInvoicesInIndex, 4, KeyCode, grdInvoicesInIndex.CurRow, "TrnID"))
+        grdInvoicesInIndex.CellIcon(grdInvoicesInIndex.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdInvoicesInIndex, 2, KeyCode, grdInvoicesInIndex.CurRow, "TrnID"))
         lblSelectedGridLines.Caption = CountSelected(grdInvoicesInIndex)
         lblSelectedGridTotals.Caption = SumSelectedGridRows(grdInvoicesInIndex, False, "", "InvoiceNet", "decimal", "InvoiceVAT", "decimal", "InvoiceGross", "decimal")
     End If

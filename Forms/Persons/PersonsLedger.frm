@@ -2206,7 +2206,9 @@ Private Function ProcessIndex(printOrCreatePDF As String)
     
     If ValidateFields Then
         If printOrCreatePDF = "Print" Then
-            If SelectPrinter("PrinterPrintsReports") Then GoSub Continue
+            If Not SelectPrinter("PrinterPrintsReports") Then Exit Function
+            If Not PrinterExists(strPrinterName) Then Exit Function
+            GoSub Continue
         Else
             GoSub Continue
         End If
@@ -2384,9 +2386,9 @@ Private Sub cmdButton_Click(index As Integer)
         Case 2
             'Μία καρτέλα
             If txtBatchReport.text = "No" Then
-                If SelectPrinter("PrinterPrintsReports") Then
-                    DoReport "Print", txtCustomersOrSuppliers.text, txtPersonDescription.text, mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text
-                End If
+                If Not SelectPrinter("PrinterPrintsReports") Then Exit Sub
+                If Not PrinterExists(strPrinterName) Then Exit Sub
+                DoReport "Print", txtCustomersOrSuppliers.text, txtPersonDescription.text, mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text
             End If
             'Πολλές καρτέλες
             If txtBatchReport.text = "Yes" Then

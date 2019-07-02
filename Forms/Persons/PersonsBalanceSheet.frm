@@ -1265,22 +1265,26 @@ Private Function DoReport(action As String)
     On Error GoTo ErrTrap
     
     If action = "Print" Then
-        If SelectPrinter("PrinterPrintsReports") Then
-            CreateUnicodeFile lblTitle.Caption, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, intPrinterReportDetailLines - 15
-            With rptOneLiner
-                If intPreviewReports = 1 Then
-                    .Restart
-                    .Zoom = -2
-                    .WindowState = vbMaximized
-                    .Show 1
-                Else
-                    .Restart
-                    .Printer.DeviceName = strPrinterName
-                    .PrintReport False
-                    .Run True
-                End If
-            End With
-        End If
+    
+        If Not SelectPrinter("PrinterPrintsReports") Then Exit Function
+        If Not PrinterExists(strPrinterName) Then Exit Function
+        
+        CreateUnicodeFile lblTitle.Caption, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, intPrinterReportDetailLines - 15
+        
+        With rptOneLiner
+            If intPreviewReports = 1 Then
+                .Restart
+                .Zoom = -2
+                .WindowState = vbMaximized
+                .Show 1
+            Else
+                .Restart
+                .Printer.DeviceName = strPrinterName
+                .PrintReport False
+                .Run True
+            End If
+        End With
+    
     End If
     
     If action = "CreatePDF" Then

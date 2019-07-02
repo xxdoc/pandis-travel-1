@@ -1306,22 +1306,24 @@ End Sub
 
 Private Function PrintRecords()
 
-    If SelectPrinter("PrinterPrintsReports") Then
-        CreateUnicodeFile "сглеиа паяакабгс дяолокоциоу", txtRouteDescription.text, intPrinterReportDetailLines - 15
-        With rptOneLiner
-            If intPreviewReports = 1 Then
-                .Restart
-                .Zoom = -2
-                .WindowState = vbMaximized
-                .Show 1
-            Else
-                .Restart
-                .Printer.DeviceName = strPrinterName
-                .PrintReport False
-                .Run True
-            End If
-        End With
-    End If
+    If Not SelectPrinter("PrinterPrintsReports") Then Exit Function
+    If Not PrinterExists(strPrinterName) Then Exit Function
+    
+    CreateUnicodeFile "сглеиа паяакабгс дяолокоциоу", txtRouteDescription.text, intPrinterReportDetailLines - 15
+    
+    With rptOneLiner
+        If intPreviewReports = 1 Then
+            .Restart
+            .Zoom = -2
+            .WindowState = vbMaximized
+            .Show 1
+        Else
+            .Restart
+            .Printer.DeviceName = strPrinterName
+            .PrintReport False
+            .Run True
+        End If
+    End With
 
 End Function
 

@@ -3129,27 +3129,30 @@ Private Function DoReport(action As String)
     grdCoachesReport.Sort
     
     If action = "Print" Then
-        If SelectPrinter("PrinterPrintsReports") Then
-            For lngDriverRow = 1 To grdSummaryPerDriver.RowCount
-                If grdSummaryPerDriver.CellIcon(lngDriverRow, "Selected") > 0 Then
-                    CreateUnicodeFile "амажояа паяакабым циа : " & mskDate.text, "одгцос: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), GetSetting(strApplicationName, "Settings", "Export Report Transfers Height") - 11, lngDriverRow
-                    With rptTransfers
-                        .oneLongField.Font.Size = 11
-                        If intPreviewReports = 1 Then
-                            .Restart
-                            .Zoom = -2
-                            .WindowState = vbMaximized
-                            .Show 1
-                        Else
-                            .Restart
-                            .Printer.DeviceName = strPrinterName
-                            .PrintReport False
-                            .Run True
-                        End If
-                    End With
-                End If
-            Next lngDriverRow
-        End If
+        
+        If Not SelectPrinter("PrinterPrintsReports") Then Exit Function
+        If Not PrinterExists(strPrinterName) Then Exit Function
+        
+        For lngDriverRow = 1 To grdSummaryPerDriver.RowCount
+            If grdSummaryPerDriver.CellIcon(lngDriverRow, "Selected") > 0 Then
+                CreateUnicodeFile "амажояа паяакабым циа : " & mskDate.text, "одгцос: " & grdSummaryPerDriver.CellValue(lngDriverRow, "DriverDescription"), GetSetting(strApplicationName, "Settings", "Export Report Transfers Height") - 11, lngDriverRow
+                With rptTransfers
+                    .oneLongField.Font.Size = 11
+                    If intPreviewReports = 1 Then
+                        .Restart
+                        .Zoom = -2
+                        .WindowState = vbMaximized
+                        .Show 1
+                    Else
+                        .Restart
+                        .Printer.DeviceName = strPrinterName
+                        .PrintReport False
+                        .Run True
+                    End If
+                End With
+            End If
+        Next lngDriverRow
+    
     End If
     
     If action = "CreatePDF" Then

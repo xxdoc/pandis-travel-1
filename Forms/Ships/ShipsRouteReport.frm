@@ -1353,15 +1353,9 @@ End Sub
 Private Function DoReport(action As String)
     
     If action = "Print" Then
-        If SelectPrinter("PrinterPrintsReports") Then
-            If PrinterExists(strPrinterName) Then
-                RunActiveReport
-            Else
-                If MyMsgBox(4, strApplicationName, strStandardMessages(18), 1) Then
-                End If
-                Exit Function
-            End If
-        End If
+        If Not SelectPrinter("PrinterPrintsReports") Then Exit Function
+        If Not PrinterExists(strPrinterName) Then Exit Function
+        RunActiveReport
     End If
     
     If action = "CreatePDF" Then

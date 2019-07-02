@@ -2384,7 +2384,9 @@ Private Sub cmdButton_Click(index As Integer)
         Case 2
             'Μία καρτέλα
             If txtBatchReport.text = "No" Then
-                DoReport "Print", txtCustomersOrSuppliers.text, txtPersonDescription.text, mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text
+                If SelectPrinter("PrinterPrintsReports") Then
+                    DoReport "Print", txtCustomersOrSuppliers.text, txtPersonDescription.text, mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text
+                End If
             End If
             'Πολλές καρτέλες
             If txtBatchReport.text = "Yes" Then

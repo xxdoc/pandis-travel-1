@@ -206,7 +206,7 @@ Begin VB.Form PersonsLedger
             Height          =   315
             Index           =   5
             Left            =   450
-            TabIndex        =   55
+            TabIndex        =   54
             Top             =   900
             Width           =   915
          End
@@ -226,29 +226,9 @@ Begin VB.Form PersonsLedger
             Height          =   390
             Index           =   2
             Left            =   150
-            TabIndex        =   54
-            Top             =   75
-            Width           =   1665
-         End
-         Begin VB.Label Label2 
-            Alignment       =   1  'Right Justify
-            BackColor       =   &H00808000&
-            Caption         =   "01/05/2017"
-            BeginProperty Font 
-               Name            =   "Aka-Acid-Steelfish"
-               Size            =   14.25
-               Charset         =   161
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H0000FFFF&
-            Height          =   390
-            Left            =   2700
             TabIndex        =   53
             Top             =   75
-            Width           =   4815
+            Width           =   1665
          End
          Begin VB.Label Label1 
             BackColor       =   &H00808000&
@@ -364,7 +344,7 @@ Begin VB.Form PersonsLedger
             Height          =   540
             Index           =   5
             Left            =   0
-            TabIndex        =   56
+            TabIndex        =   55
             Top             =   0
             Width           =   7665
          End
@@ -1239,7 +1219,7 @@ Begin VB.Form PersonsLedger
       Begin iGrid300_10Tec.iGrid grdPersonsIndex 
          Height          =   7290
          Left            =   75
-         TabIndex        =   57
+         TabIndex        =   56
          TabStop         =   0   'False
          Top             =   1200
          Width           =   18840
@@ -2092,25 +2072,22 @@ Private Function HideOrDisplayDestinationCriteria()
 
 End Function
 
-Private Function CheckIfIndexHasSelectedRows()
+Private Function CheckForSelectedRows()
 
     Dim lngRow As Long
     
     For lngRow = 1 To grdPersonsIndex.RowCount
         If grdPersonsIndex.CellIcon(lngRow, "Selected") > 0 Then
-            CheckIfIndexHasSelectedRows = True
+            CheckForSelectedRows = True
             Exit Function
         End If
     Next lngRow
     
-     MyMsgBox 4, strApplicationName, strStandardMessages(6), 1
-     grdPersonsIndex.SetFocus
-
 End Function
 
 Private Function PopulatePersonsIndex()
 
-    'On Error GoTo ErrTrap
+    On Error GoTo ErrTrap
     
     'SQL
     Dim intIndex As Byte
@@ -2228,20 +2205,34 @@ Private Function ProcessIndex(printOrCreatePDF As String)
     Dim lngRow As Long
     
     If ValidateFields Then
-        With grdPersonsIndex
-            For lngRow = 1 To .RowCount
-                If .CellIcon(lngRow, "Selected") >= 1 Then
-                    RefreshList .CellValue(lngRow, "ID"), mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text, txtDestinationDescription(1).text
-                    If printOrCreatePDF = "Print" Then DoReport "Print", txtCustomersOrSuppliers.text, .CellValue(lngRow, "Description"), mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text
-                    If printOrCreatePDF = "CreatePDF" Then DoReport "CreatePDF", txtCustomersOrSuppliers.text, .CellValue(lngRow, "Description"), mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text
-                End If
-           Next lngRow
-        End With
+        If printOrCreatePDF = "Print" Then
+            If SelectPrinter("PrinterPrintsReports") Then GoSub Continue
+        Else
+            GoSub Continue
+        End If
     End If
+    
+    grdPersonsIndex.SetFocus
     
     If printOrCreatePDF = "CreatePDF" Then
         MyMsgBox 1, strApplicationName, strStandardMessages(8), 1
     End If
+    
+    Exit Function
+    
+Continue:
+    With grdPersonsIndex
+        For lngRow = 1 To .RowCount
+            If .CellIcon(lngRow, "Selected") >= 1 Then
+                If RefreshList(.CellValue(lngRow, "ID"), mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text, txtDestinationDescription(1).text) > 0 Then
+                    If printOrCreatePDF = "Print" Then DoReport "Print", txtCustomersOrSuppliers.text, .CellValue(lngRow, "Description"), mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text
+                    If printOrCreatePDF = "CreatePDF" Then DoReport "CreatePDF", txtCustomersOrSuppliers.text, .CellValue(lngRow, "Description"), mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text
+                End If
+            End If
+        Next lngRow
+    End With
+    
+    Return
 
 End Function
 
@@ -2352,6 +2343,8 @@ Private Function CreateUnicodeFileForCustomers(strReportTitle, strReportSubTitle
     
     Close #1
     
+    CreateUnicodeFileForCustomers = True
+    
     Exit Function
     
 Headers:
@@ -2370,29 +2363,55 @@ Private Sub cmdButton_Click(index As Integer)
 
     Select Case index
         Case 0
-            If txtBatchReport.text = "No" Then FindRecordsAndPopulateGrid: Exit Sub
-            If txtBatchReport.text = "Yes" And Not frmCriteria(1).Visible Then
-                If CheckIfIndexHasSelectedRows Then
-                    frmCriteria(1).Visible = True
-                    mskInvoiceDateIssueFrom(1).SetFocus
-                    UpdateButtons Me, 6, 0, 0, 1, 1, 1, 1, 0
-                    Exit Sub
+            'Ìßá êáñôÝëá
+            If txtBatchReport.text = "No" Then FindRecordsAndPopulateGrid
+            'ÐïëëÝò êáñôÝëåò
+            If txtBatchReport.text = "Yes" Then
+                If ValidateFields Then
+                    If PopulatePersonsIndex > 0 Then
+                        frmCriteria(1).Visible = False
+                        grdPersonsIndex.SetCurCell 1, 1
+                        grdPersonsIndex.SetFocus
+                        UpdateButtons Me, 6, 0, 0, 1, 1, 1, 1, 0
+                    Else
+                        MyMsgBox 1, strApplicationName, strStandardMessages(7), 1
+                        UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
+                    End If
                 End If
             End If
         Case 1
             EditRecord
         Case 2
-            If txtBatchReport.text = "Yes" And frmCriteria(1).Visible Then
-                ProcessIndex "Print"
-            Else
+            'Ìßá êáñôÝëá
+            If txtBatchReport.text = "No" Then
                 DoReport "Print", txtCustomersOrSuppliers.text, txtPersonDescription.text, mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text
             End If
+            'ÐïëëÝò êáñôÝëåò
+            If txtBatchReport.text = "Yes" Then
+                If CheckForSelectedRows Then
+                    ProcessIndex "Print"
+                    UpdateButtons Me, 6, 0, 0, 1, 1, 1, 1, 0
+                Else
+                    MyMsgBox 4, strApplicationName, strStandardMessages(6), 1
+                    grdPersonsIndex.SetFocus
+                End If
+            End If
         Case 3
-            If txtBatchReport.text = "Yes" And frmCriteria(1).Visible Then
-                ProcessIndex "CreatePDF"
-            Else
+            'Ìßá êáñôÝëá
+            If txtBatchReport.text = "No" Then
                 If DoReport("CreatePDF", txtCustomersOrSuppliers.text, txtPersonDescription.text, mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text) Then
                     MyMsgBox 1, strApplicationName, strStandardMessages(8), 1
+                End If
+            End If
+            'ÐïëëÝò êáñôÝëåò
+            If txtBatchReport.text = "Yes" Then
+                If CheckForSelectedRows Then
+                    ProcessIndex "CreatePDF"
+                    grdPersonsIndex.SetFocus
+                    UpdateButtons Me, 6, 0, 0, 1, 1, 1, 1, 0
+                Else
+                    MyMsgBox 4, strApplicationName, strStandardMessages(6), 1
+                    grdPersonsIndex.SetFocus
                 End If
             End If
         Case 4
@@ -2407,7 +2426,7 @@ End Sub
 
 Private Function ExportToExcel()
 
-    'On Error GoTo ErrTrap
+    On Error GoTo ErrTrap
     
     Dim lngRow As Long
     Dim lngCol As Long
@@ -2520,23 +2539,13 @@ Function AddNumberFormats(sheet As Object, grid As iGrid, format As String, rowO
 
 End Function
 
-Private Function DoReport(action As String, Persons As String, personDescription As String, fromDate As String, toDate As String)
+Private Function DoReport(action As String, Persons As String, PersonDescription As String, fromDate As String, toDate As String)
     
-    'On Error GoTo ErrTrap
+    On Error GoTo ErrTrap
     
     If action = "Print" Then
-        
-        If Not printerHasAlreadyBeenSelected Then
-            If SelectPrinter("PrinterPrintsReports") Then
-                printerHasAlreadyBeenSelected = True
-            Else
-                Exit Function
-            End If
-        End If
-        
-        If Persons = "Customers" Then CreateUnicodeFileForCustomers lblTitle.Caption & " " & personDescription, " áðü " & fromDate & " Ýùò " & toDate, intPrinterReportDetailLines - 11
-        If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers lblTitle.Caption & " " & personDescription, " áðü " & fromDate & " Ýùò " & toDate, intPrinterReportDetailLines - 15
-        
+        If Persons = "Customers" Then CreateUnicodeFileForCustomers "ÊÁÑÔÅËÁ ÐÅËÁÔÇ " & PersonDescription, " áðü " & fromDate & " Ýùò " & toDate, intPrinterReportDetailLines - 11
+        If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers "ÊÁÑÔÅËÁ ÐÑÏÌÇÈÅÕÔÇ " & PersonDescription, " áðü " & fromDate & " Ýùò " & toDate, intPrinterReportDetailLines - 15
         With rptOneLiner
             If intPreviewReports = 1 Then
                 .Restart
@@ -2553,11 +2562,20 @@ Private Function DoReport(action As String, Persons As String, personDescription
     End If
     
     If action = "CreatePDF" Then
-        If Persons = "Customers" Then CreateUnicodeFileForCustomers lblTitle.Caption & " " & personDescription, " áðü " & fromDate & " Ýùò " & toDate, GetSetting(strApplicationName, "Settings", "Export Report Height")
-        If Persons = "Customers" Then CreateUnisexPDF lblTitle.Caption & " " & personDescription, rptOneLiner, 7
-        If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers lblTitle.Caption & " " & txtPersonDescription.text, " áðü " & fromDate & " Ýùò " & toDate, GetSetting(strApplicationName, "Settings", "Export Report Height") - 4
-        If Persons = "Suppliers" Then CreateUnisexPDF lblTitle.Caption & " " & txtPersonDescription.text, rptOneLiner, 7
-        DoReport = True
+        If Persons = "Customers" Then
+            If CreateUnicodeFileForCustomers("ÊÁÑÔÅËÁ ÐÅËÁÔÇ " & PersonDescription, " áðü " & fromDate & " Ýùò " & toDate, GetSetting(strApplicationName, "Settings", "Export Report Height")) Then
+                If CreateUnisexPDF("ÊÁÑÔÅËÁ ÐÅËÁÔÇ " & " " & PersonDescription, rptOneLiner, 7) Then
+                    DoReport = True
+                End If
+            End If
+        End If
+        If Persons = "Suppliers" Then
+            If CreateUnicodeFileForSuppliers("ÊÁÑÔÅËÁ ÐÑÏÌÇÈÅÕÔÇ " & txtPersonDescription.text, " áðü " & fromDate & " Ýùò " & toDate, GetSetting(strApplicationName, "Settings", "Export Report Height") - 4) Then
+                If CreateUnisexPDF("ÊÁÑÔÅËÁ ÐÑÏÌÇÈÅÕÔÇ " & txtPersonDescription.text, rptOneLiner, 7) Then
+                    DoReport = True
+                End If
+            End If
+        End If
     End If
     
     Exit Function
@@ -2650,8 +2668,9 @@ Private Function AbortProcedure(blnStatus)
     End If
     
     If Not blnStatus And txtBatchReport = "Yes" Then
-        frmCriteria(1).Visible = False
-        grdPersonsIndex.SetFocus
+        frmCriteria(1).Visible = True
+        ClearFields grdPersonsIndex
+        mskInvoiceDateIssueFrom(1).SetFocus
         UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
     End If
     
@@ -2661,9 +2680,9 @@ Private Function AbortProcedure(blnStatus)
 
 End Function
 
-Private Function RefreshList(personID As String, fromDate As String, toDate As String, destinationID As String)
+Private Function RefreshList(personID As String, fromDate As String, toDate As String, DestinationID As String)
 
-    'On Error GoTo ErrTrap
+    On Error GoTo ErrTrap
 
     'SQL
     Dim intIndex As Byte
@@ -2759,7 +2778,7 @@ Private Function RefreshList(personID As String, fromDate As String, toDate As S
             strThisQuery = "InvoiceOutDestinationID = intDestinationID "
             strLogic = " AND "
             GoSub UpdateSQLString
-            arrQuery(intIndex) = Val(destinationID)
+            arrQuery(intIndex) = Val(DestinationID)
         End If
     End If
     
@@ -2917,12 +2936,7 @@ Private Sub Form_Activate()
             txtPersonDescription.SetFocus
             grdPersonsIndex.Visible = False
         Else
-            frmCriteria(1).Visible = False
-            If PopulatePersonsIndex > 0 Then
-                grdPersonsIndex.SetCurCell 1, 1
-                grdPersonsIndex.SetFocus
-                UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
-            End If
+            frmCriteria(1).Visible = True
         End If
     End If
             
@@ -2941,18 +2955,20 @@ End Sub
 
 Private Function CheckFunctionKeys(KeyCode, Shift)
 
-    Dim CtrlDown
+    Dim ShiftDown, AltDown, CtrlDown
     
-    CtrlDown = Shift + vbCtrlMask
+    ShiftDown = (Shift And vbShiftMask) > 0
+    AltDown = (Shift And vbAltMask) > 0
+    CtrlDown = (Shift And vbCtrlMask) > 0
     
     Select Case KeyCode
-        Case vbKeyF10 And cmdButton(0).Enabled, vbKeyC And CtrlDown = 4 And cmdButton(0).Enabled
+        Case vbKeyC And CtrlDown And cmdButton(0).Enabled
             cmdButton_Click 0
         Case vbKeyE And CtrlDown = 4 And cmdButton(1).Enabled
             cmdButton_Click 1
-        Case vbKeyP And CtrlDown = 4 And cmdButton(2).Enabled
+        Case vbKeyP And CtrlDown And Not AltDown And cmdButton(2).Enabled
             cmdButton_Click 2
-        Case vbKeyP And CtrlDown = 5 And cmdButton(3).Enabled
+        Case vbKeyP And CtrlDown And AltDown And cmdButton(3).Enabled
             cmdButton_Click 3
         Case vbKeyEscape
             If cmdButton(5).Enabled Then cmdButton_Click 5: Exit Function

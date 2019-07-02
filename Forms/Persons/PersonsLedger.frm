@@ -89,6 +89,289 @@ Begin VB.Form PersonsLedger
       Begin VB.Frame frmCriteria 
          BackColor       =   &H00FFC0FF&
          BorderStyle     =   0  'None
+         Height          =   2640
+         Index           =   1
+         Left            =   5550
+         TabIndex        =   46
+         Top             =   525
+         Width           =   7665
+         Begin UserControls.newDate mskInvoiceDateIssueFrom 
+            Height          =   465
+            Index           =   1
+            Left            =   1800
+            TabIndex        =   47
+            Top             =   825
+            Width           =   1455
+            _ExtentX        =   2672
+            _ExtentY        =   820
+            ForeColor       =   0
+            Text            =   "01/01/2017"
+            BackColor       =   0
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   11.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+         End
+         Begin UserControls.newDate mskInvoiceDateIssueTo 
+            Height          =   465
+            Index           =   1
+            Left            =   3300
+            TabIndex        =   48
+            Top             =   825
+            Width           =   1455
+            _ExtentX        =   2672
+            _ExtentY        =   820
+            ForeColor       =   0
+            Text            =   "01/01/2017"
+            BackColor       =   0
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   11.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+         End
+         Begin UserControls.newText txtDestinationDescription 
+            Height          =   465
+            Index           =   1
+            Left            =   1800
+            TabIndex        =   49
+            Top             =   1350
+            Width           =   4965
+            _ExtentX        =   8758
+            _ExtentY        =   820
+            ForeColor       =   0
+            MaxLength       =   40
+            Text            =   "ΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑ"
+            BackColor       =   4210688
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   11.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+         End
+         Begin Dacara_dcButton.dcButton cmdIndex 
+            Height          =   465
+            Index           =   2
+            Left            =   6825
+            TabIndex        =   50
+            TabStop         =   0   'False
+            Top             =   1350
+            Width           =   390
+            _ExtentX        =   688
+            _ExtentY        =   820
+            BackColor       =   16777215
+            ButtonShape     =   3
+            ButtonStyle     =   2
+            Caption         =   ""
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   0
+            PicNormal       =   "PersonsLedger.frx":0038
+            PicSizeH        =   16
+            PicSizeW        =   16
+         End
+         Begin VB.Label lblLabel 
+            BackColor       =   &H000080FF&
+            Caption         =   "Εκδοση"
+            BeginProperty Font 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   315
+            Index           =   5
+            Left            =   450
+            TabIndex        =   55
+            Top             =   900
+            Width           =   915
+         End
+         Begin VB.Label Label1 
+            BackColor       =   &H00808000&
+            Caption         =   "Κριτήρια αναζήτησης"
+            BeginProperty Font 
+               Name            =   "Aka-Acid-Steelfish"
+               Size            =   14.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   390
+            Index           =   2
+            Left            =   150
+            TabIndex        =   54
+            Top             =   75
+            Width           =   1665
+         End
+         Begin VB.Label Label2 
+            Alignment       =   1  'Right Justify
+            BackColor       =   &H00808000&
+            Caption         =   "01/05/2017"
+            BeginProperty Font 
+               Name            =   "Aka-Acid-Steelfish"
+               Size            =   14.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H0000FFFF&
+            Height          =   390
+            Left            =   2700
+            TabIndex        =   53
+            Top             =   75
+            Width           =   4815
+         End
+         Begin VB.Label Label1 
+            BackColor       =   &H00808000&
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   14.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   540
+            Index           =   1
+            Left            =   0
+            TabIndex        =   52
+            Top             =   2100
+            Width           =   7665
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   840
+            Index           =   9
+            Left            =   0
+            Top             =   975
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   840
+            Index           =   8
+            Left            =   1350
+            Top             =   1050
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   840
+            Index           =   7
+            Left            =   7200
+            Top             =   975
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   315
+            Index           =   6
+            Left            =   2250
+            Top             =   525
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Label lblLabel 
+            BackColor       =   &H000080FF&
+            Caption         =   "Προορισμός"
+            BeginProperty Font 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   315
+            Index           =   1
+            Left            =   450
+            TabIndex        =   51
+            Top             =   1425
+            Width           =   915
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   315
+            Index           =   5
+            Left            =   5850
+            Top             =   1800
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Label Label1 
+            BackColor       =   &H00808000&
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   14.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   540
+            Index           =   5
+            Left            =   0
+            TabIndex        =   56
+            Top             =   0
+            Width           =   7665
+         End
+      End
+      Begin VB.Frame frmCriteria 
+         BackColor       =   &H00FFC0FF&
+         BorderStyle     =   0  'None
          Height          =   3165
          Index           =   0
          Left            =   150
@@ -119,6 +402,7 @@ Begin VB.Form PersonsLedger
          End
          Begin UserControls.newDate mskInvoiceDateIssueFrom 
             Height          =   465
+            Index           =   0
             Left            =   1800
             TabIndex        =   2
             Top             =   1350
@@ -140,6 +424,7 @@ Begin VB.Form PersonsLedger
          End
          Begin UserControls.newDate mskInvoiceDateIssueTo 
             Height          =   465
+            Index           =   0
             Left            =   3300
             TabIndex        =   3
             Top             =   1350
@@ -183,12 +468,13 @@ Begin VB.Form PersonsLedger
                Strikethrough   =   0   'False
             EndProperty
             ForeColor       =   0
-            PicNormal       =   "PersonsLedger.frx":0038
+            PicNormal       =   "PersonsLedger.frx":05D2
             PicSizeH        =   16
             PicSizeW        =   16
          End
          Begin UserControls.newText txtDestinationDescription 
             Height          =   465
+            Index           =   0
             Left            =   1800
             TabIndex        =   4
             Top             =   1875
@@ -233,7 +519,7 @@ Begin VB.Form PersonsLedger
                Strikethrough   =   0   'False
             EndProperty
             ForeColor       =   0
-            PicNormal       =   "PersonsLedger.frx":05D2
+            PicNormal       =   "PersonsLedger.frx":0B6C
             PicSizeH        =   16
             PicSizeW        =   16
          End
@@ -627,11 +913,55 @@ Begin VB.Form PersonsLedger
          BorderStyle     =   0  'None
          Enabled         =   0   'False
          ForeColor       =   &H80000008&
-         Height          =   2565
+         Height          =   2940
          Left            =   7875
          TabIndex        =   7
-         Top             =   6150
+         Top             =   5775
          Width           =   5040
+         Begin VB.TextBox txtBatchReport 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            BeginProperty Font 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   3675
+            TabIndex        =   45
+            TabStop         =   0   'False
+            Text            =   "999"
+            Top             =   1950
+            Width           =   1305
+         End
+         Begin VB.TextBox Text1 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            BeginProperty Font 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   75
+            TabIndex        =   44
+            TabStop         =   0   'False
+            Text            =   "BatchReport"
+            Top             =   1950
+            Width           =   3540
+         End
          Begin VB.TextBox Text3 
             Appearance      =   0  'Flat
             BackColor       =   &H00C0C0FF&
@@ -854,11 +1184,11 @@ Begin VB.Form PersonsLedger
          End
          Begin vbalIml6.vbalImageList lstIconList 
             Left            =   75
-            Top             =   1950
+            Top             =   2325
             _ExtentX        =   953
             _ExtentY        =   953
             Size            =   2296
-            Images          =   "PersonsLedger.frx":0B6C
+            Images          =   "PersonsLedger.frx":1106
             Version         =   131072
             KeyCount        =   2
             Keys            =   "ÿ"
@@ -895,6 +1225,28 @@ Begin VB.Form PersonsLedger
          _ExtentX        =   33232
          _ExtentY        =   12859
          Appearance      =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Ubuntu Condensed"
+            Size            =   9.75
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   -2147483631
+      End
+      Begin iGrid300_10Tec.iGrid grdPersonsIndex 
+         Height          =   7290
+         Left            =   75
+         TabIndex        =   57
+         TabStop         =   0   'False
+         Top             =   1200
+         Width           =   18840
+         _ExtentX        =   33232
+         _ExtentY        =   12859
+         Appearance      =   0
+         BackColor       =   14737632
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Ubuntu Condensed"
             Size            =   9.75
@@ -1038,6 +1390,7 @@ Option Explicit
 Dim lngRowCount As Long
 Dim blnError As Boolean
 Dim blnProcessing As Boolean
+Dim printerHasAlreadyBeenSelected As Boolean
 
 'Προοδευτικό υπόλοιπο
     Dim curAccBalance As Currency
@@ -1413,7 +1766,7 @@ Private Function CalculatePeriodTotalsForSales(rstTransactions As Recordset)
 
 End Function
 
-Private Function CalculateSoFarTotals(rstTransactions As Recordset)
+Private Function CalculateSoFarTotals(fromDate As String, rstTransactions As Recordset)
     
     'Ατομα
     lngAdultsSoFar = 0
@@ -1436,7 +1789,7 @@ Private Function CalculateSoFarTotals(rstTransactions As Recordset)
     With rstTransactions
         While Not .EOF
             If Not blnProcessing Then Exit Function
-            If !InvoiceDateIssue < CDate(mskInvoiceDateIssueFrom.text) Then
+            If !InvoiceDateIssue < CDate(fromDate) Then
                 'Εξοδο (Χρεωστικό ή πιστωτικό) - Στήλη πίστωσης
                 If txtInvoiceMasterRefersTo.text = "1" Then CalculateSoFarTotalsForExpenses rstTransactions
                 'Πώληση (Χρεωστική ή πιστωτική) - Στήλη χρέωσης
@@ -1540,15 +1893,29 @@ End Function
 
 Private Function DisplayCustomersOrSuppliersGrid()
 
-    If txtInvoiceMasterRefersTo.text = "1" Then
+    If txtBatchReport = "No" Then
+        If txtInvoiceMasterRefersTo.text = "1" Then
+            grdCustomersLedger.Visible = False
+            grdSuppliersLedger.Visible = True
+        End If
+        If txtInvoiceMasterRefersTo.text = "2" Then
+            grdCustomersLedger.Visible = True
+            grdSuppliersLedger.Visible = False
+        End If
+    Else
         grdCustomersLedger.Visible = False
-        grdSuppliersLedger.Visible = True
-    End If
-    If txtInvoiceMasterRefersTo.text = "2" Then
-        grdCustomersLedger.Visible = True
         grdSuppliersLedger.Visible = False
+        grdPersonsIndex.Visible = True
     End If
     
+End Function
+
+Private Function DisplayDialog()
+    
+    frmCriteria(1).Visible = True
+    mskInvoiceDateIssueFrom(1).SetFocus
+    UpdateButtons Me, 6, 1, 0, 0, 0, 0, 1, 0
+
 End Function
 
 Private Function EditInvoiceInRecord()
@@ -1601,9 +1968,9 @@ End Function
 Private Function FindRecordsAndPopulateGrid()
 
     If ValidateFields Then
-        If RefreshList > 0 Then
+        If RefreshList(txtInvoicePersonID.text, mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text, txtDestinationDescription(0).text) > 0 Then
             UpdateRecordCount lblRecordCount, lngRowCount
-            UpdateCriteriaLabels mskInvoiceDateIssueFrom.text, mskInvoiceDateIssueTo.text, txtPersonDescription.text
+            UpdateCriteriaLabels mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text, txtPersonDescription.text
             If txtInvoiceMasterRefersTo.text = "1" Then
                 EnableGrid grdSuppliersLedger, False
                 HighlightRow grdSuppliersLedger, 1, 1, "", True
@@ -1711,16 +2078,169 @@ Private Function HideOrDisplayDestinationCriteria()
 
     If txtInvoiceMasterRefersTo.text = "1" Then
         lblLabel(3).Visible = False
-        txtDestinationDescription.Visible = False
+        txtDestinationDescription(0).Visible = False
         cmdIndex(1).Visible = False
         Label1(4).Top = 2100
         frmCriteria(0).Height = 2640
     Else
         lblLabel(3).Visible = True
-        txtDestinationDescription.Visible = True
+        txtDestinationDescription(0).Visible = True
         cmdIndex(1).Visible = True
         Label1(4).Top = 2625
         frmCriteria(0).Height = 3165
+    End If
+
+End Function
+
+Private Function CheckIfIndexHasSelectedRows()
+
+    Dim lngRow As Long
+    
+    For lngRow = 1 To grdPersonsIndex.RowCount
+        If grdPersonsIndex.CellIcon(lngRow, "Selected") > 0 Then
+            CheckIfIndexHasSelectedRows = True
+            Exit Function
+        End If
+    Next lngRow
+    
+     MyMsgBox 4, strApplicationName, strStandardMessages(6), 1
+     grdPersonsIndex.SetFocus
+
+End Function
+
+Private Function PopulatePersonsIndex()
+
+    'On Error GoTo ErrTrap
+    
+    'SQL
+    Dim intIndex As Byte
+    Dim strThisQuery As String
+    Dim strParameters As String
+    Dim strParFields As String
+    Dim strThisParameter As String
+    Dim strOrder As String
+    Dim strLogic As String
+    Dim arrQuery() As Variant
+    Dim strSQL As String
+    
+    'Local variables
+    Dim lngRow As Long
+    
+    'Recordsets
+    Dim rstRecordset As Recordset
+
+    'Αρχικές τιμές
+    intIndex = 0
+    lngRow = 0
+
+    'Πλέγμα
+    With grdPersonsIndex
+        .Clear
+        .Editable = False
+        .Redraw = False
+        .RowMode = True
+    End With
+    
+    'Κυρίως διαδικασία
+    strSQL = "SELECT " _
+        & "ID, Description, Profession, Address, Phones, PersonInCharge, Email, TaxNo, TaxOfficeID, VATStateID, AccountCode " _
+        & "FROM " & txtCustomersOrSuppliers.text & " "
+
+    'Ταξινόμηση
+    strOrder = " ORDER BY Description"
+    
+    Set TempQuery = CommonDB.CreateQueryDef("")
+    
+    TempQuery.SQL = strSQL & strOrder
+    
+    'Ανοίγω το recordset
+    Set rstRecordset = TempQuery.OpenRecordset()
+    
+    'Αν δεν έχω εγγραφές, βγαίνω
+    If rstRecordset.RecordCount = 0 Then blnError = False: PopulatePersonsIndex = False: Exit Function
+    
+    'Προετοιμάζω τη μπάρα προόδου
+    InitializeProgressBar Me, strApplicationName, rstRecordset
+    
+    'Προσωρινά
+    UpdateButtons Me, 6, 0, 0, 0, 0, 0, 1, 0
+    cmdButton(5).Caption = "Διακοπή επεξεργασίας"
+    blnProcessing = True
+    
+    'Γεμίζω το πλέγμα
+    With rstRecordset
+        grdPersonsIndex.AddRow , , , , , , , rstRecordset.RecordCount
+        lngRowCount = rstRecordset.RecordCount
+        Do While Not .EOF
+            lngRow = lngRow + 1
+            UpdateProgressBar Me
+            grdPersonsIndex.CellValue(lngRow, "ID") = !ID
+            grdPersonsIndex.CellValue(lngRow, "Description") = !Description
+            grdPersonsIndex.CellValue(lngRow, "Profession") = !Profession
+            grdPersonsIndex.CellValue(lngRow, "Address") = !Address
+            grdPersonsIndex.CellValue(lngRow, "Phones") = !Phones
+            grdPersonsIndex.CellValue(lngRow, "PersonInCharge") = !PersonInCharge
+            grdPersonsIndex.CellValue(lngRow, "Email") = !Email
+            grdPersonsIndex.CellValue(lngRow, "TaxNo") = !TaxNo
+            grdPersonsIndex.CellValue(lngRow, "TaxOfficeID") = !TaxOfficeID
+            grdPersonsIndex.CellValue(lngRow, "VATStateID") = !VATStateID
+            grdPersonsIndex.CellValue(lngRow, "AccountCode") = !AccountCode
+            .MoveNext
+        Loop
+    End With
+    
+    'Ακύρωση επεξεργασίας
+    If Not blnProcessing Then
+        blnProcessing = True
+        ClearFields grdPersonsIndex
+        PopulatePersonsIndex = 0
+    Else
+        PopulatePersonsIndex = lngRowCount
+        blnProcessing = False
+        grdPersonsIndex.Redraw = True
+    End If
+    
+    'Τελικές ενέργειες
+    cmdButton(5).Caption = "Νέα αναζήτηση"
+    frmProgress.Visible = False
+    
+    Exit Function
+    
+UpdateSQLString:
+    intIndex = intIndex + 1
+    strParameters = IIf(intIndex > 1, strParameters & ", ", strParameters)
+    strParFields = IIf(intIndex > 1, strParFields & strLogic, strParFields)
+    strParameters = strParameters & strThisParameter
+    strParFields = strParFields & strThisQuery
+    ReDim Preserve arrQuery(intIndex)
+    
+    Return
+    
+ErrTrap:
+    blnError = True
+    ClearFields grdPersonsIndex, frmProgress
+    DisplayErrorMessage True, Err.Description
+
+End Function
+
+Private Function ProcessIndex(printOrCreatePDF As String)
+
+    Dim lngRow As Long
+    
+    If ValidateFields Then
+        With grdPersonsIndex
+            For lngRow = 1 To .RowCount
+                If .CellIcon(lngRow, "Selected") >= 1 Then
+                    RefreshList .CellValue(lngRow, "ID"), mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text, txtDestinationDescription(1).text
+                    If printOrCreatePDF = "Print" Then DoReport "Print", txtCustomersOrSuppliers.text, .CellValue(lngRow, "Description"), mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text
+                    If printOrCreatePDF = "CreatePDF" Then DoReport "CreatePDF", txtCustomersOrSuppliers.text, .CellValue(lngRow, "Description"), mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text
+                End If
+           Next lngRow
+        End With
+    End If
+    
+    If printOrCreatePDF = "CreatePDF" Then
+        MyMsgBox 1, strApplicationName, strStandardMessages(8), 1
     End If
 
 End Function
@@ -1850,13 +2370,31 @@ Private Sub cmdButton_Click(index As Integer)
 
     Select Case index
         Case 0
-            FindRecordsAndPopulateGrid
+            If txtBatchReport.text = "No" Then FindRecordsAndPopulateGrid: Exit Sub
+            If txtBatchReport.text = "Yes" And Not frmCriteria(1).Visible Then
+                If CheckIfIndexHasSelectedRows Then
+                    frmCriteria(1).Visible = True
+                    mskInvoiceDateIssueFrom(1).SetFocus
+                    UpdateButtons Me, 6, 0, 0, 1, 1, 1, 1, 0
+                    Exit Sub
+                End If
+            End If
         Case 1
             EditRecord
         Case 2
-            DoReport "Print", txtCustomersOrSuppliers.text
+            If txtBatchReport.text = "Yes" And frmCriteria(1).Visible Then
+                ProcessIndex "Print"
+            Else
+                DoReport "Print", txtCustomersOrSuppliers.text, txtPersonDescription.text, mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text
+            End If
         Case 3
-            DoReport "CreatePDF", txtCustomersOrSuppliers.text
+            If txtBatchReport.text = "Yes" And frmCriteria(1).Visible Then
+                ProcessIndex "CreatePDF"
+            Else
+                If DoReport("CreatePDF", txtCustomersOrSuppliers.text, txtPersonDescription.text, mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text) Then
+                    MyMsgBox 1, strApplicationName, strStandardMessages(8), 1
+                End If
+            End If
         Case 4
             ExportToExcel
         Case 5
@@ -1869,7 +2407,7 @@ End Sub
 
 Private Function ExportToExcel()
 
-    On Error GoTo ErrTrap
+    'On Error GoTo ErrTrap
     
     Dim lngRow As Long
     Dim lngCol As Long
@@ -1982,37 +2520,44 @@ Function AddNumberFormats(sheet As Object, grid As iGrid, format As String, rowO
 
 End Function
 
-Private Function DoReport(action As String, Persons As String)
+Private Function DoReport(action As String, Persons As String, personDescription As String, fromDate As String, toDate As String)
     
-    On Error GoTo ErrTrap
+    'On Error GoTo ErrTrap
     
     If action = "Print" Then
-        If SelectPrinter("PrinterPrintsReports") Then
-            If Persons = "Customers" Then CreateUnicodeFileForCustomers lblTitle.Caption & " " & txtPersonDescription.text, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, intPrinterReportDetailLines - 11
-            If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers lblTitle.Caption & " " & txtPersonDescription.text, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, intPrinterReportDetailLines - 15
-            With rptOneLiner
-                If intPreviewReports = 1 Then
-                    .Restart
-                    .Zoom = -2
-                    .WindowState = vbMaximized
-                    .Show 1
-                Else
-                    .Restart
-                    .Printer.DeviceName = strPrinterName
-                    .PrintReport False
-                    .Run True
-                End If
-            End With
+        
+        If Not printerHasAlreadyBeenSelected Then
+            If SelectPrinter("PrinterPrintsReports") Then
+                printerHasAlreadyBeenSelected = True
+            Else
+                Exit Function
+            End If
         End If
+        
+        If Persons = "Customers" Then CreateUnicodeFileForCustomers lblTitle.Caption & " " & personDescription, " από " & fromDate & " έως " & toDate, intPrinterReportDetailLines - 11
+        If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers lblTitle.Caption & " " & personDescription, " από " & fromDate & " έως " & toDate, intPrinterReportDetailLines - 15
+        
+        With rptOneLiner
+            If intPreviewReports = 1 Then
+                .Restart
+                .Zoom = -2
+                .WindowState = vbMaximized
+                .Show 1
+            Else
+                .Restart
+                .Printer.DeviceName = strPrinterName
+                .PrintReport False
+                .Run True
+            End If
+        End With
     End If
     
     If action = "CreatePDF" Then
-        If Persons = "Customers" Then CreateUnicodeFileForCustomers lblTitle.Caption & " " & txtPersonDescription.text, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, GetSetting(strApplicationName, "Settings", "Export Report Height")
-        If Persons = "Customers" Then CreateUnisexPDF lblTitle.Caption & " " & txtPersonDescription.text, rptOneLiner, 7
-        If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers lblTitle.Caption & " " & txtPersonDescription.text, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, GetSetting(strApplicationName, "Settings", "Export Report Height") - 4
+        If Persons = "Customers" Then CreateUnicodeFileForCustomers lblTitle.Caption & " " & personDescription, " από " & fromDate & " έως " & toDate, GetSetting(strApplicationName, "Settings", "Export Report Height")
+        If Persons = "Customers" Then CreateUnisexPDF lblTitle.Caption & " " & personDescription, rptOneLiner, 7
+        If Persons = "Suppliers" Then CreateUnicodeFileForSuppliers lblTitle.Caption & " " & txtPersonDescription.text, " από " & fromDate & " έως " & toDate, GetSetting(strApplicationName, "Settings", "Export Report Height") - 4
         If Persons = "Suppliers" Then CreateUnisexPDF lblTitle.Caption & " " & txtPersonDescription.text, rptOneLiner, 7
-        If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
-        End If
+        DoReport = True
     End If
     
     Exit Function
@@ -2029,7 +2574,7 @@ Private Function ValidateFields()
     ValidateFields = False
     
     'Συναλλασόμενος
-    If txtInvoicePersonID.text = "" Then
+    If txtInvoicePersonID.text = "" And txtBatchReport = "No" Then
         If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
         End If
         txtPersonDescription.SetFocus
@@ -2037,27 +2582,53 @@ Private Function ValidateFields()
     End If
     
     'Από
-    If mskInvoiceDateIssueFrom.text = "" Then
+    If mskInvoiceDateIssueFrom(0).text = "" And txtBatchReport = "No" Then
         If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
         End If
-        mskInvoiceDateIssueFrom.SetFocus
+        mskInvoiceDateIssueFrom(0).SetFocus
         Exit Function
     End If
     
     'Εως
-    If mskInvoiceDateIssueTo.text = "" Then
+    If mskInvoiceDateIssueTo(0).text = "" And txtBatchReport = "No" Then
         If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
         End If
-        mskInvoiceDateIssueTo.SetFocus
+        mskInvoiceDateIssueTo(0).SetFocus
         Exit Function
     End If
     
     'Σωστό διάστημα
-    If IsDate(mskInvoiceDateIssueFrom.text) And IsDate(mskInvoiceDateIssueTo.text) Then
-        If CDate(mskInvoiceDateIssueFrom.text) > CDate(mskInvoiceDateIssueTo.text) Then
+    If IsDate(mskInvoiceDateIssueFrom(0).text) And IsDate(mskInvoiceDateIssueTo(0).text) And txtBatchReport = "No" Then
+        If CDate(mskInvoiceDateIssueFrom(0).text) > CDate(mskInvoiceDateIssueTo(0).text) Then
             If MyMsgBox(4, strApplicationName, strStandardMessages(10), 1) Then
             End If
-            mskInvoiceDateIssueFrom.SetFocus
+            mskInvoiceDateIssueFrom(0).SetFocus
+            Exit Function
+        End If
+    End If
+    
+    'Από
+    If mskInvoiceDateIssueFrom(1).text = "" And txtBatchReport = "Yes" Then
+        If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
+        End If
+        mskInvoiceDateIssueFrom(1).SetFocus
+        Exit Function
+    End If
+    
+    'Εως
+    If mskInvoiceDateIssueTo(1).text = "" And txtBatchReport = "Yes" Then
+        If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
+        End If
+        mskInvoiceDateIssueTo(1).SetFocus
+        Exit Function
+    End If
+    
+    'Σωστό διάστημα
+    If IsDate(mskInvoiceDateIssueFrom(1).text) And IsDate(mskInvoiceDateIssueTo(1).text) And txtBatchReport = "Yes" Then
+        If CDate(mskInvoiceDateIssueFrom(1).text) > CDate(mskInvoiceDateIssueTo(1).text) Then
+            If MyMsgBox(4, strApplicationName, strStandardMessages(10), 1) Then
+            End If
+            mskInvoiceDateIssueFrom(1).SetFocus
             Exit Function
         End If
     End If
@@ -2070,11 +2641,17 @@ Private Function AbortProcedure(blnStatus)
 
     If blnProcessing Then blnProcessing = False: Exit Function
 
-    If Not blnStatus Then
+    If Not blnStatus And txtBatchReport = "No" Then
         ClearFields lblSelectedGridTotals, lblSelectedGridLines, lblCriteria, lblRecordCount
         ClearFields grdCustomersLedger, grdSuppliersLedger
         frmCriteria(0).Visible = True
         txtPersonDescription.SetFocus
+        UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
+    End If
+    
+    If Not blnStatus And txtBatchReport = "Yes" Then
+        frmCriteria(1).Visible = False
+        grdPersonsIndex.SetFocus
         UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
     End If
     
@@ -2084,9 +2661,9 @@ Private Function AbortProcedure(blnStatus)
 
 End Function
 
-Private Function RefreshList()
+Private Function RefreshList(personID As String, fromDate As String, toDate As String, destinationID As String)
 
-    On Error GoTo ErrTrap
+    'On Error GoTo ErrTrap
 
     'SQL
     Dim intIndex As Byte
@@ -2160,12 +2737,12 @@ Private Function RefreshList()
     arrQuery(intIndex) = Trim(Str(Val(txtInvoiceMasterRefersTo.text) + 2))
     
     'Εκδοση Εως
-    If mskInvoiceDateIssueTo.text <> "" Then
+    If toDate <> "" Then
         strThisParameter = "datToDate Date"
         strThisQuery = "InvoiceDateIssue <= datToDate"
         strLogic = " AND "
         GoSub UpdateSQLString
-        arrQuery(intIndex) = mskInvoiceDateIssueTo.text
+        arrQuery(intIndex) = toDate
     End If
     
     'Συναλλασόμενος
@@ -2173,7 +2750,7 @@ Private Function RefreshList()
     strThisQuery = "Invoices.InvoicePersonID = intPersonID"
     strLogic = " AND "
     GoSub UpdateSQLString
-    arrQuery(intIndex) = Val(txtInvoicePersonID.text)
+    arrQuery(intIndex) = Val(personID)
     
     'Προορισμός (Μόνο για πελάτες)
     If txtInvoiceMasterRefersTo.text = "2" Then
@@ -2182,7 +2759,7 @@ Private Function RefreshList()
             strThisQuery = "InvoiceOutDestinationID = intDestinationID "
             strLogic = " AND "
             GoSub UpdateSQLString
-            arrQuery(intIndex) = Val(txtDestinationID.text)
+            arrQuery(intIndex) = Val(destinationID)
         End If
     End If
     
@@ -2223,7 +2800,7 @@ Private Function RefreshList()
     'Γεμίζω το πλέγμα
     With rstTransactions
         If .EOF = False Then
-            If CalculateSoFarTotals(rstTransactions) Then
+            If CalculateSoFarTotals(fromDate, rstTransactions) Then
                 blnSoFarHasData = True
                 AddTotalsSoFarToGrid
             End If
@@ -2302,11 +2879,19 @@ Private Sub cmdIndex_Click(index As Integer)
             End If
         Case 1
             'Destination - F2
-            Set tmpRecordset = CheckForMatch("CommonDB", "Destinations", "DestinationDescription", "String", txtDestinationDescription.text)
+            Set tmpRecordset = CheckForMatch("CommonDB", "Destinations", "DestinationDescription", "String", txtDestinationDescription(0).text)
             If tmpRecordset.RecordCount > 0 Then
                 tmpTableData = DisplayIndex(tmpRecordset, 2, True, 2, 0, 2, "ID", "Περιγραφή", 0, 40, 1, 0)
                 txtDestinationID.text = tmpTableData.strCode
-                txtDestinationDescription.text = tmpTableData.strFirstField
+                txtDestinationDescription(0).text = tmpTableData.strFirstField
+            End If
+        Case 2
+            'Destination - F2
+            Set tmpRecordset = CheckForMatch("CommonDB", "Destinations", "DestinationDescription", "String", txtDestinationDescription(1).text)
+            If tmpRecordset.RecordCount > 0 Then
+                tmpTableData = DisplayIndex(tmpRecordset, 2, True, 2, 0, 2, "ID", "Περιγραφή", 0, 40, 1, 0)
+                txtDestinationID.text = tmpTableData.strCode
+                txtDestinationDescription(1).text = tmpTableData.strFirstField
             End If
     End Select
 
@@ -2322,11 +2907,23 @@ Private Sub Form_Activate()
         AddColumnsToGrid grdSuppliersLedger, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdSuppliersLedger"), _
             "12NCDDate,50NLNInvoiceDetails,40NLNExpenseDescription,10NRFDebit,10NRFCredit,10NRFBalance,04NCNMasterRefersTo,04NCNSecondaryRefersTo,04NCNSelected,05NCITrnID", _
             "Εκδοση,Παραστατικό,Κατηγορία εξόδου,Χρέωση,Πίστωση,Υπόλοιπο,A,B,E,TrnID"
+        AddColumnsToGrid grdPersonsIndex, False, 44, GetSetting(strApplicationName, "Layout Strings", "grdPersonsIndex"), _
+            "04NCIID,40NLNDescription,50NLNProfession,50NLNAddress,50NLNPhones,50NLNPersonInCharge,15NLNEmail,15NCNTaxNo,05NCNTaxOfficeID,05NCNXVATStateID,15NCNXAccountCode,05NCNSelected", _
+            "ID,Επωνυμία,Δραστηριότητα,Διεύθυνση,Τηλέφωνα,Υπεύθυνος,E-mail,Α.Φ.Μ.,Δ.Ο.Υ.,Καθεστώς Φ.Π.Α.,Κωδ. Γεν. Λογιστικής,Ε"
         Me.Refresh
         DisplayCustomersOrSuppliersGrid
         HideOrDisplayDestinationCriteria
-        frmCriteria(0).Visible = True
-        txtPersonDescription.SetFocus
+        If txtBatchReport.text = "No" Then
+            txtPersonDescription.SetFocus
+            grdPersonsIndex.Visible = False
+        Else
+            frmCriteria(1).Visible = False
+            If PopulatePersonsIndex > 0 Then
+                grdPersonsIndex.SetCurCell 1, 1
+                grdPersonsIndex.SetFocus
+                UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
+            End If
+        End If
     End If
             
     'AddDummyLines grdCustomersLedger, "99/99/9999", "ΑΑΑΑΑΑΑΑΑΑΑΑ", "ΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑ", "999999", "999999", "999999", "-9999999", "-9999999", "-9999999", "-9999999", "-9999999", "-9999999", "", "", "", ""
@@ -2368,16 +2965,21 @@ End Function
 
 Private Sub Form_Load()
 
-    SetUpGrid lstIconList, grdCustomersLedger, grdSuppliersLedger
+    SetUpGrid lstIconList, grdCustomersLedger, grdSuppliersLedger, grdPersonsIndex
     PositionControls Me, True, grdCustomersLedger
     PositionControls Me, True, grdSuppliersLedger
+    PositionControls Me, True, grdPersonsIndex
     ColorizeControls Me, True
     ClearFields lblRecordCount, lblCriteria, lblSelectedGridLines, lblSelectedGridTotals
     ClearFields txtInvoicePersonID, txtDestinationID
-    ClearFields mskInvoiceDateIssueFrom, mskInvoiceDateIssueTo, txtPersonDescription, txtDestinationDescription
-    ClearFields grdCustomersLedger, grdSuppliersLedger
-    EnableFields mskInvoiceDateIssueFrom, mskInvoiceDateIssueTo, txtPersonDescription, txtDestinationDescription
-    UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
+    ClearFields mskInvoiceDateIssueFrom(0), mskInvoiceDateIssueTo(0), mskInvoiceDateIssueFrom(1), mskInvoiceDateIssueTo(1), txtPersonDescription, txtDestinationDescription(0), txtDestinationDescription(1)
+    ClearFields grdCustomersLedger, grdSuppliersLedger, grdPersonsIndex
+    EnableFields mskInvoiceDateIssueFrom(0), mskInvoiceDateIssueTo(0), txtPersonDescription, txtDestinationDescription(0), mskInvoiceDateIssueFrom(1), mskInvoiceDateIssueTo(1), txtDestinationDescription(1)
+    If txtBatchReport = "Yes" Then
+        UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
+    Else
+        UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
+    End If
     
 End Sub
 
@@ -2420,6 +3022,30 @@ Private Sub grdCustomersLedger_KeyPress(KeyAscii As Integer)
     If KeyAscii = vbKeyReturn And cmdButton(1).Enabled Then cmdButton_Click 1
 
 End Sub
+
+Private Sub grdPersonsIndex_ColHeaderMouseEnter(ByVal lCol As Long)
+
+    grdPersonsIndex.Header.Buttons = True
+
+End Sub
+
+
+Private Sub grdPersonsIndex_ColHeaderMouseLeave(ByVal lCol As Long)
+
+    grdPersonsIndex.Header.Buttons = False
+
+End Sub
+
+
+Private Sub grdPersonsIndex_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
+
+    If KeyCode = vbKeySpace And grdPersonsIndex.RowCount > 0 Then
+        grdPersonsIndex.CellIcon(grdPersonsIndex.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdPersonsIndex, 2, KeyCode, grdPersonsIndex.CurRow, "ID"))
+        lblSelectedGridLines.Caption = CountSelected(grdPersonsIndex)
+    End If
+
+End Sub
+
 
 Private Sub grdSuppliersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
@@ -2468,22 +3094,24 @@ Private Sub mnuΑποθήκευσηΠλάτουςΣτηλών_Click()
 
 End Sub
 
-Private Sub txtDestinationDescription_Change()
+Private Sub txtDestinationDescription_Change(index As Integer)
 
-    If txtDestinationDescription.text = "" Then txtDestinationID.text = ""
-
-End Sub
-
-Private Sub txtDestinationDescription_KeyDown(KeyCode As Integer, Shift As Integer)
-
-    If KeyCode = vbKeyF2 Then cmdIndex_Click 1
+    If txtDestinationDescription(index).text = "" Then txtDestinationID.text = ""
 
 End Sub
 
+Private Sub txtDestinationDescription_KeyDown(KeyCode As Integer, Shift As Integer, index As Integer)
 
-Private Sub txtDestinationDescription_Validate(Cancel As Boolean)
+    If KeyCode = vbKeyF2 And index = 0 Then cmdIndex_Click 1
+    If KeyCode = vbKeyF2 And index = 1 Then cmdIndex_Click 2
 
-    If txtDestinationID.text = "" And txtDestinationDescription.text <> "" Then cmdIndex_Click 1: If txtDestinationID.text = "" Then Cancel = True
+End Sub
+
+
+Private Sub txtDestinationDescription_Validate(index As Integer, Cancel As Boolean)
+
+    If txtDestinationID.text = "" And index = 0 And txtDestinationDescription(index).text <> "" Then cmdIndex_Click 1: If txtDestinationID.text = "" Then Cancel = True
+    If txtDestinationID.text = "" And index = 1 And txtDestinationDescription(index).text <> "" Then cmdIndex_Click 2: If txtDestinationID.text = "" Then Cancel = True
 
 End Sub
 

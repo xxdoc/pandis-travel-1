@@ -799,12 +799,32 @@ Begin VB.Form CommonMain
    Begin VB.Frame menuFrame 
       BackColor       =   &H00FFFFC0&
       BorderStyle     =   0  'None
-      Height          =   2490
+      Height          =   2865
       Index           =   3
       Left            =   8100
       TabIndex        =   18
       Top             =   225
       Width           =   3915
+      Begin VB.Label menuOption 
+         BackColor       =   &H0080C0FF&
+         Caption         =   "Μαζική εκτύπωση καρτελών"
+         BeginProperty Font 
+            Name            =   "Ubuntu Condensed"
+            Size            =   11.25
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00000000&
+         Height          =   315
+         Index           =   11
+         Left            =   300
+         TabIndex        =   66
+         Top             =   1275
+         Width           =   3315
+      End
       Begin VB.Label menuOption 
          BackColor       =   &H0080C0FF&
          Caption         =   "Ημερολόγιο εισπρακτέων αξιογράφων"
@@ -823,7 +843,7 @@ Begin VB.Form CommonMain
          Left            =   300
          MousePointer    =   2  'Cross
          TabIndex        =   60
-         Top             =   1650
+         Top             =   2025
          Width           =   3315
       End
       Begin VB.Label menuOption 
@@ -843,7 +863,7 @@ Begin VB.Form CommonMain
          Index           =   13
          Left            =   300
          TabIndex        =   23
-         Top             =   1275
+         Top             =   1650
          Width           =   3315
       End
       Begin VB.Label menuOption 
@@ -884,7 +904,7 @@ Begin VB.Form CommonMain
          Left            =   300
          MousePointer    =   2  'Cross
          TabIndex        =   21
-         Top             =   2025
+         Top             =   2400
          Width           =   3315
       End
       Begin VB.Label menuOption 
@@ -1077,9 +1097,9 @@ Begin VB.Form CommonMain
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       Height          =   1140
-      Left            =   600
+      Left            =   975
       TabIndex        =   2
-      Top             =   3300
+      Top             =   4200
       Width           =   12840
       Begin GurhanButtonOCX.GurhanButton cmdMenu 
          Height          =   840
@@ -1660,12 +1680,27 @@ Private Sub menuOption_Click(index As Integer)
                 .Tag = "True"
                 .Show 1, Me
             End With
+        Case 11
+            With PersonsLedger 'OK
+                .lblTitle.Caption = "Μαζική εκτύπωση καρτελών πελατών"
+                .txtInvoiceMasterRefersTo.text = "2"
+                .txtCustomersOrSuppliers.text = "Customers"
+                .txtPaymentInOrPaymentOut.text = "PaymentIn"
+                .txtBatchReport.text = "Yes"
+                .frmCriteria(0).Visible = False
+                .frmCriteria(1).Visible = True
+                .Tag = "True"
+                .Show 1, Me
+            End With
         Case 12
             With PersonsLedger 'OK
                 .lblTitle.Caption = "Καρτέλα πελάτη"
                 .txtInvoiceMasterRefersTo.text = "2"
                 .txtCustomersOrSuppliers.text = "Customers"
                 .txtPaymentInOrPaymentOut.text = "PaymentIn"
+                .txtBatchReport.text = "No"
+                .frmCriteria(0).Visible = True
+                .frmCriteria(1).Visible = False
                 .Tag = "True"
                 .Show 1, Me
             End With

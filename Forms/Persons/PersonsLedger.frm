@@ -1276,7 +1276,7 @@ Begin VB.Form PersonsLedger
          Height          =   315
          Left            =   3975
          TabIndex        =   18
-         Top             =   825
+         Top             =   525
          Width           =   14940
       End
       Begin VB.Label lblSelectedGridLines 
@@ -1297,7 +1297,7 @@ Begin VB.Form PersonsLedger
          Height          =   315
          Left            =   3975
          TabIndex        =   17
-         Top             =   525
+         Top             =   825
          Width           =   14940
       End
       Begin VB.Label lblCriteria 
@@ -2373,6 +2373,7 @@ Private Sub cmdButton_Click(index As Integer)
             If txtBatchReport.text = "Yes" Then
                 If ValidateFields Then
                     If PopulatePersonsIndex > 0 Then
+                        UpdateRecordCount lblRecordCount, lngRowCount
                         UpdateCriteriaLabels mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text, txtPersonDescription.text, txtDestinationDescription(1).text
                         frmCriteria(1).Visible = False
                         grdPersonsIndex.SetCurCell 1, 1
@@ -2676,6 +2677,7 @@ Private Function AbortProcedure(blnStatus)
     
     If Not blnStatus And txtBatchReport = "Yes" Then
         frmCriteria(1).Visible = True
+        ClearFields lblSelectedGridTotals, lblSelectedGridLines, lblCriteria, lblRecordCount
         ClearFields grdPersonsIndex
         mskInvoiceDateIssueFrom(1).SetFocus
         UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
@@ -3008,7 +3010,7 @@ Private Sub Form_Load()
     
 End Sub
 
-Private Sub grdCustomersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdCustomersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     bDoDefault = False
 
@@ -3026,7 +3028,7 @@ Private Sub grdCustomersLedger_DblClick(ByVal lRow As Long, ByVal lCol As Long, 
 
 End Sub
 
-Private Sub grdCustomersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdCustomersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
 
@@ -3062,7 +3064,7 @@ Private Sub grdPersonsIndex_ColHeaderMouseLeave(ByVal lCol As Long)
 End Sub
 
 
-Private Sub grdPersonsIndex_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdPersonsIndex_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
 
@@ -3078,7 +3080,7 @@ Private Sub grdPersonsIndex_KeyDown(KeyCode As Integer, Shift As Integer, bDoDef
 End Sub
 
 
-Private Sub grdSuppliersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdSuppliersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     bDoDefault = False
 
@@ -3096,7 +3098,7 @@ Private Sub grdSuppliersLedger_DblClick(ByVal lRow As Long, ByVal lCol As Long, 
 
 End Sub
 
-Private Sub grdSuppliersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdSuppliersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
 

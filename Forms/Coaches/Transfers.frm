@@ -3082,7 +3082,7 @@ Private Function SaveRecord()
 
     If Not ValidateFields(True) Then Exit Function
     
-    txtTransferID.text = MainSaveRecord("CommonDB", "Transfers", blnStatus, strApplicationName, "ID", txtTransferID.text, mskDate.text, txtDestinationID.text, txtCustomerID.text, txtRouteID.text, txtPickupPointID.text, mskAdults.text, mskKids.text, mskFree.text, txtRemarks.text, IIf(txtDriverID.text = "", "28", txtDriverID.text), 1, strCurrentUser)
+    txtTransferID.text = MainSaveRecord("CommonDB", "Transfers", blnStatus, strApplicationName, "ID", txtTransferID.text, mskDate.text, txtDestinationID.text, txtCustomerID.text, txtRouteID.text, txtPickupPointID.text, mskAdults.text, mskKids.text, mskFree.text, txtRemarks.text, IIf(txtDriverID.text = "", "8", txtDriverID.text), 1, strCurrentUser)
     
     If txtTransferID.text <> "" Then
         SaveRecord = True

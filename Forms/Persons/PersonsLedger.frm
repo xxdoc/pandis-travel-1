@@ -1218,10 +1218,10 @@ Begin VB.Form PersonsLedger
       End
       Begin iGrid300_10Tec.iGrid grdPersonsIndex 
          Height          =   7290
-         Left            =   150
+         Left            =   75
          TabIndex        =   56
          TabStop         =   0   'False
-         Top             =   1950
+         Top             =   1500
          Width           =   18840
          _ExtentX        =   33232
          _ExtentY        =   12859
@@ -1856,6 +1856,8 @@ Private Function CreateUnicodeFileForSuppliers(strReportTitle, strReportSubTitle
     
     Close #1
     
+    CreateUnicodeFileForSuppliers = True
+    
     Exit Function
     
 Headers:
@@ -2018,7 +2020,6 @@ End Function
 Private Function AddPeriodTotalsToGrid()
 
     With grdCustomersLedger
-        grdCustomersLedger.AddRow
         grdCustomersLedger.AddRow
         .CellValue(.RowCount, "Destination") = "∆«‘œ’Ã≈Õ« –≈—…œƒœ”"
         .CellValue(.RowCount, "Adults") = lngAdultsPeriod
@@ -2846,7 +2847,7 @@ Private Function RefreshList(personID As String, fromDate As String, toDate As S
     If Not blnProcessing Then
         blnProcessing = True
         ClearFields grdCustomersLedger, grdSuppliersLedger
-        RefreshList = 0
+        RefreshList = False
     Else
         RefreshList = lngRowCount
         blnProcessing = False
@@ -2854,7 +2855,9 @@ Private Function RefreshList(personID As String, fromDate As String, toDate As S
     
     '”˝ÌÔÎ·
     If Not blnProcessing Then
-        If blnPeriodHasData Then
+        If blnPeriodHasData Then grdCustomersLedger.AddRow
+        If blnPeriodHasData Or curAccBalance <> 0 Then
+            RefreshList = 1
             AddPeriodTotalsToGrid
             If blnSoFarHasData Then
                 CalculateGrandTotals
@@ -2942,7 +2945,7 @@ Private Sub Form_Activate()
             txtPersonDescription.SetFocus
             grdPersonsIndex.Visible = False
         Else
-            frmCriteria(1).Visible = True
+            'frmCriteria(1).Visible = True
         End If
     End If
             
@@ -3005,7 +3008,7 @@ Private Sub Form_Load()
     
 End Sub
 
-Private Sub grdCustomersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdCustomersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
 
     bDoDefault = False
 
@@ -3023,7 +3026,7 @@ Private Sub grdCustomersLedger_DblClick(ByVal lRow As Long, ByVal lCol As Long, 
 
 End Sub
 
-Private Sub grdCustomersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdCustomersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
 
     PopupMenu mnuHdrPopUp
 
@@ -3059,6 +3062,12 @@ Private Sub grdPersonsIndex_ColHeaderMouseLeave(ByVal lCol As Long)
 End Sub
 
 
+Private Sub grdPersonsIndex_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+
+    PopupMenu mnuHdrPopUp
+
+End Sub
+
 Private Sub grdPersonsIndex_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
     If KeyCode = vbKeySpace And grdPersonsIndex.RowCount > 0 Then
@@ -3069,7 +3078,7 @@ Private Sub grdPersonsIndex_KeyDown(KeyCode As Integer, Shift As Integer, bDoDef
 End Sub
 
 
-Private Sub grdSuppliersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdSuppliersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
 
     bDoDefault = False
 
@@ -3087,7 +3096,7 @@ Private Sub grdSuppliersLedger_DblClick(ByVal lRow As Long, ByVal lCol As Long, 
 
 End Sub
 
-Private Sub grdSuppliersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdSuppliersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
 
     PopupMenu mnuHdrPopUp
 
@@ -3113,6 +3122,7 @@ Private Sub mnu¡ÔËﬁÍÂıÛÁ–Î‹ÙÔıÚ”ÙÁÎ˛Ì_Click()
 
     SaveSetting strApplicationName, "Layout Strings", "grdCustomersLedger", grdCustomersLedger.LayoutCol
     SaveSetting strApplicationName, "Layout Strings", "grdSuppliersLedger", grdSuppliersLedger.LayoutCol
+    SaveSetting strApplicationName, "Layout Strings", "grdPersonsIndex", grdPersonsIndex.LayoutCol
 
 End Sub
 

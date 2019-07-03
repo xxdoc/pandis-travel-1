@@ -1269,7 +1269,7 @@ Private Function DoReport(action As String)
         If Not SelectPrinter("PrinterPrintsReports") Then Exit Function
         If Not PrinterExists(strPrinterName) Then Exit Function
         
-        CreateUnicodeFile lblTitle.Caption, " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, intPrinterReportDetailLines - 15
+        CreateUnicodeFile ConvertToSpecialUpperCase(lblTitle.Caption), " από " & mskInvoiceDateIssueFrom.text & " έως " & mskInvoiceDateIssueTo.text, intPrinterReportDetailLines - 15
         
         With rptOneLiner
             If intPreviewReports = 1 Then
@@ -1706,13 +1706,13 @@ Private Sub Form_Load()
     
 End Sub
 
-Private Sub grdPersonsBalanceSheet_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdPersonsBalanceSheet_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
 
     bDoDefault = False
 
 End Sub
 
-Private Sub grdPersonsBalanceSheet_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdPersonsBalanceSheet_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
 
     PopupMenu mnuHdrPopUp
 

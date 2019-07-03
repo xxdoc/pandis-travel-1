@@ -1752,6 +1752,9 @@ Private Sub menuOption_Click(index As Integer)
                 .txtInvoiceMasterRefersTo.text = "1"
                 .txtCustomersOrSuppliers.text = "Suppliers"
                 .txtPaymentInOrPaymentOut.text = "PaymentOut"
+                .txtBatchReport.text = "No"
+                .frmCriteria(0).Visible = True
+                .frmCriteria(1).Visible = False
                 .Tag = "True"
                 .Show 1, Me
             End With

@@ -20,7 +20,6 @@ Global dBaseTables As TableDefs
 Global TempQuery As QueryDef
 
 'Εκτυπωτές
-Global strInitializePrinterString As String
 Global strPrinterName As String
 Global strPrinterType As String
 Global intPrinterReportDetailLines As Integer
@@ -37,7 +36,6 @@ Global strFullPathName As String
 Global strPathName As String
 Global strReportsPathName As String
 Global strCompanyName As String
-Global strImageDirectory As String
 Global strUnicodeFile As String
 Global strAsciiFile As String
 Global blnAppIsRunning As Boolean

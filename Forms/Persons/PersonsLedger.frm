@@ -1218,10 +1218,10 @@ Begin VB.Form PersonsLedger
       End
       Begin iGrid300_10Tec.iGrid grdPersonsIndex 
          Height          =   7290
-         Left            =   75
+         Left            =   150
          TabIndex        =   56
          TabStop         =   0   'False
-         Top             =   1200
+         Top             =   1950
          Width           =   18840
          _ExtentX        =   33232
          _ExtentY        =   12859
@@ -1950,7 +1950,7 @@ Private Function FindRecordsAndPopulateGrid()
     If ValidateFields Then
         If RefreshList(txtInvoicePersonID.text, mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text, txtDestinationDescription(0).text) > 0 Then
             UpdateRecordCount lblRecordCount, lngRowCount
-            UpdateCriteriaLabels mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text, txtPersonDescription.text
+            UpdateCriteriaLabels mskInvoiceDateIssueFrom(0).text, mskInvoiceDateIssueTo(0).text, txtPersonDescription.text, txtDestinationDescription(0).text
             If txtInvoiceMasterRefersTo.text = "1" Then
                 EnableGrid grdSuppliersLedger, False
                 HighlightRow grdSuppliersLedger, 1, 1, "", True
@@ -2238,13 +2238,14 @@ Continue:
 
 End Function
 
-Private Function UpdateCriteriaLabels(DateIssueFrom, DateIssueTo, Person)
+Private Function UpdateCriteriaLabels(DateIssueFrom, DateIssueTo, Person, Destination)
 
     Dim strCriteriaA As String
 
     strCriteriaA = IIf(DateIssueFrom = "", "Από [ ΟΛΑ ] ", "Από [ " & DateIssueFrom & " ] ")
     strCriteriaA = strCriteriaA & IIf(DateIssueTo = "", "Εως [ ΟΛΑ ] ", "Εως [ " & DateIssueTo & " ] ")
-    strCriteriaA = strCriteriaA & IIf(Person = "", "Συναλλασόμενος [ ΟΛΟΙ ] ", "Συναλλασόμενος [ " & Person & " ]")
+    strCriteriaA = strCriteriaA & IIf(Person = "", "Συναλλασόμενος [ ΟΛΟΙ ] ", "Συναλλασόμενος [ " & Person & " ] ")
+    strCriteriaA = strCriteriaA & IIf(Destination = "", "Προορισμός [ ΟΛΟΙ ]", "Προορισμός [ " & Destination & " ]")
     
     lblCriteria.Caption = strCriteriaA
     
@@ -2371,6 +2372,7 @@ Private Sub cmdButton_Click(index As Integer)
             If txtBatchReport.text = "Yes" Then
                 If ValidateFields Then
                     If PopulatePersonsIndex > 0 Then
+                        UpdateCriteriaLabels mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text, txtPersonDescription.text, txtDestinationDescription(1).text
                         frmCriteria(1).Visible = False
                         grdPersonsIndex.SetCurCell 1, 1
                         grdPersonsIndex.SetFocus
@@ -2782,7 +2784,7 @@ Private Function RefreshList(personID As String, fromDate As String, toDate As S
             strThisQuery = "InvoiceOutDestinationID = intDestinationID "
             strLogic = " AND "
             GoSub UpdateSQLString
-            arrQuery(intIndex) = Val(DestinationID)
+            arrQuery(intIndex) = Val(txtDestinationID.text)
         End If
     End If
     

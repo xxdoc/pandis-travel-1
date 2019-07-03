@@ -365,15 +365,6 @@ ErrTrap:
 End Function
 
 
-Function FindWeekDay(myDate)
-    
-    FindWeekDay = ""
-    
-    If IsDate(myDate) Then FindWeekDay = WeekdayName(Weekday(myDate, vbUseSystemDayOfWeek))
-
-End Function
-
-
 Function FullInvoice(CodeShortDescriptionB, CodeBatch, InvoiceNo)
 
     Dim strFullInvoice As String
@@ -442,27 +433,6 @@ ErrTrap:
     
 End Function
 
-
-
-Function CreateReferenceNo(DestinationShortDescription, transferDate, TransferID)
-
-    Dim DayOfWeek As String
-    
-    Dim Days(7) As String
-    
-    Days(1) = "SUNDAY"
-    Days(2) = "MONDAY"
-    Days(3) = "TUESDAY"
-    Days(4) = "WEDNESDAY"
-    Days(5) = "THURSDAY"
-    Days(6) = "FRIDAY"
-    Days(7) = "SATURDAY"
-    
-    DayOfWeek = Left(Days(Weekday(transferDate)), 1)
-    
-    CreateReferenceNo = DestinationShortDescription & "" & DayOfWeek & "-" & Right("00000" & TransferID, 5)
-
-End Function
 
 
 Function AddNumbers(ParamArray Numbers() As Variant)

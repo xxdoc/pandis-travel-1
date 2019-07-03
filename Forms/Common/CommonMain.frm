@@ -1524,8 +1524,6 @@ End Sub
 
 Private Sub Form_Load()
 
-    strImageDirectory = GetSetting(strApplicationName, "Path Names", "Image Directory")
-
     With CommonMain
         .Height = Screen.Height
         .Width = Screen.Width

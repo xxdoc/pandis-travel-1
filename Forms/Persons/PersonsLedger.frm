@@ -2790,7 +2790,7 @@ Private Function RefreshList(personID As String, fromDate As String, toDate As S
     End If
     
     'Ταξινόμηση
-    strOrder = " ORDER BY InvoiceDateIssue, InvoiceID, InvoiceNo"
+    strOrder = " ORDER BY InvoiceDateIssue, InvoiceNo, InvoiceID"
     
     Set TempQuery = CommonDB.CreateQueryDef("")
     
@@ -3008,7 +3008,7 @@ Private Sub Form_Load()
     
 End Sub
 
-Private Sub grdCustomersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdCustomersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     bDoDefault = False
 
@@ -3026,7 +3026,7 @@ Private Sub grdCustomersLedger_DblClick(ByVal lRow As Long, ByVal lCol As Long, 
 
 End Sub
 
-Private Sub grdCustomersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdCustomersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
 
@@ -3062,7 +3062,7 @@ Private Sub grdPersonsIndex_ColHeaderMouseLeave(ByVal lCol As Long)
 End Sub
 
 
-Private Sub grdPersonsIndex_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdPersonsIndex_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
 
@@ -3078,7 +3078,7 @@ Private Sub grdPersonsIndex_KeyDown(KeyCode As Integer, Shift As Integer, bDoDef
 End Sub
 
 
-Private Sub grdSuppliersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdSuppliersLedger_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     bDoDefault = False
 
@@ -3096,7 +3096,7 @@ Private Sub grdSuppliersLedger_DblClick(ByVal lRow As Long, ByVal lCol As Long, 
 
 End Sub
 
-Private Sub grdSuppliersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdSuppliersLedger_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
 

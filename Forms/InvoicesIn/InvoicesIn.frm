@@ -1265,6 +1265,27 @@ Begin VB.Form InvoicesIn
          Strikethrough   =   0   'False
       EndProperty
    End
+   Begin VB.Label Label1 
+      AutoSize        =   -1  'True
+      BackColor       =   &H00E0E0E0&
+      BackStyle       =   0  'Transparent
+      Caption         =   "-5.541,45"
+      BeginProperty Font 
+         Name            =   "Ubuntu Condensed"
+         Size            =   15.75
+         Charset         =   161
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H000000FF&
+      Height          =   375
+      Left            =   9300
+      TabIndex        =   66
+      Top             =   450
+      Width           =   1035
+   End
    Begin VB.Label lblCodeDescription 
       AutoSize        =   -1  'True
       BackColor       =   &H00E0E0E0&

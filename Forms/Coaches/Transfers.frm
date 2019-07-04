@@ -2523,6 +2523,7 @@ Private Function DisplayAssignRoutesToDriverDialog()
     End If
 
     ClearFields txtDriverIDForRoutes, txtDriverDescriptionForRoutes
+    EnableFields cmdIndex(0)
     frmCriteria(0).Visible = True
     
     UpdateButtons Me, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
@@ -3498,7 +3499,7 @@ Private Sub Form_Load()
     ClearFields lblTotalPersons, lblSelectedGridLines
     
     DisableFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
-    DisableFields cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
+    DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
     DisableFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
     
     UpdateButtons Me, 11, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0
@@ -3634,6 +3635,7 @@ End Sub
 Private Sub grdSummaryPerCustomer_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
 
     'Customers Grid
+    If lRow = 0 Then Exit Sub
     
     If grdSummaryPerDestination.RowCount > 0 Then
         
@@ -3702,6 +3704,7 @@ End Sub
 Private Sub grdSummaryPerDestination_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
 
     'Destinations Grid
+    If lRow = 0 Then Exit Sub
         
     If grdSummaryPerDestination.RowCount > 0 Then
         
@@ -3775,6 +3778,9 @@ End Sub
 
 Private Sub grdSummaryPerDriver_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
 
+    'Drivers grid
+    If lRow = 0 Then Exit Sub
+    
     If grdSummaryPerRoute.RowCount > 0 Then
         
         'Toggle selected line
@@ -3832,6 +3838,7 @@ End Sub
 Private Sub grdSummaryPerRoute_DblClick(ByVal lRow As Long, ByVal lCol As Long, bRequestEdit As Boolean)
 
     'Routes Grid
+    If lRow = 0 Then Exit Sub
     
     If grdSummaryPerRoute.RowCount > 0 Then
         

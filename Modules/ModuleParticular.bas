@@ -437,6 +437,8 @@ End Function
 
 Function AddNumbers(ParamArray Numbers() As Variant)
 
+    On Error Resume Next
+    
     'Local variables
     Dim intLoop As Integer
     Dim curTotal As Currency

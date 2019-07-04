@@ -1553,6 +1553,7 @@ Function SelectRow(grdGrid As iGrid, colorIndex, strKeyCode, lngRow, lngCol)
 
     'Βγαίνω
     If grdGrid.RowCount = 0 Then Exit Function
+    If lngRow = 0 Then Exit Function
     If grdGrid.CellValue(lngRow, lngCol) = "" Then SelectRow = 1: Exit Function
     
     'Μαρκάρω - Ξεμαρκάρω τη γραμμή με space

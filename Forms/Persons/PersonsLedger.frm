@@ -1276,7 +1276,7 @@ Begin VB.Form PersonsLedger
          Height          =   315
          Left            =   3975
          TabIndex        =   18
-         Top             =   825
+         Top             =   525
          Width           =   14940
       End
       Begin VB.Label lblSelectedGridLines 
@@ -1297,7 +1297,7 @@ Begin VB.Form PersonsLedger
          Height          =   315
          Left            =   3975
          TabIndex        =   17
-         Top             =   525
+         Top             =   825
          Width           =   14940
       End
       Begin VB.Label lblCriteria 
@@ -2373,6 +2373,7 @@ Private Sub cmdButton_Click(index As Integer)
             If txtBatchReport.text = "Yes" Then
                 If ValidateFields Then
                     If PopulatePersonsIndex > 0 Then
+                        UpdateRecordCount lblRecordCount, lngRowCount
                         UpdateCriteriaLabels mskInvoiceDateIssueFrom(1).text, mskInvoiceDateIssueTo(1).text, txtPersonDescription.text, txtDestinationDescription(1).text
                         frmCriteria(1).Visible = False
                         grdPersonsIndex.SetCurCell 1, 1
@@ -2676,6 +2677,7 @@ Private Function AbortProcedure(blnStatus)
     
     If Not blnStatus And txtBatchReport = "Yes" Then
         frmCriteria(1).Visible = True
+        ClearFields lblSelectedGridTotals, lblSelectedGridLines, lblCriteria, lblRecordCount
         ClearFields grdPersonsIndex
         mskInvoiceDateIssueFrom(1).SetFocus
         UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1

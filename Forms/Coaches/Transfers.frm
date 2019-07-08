@@ -1407,7 +1407,7 @@ Begin VB.Form Transfers
          Caption         =   "}"
          BeginProperty Font 
             Name            =   "Ubuntu Condensed"
-            Size            =   48
+            Size            =   56.25
             Charset         =   161
             Weight          =   400
             Underline       =   0   'False
@@ -1415,11 +1415,11 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00FFFF80&
-         Height          =   1335
+         Height          =   1320
          Left            =   2850
          TabIndex        =   75
-         Top             =   3375
-         Width           =   255
+         Top             =   3250
+         Width           =   300
       End
       Begin VB.Label lblSelectedGridLines 
          Alignment       =   1  'Right Justify
@@ -1435,11 +1435,11 @@ Begin VB.Form Transfers
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FFFF00&
+         ForeColor       =   &H00C0C0FF&
          Height          =   315
-         Left            =   13500
+         Left            =   13425
          TabIndex        =   58
-         Top             =   600
+         Top             =   450
          Width           =   5040
       End
       Begin VB.Label lblLabel 
@@ -1601,9 +1601,9 @@ Begin VB.Form Transfers
          EndProperty
          ForeColor       =   &H00C0FFFF&
          Height          =   315
-         Left            =   13500
+         Left            =   13425
          TabIndex        =   15
-         Top             =   300
+         Top             =   150
          Width           =   5040
       End
       Begin VB.Label lblTitle 
@@ -1632,9 +1632,9 @@ Begin VB.Form Transfers
          BackStyle       =   1  'Opaque
          BorderStyle     =   0  'Transparent
          Height          =   840
-         Left            =   0
-         Top             =   0
-         Width           =   840
+         Left            =   150
+         Top             =   750
+         Width           =   18240
       End
    End
    Begin VB.Menu mnuHdrPopUp 
@@ -3934,8 +3934,8 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
     Open strUnicodeFile For Output As #1
 
     'Επικεφαλίδες
-    PrintHeadings 91, intPageNo, strReportTitle, strReportSubTitle1
-    PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 35, "Ε", 38, "Π", 41, "Δ", 45, "Σ", 47, "ΠΕΛΑΤΗΣ", 68, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 89, "Π ^"
+    PrintHeadings 90, intPageNo, strReportTitle, strReportSubTitle1
+    PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 45, "Ε", 48, "Π", 51, "Δ", 55, "Σ", 57, "ΠΕΛΑΤΗΣ", 68, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 89, "Π ^"
     Print #1, "^"
     
     'Εγγραφές
@@ -3960,10 +3960,10 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
                         'Τυπώνω τα σύνολα του σημείου παραλαβής
                         Print #1, _
                             Tab(7); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 18); _
-                            Tab(36 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
-                            Tab(39 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
-                            Tab(42 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
-                            Tab(46 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), ""); _
+                            Tab(46 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
+                            Tab(49 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
+                            Tab(52 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
+                            Tab(56 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), ""); _
                             Tab(91); strSeperator
                         'Εκτυπωμένες γραμμές
                         intProcessedDetailLines = intProcessedDetailLines + 1
@@ -3991,12 +3991,12 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
                 'Τυπώνω το σημείο παραλαβής που βρίσκομαι
                 Print #1, _
                     Tab(1); .CellText(lngRow, "PickupPointTime"); _
-                    Tab(7); Left(.CellText(lngRow, "PickupPointHotelDescription"), 20); _
-                    Tab(36 - Len((format(.CellText(lngRow, "TransferAdults"), "#,##0")))); format(.CellText(lngRow, "TransferAdults"), "#,##0"); _
-                    Tab(39 - Len((format(.CellText(lngRow, "TransferKids"), "#,##0")))); format(.CellText(lngRow, "TransferKids"), "#,##0"); _
-                    Tab(42 - Len((format(.CellText(lngRow, "TransferFree"), "#,##0")))); format(.CellText(lngRow, "TransferFree"), "#,##0"); _
-                    Tab(46 - Len((format(.CellText(lngRow, "TransferTotal"), "#,##0")))); format(.CellText(lngRow, "TransferTotal"), "#,##0"); _
-                    Tab(47); Left(.CellText(lngRow, "CustomerDescription"), 20); _
+                    Tab(7); Left(.CellText(lngRow, "PickupPointHotelDescription"), 20) & "/" & Left(.CellText(lngRow, "PickupPointExactPoint"), 16); _
+                    Tab(46 - Len((format(.CellText(lngRow, "TransferAdults"), "#,##0")))); format(.CellText(lngRow, "TransferAdults"), "#,##0"); _
+                    Tab(49 - Len((format(.CellText(lngRow, "TransferKids"), "#,##0")))); format(.CellText(lngRow, "TransferKids"), "#,##0"); _
+                    Tab(52 - Len((format(.CellText(lngRow, "TransferFree"), "#,##0")))); format(.CellText(lngRow, "TransferFree"), "#,##0"); _
+                    Tab(56 - Len((format(.CellText(lngRow, "TransferTotal"), "#,##0")))); format(.CellText(lngRow, "TransferTotal"), "#,##0"); _
+                    Tab(57); Left(.CellText(lngRow, "CustomerDescription"), 10); _
                     Tab(68); Left(.CellText(lngRow, "TransferRemarks"), 20); _
                     Tab(89); Left(.CellText(lngRow, "DestinationShortDescription"), 2); _
                     Tab(91); IIf(blnMustPrintSeperator, strSeperator, "")
@@ -4022,10 +4022,10 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
             'Τυπώνω τα σύνολα του σημείου παραλαβής
             Print #1, _
                 Tab(7); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 18); _
-                Tab(36 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
-                Tab(39 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
-                Tab(42 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
-                Tab(46 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), ""); _
+                Tab(46 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
+                Tab(49 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
+                Tab(52 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
+                Tab(56 - Len(format(lngPickupPointPersons, "#,##0"))); IIf(lngPickupPointPersons > 0, format(lngPickupPointPersons, "#,##0"), ""); _
                 Tab(91); strSeperator
             'Εκτυπωμένες γραμμές
             intProcessedDetailLines = intProcessedDetailLines + 1
@@ -4034,10 +4034,10 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
         'Τυπώνω τα σύνολα του οδηγού
         Print #1, "", _
             Tab(7); "ΣΥΝΟΛΑ ΟΔΗΓΟΥ "; _
-            Tab(36 - Len(format(lngTotalAdults, "#,##0"))); format(lngTotalAdults, "#,##0"); _
-            Tab(39 - Len(format(lngTotalKids, "#,##0"))); format(lngTotalKids, "#,##0"); _
-            Tab(42 - Len(format(lngTotalFree, "#,##0"))); format(lngTotalFree, "#,##0"); _
-            Tab(46 - Len(format(lngTotalPersons, "#,##0"))); format(lngTotalPersons, "#,##0")
+            Tab(46 - Len(format(lngTotalAdults, "#,##0"))); format(lngTotalAdults, "#,##0"); _
+            Tab(49 - Len(format(lngTotalKids, "#,##0"))); format(lngTotalKids, "#,##0"); _
+            Tab(52 - Len(format(lngTotalFree, "#,##0"))); format(lngTotalFree, "#,##0"); _
+            Tab(56 - Len(format(lngTotalPersons, "#,##0"))); format(lngTotalPersons, "#,##0")
         
     End With
     
@@ -4058,8 +4058,8 @@ CheckToEject:
         Print #1, ""
         Print #1, Tab(7); "Η ΕΚΤΥΠΩΣΗ ΣΥΝΕΧΙΖΕΤΑΙ..."
         intPageNo = intPageNo + 1
-        PrintHeadings 91, intPageNo, strReportTitle, strReportSubTitle1
-        PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 35, "Ε", 38, "Π", 41, "Δ", 45, "Σ", 47, "ΠΕΛΑΤΗΣ", 68, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 93, "Π ^"
+        PrintHeadings 90, intPageNo, strReportTitle, strReportSubTitle1
+        PrintColumnHeadings 1, "ΩΡΑ", 7, "ΣΗΜΕΙΟ ΠΑΡΑΛΑΒΗΣ", 45, "Ε", 48, "Π", 51, "Δ", 55, "Σ", 57, "ΠΕΛΑΤΗΣ", 68, "ΠΑΡΑΤΗΡΗΣΕΙΣ", 89, "Π ^"
         Print #1, ""
         Print #1, Tab(7); "ΣΥΝΕΧΕΙΑ ΕΚΤΥΠΩΣΗΣ ΑΠΟ ΠΡΟΗΓΟΥΜΕΝΗ ΣΕΛΙΔΑ..."
         Print #1, "^"

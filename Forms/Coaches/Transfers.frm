@@ -667,7 +667,7 @@ Begin VB.Form Transfers
             Caption         =   "Επιλογή όλων"
             ForeColor       =   &H80000008&
             Height          =   315
-            Left            =   13725
+            Left            =   14700
             TabIndex        =   53
             TabStop         =   0   'False
             Top             =   0
@@ -679,7 +679,7 @@ Begin VB.Form Transfers
             Caption         =   "Επιλογή όλων"
             ForeColor       =   &H80000008&
             Height          =   315
-            Left            =   9150
+            Left            =   11025
             TabIndex        =   52
             TabStop         =   0   'False
             Top             =   0
@@ -691,7 +691,7 @@ Begin VB.Form Transfers
             Caption         =   "Επιλογή όλων"
             ForeColor       =   &H80000008&
             Height          =   315
-            Left            =   4575
+            Left            =   7350
             TabIndex        =   51
             TabStop         =   0   'False
             Top             =   0
@@ -703,7 +703,7 @@ Begin VB.Form Transfers
             Caption         =   "Επιλογή όλων"
             ForeColor       =   &H80000008&
             Height          =   315
-            Left            =   0
+            Left            =   3675
             TabIndex        =   50
             TabStop         =   0   'False
             Top             =   0
@@ -711,48 +711,60 @@ Begin VB.Form Transfers
          End
          Begin iGrid300_10Tec.iGrid grdSummaryPerRoute 
             Height          =   1725
-            Left            =   9150
+            Left            =   11025
             TabIndex        =   54
             TabStop         =   0   'False
             Top             =   375
-            Width           =   4500
-            _ExtentX        =   7938
+            Width           =   3600
+            _ExtentX        =   6350
             _ExtentY        =   3043
             Appearance      =   0
             ForeColor       =   -2147483631
          End
          Begin iGrid300_10Tec.iGrid grdSummaryPerDriver 
             Height          =   1725
-            Left            =   13725
+            Left            =   14700
             TabIndex        =   55
             TabStop         =   0   'False
             Top             =   375
-            Width           =   4350
-            _ExtentX        =   7673
+            Width           =   3375
+            _ExtentX        =   5953
             _ExtentY        =   3043
             Appearance      =   0
             ForeColor       =   -2147483631
          End
          Begin iGrid300_10Tec.iGrid grdSummaryPerCustomer 
             Height          =   1725
-            Left            =   4575
+            Left            =   7350
             TabIndex        =   56
             TabStop         =   0   'False
             Top             =   375
-            Width           =   4500
-            _ExtentX        =   7938
+            Width           =   3600
+            _ExtentX        =   6350
             _ExtentY        =   3043
             Appearance      =   0
             ForeColor       =   -2147483631
          End
          Begin iGrid300_10Tec.iGrid grdSummaryPerDestination 
             Height          =   1725
-            Left            =   0
+            Left            =   3675
             TabIndex        =   57
             TabStop         =   0   'False
             Top             =   375
-            Width           =   4500
-            _ExtentX        =   7938
+            Width           =   3600
+            _ExtentX        =   6350
+            _ExtentY        =   3043
+            Appearance      =   0
+            ForeColor       =   -2147483631
+         End
+         Begin iGrid300_10Tec.iGrid grdSummaryPerPort 
+            Height          =   1725
+            Left            =   0
+            TabIndex        =   86
+            TabStop         =   0   'False
+            Top             =   375
+            Width           =   3600
+            _ExtentX        =   6350
             _ExtentY        =   3043
             Appearance      =   0
             ForeColor       =   -2147483631
@@ -2249,6 +2261,157 @@ ErrTrap:
 
 End Function
 
+Private Function CalculateSummaryPerPort()
+
+    'SQL
+    Dim intIndex As Byte
+    Dim strThisQuery As String
+    Dim strParameters As String
+    Dim strParFields As String
+    Dim strThisParameter As String
+    Dim strOrder As String
+    Dim strGroupBy As String
+    Dim strLogic As String
+    Dim arrQuery() As Variant
+    Dim strSQL As String
+    
+    Dim lngRow As Long
+    
+    'Recordsets
+    Dim rstRecordset As Recordset
+    Dim rstRecordsetPerPort As Recordset
+    
+    'SQL
+    strSQL = "SELECT " _
+        & "PortID, PortDescription, Sum(Transfers.TransferAdults+Transfers.TransferKids+Transfers.TransferFree) AS SumOfTransferPersons " _
+        & "FROM Transfers INNER JOIN Ports ON Transfers.TransferPortID = Ports.PortID " _
+            
+    'Ημερομηνία
+    strThisParameter = "datDate Date"
+    strThisQuery = "Transfers.TransferDate = datDate"
+    strLogic = " AND "
+    GoSub UpdateSQLString
+    arrQuery(intIndex) = CDate(mskDate.text)
+               
+    strGroupBy = " GROUP BY PortID, PortDescription "
+    strOrder = " ORDER BY PortDescription"
+    
+    Set TempQuery = CommonDB.CreateQueryDef("")
+    
+    'Προσθέτω τα κριτήρια
+    If strThisParameter <> "" Then
+        strParameters = "PARAMETERS " & strParameters & "; "
+        strParFields = "WHERE " & strParFields
+        strSQL = strParameters & strSQL & strParFields
+        TempQuery.SQL = strSQL & strGroupBy & strOrder
+    End If
+    
+    'Κριτήρια
+    If strThisParameter <> "" Then
+        For intIndex = 1 To UBound(arrQuery)
+            TempQuery.Parameters(intIndex - 1) = arrQuery(intIndex)
+        Next intIndex
+    End If
+    
+    'Ανοίγω το recordset
+    Set rstRecordset = TempQuery.OpenRecordset()
+    
+    ClearFields grdSummaryPerPort
+    
+    'Γεμίζω το πλέγμα
+    With rstRecordset
+        Do While Not .EOF
+            DoEvents
+            grdSummaryPerPort.AddRow
+            lngRow = lngRow + 1
+            grdSummaryPerPort.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(2)
+            grdSummaryPerPort.CellValue(lngRow, "PortID") = !PortID
+            grdSummaryPerPort.CellValue(lngRow, "PortDescription") = !PortDescription
+            grdSummaryPerPort.CellValue(lngRow, "TotalPersons") = !SumOfTransferPersons
+            GoSub CalculateSummaryPerPortAndDestination
+            rstRecordset.MoveNext
+        Loop
+    End With
+    
+    Exit Function
+    
+UpdateSQLString:
+    intIndex = intIndex + 1
+    strParameters = IIf(intIndex > 1, strParameters & ", ", strParameters)
+    strParFields = IIf(intIndex > 1, strParFields & strLogic, strParFields)
+    strParameters = strParameters & strThisParameter
+    strParFields = strParFields & strThisQuery
+    ReDim Preserve arrQuery(intIndex)
+    
+    Return
+
+ErrTrap:
+    blnError = True
+    ClearFields grdSummaryPerPort
+    DisplayErrorMessage True, Err.Description
+    
+    Return
+    
+CalculateSummaryPerPortAndDestination:
+    'Main
+    strSQL = ""
+    strParameters = ""
+    strParFields = ""
+    intIndex = 0
+    strThisParameter = ""
+    ReDim arrQuery(0)
+    
+    strSQL = "SELECT " _
+        & "DestinationID, DestinationDescription, Sum(Transfers.TransferAdults+Transfers.TransferKids+Transfers.TransferFree) AS SumOfTransferPersons " _
+        & "FROM Transfers " _
+        & "INNER JOIN Destinations ON Transfers.TransferDestinationID = Destinations.DestinationID " _
+        & "WHERE TransferPortID = " & grdSummaryPerPort.CellValue(lngRow, "PortID") & " "
+            
+    'Ημερομηνία
+    strThisParameter = "datDate Date"
+    strThisQuery = "Transfers.TransferDate = datDate"
+    strLogic = " AND "
+    GoSub UpdateSQLString
+    arrQuery(intIndex) = CDate(mskDate.text)
+    
+    strGroupBy = " GROUP BY DestinationID, DestinationDescription "
+    strOrder = " ORDER BY DestinationDescription"
+    
+    Set TempQuery = CommonDB.CreateQueryDef("")
+    
+    'Προσθέτω τα κριτήρια
+    If strThisParameter <> "" Then
+        strParameters = "PARAMETERS " & strParameters & "; "
+        strParFields = "AND " & strParFields
+        strSQL = strParameters & strSQL & strParFields
+        TempQuery.SQL = strSQL & strGroupBy & strOrder
+    End If
+    
+    'Κριτήρια
+    If strThisParameter <> "" Then
+        For intIndex = 1 To UBound(arrQuery)
+            TempQuery.Parameters(intIndex - 1) = arrQuery(intIndex)
+        Next intIndex
+    End If
+    
+    'Ανοίγω το recordset
+    Set rstRecordsetPerPort = TempQuery.OpenRecordset()
+    
+    With rstRecordsetPerPort
+        Do While Not .EOF
+            DoEvents
+            grdSummaryPerPort.AddRow
+            lngRow = lngRow + 1
+            grdSummaryPerPort.CellValue(lngRow, "PortDescription") = Space(5) & !DestinationDescription
+            grdSummaryPerPort.CellValue(lngRow, "TotalPersons") = !SumOfTransferPersons
+            .MoveNext
+        Loop
+    End With
+    
+    Return
+
+End Function
+
 Private Function CalculateSummaryPerRoute()
 
     'SQL
@@ -2602,6 +2765,7 @@ Private Function FindRecordsAndPopulateGrid()
         'Init
         IsFirstReadFromDatabase = True
         'Σύνολα
+        CalculateSummaryPerPort
         CalculateSummaryPerDestination
         CalculateSummaryPerCustomerForSelectedDestinations
         CalculateSummaryPerRoute
@@ -3344,10 +3508,10 @@ Private Function AbortProcedure(blnStatus)
     If Not blnStatus And Not cmdButton(9).Enabled Then
         IsFirstReadFromDatabase = True
         ClearFields grdCoachesReport
-        ClearFields grdSummaryPerDestination, grdSummaryPerCustomer, grdSummaryPerRoute, grdSummaryPerDriver
+        ClearFields grdSummaryPerPort, grdSummaryPerDestination, grdSummaryPerCustomer, grdSummaryPerRoute, grdSummaryPerDriver
         ClearFields lblTotalPersons, lblSelectedGridLines
         ClearFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
-        DisableFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
+        DisableFields chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
         UpdateButtons Me, 11, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0
         EnableFields mskDate
         mskDate.SetFocus
@@ -3475,6 +3639,9 @@ Private Sub Form_Activate()
         AddColumnsToGrid grdCoachesReport, True, 44, GetSetting(strApplicationName, "Layout Strings", grdCoachesReport.Tag), _
             "05NCNTransferID,12NCDTransferDate,40NLNCustomerDescription,40NCNDestinationShortDescription,40NLNDestinationDescription,50NCNRouteShortDescription,50NLNRouteDescription,40NLNPickupPointHotelDescription,10NLNPickUpPointExactPoint,10NCTPickupPointTime,10NRITransferAdults,10NRITransferKids,10NRITransferFree,10NLNTransferRemarks,10NLNDriverDescription,10NRITransferTotal,04NCNTotalCriteria,04NCNSelected", _
             "TransferID,Ημερομηνία,Πελάτης,Π,Προορισμός,Δρομολόγιο,Δρομολόγιο,Σημείο παραλαβής,Ακριβές σημείο,Ωρα,Ε,Π,Δ,Παρατηρήσεις,Οδηγός,Σύνολο,Κριτήρια,Ε"
+        AddColumnsToGrid grdSummaryPerPort, True, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerPort"), _
+            "04NCNSelected,05NCNPortID,40NLNPortDescription,10NRITotalPersons", _
+            "E,DestinationID,Λιμάνι,Ατομα"
         AddColumnsToGrid grdSummaryPerDestination, True, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerDestination"), _
             "04NCNSelected,05NCNDestinationID,40NLNDestinationDescription,10NRITotalPersons", _
             "E,DestinationID,Προορισμός,Ατομα"
@@ -3557,7 +3724,7 @@ Private Sub Form_Load()
     lngMinimumSeperatorTop = 6825
     lngMaximumSeperatorTop = 11585
     
-    SetUpGrid lstIconList, grdCoachesReport, grdSummaryPerDestination, grdSummaryPerCustomer, grdSummaryPerRoute, grdSummaryPerDriver
+    SetUpGrid lstIconList, grdCoachesReport, grdSummaryPerPort, grdSummaryPerDestination, grdSummaryPerCustomer, grdSummaryPerRoute, grdSummaryPerDriver
     PositionControls Me, True, grdCoachesReport
     PositionSeperator
     RepositionMainGrid
@@ -3570,7 +3737,7 @@ Private Sub Form_Load()
     ClearFields txtTransferID, txtCustomerID, txtPickupPointID, txtRouteID, txtDestinationID, txtDriverID, txtPortID
     ClearFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
     ClearFields mskTotal
-    ClearFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
+    ClearFields chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
     ClearFields lblTotalPersons, lblSelectedGridLines
     
     DisableFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
@@ -3668,7 +3835,7 @@ ErrTrap:
     
 End Sub
 
-Private Sub grdCoachesReport_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdCoachesReport_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
 
     PopupMenu mnuHdrPopUp
     
@@ -3738,7 +3905,7 @@ Private Sub grdSummaryPerCustomer_DblClick(ByVal lRow As Long, ByVal lCol As Lon
     End If
 End Sub
 
-Private Sub grdSummaryPerCustomer_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdSummaryPerCustomer_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
 
     PopupMenu mnuHdrPopUp
     
@@ -3810,7 +3977,7 @@ Private Sub grdSummaryPerDestination_DblClick(ByVal lRow As Long, ByVal lCol As 
     End If
 End Sub
 
-Private Sub grdSummaryPerDestination_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdSummaryPerDestination_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
 
     PopupMenu mnuHdrPopUp
     
@@ -3877,7 +4044,7 @@ Private Sub grdSummaryPerDriver_DblClick(ByVal lRow As Long, ByVal lCol As Long,
 
 End Sub
 
-Private Sub grdSummaryPerDriver_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdSummaryPerDriver_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
 
     PopupMenu mnuHdrPopUp
     
@@ -3902,6 +4069,26 @@ Private Sub grdSummaryPerDriver_KeyDown(KeyCode As Integer, Shift As Integer, bD
 
 End Sub
 
+
+Private Sub grdSummaryPerPort_ColHeaderMouseEnter(ByVal lCol As Long)
+
+    grdSummaryPerPort.Header.Buttons = True
+    
+End Sub
+
+
+Private Sub grdSummaryPerPort_ColHeaderMouseLeave(ByVal lCol As Long)
+
+    grdSummaryPerPort.Header.Buttons = False
+
+End Sub
+
+
+Private Sub grdSummaryPerPort_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+
+    PopupMenu mnuHdrPopUp
+    
+End Sub
 
 Private Sub grdSummaryPerRoute_ColHeaderMouseEnter(ByVal lCol As Long)
 
@@ -3939,7 +4126,7 @@ Private Sub grdSummaryPerRoute_DblClick(ByVal lRow As Long, ByVal lCol As Long, 
 
 End Sub
 
-Private Sub grdSummaryPerRoute_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
+Private Sub grdSummaryPerRoute_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
 
     PopupMenu mnuHdrPopUp
     
@@ -3971,6 +4158,7 @@ Private Sub mnuΑποθήκευσηΠλάτουςΣτηλών_Click()
 
     SaveSetting strApplicationName, "Layout Strings", grdCoachesReport.Tag, grdCoachesReport.LayoutCol
     
+    SaveSetting strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerPort", grdSummaryPerPort.LayoutCol
     SaveSetting strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerDestination", grdSummaryPerDestination.LayoutCol
     SaveSetting strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerCustomer", grdSummaryPerCustomer.LayoutCol
     SaveSetting strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerRoute", grdSummaryPerRoute.LayoutCol
@@ -4183,21 +4371,21 @@ Private Sub mskKids_Validate(Cancel As Boolean)
 
 End Sub
 
-Private Sub Seperator_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Seperator_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 
     If Button = vbLeftButton Then
-        lngOldSeperatorTop = Y
+        lngOldSeperatorTop = y
         blnIsMoving = True
     End If
 
 End Sub
 
-Private Sub Seperator_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Seperator_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 
     Dim lngNewTop As Long
     Dim IsMaximumReached As Boolean
     
-    lngNewTop = Seperator.Top - (lngOldSeperatorTop - Y)
+    lngNewTop = Seperator.Top - (lngOldSeperatorTop - y)
     
     If blnIsMoving Then
         
@@ -4232,6 +4420,7 @@ Private Function PositionGrids()
     frmSummaries.Top = Seperator.Top + 150
     frmSummaries.Height = shpBackground.Height - frmSummaries.Top + shpBackground.Top - 150
     
+    grdSummaryPerPort.Height = frmSummaries.Height - grdSummaryPerPort.Top - 5
     grdSummaryPerDestination.Height = frmSummaries.Height - grdSummaryPerDestination.Top - 5
     grdSummaryPerCustomer.Height = frmSummaries.Height - grdSummaryPerCustomer.Top - 5
     grdSummaryPerRoute.Height = frmSummaries.Height - grdSummaryPerRoute.Top - 5
@@ -4244,7 +4433,7 @@ ErrTrap:
     
 End Function
 
-Private Sub Seperator_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Seperator_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 
     blnIsMoving = False
     

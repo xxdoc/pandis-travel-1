@@ -18,6 +18,7 @@ Global PrintersDB As Database
 Global UsersDB As Database
 Global dBaseTables As TableDefs
 Global TempQuery As QueryDef
+Global TempSummaryPerPortQuery As QueryDef
 
 'Εκτυπωτές
 Global strPrinterName As String

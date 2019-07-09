@@ -1209,13 +1209,13 @@ Private Function CreateTotals()
     Dim lngID As Long
     Dim rsTable As Recordset
     
-    Set rsTable = CommonDB.OpenRecordset("TestMe")
-    strSQL = "DELETE * FROM TestMe"
+    Set rsTable = CommonDB.OpenRecordset("ExpensesPerSupplier")
+    strSQL = "DELETE * FROM ExpensesPerSupplier"
     CommonDB.Execute (strSQL)
     
     With grdInvoicesInIndex
         For lngRow = 1 To .RowCount - 2
-            lngID = MainSaveRecord("CommonDB", "TestMe", True, strApplicationName, "ID", 0, _
+            lngID = MainSaveRecord("CommonDB", "ExpensesPerSupplier", True, strApplicationName, "ID", 0, _
                 .CellValue(lngRow, "Supplier"), _
                 .CellValue(lngRow, "InvoiceNet"), _
                 .CellValue(lngRow, "InvoiceVAT"), _
@@ -1649,7 +1649,7 @@ Private Function UpdateGridWithTotals()
     Dim lngRow As Long
     Dim rstRecordset As Recordset
     
-    strSQL = "SELECT Description, SUM(Net) AS TotalNet, SUM(Vat) AS TotalVat, SUM(Gross) AS TotalGross FROM TestMe GROUP BY Description"
+    strSQL = "SELECT Description, SUM(Net) AS TotalNet, SUM(Vat) AS TotalVat, SUM(Gross) AS TotalGross FROM ExpensesPerSupplier GROUP BY Description"
     
     Set TempQuery = CommonDB.CreateQueryDef("")
     
@@ -1673,7 +1673,7 @@ Private Function UpdateGridWithTotals()
         Wend
     End With
     
-    strSQL = "SELECT SUM(Net) AS TotalNet, SUM(Vat) AS TotalVat, SUM(Gross) AS TotalGross FROM TestMe"
+    strSQL = "SELECT SUM(Net) AS TotalNet, SUM(Vat) AS TotalVat, SUM(Gross) AS TotalGross FROM ExpensesPerSupplier"
 
     Set TempQuery = CommonDB.CreateQueryDef("")
     

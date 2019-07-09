@@ -44,5 +44,6 @@ TablesDrivers = 50, 50, 1378, 582, C, 50, 50, 573, 433, C
 InvoicesOutIndex = 50, 50, 1104, 582, C, 75, 75, 598, 458, C
 rptReceipt = 50, 50, 1104, 582, C, 100, 100, 1064, 868, C
 PersonsBalanceSheet = 125, 125, 1179, 657, C, 125, 125, 648, 508, C
-TablesTaxOffices = 50, 50, 1378, 582, C, 150, 150, 673, 533, C
+TablesPorts = 50, 50, 1378, 582, C, 150, 150, 673, 533, C
 rptOneLiner = 0, 0, 0, 0, C, 25, 25, 1040, 793, C
+TablesTaxOffices = 0, 0, 0, 0, C, 0, 0, 0, 0, C

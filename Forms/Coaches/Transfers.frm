@@ -47,13 +47,13 @@ Begin VB.Form Transfers
       EndProperty
       Height          =   1140
       Left            =   8025
-      TabIndex        =   45
+      TabIndex        =   46
       Top             =   3825
       Width           =   4065
       Begin vbalProgBarLib6.vbalProgressBar prgProgressBar 
          Height          =   615
          Left            =   150
-         TabIndex        =   46
+         TabIndex        =   47
          TabStop         =   0   'False
          Top             =   375
          Width           =   3765
@@ -82,7 +82,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00000000&
          Height          =   240
          Left            =   150
-         TabIndex        =   47
+         TabIndex        =   48
          Top             =   75
          Width           =   3765
       End
@@ -103,22 +103,280 @@ Begin VB.Form Transfers
       ForeColor       =   &H80000008&
       Height          =   10440
       Left            =   75
-      TabIndex        =   9
+      TabIndex        =   10
       Top             =   75
       Width           =   18540
+      Begin VB.Frame frmInfo 
+         Appearance      =   0  'Flat
+         BackColor       =   &H8000000D&
+         BorderStyle     =   0  'None
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H80000008&
+         Height          =   4065
+         Left            =   13725
+         TabIndex        =   30
+         Top             =   1575
+         Width           =   4515
+         Begin VB.TextBox Text10 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   75
+            TabIndex        =   85
+            TabStop         =   0   'False
+            Text            =   "Transfers.PortID"
+            Top             =   2325
+            Width           =   3540
+         End
+         Begin VB.TextBox txtPortID 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   3675
+            TabIndex        =   84
+            TabStop         =   0   'False
+            Top             =   2325
+            Width           =   780
+         End
+         Begin VB.TextBox Text5 
+            Appearance      =   0  'Flat
+            BackColor       =   &H0000FF00&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   75
+            TabIndex        =   73
+            TabStop         =   0   'False
+            Text            =   "DriverIDForRoutes"
+            Top             =   3075
+            Width           =   3540
+         End
+         Begin VB.TextBox txtDriverIDForRoutes 
+            Appearance      =   0  'Flat
+            BackColor       =   &H0000FF00&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   3675
+            TabIndex        =   72
+            TabStop         =   0   'False
+            Top             =   3075
+            Width           =   780
+         End
+         Begin VB.TextBox txtDriverID 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   3675
+            TabIndex        =   45
+            TabStop         =   0   'False
+            Top             =   1950
+            Width           =   780
+         End
+         Begin VB.TextBox Text9 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   75
+            TabIndex        =   44
+            TabStop         =   0   'False
+            Text            =   "Transfers.DriverID"
+            Top             =   1950
+            Width           =   3540
+         End
+         Begin VB.TextBox Text4 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   75
+            TabIndex        =   42
+            TabStop         =   0   'False
+            Text            =   "Transfers.TransferID"
+            Top             =   75
+            Width           =   3540
+         End
+         Begin VB.TextBox Text3 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   75
+            TabIndex        =   41
+            TabStop         =   0   'False
+            Text            =   "Transfers.TransferPickupPointID"
+            Top             =   1575
+            Width           =   3540
+         End
+         Begin VB.TextBox Text1 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   75
+            TabIndex        =   40
+            TabStop         =   0   'False
+            Text            =   "Transfers.TransferCustomerID"
+            Top             =   825
+            Width           =   3540
+         End
+         Begin VB.TextBox txtTransferID 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   3675
+            TabIndex        =   39
+            TabStop         =   0   'False
+            Top             =   75
+            Width           =   780
+         End
+         Begin VB.TextBox txtCustomerID 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   3675
+            TabIndex        =   38
+            TabStop         =   0   'False
+            Top             =   825
+            Width           =   780
+         End
+         Begin VB.TextBox txtPickupPointID 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   3675
+            TabIndex        =   37
+            TabStop         =   0   'False
+            Top             =   1575
+            Width           =   780
+         End
+         Begin VB.TextBox Text6 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   75
+            TabIndex        =   36
+            TabStop         =   0   'False
+            Text            =   "Transfers.TransferRouteID"
+            Top             =   1200
+            Width           =   3540
+         End
+         Begin VB.TextBox txtRouteID 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   3675
+            TabIndex        =   35
+            TabStop         =   0   'False
+            Top             =   1200
+            Width           =   780
+         End
+         Begin VB.TextBox Text7 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   75
+            TabIndex        =   34
+            TabStop         =   0   'False
+            Text            =   "Transfers.TransferDestinationID"
+            Top             =   450
+            Width           =   3540
+         End
+         Begin VB.TextBox txtDestinationID 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00C0C0FF&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   3675
+            TabIndex        =   33
+            TabStop         =   0   'False
+            Top             =   450
+            Width           =   780
+         End
+         Begin VB.TextBox Text8 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00FFFF00&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   75
+            TabIndex        =   32
+            TabStop         =   0   'False
+            Text            =   "SaveAndNew"
+            Top             =   2700
+            Width           =   3540
+         End
+         Begin VB.TextBox txtCoachSaveAndNewID 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00FFFF00&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   3675
+            TabIndex        =   31
+            TabStop         =   0   'False
+            Top             =   2700
+            Width           =   780
+         End
+         Begin vbalIml6.vbalImageList lstIconList 
+            Left            =   75
+            Top             =   3450
+            _ExtentX        =   953
+            _ExtentY        =   953
+            ColourDepth     =   8
+            Size            =   6888
+            Images          =   "Transfers.frx":0038
+            Version         =   131072
+            KeyCount        =   6
+            Keys            =   "ˇˇˇˇˇ"
+         End
+      End
       Begin VB.Frame frmCriteria 
          BackColor       =   &H0080C0FF&
          BorderStyle     =   0  'None
          Height          =   2190
          Index           =   0
          Left            =   7950
-         TabIndex        =   61
+         TabIndex        =   62
          Top             =   4950
          Width           =   7290
          Begin UserControls.newText txtDriverDescriptionForRoutes 
             Height          =   465
             Left            =   1425
-            TabIndex        =   62
+            TabIndex        =   63
             TabStop         =   0   'False
             Top             =   825
             Width           =   4965
@@ -142,7 +400,7 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   0
             Left            =   6450
-            TabIndex        =   63
+            TabIndex        =   64
             TabStop         =   0   'False
             Top             =   825
             Width           =   390
@@ -162,7 +420,7 @@ Begin VB.Form Transfers
                Strikethrough   =   0   'False
             EndProperty
             ForeColor       =   0
-            PicNormal       =   "Transfers.frx":0038
+            PicNormal       =   "Transfers.frx":1B40
             PicSizeH        =   16
             PicSizeW        =   16
          End
@@ -170,7 +428,7 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   10
             Left            =   1575
-            TabIndex        =   69
+            TabIndex        =   70
             TabStop         =   0   'False
             Top             =   1650
             Width           =   2115
@@ -196,7 +454,7 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   11
             Left            =   3750
-            TabIndex        =   70
+            TabIndex        =   71
             TabStop         =   0   'False
             Top             =   1650
             Width           =   2115
@@ -233,7 +491,7 @@ Begin VB.Form Transfers
             Height          =   615
             Index           =   4
             Left            =   0
-            TabIndex        =   68
+            TabIndex        =   69
             Top             =   1575
             Width           =   7440
          End
@@ -253,7 +511,7 @@ Begin VB.Form Transfers
             Height          =   390
             Index           =   3
             Left            =   150
-            TabIndex        =   66
+            TabIndex        =   67
             Top             =   75
             Width           =   3615
          End
@@ -273,7 +531,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H0000FFFF&
             Height          =   390
             Left            =   4200
-            TabIndex        =   65
+            TabIndex        =   66
             Top             =   75
             Width           =   2940
          End
@@ -322,7 +580,7 @@ Begin VB.Form Transfers
             Height          =   315
             Index           =   11
             Left            =   450
-            TabIndex        =   64
+            TabIndex        =   65
             Top             =   900
             Width           =   540
          End
@@ -365,7 +623,7 @@ Begin VB.Form Transfers
             Height          =   540
             Index           =   0
             Left            =   0
-            TabIndex        =   67
+            TabIndex        =   68
             Top             =   0
             Width           =   7440
          End
@@ -377,7 +635,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Left            =   7875
-         TabIndex        =   60
+         TabIndex        =   61
          TabStop         =   0   'False
          Top             =   1050
          Width           =   2340
@@ -390,7 +648,7 @@ Begin VB.Form Transfers
          MousePointer    =   7  'Size N S
          ScaleHeight     =   45
          ScaleWidth      =   5865
-         TabIndex        =   59
+         TabIndex        =   60
          TabStop         =   0   'False
          Top             =   6825
          Width           =   5865
@@ -400,7 +658,7 @@ Begin VB.Form Transfers
          BorderStyle     =   0  'None
          Height          =   2115
          Left            =   225
-         TabIndex        =   48
+         TabIndex        =   49
          Top             =   7500
          Width           =   18090
          Begin VB.CheckBox chkAllDrivers 
@@ -410,7 +668,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H80000008&
             Height          =   315
             Left            =   13725
-            TabIndex        =   52
+            TabIndex        =   53
             TabStop         =   0   'False
             Top             =   0
             Width           =   2340
@@ -422,7 +680,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H80000008&
             Height          =   315
             Left            =   9150
-            TabIndex        =   51
+            TabIndex        =   52
             TabStop         =   0   'False
             Top             =   0
             Width           =   2340
@@ -434,7 +692,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H80000008&
             Height          =   315
             Left            =   4575
-            TabIndex        =   50
+            TabIndex        =   51
             TabStop         =   0   'False
             Top             =   0
             Width           =   2340
@@ -446,7 +704,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H80000008&
             Height          =   315
             Left            =   0
-            TabIndex        =   49
+            TabIndex        =   50
             TabStop         =   0   'False
             Top             =   0
             Width           =   2340
@@ -454,7 +712,7 @@ Begin VB.Form Transfers
          Begin iGrid300_10Tec.iGrid grdSummaryPerRoute 
             Height          =   1725
             Left            =   9150
-            TabIndex        =   53
+            TabIndex        =   54
             TabStop         =   0   'False
             Top             =   375
             Width           =   4500
@@ -466,7 +724,7 @@ Begin VB.Form Transfers
          Begin iGrid300_10Tec.iGrid grdSummaryPerDriver 
             Height          =   1725
             Left            =   13725
-            TabIndex        =   54
+            TabIndex        =   55
             TabStop         =   0   'False
             Top             =   375
             Width           =   4350
@@ -478,7 +736,7 @@ Begin VB.Form Transfers
          Begin iGrid300_10Tec.iGrid grdSummaryPerCustomer 
             Height          =   1725
             Left            =   4575
-            TabIndex        =   55
+            TabIndex        =   56
             TabStop         =   0   'False
             Top             =   375
             Width           =   4500
@@ -490,7 +748,7 @@ Begin VB.Form Transfers
          Begin iGrid300_10Tec.iGrid grdSummaryPerDestination 
             Height          =   1725
             Left            =   0
-            TabIndex        =   56
+            TabIndex        =   57
             TabStop         =   0   'False
             Top             =   375
             Width           =   4500
@@ -498,239 +756,6 @@ Begin VB.Form Transfers
             _ExtentY        =   3043
             Appearance      =   0
             ForeColor       =   -2147483631
-         End
-      End
-      Begin VB.Frame frmInfo 
-         Appearance      =   0  'Flat
-         BackColor       =   &H8000000D&
-         BorderStyle     =   0  'None
-         Enabled         =   0   'False
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   161
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H80000008&
-         Height          =   3690
-         Left            =   13725
-         TabIndex        =   29
-         Top             =   1575
-         Width           =   4515
-         Begin VB.TextBox Text5 
-            Appearance      =   0  'Flat
-            BackColor       =   &H0000FF00&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   75
-            TabIndex        =   72
-            TabStop         =   0   'False
-            Text            =   "DriverIDForRoutes"
-            Top             =   2700
-            Width           =   3540
-         End
-         Begin VB.TextBox txtDriverIDForRoutes 
-            Appearance      =   0  'Flat
-            BackColor       =   &H0000FF00&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   3675
-            TabIndex        =   71
-            TabStop         =   0   'False
-            Top             =   2700
-            Width           =   780
-         End
-         Begin VB.TextBox txtDriverID 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   3675
-            TabIndex        =   44
-            TabStop         =   0   'False
-            Top             =   1950
-            Width           =   780
-         End
-         Begin VB.TextBox Text9 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   75
-            TabIndex        =   43
-            TabStop         =   0   'False
-            Text            =   "Transfers.DriverID"
-            Top             =   1950
-            Width           =   3540
-         End
-         Begin VB.TextBox Text4 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   75
-            TabIndex        =   41
-            TabStop         =   0   'False
-            Text            =   "Transfers.TransferID"
-            Top             =   75
-            Width           =   3540
-         End
-         Begin VB.TextBox Text3 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   75
-            TabIndex        =   40
-            TabStop         =   0   'False
-            Text            =   "Transfers.TransferPickupPointID"
-            Top             =   1575
-            Width           =   3540
-         End
-         Begin VB.TextBox Text1 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   75
-            TabIndex        =   39
-            TabStop         =   0   'False
-            Text            =   "Transfers.TransferCustomerID"
-            Top             =   825
-            Width           =   3540
-         End
-         Begin VB.TextBox txtTransferID 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   3675
-            TabIndex        =   38
-            TabStop         =   0   'False
-            Top             =   75
-            Width           =   780
-         End
-         Begin VB.TextBox txtCustomerID 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   3675
-            TabIndex        =   37
-            TabStop         =   0   'False
-            Top             =   825
-            Width           =   780
-         End
-         Begin VB.TextBox txtPickupPointID 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   3675
-            TabIndex        =   36
-            TabStop         =   0   'False
-            Top             =   1575
-            Width           =   780
-         End
-         Begin VB.TextBox Text6 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   75
-            TabIndex        =   35
-            TabStop         =   0   'False
-            Text            =   "Transfers.TransferRouteID"
-            Top             =   1200
-            Width           =   3540
-         End
-         Begin VB.TextBox txtRouteID 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   3675
-            TabIndex        =   34
-            TabStop         =   0   'False
-            Top             =   1200
-            Width           =   780
-         End
-         Begin VB.TextBox Text7 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   75
-            TabIndex        =   33
-            TabStop         =   0   'False
-            Text            =   "Transfers.TransferDestinationID"
-            Top             =   450
-            Width           =   3540
-         End
-         Begin VB.TextBox txtDestinationID 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00C0C0FF&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   3675
-            TabIndex        =   32
-            TabStop         =   0   'False
-            Top             =   450
-            Width           =   780
-         End
-         Begin VB.TextBox Text8 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00FFFF00&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   75
-            TabIndex        =   31
-            TabStop         =   0   'False
-            Text            =   "SaveAndNew"
-            Top             =   2325
-            Width           =   3540
-         End
-         Begin VB.TextBox txtCoachSaveAndNewID 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00FFFF00&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H00000000&
-            Height          =   315
-            Left            =   3675
-            TabIndex        =   30
-            TabStop         =   0   'False
-            Top             =   2325
-            Width           =   780
-         End
-         Begin vbalIml6.vbalImageList lstIconList 
-            Left            =   75
-            Top             =   3075
-            _ExtentX        =   953
-            _ExtentY        =   953
-            ColourDepth     =   8
-            Size            =   6888
-            Images          =   "Transfers.frx":05D2
-            Version         =   131072
-            KeyCount        =   6
-            Keys            =   "ˇˇˇˇˇ"
          End
       End
       Begin VB.Frame frmButtonFrame 
@@ -747,14 +772,14 @@ Begin VB.Form Transfers
          EndProperty
          Height          =   615
          Left            =   150
-         TabIndex        =   12
+         TabIndex        =   13
          Top             =   9750
          Width           =   16440
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   465
             Index           =   9
             Left            =   13125
-            TabIndex        =   13
+            TabIndex        =   14
             TabStop         =   0   'False
             Top             =   75
             Width           =   3165
@@ -780,7 +805,7 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   6
             Left            =   3450
-            TabIndex        =   14
+            TabIndex        =   15
             TabStop         =   0   'False
             Top             =   75
             Width           =   3165
@@ -806,7 +831,7 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   8
             Left            =   9900
-            TabIndex        =   42
+            TabIndex        =   43
             TabStop         =   0   'False
             Top             =   75
             Width           =   3165
@@ -832,7 +857,7 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   5
             Left            =   225
-            TabIndex        =   73
+            TabIndex        =   74
             TabStop         =   0   'False
             Top             =   75
             Width           =   3165
@@ -884,7 +909,7 @@ Begin VB.Form Transfers
       Begin iGrid300_10Tec.iGrid grdCoachesReport 
          Height          =   5790
          Left            =   7875
-         TabIndex        =   10
+         TabIndex        =   11
          TabStop         =   0   'False
          Top             =   1425
          Width           =   10440
@@ -984,7 +1009,7 @@ Begin VB.Form Transfers
          Height          =   465
          Left            =   2025
          TabIndex        =   7
-         Top             =   4800
+         Top             =   3750
          Width           =   4965
          _ExtentX        =   8758
          _ExtentY        =   820
@@ -1026,9 +1051,9 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newInteger mskKids 
          Height          =   465
-         Left            =   2025
+         Left            =   3450
          TabIndex        =   5
-         Top             =   3750
+         Top             =   3225
          Width           =   690
          _ExtentX        =   1217
          _ExtentY        =   820
@@ -1048,9 +1073,9 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newInteger mskFree 
          Height          =   465
-         Left            =   2025
+         Left            =   4875
          TabIndex        =   6
-         Top             =   4275
+         Top             =   3225
          Width           =   690
          _ExtentX        =   1217
          _ExtentY        =   820
@@ -1072,7 +1097,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   2
          Left            =   7050
-         TabIndex        =   16
+         TabIndex        =   17
          TabStop         =   0   'False
          Top             =   2175
          Width           =   390
@@ -1100,7 +1125,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   3
          Left            =   7050
-         TabIndex        =   17
+         TabIndex        =   18
          TabStop         =   0   'False
          Top             =   2700
          Width           =   390
@@ -1127,8 +1152,8 @@ Begin VB.Form Transfers
       Begin UserControls.newText txtDriverDescription 
          Height          =   465
          Left            =   2025
-         TabIndex        =   8
-         Top             =   5325
+         TabIndex        =   9
+         Top             =   4800
          Width           =   4965
          _ExtentX        =   8758
          _ExtentY        =   820
@@ -1150,9 +1175,9 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   4
          Left            =   7050
-         TabIndex        =   27
+         TabIndex        =   28
          TabStop         =   0   'False
-         Top             =   5325
+         Top             =   4800
          Width           =   390
          _ExtentX        =   688
          _ExtentY        =   820
@@ -1178,7 +1203,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   1
          Left            =   7050
-         TabIndex        =   57
+         TabIndex        =   58
          TabStop         =   0   'False
          Top             =   1650
          Width           =   390
@@ -1206,7 +1231,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   0
          Left            =   3600
-         TabIndex        =   74
+         TabIndex        =   75
          Top             =   1125
          Width           =   390
          _ExtentX        =   688
@@ -1333,6 +1358,67 @@ Begin VB.Form Transfers
          ForeColor       =   0
          PicOpacity      =   0
       End
+      Begin UserControls.newText txtPortDescription 
+         Height          =   465
+         Left            =   2025
+         TabIndex        =   8
+         Top             =   4275
+         Width           =   4965
+         _ExtentX        =   8758
+         _ExtentY        =   820
+         ForeColor       =   0
+         MaxLength       =   50
+         Text            =   "¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡"
+         BackColor       =   4210688
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Ubuntu Condensed"
+            Size            =   11.25
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin Dacara_dcButton.dcButton cmdIndex 
+         Height          =   465
+         Index           =   5
+         Left            =   7050
+         TabIndex        =   82
+         TabStop         =   0   'False
+         Top             =   4275
+         Width           =   390
+         _ExtentX        =   688
+         _ExtentY        =   820
+         BackColor       =   16777215
+         ButtonShape     =   3
+         ButtonStyle     =   2
+         Caption         =   ""
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Ubuntu Condensed"
+            Size            =   9.75
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   0
+         PicNormal       =   "Transfers.frx":3CDC
+         PicSizeH        =   16
+         PicSizeW        =   16
+      End
+      Begin VB.Label lblLabel 
+         BackColor       =   &H000080FF&
+         Caption         =   "ÀÈÏ‹ÌÈ ·Ì·˜˛ÒÁÛÁÚ"
+         ForeColor       =   &H00FFFFFF&
+         Height          =   315
+         Index           =   10
+         Left            =   225
+         TabIndex        =   83
+         Top             =   4350
+         Width           =   1365
+      End
       Begin VB.Shape shpWedge 
          BackColor       =   &H0000FFFF&
          BackStyle       =   1  'Opaque
@@ -1395,31 +1481,10 @@ Begin VB.Form Transfers
          EndProperty
          ForeColor       =   &H0000FFFF&
          Height          =   465
-         Left            =   3900
+         Left            =   6300
          TabIndex        =   80
-         Top             =   3810
+         Top             =   3210
          Width           =   1215
-      End
-      Begin VB.Label lblBraces 
-         AutoSize        =   -1  'True
-         BackColor       =   &H000080FF&
-         BackStyle       =   0  'Transparent
-         Caption         =   "}"
-         BeginProperty Font 
-            Name            =   "Ubuntu Condensed"
-            Size            =   56.25
-            Charset         =   161
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00FFFF80&
-         Height          =   1320
-         Left            =   2850
-         TabIndex        =   75
-         Top             =   3250
-         Width           =   300
       End
       Begin VB.Label lblSelectedGridLines 
          Alignment       =   1  'Right Justify
@@ -1438,7 +1503,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00C0C0FF&
          Height          =   315
          Left            =   13425
-         TabIndex        =   58
+         TabIndex        =   59
          Top             =   450
          Width           =   5040
       End
@@ -1449,8 +1514,8 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   4
          Left            =   225
-         TabIndex        =   28
-         Top             =   5400
+         TabIndex        =   29
+         Top             =   4875
          Width           =   1365
       End
       Begin VB.Label lblLabel 
@@ -1461,7 +1526,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   3
          Left            =   225
-         TabIndex        =   26
+         TabIndex        =   27
          Top             =   1200
          Width           =   1365
       End
@@ -1473,7 +1538,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   5
          Left            =   225
-         TabIndex        =   25
+         TabIndex        =   26
          Top             =   2250
          Width           =   1365
       End
@@ -1485,7 +1550,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   7
          Left            =   225
-         TabIndex        =   24
+         TabIndex        =   25
          Top             =   1725
          Width           =   1365
       End
@@ -1497,7 +1562,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   8
          Left            =   225
-         TabIndex        =   23
+         TabIndex        =   24
          Top             =   2775
          Width           =   1365
       End
@@ -1509,7 +1574,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   9
          Left            =   225
-         TabIndex        =   22
+         TabIndex        =   23
          Top             =   3300
          Width           =   1365
       End
@@ -1520,10 +1585,10 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   6
-         Left            =   225
-         TabIndex        =   21
-         Top             =   3825
-         Width           =   1365
+         Left            =   2775
+         TabIndex        =   22
+         Top             =   3300
+         Width           =   615
       End
       Begin VB.Label lblLabel 
          AutoSize        =   -1  'True
@@ -1532,10 +1597,10 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   2
-         Left            =   225
-         TabIndex        =   20
-         Top             =   4350
-         Width           =   1365
+         Left            =   4200
+         TabIndex        =   21
+         Top             =   3300
+         Width           =   615
       End
       Begin VB.Label lblLabel 
          AutoSize        =   -1  'True
@@ -1544,9 +1609,9 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   1
-         Left            =   3225
-         TabIndex        =   19
-         Top             =   3900
+         Left            =   5625
+         TabIndex        =   20
+         Top             =   3300
          Width           =   615
       End
       Begin VB.Label lblLabel 
@@ -1557,8 +1622,8 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   0
          Left            =   225
-         TabIndex        =   18
-         Top             =   4875
+         TabIndex        =   19
+         Top             =   3825
          Width           =   1365
       End
       Begin VB.Shape shpWedge 
@@ -1602,7 +1667,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00C0FFFF&
          Height          =   315
          Left            =   13425
-         TabIndex        =   15
+         TabIndex        =   16
          Top             =   150
          Width           =   5040
       End
@@ -1623,7 +1688,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H0000FF00&
          Height          =   765
          Left            =   0
-         TabIndex        =   11
+         TabIndex        =   12
          Top             =   0
          Width           =   6165
       End
@@ -2492,11 +2557,11 @@ Private Function DeleteRecord()
 
     If MainDeleteRecord("CommonDB", "Transfers", strApplicationName, "ID", txtTransferID.text, "True") Then
         blnCancel = True
-        ClearFields txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID
-        ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
+        ClearFields txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID, txtPortID
+        ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
         ClearFields mskTotal
-        DisableFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
-        DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
+        DisableFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+        DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
         FindRecordsAndPopulateGrid
         If Not blnStatus Then ClearFields txtTransferID
         blnStatus = True
@@ -3048,22 +3113,22 @@ Private Function NewRecord()
 
     blnCancel = False
     DisableFields mskDate
-    EnableFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
-    EnableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
+    EnableFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+    EnableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
     UpdateButtons Me, 11, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0
         
     If True Then
         If txtTransferID.text <> "" Then
             DisplayLastRecord txtTransferID.text
             blnStatus = True
-            ClearFields txtTransferID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID
-            ClearFields txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
+            ClearFields txtTransferID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID, txtPortID
+            ClearFields txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
             ClearFields mskTotal
             txtCustomerDescription.SetFocus
         Else
             blnStatus = True
             ClearFields txtTransferID, txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID
-            ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
+            ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
             ClearFields mskTotal
             txtDestinationDescription.SetFocus
         End If
@@ -3083,16 +3148,16 @@ Private Function SaveRecord()
 
     If Not ValidateFields(True) Then Exit Function
     
-    txtTransferID.text = MainSaveRecord("CommonDB", "Transfers", blnStatus, strApplicationName, "ID", txtTransferID.text, mskDate.text, txtDestinationID.text, txtCustomerID.text, txtRouteID.text, txtPickupPointID.text, mskAdults.text, mskKids.text, mskFree.text, txtRemarks.text, IIf(txtDriverID.text = "", "8", txtDriverID.text), 1, strCurrentUser)
+    txtTransferID.text = MainSaveRecord("CommonDB", "Transfers", blnStatus, strApplicationName, "ID", txtTransferID.text, mskDate.text, txtDestinationID.text, txtCustomerID.text, txtRouteID.text, txtPickupPointID.text, mskAdults.text, mskKids.text, mskFree.text, txtRemarks.text, IIf(txtDriverID.text = "", "8", txtDriverID.text), IIf(txtPortID.text = "", "0", txtPortID.text), 1, strCurrentUser)
     
     If txtTransferID.text <> "" Then
         SaveRecord = True
         blnCancel = True
-        ClearFields txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID
-        ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
+        ClearFields txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID, txtPortID
+        ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
         ClearFields mskTotal
-        DisableFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
-        DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
+        DisableFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+        DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
         FindRecordsAndPopulateGrid
         HighlightRow txtTransferID.text
         If Not blnStatus Then ClearFields txtTransferID
@@ -3262,11 +3327,11 @@ Private Function AbortProcedure(blnStatus)
         If MyMsgBox(3, strApplicationName, strStandardMessages(3), 2) Then
             blnStatus = False
             blnCancel = True
-            ClearFields txtTransferID, txtCustomerID, txtPickupPointID, txtRouteID, txtDestinationID, txtDriverID
-            ClearFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
+            ClearFields txtTransferID, txtCustomerID, txtPickupPointID, txtRouteID, txtDestinationID, txtDriverID, txtPortID
+            ClearFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
             ClearFields mskTotal
-            DisableFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
-            DisableFields cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
+            DisableFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+            DisableFields cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
             UpdateButtons Me, 11, 0, 1, 0, 0, 0, IIf(grdCoachesReport.RowCount > 0, 1, 0), IIf(grdCoachesReport.RowCount > 0, 1, 0), IIf(grdCoachesReport.RowCount > 0, 1, 0), 1, 0, 0, 0
             grdCoachesReport.SetFocus
             blnStatus = True
@@ -3359,6 +3424,15 @@ Private Sub cmdIndex_Click(index As Integer)
                 txtDriverID.text = tmpTableData.strCode
                 txtDriverDescription.text = tmpTableData.strFirstField
             End If
+        Case 5
+            'ÀÈÏ‹ÌÈ ·Ì·˜˛ÒÁÛÁÚ
+            Set tmpRecordset = CheckForMatch("CommonDB", "Ports", "PortDescription", "String", txtPortDescription.text)
+            If tmpRecordset.RecordCount > 0 Then
+                tmpTableData = DisplayIndex(tmpRecordset, 2, True, 2, 0, 1, "ID", "–ÂÒÈ„Ò·ˆﬁ", 0, 40, 1, 0)
+                txtPortID.text = tmpTableData.strCode
+                txtPortDescription.text = tmpTableData.strFirstField
+            End If
+    
     End Select
 
 End Sub
@@ -3492,14 +3566,14 @@ Private Sub Form_Load()
     
     frmCriteria(0).Visible = False
     
-    ClearFields txtTransferID, txtCustomerID, txtPickupPointID, txtRouteID, txtDestinationID, txtDriverID
-    ClearFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
+    ClearFields txtTransferID, txtCustomerID, txtPickupPointID, txtRouteID, txtDestinationID, txtDriverID, txtPortID
+    ClearFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
     ClearFields mskTotal
     ClearFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
     ClearFields lblTotalPersons, lblSelectedGridLines
     
-    DisableFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
-    DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
+    DisableFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+    DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
     DisableFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
     
     UpdateButtons Me, 11, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0
@@ -3517,15 +3591,15 @@ Private Function SeekRecord(TransferID)
     Dim tmpRecordset As Recordset
     Dim tmpTableData As typTableData
     
-    ClearFields txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID
-    ClearFields mskDate, txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
+    ClearFields txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID, txtPortID
+    ClearFields mskDate, txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
     ClearFields mskTotal
-    DisableFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks
-    DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
+    DisableFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+    DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
     
     SeekRecord = False
     
-    If MainSeekRecord("CommonDB", "Transfers", "ID", TransferID, True, txtTransferID, mskDate, txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, mskAdults, mskKids, mskFree, txtRemarks, txtDriverID) Then
+    If MainSeekRecord("CommonDB", "Transfers", "ID", TransferID, True, txtTransferID, mskDate, txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, mskAdults, mskKids, mskFree, txtRemarks, txtDriverID, txtPortID) Then
         '–ÒÔÔÒÈÛÏ¸Ú
         Set tmpRecordset = CheckForMatch("CommonDB", "Destinations", "DestinationID", "Numeric", txtDestinationID.text)
         txtDestinationID.text = tmpRecordset.Fields(0)
@@ -3544,9 +3618,15 @@ Private Function SeekRecord(TransferID)
             txtDriverID.text = tmpRecordset.Fields(0)
             txtDriverDescription.text = tmpRecordset.Fields(1)
         End If
+        'ÀÈÏ‹ÌÈ ·Ì·˜˛ÒÁÛÁÚ (¡Ì ›˜˘)
+        If txtPortID.text <> "0" Then
+            Set tmpRecordset = CheckForMatch("CommonDB", "Ports", "PortID", "Numeric", txtPortID.text)
+            txtPortID.text = tmpRecordset.Fields(0)
+            txtPortDescription.text = tmpRecordset.Fields(1)
+        End If
         '‘· ı¸ÎÔÈ·
-        EnableFields mskDate, txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription
-        EnableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4)
+        EnableFields mskDate, txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+        EnableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
         mskTotal.Caption = AddNumbers(mskAdults.text, mskKids.text, mskFree.text)
         blnCancel = False
         blnStatus = False
@@ -4262,6 +4342,27 @@ End Sub
 Private Sub txtPickupPointDescription_Validate(Cancel As Boolean)
 
     If txtPickupPointID.text = "" And txtPickupPointDescription.text <> "" Then cmdIndex_Click 3: If txtPickupPointID.text = "" Then Cancel = True
+
+End Sub
+
+
+Private Sub txtPortDescription_Change()
+
+    If txtPortDescription.text = "" Then ClearFields txtPortID
+    
+End Sub
+
+
+Private Sub txtPortDescription_KeyDown(KeyCode As Integer, Shift As Integer)
+
+    If KeyCode = vbKeyF2 Then cmdIndex_Click 5
+    
+End Sub
+
+
+Private Sub txtPortDescription_Validate(Cancel As Boolean)
+
+    If txtPortID.text = "" And txtPortDescription.text <> "" Then cmdIndex_Click 5: If txtPortID.text = "" Then Cancel = True
 
 End Sub
 

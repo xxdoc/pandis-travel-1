@@ -3396,24 +3396,25 @@ Private Sub cmdIndex_Click(index As Integer)
             'Σημείο παραλαβής
             If txtDestinationID.text <> "" Then
                 txtPickupPointDescription.text = Replace(txtPickupPointDescription.text, "'", "")
-                'Δεν έχω δώσει δρομολόγιο, βρίσκω τα σημεία παραλαβής που είναι συνδεδεμένα με τον δοσμένο προορισμό
-                If txtRouteID.text = "" Then
-                    intSize = Len(txtPickupPointDescription.text)
-                    If intSize = 0 Then Exit Sub
-                    strSQL = "SELECT DestinationID, RouteID, DestinationsRoutesPickupPoints.PickupPointID, PickupPointHotelDescription, PickupPointTime " _
-                        & "FROM DestinationsRoutesPickupPoints " _
-                        & "INNER JOIN PickupPoints ON DestinationsRoutesPickupPoints.PickupPointID = PickupPoints.PickupPointID " _
-                        & "WHERE DestinationID = " & txtDestinationID.text & " " _
-                        & "AND Left(PickupPointHotelDescription, " & intSize & ") = '" & txtPickupPointDescription.text & "' " _
-                        & "ORDER BY PickUpPointTime"
-                    Set tmpRecordset = FindAndReturnRecords(strSQL)
-                    If tmpRecordset.RecordCount > 0 Then
-                        tmpTableData = DisplayIndex(tmpRecordset, 4, True, 4, 1, 2, 3, 4, "ID", "RouteID", "Περιγραφή", "Ωρα", 0, 0, 40, 7, 1, 0, 0, 1)
-                        txtPickupPointID.text = tmpTableData.strFirstField
-                        txtPickupPointDescription.text = tmpTableData.strSecondField
-                        txtRouteID.text = tmpTableData.strCode
-                        FindRoute
-                    End If
+                'Βρίσκω τα σημεία παραλαβής που είναι συνδεδεμένα με τον δοσμένο προορισμό
+                intSize = Len(txtPickupPointDescription.text)
+                If intSize = 0 Then Exit Sub
+                strSQL = "SELECT DestinationID, PickupPointRouteID, DestinationsRoutesPickupPoints.PickupPointID, PickupPointHotelDescription, PickupPointTime, PickupRoutePortID, PortDescription " _
+                    & "FROM ((DestinationsRoutesPickupPoints " _
+                    & "INNER JOIN PickupPoints ON DestinationsRoutesPickupPoints.PickupPointID = PickupPoints.PickupPointID) " _
+                    & "INNER JOIN PickupRoutes ON DestinationsRoutesPickupPoints.RouteID = PickupRoutes.PickupRouteID) " _
+                    & "INNER JOIN Ports ON PickupRoutes.PickupRoutePortID = Ports.PortID " _
+                    & "WHERE DestinationID = " & txtDestinationID.text & " " _
+                    & "AND Left(PickupPointHotelDescription, " & intSize & ") = '" & txtPickupPointDescription.text & "' " _
+                    & "ORDER BY PickUpPointTime"
+                Set tmpRecordset = FindAndReturnRecords(strSQL)
+                If tmpRecordset.RecordCount > 0 Then
+                    tmpTableData = DisplayIndex(tmpRecordset, 4, True, 6, 1, 2, 3, 4, 5, 6, "ID", "RouteID", "Περιγραφή", "Ωρα", "PortID", "PortDescription", 0, 0, 40, 7, 10, 10, 1, 0, 0, 1, 0, 0)
+                    txtPickupPointID.text = tmpTableData.strFirstField
+                    txtPickupPointDescription.text = tmpTableData.strSecondField
+                    txtRouteID.text = tmpTableData.strCode
+                    txtPortID.text = tmpTableData.strFourthField
+                    txtPortDescription.text = tmpTableData.strFifthField
                 End If
             End If
         Case 4

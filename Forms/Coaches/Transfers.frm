@@ -8,10 +8,10 @@ Begin VB.Form Transfers
    Appearance      =   0  'Flat
    BackColor       =   &H00E0E0E0&
    BorderStyle     =   0  'None
-   ClientHeight    =   10590
+   ClientHeight    =   13005
    ClientLeft      =   -30
    ClientTop       =   15
-   ClientWidth     =   18690
+   ClientWidth     =   20490
    ControlBox      =   0   'False
    FillColor       =   &H00800000&
    FillStyle       =   0  'Solid
@@ -29,8 +29,8 @@ Begin VB.Form Transfers
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   10590
-   ScaleWidth      =   18690
+   ScaleHeight     =   13005
+   ScaleWidth      =   20490
    ShowInTaskbar   =   0   'False
    Begin VB.Frame frmProgress 
       BackColor       =   &H000080FF&
@@ -46,14 +46,14 @@ Begin VB.Form Transfers
          Strikethrough   =   0   'False
       EndProperty
       Height          =   1140
-      Left            =   8025
-      TabIndex        =   46
-      Top             =   3825
+      Left            =   12825
+      TabIndex        =   45
+      Top             =   10725
       Width           =   4065
       Begin vbalProgBarLib6.vbalProgressBar prgProgressBar 
          Height          =   615
          Left            =   150
-         TabIndex        =   47
+         TabIndex        =   46
          TabStop         =   0   'False
          Top             =   375
          Width           =   3765
@@ -82,14 +82,14 @@ Begin VB.Form Transfers
          ForeColor       =   &H00000000&
          Height          =   240
          Left            =   150
-         TabIndex        =   48
+         TabIndex        =   47
          Top             =   75
          Width           =   3765
       End
    End
    Begin VB.Frame frmContainer 
       Appearance      =   0  'Flat
-      BackColor       =   &H00808080&
+      BackColor       =   &H00C0C0C0&
       BorderStyle     =   0  'None
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -101,7 +101,7 @@ Begin VB.Form Transfers
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H80000008&
-      Height          =   10440
+      Height          =   12465
       Left            =   75
       TabIndex        =   10
       Top             =   75
@@ -121,11 +121,36 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H80000008&
-         Height          =   4065
-         Left            =   13725
-         TabIndex        =   30
-         Top             =   1575
+         Height          =   4515
+         Left            =   5025
+         TabIndex        =   29
+         Top             =   7575
          Width           =   4515
+         Begin VB.TextBox txtPortIDForPassengers 
+            Appearance      =   0  'Flat
+            BackColor       =   &H0000FF00&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   3675
+            TabIndex        =   102
+            TabStop         =   0   'False
+            Top             =   3450
+            Width           =   780
+         End
+         Begin VB.TextBox Text2 
+            Appearance      =   0  'Flat
+            BackColor       =   &H0000FF00&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H00000000&
+            Height          =   315
+            Left            =   75
+            TabIndex        =   101
+            TabStop         =   0   'False
+            Text            =   "PortIDForPassengers"
+            Top             =   3450
+            Width           =   3540
+         End
          Begin VB.TextBox Text10 
             Appearance      =   0  'Flat
             BackColor       =   &H00C0C0FF&
@@ -133,7 +158,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   75
-            TabIndex        =   85
+            TabIndex        =   83
             TabStop         =   0   'False
             Text            =   "Transfers.PortID"
             Top             =   2325
@@ -146,7 +171,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   3675
-            TabIndex        =   84
+            TabIndex        =   82
             TabStop         =   0   'False
             Top             =   2325
             Width           =   780
@@ -158,7 +183,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   75
-            TabIndex        =   73
+            TabIndex        =   71
             TabStop         =   0   'False
             Text            =   "DriverIDForRoutes"
             Top             =   3075
@@ -171,7 +196,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   3675
-            TabIndex        =   72
+            TabIndex        =   70
             TabStop         =   0   'False
             Top             =   3075
             Width           =   780
@@ -183,7 +208,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   3675
-            TabIndex        =   45
+            TabIndex        =   44
             TabStop         =   0   'False
             Top             =   1950
             Width           =   780
@@ -195,7 +220,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   75
-            TabIndex        =   44
+            TabIndex        =   43
             TabStop         =   0   'False
             Text            =   "Transfers.DriverID"
             Top             =   1950
@@ -208,7 +233,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   75
-            TabIndex        =   42
+            TabIndex        =   41
             TabStop         =   0   'False
             Text            =   "Transfers.TransferID"
             Top             =   75
@@ -221,7 +246,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   75
-            TabIndex        =   41
+            TabIndex        =   40
             TabStop         =   0   'False
             Text            =   "Transfers.TransferPickupPointID"
             Top             =   1575
@@ -234,7 +259,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   75
-            TabIndex        =   40
+            TabIndex        =   39
             TabStop         =   0   'False
             Text            =   "Transfers.TransferCustomerID"
             Top             =   825
@@ -247,7 +272,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   3675
-            TabIndex        =   39
+            TabIndex        =   38
             TabStop         =   0   'False
             Top             =   75
             Width           =   780
@@ -259,7 +284,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   3675
-            TabIndex        =   38
+            TabIndex        =   37
             TabStop         =   0   'False
             Top             =   825
             Width           =   780
@@ -271,7 +296,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   3675
-            TabIndex        =   37
+            TabIndex        =   36
             TabStop         =   0   'False
             Top             =   1575
             Width           =   780
@@ -283,7 +308,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   75
-            TabIndex        =   36
+            TabIndex        =   35
             TabStop         =   0   'False
             Text            =   "Transfers.TransferRouteID"
             Top             =   1200
@@ -296,7 +321,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   3675
-            TabIndex        =   35
+            TabIndex        =   34
             TabStop         =   0   'False
             Top             =   1200
             Width           =   780
@@ -308,7 +333,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   75
-            TabIndex        =   34
+            TabIndex        =   33
             TabStop         =   0   'False
             Text            =   "Transfers.TransferDestinationID"
             Top             =   450
@@ -321,7 +346,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   3675
-            TabIndex        =   33
+            TabIndex        =   32
             TabStop         =   0   'False
             Top             =   450
             Width           =   780
@@ -333,7 +358,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   75
-            TabIndex        =   32
+            TabIndex        =   31
             TabStop         =   0   'False
             Text            =   "SaveAndNew"
             Top             =   2700
@@ -346,14 +371,14 @@ Begin VB.Form Transfers
             ForeColor       =   &H00000000&
             Height          =   315
             Left            =   3675
-            TabIndex        =   31
+            TabIndex        =   30
             TabStop         =   0   'False
             Top             =   2700
             Width           =   780
          End
          Begin vbalIml6.vbalImageList lstIconList 
             Left            =   75
-            Top             =   3450
+            Top             =   3825
             _ExtentX        =   953
             _ExtentY        =   953
             ColourDepth     =   8
@@ -368,15 +393,15 @@ Begin VB.Form Transfers
          BackColor       =   &H0080C0FF&
          BorderStyle     =   0  'None
          Height          =   2190
-         Index           =   0
+         Index           =   1
          Left            =   7950
-         TabIndex        =   62
-         Top             =   4950
+         TabIndex        =   91
+         Top             =   2700
          Width           =   7290
-         Begin UserControls.newText txtDriverDescriptionForRoutes 
+         Begin UserControls.newText txtPortDescriptionForPassengers 
             Height          =   465
             Left            =   1425
-            TabIndex        =   63
+            TabIndex        =   92
             TabStop         =   0   'False
             Top             =   825
             Width           =   4965
@@ -398,9 +423,9 @@ Begin VB.Form Transfers
          End
          Begin Dacara_dcButton.dcButton cmdIndex 
             Height          =   465
-            Index           =   0
+            Index           =   6
             Left            =   6450
-            TabIndex        =   64
+            TabIndex        =   93
             TabStop         =   0   'False
             Top             =   825
             Width           =   390
@@ -426,9 +451,9 @@ Begin VB.Form Transfers
          End
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   465
-            Index           =   10
+            Index           =   13
             Left            =   1575
-            TabIndex        =   70
+            TabIndex        =   94
             TabStop         =   0   'False
             Top             =   1650
             Width           =   2115
@@ -452,9 +477,273 @@ Begin VB.Form Transfers
          End
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   465
-            Index           =   11
+            Index           =   14
             Left            =   3750
-            TabIndex        =   71
+            TabIndex        =   95
+            TabStop         =   0   'False
+            Top             =   1650
+            Width           =   2115
+            _ExtentX        =   3731
+            _ExtentY        =   820
+            BackColor       =   12640511
+            ButtonShape     =   3
+            ButtonStyle     =   4
+            Caption         =   "Συνέχεια"
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   0
+            PicOpacity      =   0
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   315
+            Index           =   15
+            Left            =   2475
+            Top             =   1275
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   315
+            Index           =   14
+            Left            =   2400
+            Top             =   525
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Label lblCriteriaLabel 
+            AutoSize        =   -1  'True
+            BackColor       =   &H000080FF&
+            BackStyle       =   0  'Transparent
+            Caption         =   "Λιμάνι"
+            ForeColor       =   &H00000000&
+            Height          =   255
+            Index           =   0
+            Left            =   450
+            TabIndex        =   99
+            Top             =   900
+            Width           =   435
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   840
+            Index           =   13
+            Left            =   6825
+            Top             =   750
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   840
+            Index           =   12
+            Left            =   975
+            Top             =   675
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   840
+            Index           =   11
+            Left            =   0
+            Top             =   675
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Label Label4 
+            Alignment       =   1  'Right Justify
+            BackColor       =   &H00808000&
+            Caption         =   "01/05/2017"
+            BeginProperty Font 
+               Name            =   "Aka-Acid-Steelfish"
+               Size            =   14.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H0000FFFF&
+            Height          =   390
+            Left            =   4200
+            TabIndex        =   98
+            Top             =   75
+            Width           =   2940
+         End
+         Begin VB.Label Label1 
+            BackColor       =   &H00808000&
+            Caption         =   "Ενημέρωση λιμανιών αναχώρησης"
+            BeginProperty Font 
+               Name            =   "Aka-Acid-Steelfish"
+               Size            =   14.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   390
+            Index           =   2
+            Left            =   150
+            TabIndex        =   97
+            Top             =   75
+            Width           =   3615
+         End
+         Begin VB.Label Label1 
+            BackColor       =   &H00808000&
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   14.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   615
+            Index           =   1
+            Left            =   0
+            TabIndex        =   96
+            Top             =   1575
+            Width           =   7440
+         End
+         Begin VB.Label Label1 
+            BackColor       =   &H00808000&
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   14.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   540
+            Index           =   5
+            Left            =   0
+            TabIndex        =   100
+            Top             =   0
+            Width           =   7440
+         End
+      End
+      Begin VB.Frame frmCriteria 
+         BackColor       =   &H0080C0FF&
+         BorderStyle     =   0  'None
+         Height          =   2190
+         Index           =   0
+         Left            =   7950
+         TabIndex        =   60
+         Top             =   4950
+         Width           =   7290
+         Begin UserControls.newText txtDriverDescriptionForRoutes 
+            Height          =   465
+            Left            =   1425
+            TabIndex        =   61
+            TabStop         =   0   'False
+            Top             =   825
+            Width           =   4965
+            _ExtentX        =   8758
+            _ExtentY        =   820
+            ForeColor       =   0
+            MaxLength       =   40
+            Text            =   "ΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑΑ"
+            BackColor       =   4210688
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   11.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+         End
+         Begin Dacara_dcButton.dcButton cmdIndex 
+            Height          =   465
+            Index           =   0
+            Left            =   6450
+            TabIndex        =   62
+            TabStop         =   0   'False
+            Top             =   825
+            Width           =   390
+            _ExtentX        =   688
+            _ExtentY        =   820
+            BackColor       =   16777215
+            ButtonShape     =   3
+            ButtonStyle     =   2
+            Caption         =   ""
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   0
+            PicNormal       =   "Transfers.frx":20DA
+            PicSizeH        =   16
+            PicSizeW        =   16
+         End
+         Begin Dacara_dcButton.dcButton cmdButton 
+            Height          =   465
+            Index           =   11
+            Left            =   1575
+            TabIndex        =   68
+            TabStop         =   0   'False
+            Top             =   1650
+            Width           =   2115
+            _ExtentX        =   3731
+            _ExtentY        =   820
+            BackColor       =   12640511
+            ButtonShape     =   3
+            ButtonStyle     =   4
+            Caption         =   "Ακυρο"
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   0
+            PicOpacity      =   0
+         End
+         Begin Dacara_dcButton.dcButton cmdButton 
+            Height          =   465
+            Index           =   12
+            Left            =   3750
+            TabIndex        =   69
             TabStop         =   0   'False
             Top             =   1650
             Width           =   2115
@@ -491,13 +780,13 @@ Begin VB.Form Transfers
             Height          =   615
             Index           =   4
             Left            =   0
-            TabIndex        =   69
+            TabIndex        =   67
             Top             =   1575
             Width           =   7440
          End
          Begin VB.Label Label1 
             BackColor       =   &H00808000&
-            Caption         =   "Απόδοση διαδρομών σε οδηγό"
+            Caption         =   "Απόδοση δρομολογίων σε οδηγό"
             BeginProperty Font 
                Name            =   "Aka-Acid-Steelfish"
                Size            =   14.25
@@ -511,7 +800,7 @@ Begin VB.Form Transfers
             Height          =   390
             Index           =   3
             Left            =   150
-            TabIndex        =   67
+            TabIndex        =   65
             Top             =   75
             Width           =   3615
          End
@@ -531,7 +820,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H0000FFFF&
             Height          =   390
             Left            =   4200
-            TabIndex        =   66
+            TabIndex        =   64
             Top             =   75
             Width           =   2940
          End
@@ -580,7 +869,7 @@ Begin VB.Form Transfers
             Height          =   315
             Index           =   11
             Left            =   450
-            TabIndex        =   65
+            TabIndex        =   63
             Top             =   900
             Width           =   540
          End
@@ -623,7 +912,7 @@ Begin VB.Form Transfers
             Height          =   540
             Index           =   0
             Left            =   0
-            TabIndex        =   68
+            TabIndex        =   66
             Top             =   0
             Width           =   7440
          End
@@ -635,7 +924,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Left            =   7875
-         TabIndex        =   61
+         TabIndex        =   59
          TabStop         =   0   'False
          Top             =   1050
          Width           =   2340
@@ -648,17 +937,17 @@ Begin VB.Form Transfers
          MousePointer    =   7  'Size N S
          ScaleHeight     =   45
          ScaleWidth      =   5865
-         TabIndex        =   60
+         TabIndex        =   58
          TabStop         =   0   'False
          Top             =   6825
          Width           =   5865
       End
       Begin VB.Frame frmSummaries 
-         BackColor       =   &H00000000&
+         BackColor       =   &H00C0E0FF&
          BorderStyle     =   0  'None
          Height          =   2115
          Left            =   225
-         TabIndex        =   49
+         TabIndex        =   48
          Top             =   7500
          Width           =   18090
          Begin VB.CheckBox chkAllDrivers 
@@ -668,7 +957,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H80000008&
             Height          =   315
             Left            =   14700
-            TabIndex        =   53
+            TabIndex        =   52
             TabStop         =   0   'False
             Top             =   0
             Width           =   2340
@@ -680,7 +969,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H80000008&
             Height          =   315
             Left            =   11025
-            TabIndex        =   52
+            TabIndex        =   51
             TabStop         =   0   'False
             Top             =   0
             Width           =   2340
@@ -692,7 +981,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H80000008&
             Height          =   315
             Left            =   7350
-            TabIndex        =   51
+            TabIndex        =   50
             TabStop         =   0   'False
             Top             =   0
             Width           =   2340
@@ -704,7 +993,7 @@ Begin VB.Form Transfers
             ForeColor       =   &H80000008&
             Height          =   315
             Left            =   3675
-            TabIndex        =   50
+            TabIndex        =   49
             TabStop         =   0   'False
             Top             =   0
             Width           =   2340
@@ -712,7 +1001,7 @@ Begin VB.Form Transfers
          Begin iGrid300_10Tec.iGrid grdSummaryPerRoute 
             Height          =   1725
             Left            =   11025
-            TabIndex        =   54
+            TabIndex        =   53
             TabStop         =   0   'False
             Top             =   375
             Width           =   3600
@@ -724,7 +1013,7 @@ Begin VB.Form Transfers
          Begin iGrid300_10Tec.iGrid grdSummaryPerDriver 
             Height          =   1725
             Left            =   14700
-            TabIndex        =   55
+            TabIndex        =   54
             TabStop         =   0   'False
             Top             =   375
             Width           =   3375
@@ -736,7 +1025,7 @@ Begin VB.Form Transfers
          Begin iGrid300_10Tec.iGrid grdSummaryPerCustomer 
             Height          =   1725
             Left            =   7350
-            TabIndex        =   56
+            TabIndex        =   55
             TabStop         =   0   'False
             Top             =   375
             Width           =   3600
@@ -748,7 +1037,7 @@ Begin VB.Form Transfers
          Begin iGrid300_10Tec.iGrid grdSummaryPerDestination 
             Height          =   1725
             Left            =   3675
-            TabIndex        =   57
+            TabIndex        =   56
             TabStop         =   0   'False
             Top             =   375
             Width           =   3600
@@ -760,7 +1049,7 @@ Begin VB.Form Transfers
          Begin iGrid300_10Tec.iGrid grdSummaryPerPort 
             Height          =   1725
             Left            =   0
-            TabIndex        =   86
+            TabIndex        =   84
             TabStop         =   0   'False
             Top             =   375
             Width           =   3600
@@ -768,6 +1057,27 @@ Begin VB.Form Transfers
             _ExtentY        =   3043
             Appearance      =   0
             ForeColor       =   -2147483631
+         End
+         Begin VB.Label lblUnassignedPersons 
+            AutoSize        =   -1  'True
+            BackColor       =   &H00C0C0FF&
+            BackStyle       =   0  'Transparent
+            Caption         =   "Επιλεγμένα"
+            BeginProperty Font 
+               Name            =   "Ubuntu Condensed"
+               Size            =   11.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H0000FF00&
+            Height          =   270
+            Left            =   0
+            TabIndex        =   90
+            Top             =   0
+            Width           =   930
          End
       End
       Begin VB.Frame frmButtonFrame 
@@ -786,16 +1096,16 @@ Begin VB.Form Transfers
          Left            =   150
          TabIndex        =   13
          Top             =   9750
-         Width           =   16440
+         Width           =   18315
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   465
-            Index           =   9
-            Left            =   13125
+            Index           =   10
+            Left            =   14850
             TabIndex        =   14
             TabStop         =   0   'False
             Top             =   75
-            Width           =   3165
-            _ExtentX        =   5583
+            Width           =   2865
+            _ExtentX        =   5054
             _ExtentY        =   820
             BackColor       =   8421631
             ButtonShape     =   3
@@ -815,13 +1125,13 @@ Begin VB.Form Transfers
          End
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   465
-            Index           =   6
-            Left            =   3450
+            Index           =   7
+            Left            =   6075
             TabIndex        =   15
             TabStop         =   0   'False
             Top             =   75
-            Width           =   3165
-            _ExtentX        =   5583
+            Width           =   2865
+            _ExtentX        =   5054
             _ExtentY        =   820
             BackColor       =   12640511
             ButtonShape     =   3
@@ -841,13 +1151,13 @@ Begin VB.Form Transfers
          End
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   465
-            Index           =   8
-            Left            =   9900
-            TabIndex        =   43
+            Index           =   9
+            Left            =   11925
+            TabIndex        =   42
             TabStop         =   0   'False
             Top             =   75
-            Width           =   3165
-            _ExtentX        =   5583
+            Width           =   2865
+            _ExtentX        =   5054
             _ExtentY        =   820
             BackColor       =   12640511
             ButtonShape     =   3
@@ -869,16 +1179,16 @@ Begin VB.Form Transfers
             Height          =   465
             Index           =   5
             Left            =   225
-            TabIndex        =   74
+            TabIndex        =   72
             TabStop         =   0   'False
             Top             =   75
-            Width           =   3165
-            _ExtentX        =   5583
+            Width           =   2865
+            _ExtentX        =   5054
             _ExtentY        =   820
             BackColor       =   12640511
             ButtonShape     =   3
             ButtonStyle     =   4
-            Caption         =   "Απόδοση δρομολογίου σε οδηγό"
+            Caption         =   "Απόδοση δρομολογίων σε οδηγό"
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Ubuntu Condensed"
                Size            =   9.75
@@ -893,18 +1203,44 @@ Begin VB.Form Transfers
          End
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   465
-            Index           =   7
-            Left            =   6675
-            TabIndex        =   81
+            Index           =   8
+            Left            =   9000
+            TabIndex        =   79
             TabStop         =   0   'False
             Top             =   75
-            Width           =   3165
-            _ExtentX        =   5583
+            Width           =   2865
+            _ExtentX        =   5054
             _ExtentY        =   820
             BackColor       =   12640511
             ButtonShape     =   3
             ButtonStyle     =   4
             Caption         =   "Δημιουργία αρχείου PDF"
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   0
+            PicOpacity      =   0
+         End
+         Begin Dacara_dcButton.dcButton cmdButton 
+            Height          =   465
+            Index           =   6
+            Left            =   3150
+            TabIndex        =   85
+            TabStop         =   0   'False
+            Top             =   75
+            Width           =   2865
+            _ExtentX        =   5054
+            _ExtentY        =   820
+            BackColor       =   12640511
+            ButtonShape     =   3
+            ButtonStyle     =   4
+            Caption         =   "Ενημέρωση λιμανιών αναχώρησης"
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Ubuntu Condensed"
                Size            =   9.75
@@ -1109,7 +1445,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   2
          Left            =   7050
-         TabIndex        =   17
+         TabIndex        =   16
          TabStop         =   0   'False
          Top             =   2175
          Width           =   390
@@ -1129,7 +1465,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":20DA
+         PicNormal       =   "Transfers.frx":2674
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1137,7 +1473,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   3
          Left            =   7050
-         TabIndex        =   18
+         TabIndex        =   17
          TabStop         =   0   'False
          Top             =   2700
          Width           =   390
@@ -1157,7 +1493,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":2674
+         PicNormal       =   "Transfers.frx":2C0E
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1187,37 +1523,9 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   4
          Left            =   7050
-         TabIndex        =   28
+         TabIndex        =   27
          TabStop         =   0   'False
          Top             =   4800
-         Width           =   390
-         _ExtentX        =   688
-         _ExtentY        =   820
-         BackColor       =   16777215
-         ButtonShape     =   3
-         ButtonStyle     =   2
-         Caption         =   ""
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Ubuntu Condensed"
-            Size            =   9.75
-            Charset         =   161
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   0
-         PicNormal       =   "Transfers.frx":2C0E
-         PicSizeH        =   16
-         PicSizeW        =   16
-      End
-      Begin Dacara_dcButton.dcButton cmdIndex 
-         Height          =   465
-         Index           =   1
-         Left            =   7050
-         TabIndex        =   58
-         TabStop         =   0   'False
-         Top             =   1650
          Width           =   390
          _ExtentX        =   688
          _ExtentY        =   820
@@ -1239,11 +1547,39 @@ Begin VB.Form Transfers
          PicSizeH        =   16
          PicSizeW        =   16
       End
+      Begin Dacara_dcButton.dcButton cmdIndex 
+         Height          =   465
+         Index           =   1
+         Left            =   7050
+         TabIndex        =   57
+         TabStop         =   0   'False
+         Top             =   1650
+         Width           =   390
+         _ExtentX        =   688
+         _ExtentY        =   820
+         BackColor       =   16777215
+         ButtonShape     =   3
+         ButtonStyle     =   2
+         Caption         =   ""
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Ubuntu Condensed"
+            Size            =   9.75
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   0
+         PicNormal       =   "Transfers.frx":3742
+         PicSizeH        =   16
+         PicSizeW        =   16
+      End
       Begin Dacara_dcButton.dcButton cmdButton 
          Height          =   465
          Index           =   0
          Left            =   3600
-         TabIndex        =   75
+         TabIndex        =   73
          Top             =   1125
          Width           =   390
          _ExtentX        =   688
@@ -1262,7 +1598,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   12583104
-         PicNormal       =   "Transfers.frx":3742
+         PicNormal       =   "Transfers.frx":3CDC
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1270,7 +1606,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   1
          Left            =   1050
-         TabIndex        =   76
+         TabIndex        =   74
          TabStop         =   0   'False
          Top             =   6075
          Width           =   1365
@@ -1296,7 +1632,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   3
          Left            =   3900
-         TabIndex        =   77
+         TabIndex        =   75
          TabStop         =   0   'False
          Top             =   6075
          Width           =   1365
@@ -1322,7 +1658,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   4
          Left            =   5325
-         TabIndex        =   78
+         TabIndex        =   76
          TabStop         =   0   'False
          Top             =   6075
          Width           =   1365
@@ -1348,7 +1684,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   2
          Left            =   2475
-         TabIndex        =   79
+         TabIndex        =   77
          TabStop         =   0   'False
          Top             =   6075
          Width           =   1365
@@ -1396,7 +1732,7 @@ Begin VB.Form Transfers
          Height          =   465
          Index           =   5
          Left            =   7050
-         TabIndex        =   82
+         TabIndex        =   80
          TabStop         =   0   'False
          Top             =   4275
          Width           =   390
@@ -1416,9 +1752,95 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":3CDC
+         PicNormal       =   "Transfers.frx":4276
          PicSizeH        =   16
          PicSizeW        =   16
+      End
+      Begin VB.Label lblTotalPersons 
+         Alignment       =   1  'Right Justify
+         AutoSize        =   -1  'True
+         BackColor       =   &H00C0C0FF&
+         BackStyle       =   0  'Transparent
+         Caption         =   "12"
+         BeginProperty Font 
+            Name            =   "Ubuntu Condensed"
+            Size            =   18
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00C0FFFF&
+         Height          =   465
+         Left            =   17175
+         TabIndex        =   89
+         Top             =   0
+         Width           =   315
+      End
+      Begin VB.Label Label3 
+         AutoSize        =   -1  'True
+         BackColor       =   &H00C0C0FF&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Επιλεγμένα"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   9.75
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00C0C0FF&
+         Height          =   240
+         Left            =   17625
+         TabIndex        =   88
+         Top             =   525
+         Width           =   915
+      End
+      Begin VB.Label lblSelectedGridLines 
+         Alignment       =   1  'Right Justify
+         AutoSize        =   -1  'True
+         BackColor       =   &H00C0C0FF&
+         BackStyle       =   0  'Transparent
+         Caption         =   "12"
+         BeginProperty Font 
+            Name            =   "Ubuntu Condensed"
+            Size            =   18
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00C0C0FF&
+         Height          =   465
+         Left            =   17175
+         TabIndex        =   87
+         Top             =   375
+         Width           =   315
+      End
+      Begin VB.Label Label2 
+         AutoSize        =   -1  'True
+         BackColor       =   &H00C0C0FF&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Σύνολο"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   9.75
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00C0FFFF&
+         Height          =   240
+         Left            =   17625
+         TabIndex        =   86
+         Top             =   150
+         Width           =   615
       End
       Begin VB.Label lblLabel 
          BackColor       =   &H000080FF&
@@ -1427,7 +1849,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   10
          Left            =   225
-         TabIndex        =   83
+         TabIndex        =   81
          Top             =   4350
          Width           =   1365
       End
@@ -1494,30 +1916,9 @@ Begin VB.Form Transfers
          ForeColor       =   &H0000FFFF&
          Height          =   465
          Left            =   6300
-         TabIndex        =   80
+         TabIndex        =   78
          Top             =   3210
          Width           =   1215
-      End
-      Begin VB.Label lblSelectedGridLines 
-         Alignment       =   1  'Right Justify
-         BackColor       =   &H00C0C0FF&
-         BackStyle       =   0  'Transparent
-         Caption         =   "Σύνολο επιλεγμένων"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   9.75
-            Charset         =   161
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00C0C0FF&
-         Height          =   315
-         Left            =   13425
-         TabIndex        =   59
-         Top             =   450
-         Width           =   5040
       End
       Begin VB.Label lblLabel 
          BackColor       =   &H000080FF&
@@ -1526,7 +1927,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   4
          Left            =   225
-         TabIndex        =   29
+         TabIndex        =   28
          Top             =   4875
          Width           =   1365
       End
@@ -1538,7 +1939,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   3
          Left            =   225
-         TabIndex        =   27
+         TabIndex        =   26
          Top             =   1200
          Width           =   1365
       End
@@ -1550,7 +1951,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   5
          Left            =   225
-         TabIndex        =   26
+         TabIndex        =   25
          Top             =   2250
          Width           =   1365
       End
@@ -1562,7 +1963,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   7
          Left            =   225
-         TabIndex        =   25
+         TabIndex        =   24
          Top             =   1725
          Width           =   1365
       End
@@ -1574,7 +1975,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   8
          Left            =   225
-         TabIndex        =   24
+         TabIndex        =   23
          Top             =   2775
          Width           =   1365
       End
@@ -1586,7 +1987,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   9
          Left            =   225
-         TabIndex        =   23
+         TabIndex        =   22
          Top             =   3300
          Width           =   1365
       End
@@ -1598,7 +1999,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   6
          Left            =   2775
-         TabIndex        =   22
+         TabIndex        =   21
          Top             =   3300
          Width           =   615
       End
@@ -1610,7 +2011,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   2
          Left            =   4200
-         TabIndex        =   21
+         TabIndex        =   20
          Top             =   3300
          Width           =   615
       End
@@ -1622,7 +2023,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   1
          Left            =   5625
-         TabIndex        =   20
+         TabIndex        =   19
          Top             =   3300
          Width           =   615
       End
@@ -1634,7 +2035,7 @@ Begin VB.Form Transfers
          Height          =   315
          Index           =   0
          Left            =   225
-         TabIndex        =   19
+         TabIndex        =   18
          Top             =   3825
          Width           =   1365
       End
@@ -1661,27 +2062,6 @@ Begin VB.Form Transfers
          Top             =   2025
          Visible         =   0   'False
          Width           =   465
-      End
-      Begin VB.Label lblTotalPersons 
-         Alignment       =   1  'Right Justify
-         BackColor       =   &H00C0C0FF&
-         BackStyle       =   0  'Transparent
-         Caption         =   "Σύνολο ημέρας"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   9.75
-            Charset         =   161
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00C0FFFF&
-         Height          =   315
-         Left            =   13425
-         TabIndex        =   16
-         Top             =   150
-         Width           =   5040
       End
       Begin VB.Label lblTitle 
          AutoSize        =   -1  'True
@@ -1710,7 +2090,7 @@ Begin VB.Form Transfers
          BorderStyle     =   0  'Transparent
          Height          =   840
          Left            =   150
-         Top             =   750
+         Top             =   900
          Width           =   18240
       End
    End
@@ -1744,6 +2124,89 @@ Dim lngTotalPersonsForSelectedRows As Long
 
 Dim lngCurrentRow As Long
 Dim IsFirstReadFromDatabase As Boolean
+
+Private Function AssignPortToPassengers()
+
+    Dim lngRow As Long
+    Dim IsRowSelected As Boolean
+    Dim IsError As Boolean
+    Dim strDummy As String
+    
+    If txtPortIDForPassengers.text = "" Then
+        If MyMsgBox(4, strApplicationName, strStandardMessages(2), 1) Then
+        End If
+        txtPortDescriptionForPassengers.SetFocus
+        Exit Function
+    End If
+    
+    frmCriteria(1).Visible = False
+    
+    BeginTrans
+    
+    For lngRow = 1 To grdCoachesReport.RowCount
+        DoEvents
+        If grdCoachesReport.CellIcon(lngRow, "Selected") > 0 Then
+            AssignPortToThisCustomer grdCoachesReport.CellValue(lngRow, "TransferID")
+        End If
+    Next lngRow
+    
+    If IsError Then
+        Rollback
+        strDummy = MyMsgBox(4, strApplicationName, strStandardMessages(13), 1)
+    Else
+        CommitTrans
+        FindRecordsAndPopulateGrid
+        strDummy = MyMsgBox(1, strApplicationName, strStandardMessages(8), 1)
+    End If
+
+End Function
+
+Private Function AssignPortToThisCustomer(TransferID)
+
+    Dim lngTransferID As Long
+    Dim rsTable As Recordset
+    
+    Set rsTable = CommonDB.OpenRecordset("Transfers")
+    
+    With rsTable
+        .index = "ID"
+        .Seek "=", TransferID
+        If Not .NoMatch Then
+            .Edit
+            !TransferPortID = Val(txtPortIDForPassengers.text)
+            .Update
+        End If
+    End With
+
+End Function
+
+
+Private Function DisplayAssignPortToPassengersDialog()
+
+    Dim lngRow As Long
+    Dim IsRowSelected As Boolean
+    
+    For lngRow = 1 To grdCoachesReport.RowCount
+        If grdCoachesReport.CellIcon(lngRow, "Selected") > 0 Then
+            IsRowSelected = True
+            Exit For
+        End If
+    Next lngRow
+    
+    If Not IsRowSelected Then
+        If MyMsgBox(4, strApplicationName, strStandardMessages(6), 1) Then
+        End If
+        Exit Function
+    End If
+
+    ClearFields txtPortIDForPassengers, txtPortDescriptionForPassengers
+    EnableFields cmdIndex(6)
+    frmCriteria(1).Visible = True
+    
+    UpdateButtons Me, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 'OK
+    txtPortDescriptionForPassengers.SetFocus
+
+End Function
 
 Private Function AssignRoutesToDriver()
 
@@ -2716,6 +3179,34 @@ ErrTrap:
 
 End Function
 
+Private Function CalculateUnassignedPersonsToPort()
+
+    Dim intTotalPersons As Integer
+    Dim intTotalAssignedPersons As Integer
+    Dim intTotalUnAssignedPersons As Integer
+    
+    Dim lngRow As Long
+    
+    lblUnassignedPersons.Caption = ""
+    intTotalPersons = Val(lblTotalPersons.Caption)
+    
+    For lngRow = 1 To grdSummaryPerPort.RowCount
+        If grdSummaryPerPort.CellValue(lngRow, "PortID") <> "" Then
+            intTotalAssignedPersons = intTotalAssignedPersons + grdSummaryPerPort.CellValue(lngRow, "TotalPersons")
+        End If
+    Next lngRow
+    
+    If intTotalPersons <> intTotalAssignedPersons Then
+        intTotalUnAssignedPersons = intTotalPersons - intTotalAssignedPersons
+        lblUnassignedPersons.Caption = "Δεν βρέθηκαν " & intTotalUnAssignedPersons & " άτομα!"
+        lblUnassignedPersons.ForeColor = &HFF&
+    Else
+        lblUnassignedPersons.Caption = "'Απαντες παρόντες!"
+        lblUnassignedPersons.ForeColor = &HFF00&
+    End If
+
+End Function
+
 Private Function DeleteRecord()
 
     If MainDeleteRecord("CommonDB", "Transfers", strApplicationName, "ID", txtTransferID.text, "True") Then
@@ -2754,7 +3245,7 @@ Private Function DisplayAssignRoutesToDriverDialog()
     EnableFields cmdIndex(0)
     frmCriteria(0).Visible = True
     
-    UpdateButtons Me, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+    UpdateButtons Me, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 'OK
     txtDriverDescriptionForRoutes.SetFocus
 
 End Function
@@ -2780,17 +3271,17 @@ Private Function FindRecordsAndPopulateGrid()
         'Κεντρικό πλέγμα
         RefreshList
         If grdCoachesReport.RowCount > 0 Then
-            lblTotalPersons.Caption = "Σύνολο ημέρας: " & format(CalculateTotalPersons, "#,##0")
-            lblSelectedGridLines.Caption = "Σύνολο επιλεγμένων: 0"
+            lblTotalPersons.Caption = format(CalculateTotalPersons, "#,##0")
+            lblSelectedGridLines.Caption = "0"
             'Υπόλοιπα
             EnableGrid grdCoachesReport, False
             EnableFields chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
             DisableFields mskDate
             HighlightRow txtTransferID.text
-            UpdateButtons Me, 11, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0
-            Exit Function
+            UpdateButtons Me, 12, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0 'OK
+            'Exit Function
         Else
-            UpdateButtons Me, 11, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0
+            UpdateButtons Me, 12, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 'OK
             If Not blnError Then
                 If blnProcessing Then
                     If MyMsgBox(4, strApplicationName, strStandardMessages(27), 1) Then
@@ -2804,6 +3295,8 @@ Private Function FindRecordsAndPopulateGrid()
             blnError = False
             blnProcessing = False
         End If
+        'Υπολογίζω το σύνολο μείον τα άτομα χωρίς λιμάνι
+        CalculateUnassignedPersonsToPort
     End If
 
 End Function
@@ -2946,12 +3439,14 @@ Private Function RefreshList()
         & "PickupRouteShortDescription, PickupRouteDescription, " _
         & "Description, " _
         & "DestinationShortDescription, DestinationDescription, " _
-        & "DriverDescription " _
-        & "FROM (((((Transfers " _
+        & "DriverDescription, " _
+        & "PortDescription " _
+        & "FROM ((((((Transfers " _
         & "LEFT JOIN PickupPoints ON Transfers.TransferPickupPointID = PickupPoints.PickUpPointID) " _
         & "LEFT JOIN PickupRoutes ON Transfers.TransferRouteID = PickupRoutes.PickupRouteID) " _
         & "LEFT JOIN Customers ON Transfers.TransferCustomerID = Customers.ID) " _
         & "LEFT JOIN Drivers ON Transfers.TransferDriverID = Drivers.DriverID) " _
+        & "LEFT JOIN Ports ON Transfers.TransferPortID = Ports.PortID) " _
         & "INNER JOIN Destinations ON Transfers.TransferDestinationID = Destinations.DestinationID) "
     
     'Ημερομηνία
@@ -3061,12 +3556,7 @@ Private Function RefreshList()
     'Αν δεν έχω εγγραφές, βγαίνω
     If rstRecordset.RecordCount = 0 Then blnError = False: RefreshList = False: grdCoachesReport.Redraw = True: Exit Function
     
-    'Προετοιμάζω τη μπάρα προόδου
-    'InitializeProgressBar Me, strApplicationName, rstRecordset
-    
     'Προσωρινά
-    'UpdateButtons Me, 11, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0
-    'cmdButton(8).Caption = "Διακοπή επεξεργασίας"
     blnProcessing = True
     
     'Γεμίζω το πλέγμα
@@ -3092,7 +3582,7 @@ Private Function RefreshList()
             grdCoachesReport.CellValue(lngRow, "TransferTotal") = !TransferAdults + !TransferKids + !TransferFree
             grdCoachesReport.CellValue(lngRow, "TransferRemarks") = !TransferRemarks
             grdCoachesReport.CellValue(lngRow, "DriverDescription") = IIf(IsNull(!DriverDescription), "-", !DriverDescription)
-            grdCoachesReport.CellValue(lngRow, "TotalCriteria") = 0
+            grdCoachesReport.CellValue(lngRow, "PortDescription") = IIf(IsNull(!PortDescription), "-", !PortDescription)
             rstRecordset.MoveNext
             DoEvents
             If Not blnProcessing Then Exit Do
@@ -3238,7 +3728,7 @@ Private Sub chkAllTransfers_Click()
     
     grdCoachesReport.Redraw = True
     
-    lblSelectedGridLines.Caption = "Σύνολο επιλεγμένων: " & lngTotalPersonsForSelectedRows
+    lblSelectedGridLines.Caption = lngTotalPersonsForSelectedRows
 
 End Sub
 
@@ -3258,20 +3748,31 @@ Private Sub cmdButton_Click(index As Integer)
         Case 5
             DisplayAssignRoutesToDriverDialog
         Case 6
-            DoReport "Print"
+            DisplayAssignPortToPassengersDialog
         Case 7
-            DoReport "CreatePDF"
+            DoReport "Print"
         Case 8
-            AbortProcedure False
+            DoReport "CreatePDF"
         Case 9
             AbortProcedure False
         Case 10
             AbortProcedure False
         Case 11
+            AbortProcedure False
+        Case 12
             AssignRoutesToDriver
+        Case 13
+            AbortProcedure False
+        Case 14
+            AssignPortToPassengers
     End Select
 
 End Sub
+
+
+
+
+
 
 Private Function NewRecord()
 
@@ -3279,7 +3780,7 @@ Private Function NewRecord()
     DisableFields mskDate
     EnableFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
     EnableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
-    UpdateButtons Me, 11, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0
+    UpdateButtons Me, 12, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 'OK
         
     If True Then
         If txtTransferID.text <> "" Then
@@ -3478,48 +3979,51 @@ Private Function AbortProcedure(blnStatus)
 
     If blnProcessing Then blnProcessing = False: Exit Function
 
-    'Πλαίσιο απόδοσης οδηγού σε δρομολόγιο
-    If frmCriteria(0).Visible Then
-        frmCriteria(0).Visible = False
-        UpdateButtons Me, 11, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0
-        grdCoachesReport.SetFocus
-        Exit Function
-    End If
+    'Εξοδος
+    If cmdButton(10).Enabled Then Unload Me
     
-    'Επεξεργάζομαι εγγραφή (νέα ή μεταβολή)
-    If blnStatus Then
+    'Ακυρωση επεξεργασίας (νέα ή μεταβολή)
+    If cmdButton(4).Enabled Then
         If MyMsgBox(3, strApplicationName, strStandardMessages(3), 2) Then
             blnStatus = False
             blnCancel = True
             ClearFields txtTransferID, txtCustomerID, txtPickupPointID, txtRouteID, txtDestinationID, txtDriverID, txtPortID
             ClearFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
             ClearFields mskTotal
-            DisableFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+            DisableFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
             DisableFields cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
-            UpdateButtons Me, 11, 0, 1, 0, 0, 0, IIf(grdCoachesReport.RowCount > 0, 1, 0), IIf(grdCoachesReport.RowCount > 0, 1, 0), IIf(grdCoachesReport.RowCount > 0, 1, 0), 1, 0, 0, 0
+            UpdateButtons Me, 12, 0, 1, 0, 0, 0, IIf(grdCoachesReport.RowCount > 0, 1, 0), IIf(grdCoachesReport.RowCount > 0, 1, 0), IIf(grdCoachesReport.RowCount > 0, 1, 0), IIf(grdCoachesReport.RowCount > 0, 1, 0), 1, 0, 0, 0 'OK
             grdCoachesReport.SetFocus
             blnStatus = True
             Exit Function
+        Else
+            Exit Function
         End If
+    End If
+    
+    'Πλαίσιο απόδοσης οδηγού σε δρομολόγιο ή πλαίσιο απόδοσης λιμανιών σε επιβάτες
+    If cmdButton(11).Enabled Or cmdButton(13).Enabled Then
+        frmCriteria(0).Visible = False
+        UpdateButtons Me, 12, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0 'OK
+        grdCoachesReport.SetFocus
         Exit Function
     End If
     
     'Νέα αναζήτηση
-    If Not blnStatus And Not cmdButton(9).Enabled Then
+    If cmdButton(9).Enabled Then
         IsFirstReadFromDatabase = True
         ClearFields grdCoachesReport
         ClearFields grdSummaryPerPort, grdSummaryPerDestination, grdSummaryPerCustomer, grdSummaryPerRoute, grdSummaryPerDriver
-        ClearFields lblTotalPersons, lblSelectedGridLines
+        ClearFields lblTotalPersons, lblSelectedGridLines, lblUnassignedPersons
+        InitializeFields lblTotalPersons, lblSelectedGridLines
         ClearFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
         DisableFields chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
-        UpdateButtons Me, 11, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0
+        UpdateButtons Me, 12, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 'OK
         EnableFields mskDate
         mskDate.SetFocus
         Exit Function
     End If
     
-    Unload Me
-
 End Function
 
 Private Sub cmdIndex_Click(index As Integer)
@@ -3538,7 +4042,7 @@ Private Sub cmdIndex_Click(index As Integer)
                 tmpTableData = DisplayIndex(tmpRecordset, 2, True, 2, 0, 1, "ID", "Περιγραφή", 0, 40, 1, 0)
                 txtDriverIDForRoutes.text = tmpTableData.strCode
                 txtDriverDescriptionForRoutes.text = tmpTableData.strFirstField
-                cmdButton(10).SetFocus
+                txtDriverDescriptionForRoutes.SetFocus
             End If
         Case 1
             'Προορισμός
@@ -3597,7 +4101,15 @@ Private Sub cmdIndex_Click(index As Integer)
                 txtPortID.text = tmpTableData.strCode
                 txtPortDescription.text = tmpTableData.strFirstField
             End If
-    
+        Case 6
+            'Λιμάνι αναχώρησης σε πελάτες
+            Set tmpRecordset = CheckForMatch("CommonDB", "Ports", "PortDescription", "String", txtPortDescription.text)
+            If tmpRecordset.RecordCount > 0 Then
+                tmpTableData = DisplayIndex(tmpRecordset, 2, True, 2, 0, 1, "ID", "Περιγραφή", 0, 40, 1, 0)
+                txtPortIDForPassengers.text = tmpTableData.strCode
+                txtPortDescriptionForPassengers.text = tmpTableData.strFirstField
+                txtPortDescriptionForPassengers.SetFocus
+            End If
     End Select
 
 End Sub
@@ -3637,8 +4149,9 @@ Private Sub Form_Activate()
         Me.Tag = "False"
         
         AddColumnsToGrid grdCoachesReport, True, 44, GetSetting(strApplicationName, "Layout Strings", grdCoachesReport.Tag), _
-            "05NCNTransferID,12NCDTransferDate,40NLNCustomerDescription,40NCNDestinationShortDescription,40NLNDestinationDescription,50NCNRouteShortDescription,50NLNRouteDescription,40NLNPickupPointHotelDescription,10NLNPickUpPointExactPoint,10NCTPickupPointTime,10NRITransferAdults,10NRITransferKids,10NRITransferFree,10NLNTransferRemarks,10NLNDriverDescription,10NRITransferTotal,04NCNTotalCriteria,04NCNSelected", _
+            "05NCNTransferID,12NCDTransferDate,40NLNCustomerDescription,40NCNDestinationShortDescription,40NLNDestinationDescription,50NCNRouteShortDescription,50NLNRouteDescription,40NLNPickupPointHotelDescription,10NLNPickUpPointExactPoint,10NCTPickupPointTime,10NRITransferAdults,10NRITransferKids,10NRITransferFree,10NLNTransferRemarks,10NLNDriverDescription,10NRITransferTotal,10NLNPortDescription,04NCNSelected", _
             "TransferID,Ημερομηνία,Πελάτης,Π,Προορισμός,Δρομολόγιο,Δρομολόγιο,Σημείο παραλαβής,Ακριβές σημείο,Ωρα,Ε,Π,Δ,Παρατηρήσεις,Οδηγός,Σύνολο,Κριτήρια,Ε"
+        
         AddColumnsToGrid grdSummaryPerPort, True, 24, GetSetting(strApplicationName, "Layout Strings", "grdCoachesReportSummaryPerPort"), _
             "04NCNSelected,05NCNPortID,40NLNPortDescription,10NRITotalPersons", _
             "E,DestinationID,Λιμάνι,Ατομα"
@@ -3687,15 +4200,17 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
             cmdButton_Click 2
         Case vbKeyD And CtrlDown And cmdButton(3).Enabled
             cmdButton_Click 3
-        Case vbKeyP And CtrlDown And Not AltDown And cmdButton(6).Enabled
-            cmdButton_Click 6
-        Case vbKeyP And CtrlDown And AltDown And cmdButton(7).Enabled
+        Case vbKeyP And CtrlDown And Not AltDown And cmdButton(7).Enabled
             cmdButton_Click 7
+        Case vbKeyP And CtrlDown And AltDown And cmdButton(8).Enabled
+            cmdButton_Click 8
+        Case vbKeyC And CtrlDown And cmdButton(12).Enabled
+            cmdButton_Click 12
         Case vbKeyEscape
             If cmdButton(4).Enabled Then cmdButton_Click 4: Exit Function 'Ακύρωση επεξεργασίας
-            If cmdButton(8).Enabled Then cmdButton_Click 8: Exit Function 'Νέα αναζήτηση (επιστροφή στην ημερομηνία)
-            If cmdButton(9).Enabled Then cmdButton_Click 9: Exit Function 'Εξοδος
-            If cmdButton(10).Enabled Then cmdButton_Click 10 'Κλείσιμο φόρμας Σύνδεσης δρομολογίου με οδηγό
+            If cmdButton(9).Enabled Then cmdButton_Click 9: Exit Function 'Νέα αναζήτηση (επιστροφή στην ημερομηνία)
+            If cmdButton(10).Enabled Then cmdButton_Click 10: Exit Function 'Εξοδος
+            If cmdButton(11).Enabled Then cmdButton_Click 11 'Κλείσιμο φόρμας Σύνδεσης δρομολογίου με οδηγό
         Case vbKey0 And CtrlDown And grdCoachesReport.RowCount > 0
             grdSummaryPerCustomer.SetCurCell 1, 1
             grdCoachesReport.SetFocus
@@ -3721,7 +4236,7 @@ Private Sub Form_Load()
 
     blnCancel = True
     
-    lngMinimumSeperatorTop = 6825
+    lngMinimumSeperatorTop = 6525
     lngMaximumSeperatorTop = 11585
     
     SetUpGrid lstIconList, grdCoachesReport, grdSummaryPerPort, grdSummaryPerDestination, grdSummaryPerCustomer, grdSummaryPerRoute, grdSummaryPerDriver
@@ -3733,18 +4248,20 @@ Private Sub Form_Load()
     PositionFormButtons
     
     frmCriteria(0).Visible = False
+    frmCriteria(1).Visible = False
     
     ClearFields txtTransferID, txtCustomerID, txtPickupPointID, txtRouteID, txtDestinationID, txtDriverID, txtPortID
     ClearFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
-    ClearFields mskTotal
+    ClearFields mskTotal, lblUnassignedPersons
     ClearFields chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
     ClearFields lblTotalPersons, lblSelectedGridLines
+    InitializeFields lblTotalPersons, lblSelectedGridLines
     
     DisableFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
     DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
     DisableFields chkAllTransfers, chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
     
-    UpdateButtons Me, 11, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0
+    UpdateButtons Me, 12, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 'OK
     
 End Sub
 
@@ -3800,7 +4317,7 @@ Private Function SeekRecord(TransferID)
         blnStatus = False
         SeekRecord = True
         lngCurrentRow = grdCoachesReport.CurRow
-        UpdateButtons Me, 11, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0
+        UpdateButtons Me, 12, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 'OK
         mskDate.SetFocus
     End If
     
@@ -3835,7 +4352,7 @@ ErrTrap:
     
 End Sub
 
-Private Sub grdCoachesReport_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdCoachesReport_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
     
@@ -3845,7 +4362,7 @@ Private Sub grdCoachesReport_KeyDown(KeyCode As Integer, Shift As Integer, bDoDe
 
     If KeyCode = vbKeySpace And grdCoachesReport.RowCount > 0 Then
         grdCoachesReport.CellIcon(grdCoachesReport.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCoachesReport, 6, KeyCode, grdCoachesReport.CurRow, "TransferID"))
-        lblSelectedGridLines.Caption = SumSelectedGridRows(grdCoachesReport, False, "Σύνολο επιλεγμένων: ", "TransferTotal", "integer")
+        lblSelectedGridLines.Caption = SumSelectedGridRows(grdCoachesReport, False, "", "TransferTotal", "integer")
     End If
 
 End Sub
@@ -3905,7 +4422,7 @@ Private Sub grdSummaryPerCustomer_DblClick(ByVal lRow As Long, ByVal lCol As Lon
     End If
 End Sub
 
-Private Sub grdSummaryPerCustomer_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdSummaryPerCustomer_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
     
@@ -3977,7 +4494,7 @@ Private Sub grdSummaryPerDestination_DblClick(ByVal lRow As Long, ByVal lCol As 
     End If
 End Sub
 
-Private Sub grdSummaryPerDestination_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdSummaryPerDestination_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
     
@@ -4044,7 +4561,7 @@ Private Sub grdSummaryPerDriver_DblClick(ByVal lRow As Long, ByVal lCol As Long,
 
 End Sub
 
-Private Sub grdSummaryPerDriver_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdSummaryPerDriver_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
     
@@ -4084,7 +4601,7 @@ Private Sub grdSummaryPerPort_ColHeaderMouseLeave(ByVal lCol As Long)
 End Sub
 
 
-Private Sub grdSummaryPerPort_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdSummaryPerPort_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
     
@@ -4126,7 +4643,7 @@ Private Sub grdSummaryPerRoute_DblClick(ByVal lRow As Long, ByVal lCol As Long, 
 
 End Sub
 
-Private Sub grdSummaryPerRoute_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdSummaryPerRoute_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
     
@@ -4371,21 +4888,21 @@ Private Sub mskKids_Validate(Cancel As Boolean)
 
 End Sub
 
-Private Sub Seperator_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub Seperator_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
     If Button = vbLeftButton Then
-        lngOldSeperatorTop = y
+        lngOldSeperatorTop = Y
         blnIsMoving = True
     End If
 
 End Sub
 
-Private Sub Seperator_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub Seperator_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
     Dim lngNewTop As Long
     Dim IsMaximumReached As Boolean
     
-    lngNewTop = Seperator.Top - (lngOldSeperatorTop - y)
+    lngNewTop = Seperator.Top - (lngOldSeperatorTop - Y)
     
     If blnIsMoving Then
         
@@ -4433,7 +4950,7 @@ ErrTrap:
     
 End Function
 
-Private Sub Seperator_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub Seperator_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
     blnIsMoving = False
     
@@ -4497,9 +5014,7 @@ End Sub
 
 Private Sub txtDriverDescriptionForRoutes_Change()
 
-    If txtDriverDescriptionForRoutes.text = "" Then
-        ClearFields txtDriverIDForRoutes
-    End If
+    If txtDriverDescriptionForRoutes.text = "" Then ClearFields txtDriverIDForRoutes
 
 End Sub
 
@@ -4554,6 +5069,27 @@ Private Sub txtPortDescription_Validate(Cancel As Boolean)
 
     If txtPortID.text = "" And txtPortDescription.text <> "" Then cmdIndex_Click 5: If txtPortID.text = "" Then Cancel = True
 
+End Sub
+
+
+Private Sub txtPortDescriptionForPassengers_Change()
+
+    If txtPortDescriptionForPassengers.text = "" Then ClearFields txtPortIDForPassengers
+    
+End Sub
+
+
+Private Sub txtPortDescriptionForPassengers_KeyDown(KeyCode As Integer, Shift As Integer)
+
+    If KeyCode = vbKeyF2 Then cmdIndex_Click 6
+
+End Sub
+
+
+Private Sub txtPortDescriptionForPassengers_Validate(Cancel As Boolean)
+
+    If txtPortIDForPassengers.text = "" And txtPortDescriptionForPassengers.text <> "" Then cmdIndex_Click 6: If txtPortIDForPassengers.text = "" Then Cancel = True
+    
 End Sub
 
 

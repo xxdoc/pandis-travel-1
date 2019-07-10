@@ -1153,6 +1153,9 @@ Sub InitializeFields(ParamArray tmpFields())
         If TypeOf tmpFields(bytLoop) Is newInteger Then
             tmpFields(bytLoop).text = "0"
         End If
+        If TypeOf tmpFields(bytLoop) Is Label Then
+            tmpFields(bytLoop).Caption = "0"
+        End If
     Next bytLoop
 
 End Sub
@@ -1739,7 +1742,7 @@ Function SumSelectedGridRows(myGrid As iGrid, myLastColumnIsSpecial, customHeade
     If blnSelected Then
         For intLoop = 1 To UBound(myColumns) + 1 Step 2
             strFormat = IIf(myColumns(intLoop) = "integer", "#,##0", "#,##0.00")
-            strHeaderText = IIf(customHeaderText = "", myGrid.ColHeaderText(myColumns(intLoop - 1)), customHeaderText)
+            'strHeaderText = IIf(customHeaderText = "", myGrid.ColHeaderText(myColumns(intLoop - 1)), customHeaderText)
             strDummy = strDummy & strHeaderText & " " & format(curGridColumnTotals(intLoop), strFormat) & " "
         Next intLoop
         SumSelectedGridRows = Replace(Left(strDummy, Len(strDummy) - 1), Chr(13), " ")

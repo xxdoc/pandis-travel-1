@@ -3,9 +3,9 @@ Begin {9EB8768B-CDFA-44DF-8F3E-857A8405E1DB} rptTransfers
    ClientHeight    =   10950
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   14985
+   ClientWidth     =   17430
    StartUpPosition =   2  'CenterScreen
-   _ExtentX        =   26432
+   _ExtentX        =   30745
    _ExtentY        =   19315
    SectionData     =   "rptTransfers.dsx":0000
 End

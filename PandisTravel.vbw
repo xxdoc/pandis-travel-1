@@ -1,8 +1,8 @@
 ModuleGeneric = 175, 175, 1503, 707, C
-rptTransfers = 50, 50, 1104, 582, C, 25, 25, 1040, 793, C
+rptTransfers = 50, 50, 1104, 582, C, 25, 25, 1203, 793, C
 rptShipsRouteReport = 0, 0, 0, 0, C, 50, 50, 1970, 1130, C
 ModuleParticular = 250, 250, 1503, 903, C
-Transfers = 0, 0, 1285, 780, C, 0, 269, 1285, 978, C
+Transfers = 0, 671, 1291, 978, C, 0, 0, 1291, 671, C
 CommonLogin = 125, 125, 1453, 657, C, 125, 125, 648, 508, C
 CommonSelectPrinter = 175, 175, 1428, 828, C, 150, 150, 673, 533, C
 CommonIndex = 250, 250, 1304, 782, C, 175, 175, 698, 558, C

@@ -2149,7 +2149,7 @@ Function PositionControls(thisForm As Form, formFullScreen As Boolean, Optional 
         End If
         'Κουμπιά
         If ctl.Name = "cmdButton" Then
-            thisForm.cmdButton(intLoop).ButtonStyle = ebsOfficeXP
+            thisForm.cmdButton(intLoop).ButtonStyle = ebsXPOliveGreen
             intLoop = intLoop + 1
         End If
     Next ctl

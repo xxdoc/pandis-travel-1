@@ -22,9 +22,9 @@ Begin VB.Form TablesSettings
       BorderStyle     =   0  'None
       Height          =   4815
       Index           =   1
-      Left            =   11325
+      Left            =   14550
       TabIndex        =   23
-      Top             =   375
+      Top             =   5250
       Width           =   9165
       Begin VB.Frame Frame 
          Appearance      =   0  'Flat
@@ -311,9 +311,9 @@ Begin VB.Form TablesSettings
          Width           =   390
          _ExtentX        =   688
          _ExtentY        =   820
-         BackColor       =   16777215
+         BackColor       =   14742518
          ButtonShape     =   3
-         ButtonStyle     =   2
+         ButtonStyle     =   8
          Caption         =   ""
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Ubuntu Condensed"
@@ -391,9 +391,9 @@ Begin VB.Form TablesSettings
       BorderStyle     =   0  'None
       Height          =   4890
       Index           =   2
-      Left            =   14850
+      Left            =   13875
       TabIndex        =   25
-      Top             =   5700
+      Top             =   1425
       Width           =   9240
       Begin UserControls.newText txtSalesAccountsCode 
          Height          =   465
@@ -660,9 +660,9 @@ Begin VB.Form TablesSettings
       ForeColor       =   &H00800080&
       Height          =   6090
       Index           =   0
-      Left            =   8850
+      Left            =   4275
       TabIndex        =   21
-      Top             =   3675
+      Top             =   4950
       Width           =   9165
       Begin VB.Frame Frame 
          Appearance      =   0  'Flat
@@ -1278,9 +1278,9 @@ Begin VB.Form TablesSettings
          Width           =   390
          _ExtentX        =   688
          _ExtentY        =   820
-         BackColor       =   16777215
+         BackColor       =   14742518
          ButtonShape     =   3
-         ButtonStyle     =   2
+         ButtonStyle     =   8
          Caption         =   ""
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Ubuntu Condensed"
@@ -1306,9 +1306,9 @@ Begin VB.Form TablesSettings
          Width           =   390
          _ExtentX        =   688
          _ExtentY        =   820
-         BackColor       =   16777215
+         BackColor       =   14742518
          ButtonShape     =   3
-         ButtonStyle     =   2
+         ButtonStyle     =   8
          Caption         =   ""
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Ubuntu Condensed"

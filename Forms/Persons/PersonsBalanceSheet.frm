@@ -550,9 +550,9 @@ Begin VB.Form PersonsBalanceSheet
             Width           =   390
             _ExtentX        =   688
             _ExtentY        =   820
-            BackColor       =   16777215
+            BackColor       =   14742518
             ButtonShape     =   3
-            ButtonStyle     =   2
+            ButtonStyle     =   8
             Caption         =   ""
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Ubuntu Condensed"
@@ -1706,13 +1706,13 @@ Private Sub Form_Load()
     
 End Sub
 
-Private Sub grdPersonsBalanceSheet_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdPersonsBalanceSheet_ColHeaderClick(ByVal lCol As Long, bDoDefault As Boolean, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     bDoDefault = False
 
 End Sub
 
-Private Sub grdPersonsBalanceSheet_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal x As Long, ByVal y As Long)
+Private Sub grdPersonsBalanceSheet_HeaderRightClick(ByVal lCol As Long, ByVal Shift As Integer, ByVal X As Long, ByVal Y As Long)
 
     PopupMenu mnuHdrPopUp
 

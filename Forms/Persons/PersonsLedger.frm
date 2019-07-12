@@ -172,9 +172,9 @@ Begin VB.Form PersonsLedger
             Width           =   390
             _ExtentX        =   688
             _ExtentY        =   820
-            BackColor       =   16777215
+            BackColor       =   14742518
             ButtonShape     =   3
-            ButtonStyle     =   2
+            ButtonStyle     =   8
             Caption         =   ""
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Ubuntu Condensed"
@@ -434,9 +434,9 @@ Begin VB.Form PersonsLedger
             Width           =   390
             _ExtentX        =   688
             _ExtentY        =   820
-            BackColor       =   16777215
+            BackColor       =   14742518
             ButtonShape     =   3
-            ButtonStyle     =   2
+            ButtonStyle     =   8
             Caption         =   ""
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Ubuntu Condensed"
@@ -485,9 +485,9 @@ Begin VB.Form PersonsLedger
             Width           =   390
             _ExtentX        =   688
             _ExtentY        =   820
-            BackColor       =   16777215
+            BackColor       =   14742518
             ButtonShape     =   3
-            ButtonStyle     =   2
+            ButtonStyle     =   8
             Caption         =   ""
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Ubuntu Condensed"

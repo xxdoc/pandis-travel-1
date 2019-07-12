@@ -26,9 +26,9 @@ Begin VB.Form TablesShips
       BorderStyle     =   0  'None
       Height          =   6465
       Index           =   3
-      Left            =   16875
+      Left            =   16650
       TabIndex        =   53
-      Top             =   825
+      Top             =   675
       Width           =   12465
       Begin VB.Frame Frame 
          Appearance      =   0  'Flat
@@ -82,9 +82,9 @@ Begin VB.Form TablesShips
             Width           =   390
             _ExtentX        =   688
             _ExtentY        =   820
-            BackColor       =   16777215
+            BackColor       =   14742518
             ButtonShape     =   3
-            ButtonStyle     =   2
+            ButtonStyle     =   8
             Caption         =   ""
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Ubuntu Condensed"
@@ -131,9 +131,9 @@ Begin VB.Form TablesShips
             Width           =   390
             _ExtentX        =   688
             _ExtentY        =   820
-            BackColor       =   16777215
+            BackColor       =   14742518
             ButtonShape     =   3
-            ButtonStyle     =   2
+            ButtonStyle     =   8
             Caption         =   ""
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Ubuntu Condensed"
@@ -243,9 +243,9 @@ Begin VB.Form TablesShips
       BorderStyle     =   0  'None
       Height          =   6465
       Index           =   0
-      Left            =   1650
+      Left            =   16425
       TabIndex        =   20
-      Top             =   3000
+      Top             =   4350
       Width           =   12540
       Begin UserControls.newText txtShipDescription 
          Height          =   465
@@ -738,9 +738,9 @@ Begin VB.Form TablesShips
       BorderStyle     =   0  'None
       Height          =   6465
       Index           =   2
-      Left            =   3525
+      Left            =   3000
       TabIndex        =   34
-      Top             =   300
+      Top             =   2700
       Width           =   12465
       Begin VB.Frame Frame 
          Appearance      =   0  'Flat

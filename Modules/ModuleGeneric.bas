@@ -1471,7 +1471,7 @@ Function MainSaveRecord(SelectedDB, Table, Status, FormTitle, IndexField, CodeTo
             End If
         End If
         For lngFieldNo = 0 To UBound(Fields)
-            Debug.Print .Fields(lngFieldNo + 1).Name & " " & Fields(lngFieldNo)
+            'Debug.Print .Fields(lngFieldNo + 1).Name & " " & Fields(lngFieldNo)
             .Fields(lngFieldNo + 1).Value = Trim(Fields(lngFieldNo))
         Next
         .Update
@@ -1742,7 +1742,6 @@ Function SumSelectedGridRows(myGrid As iGrid, myLastColumnIsSpecial, customHeade
     If blnSelected Then
         For intLoop = 1 To UBound(myColumns) + 1 Step 2
             strFormat = IIf(myColumns(intLoop) = "integer", "#,##0", "#,##0.00")
-            'strHeaderText = IIf(customHeaderText = "", myGrid.ColHeaderText(myColumns(intLoop - 1)), customHeaderText)
             strDummy = strDummy & strHeaderText & " " & format(curGridColumnTotals(intLoop), strFormat) & " "
         Next intLoop
         SumSelectedGridRows = Replace(Left(strDummy, Len(strDummy) - 1), Chr(13), " ")
@@ -2220,7 +2219,7 @@ Function PositionFullScreenControls(thisForm As Form, formFullScreen As Boolean,
     
     'Container
     With thisForm.frmContainer
-        .Height = thisForm.Height - 510
+        .Height = thisForm.Height - 520
         .Top = (thisForm.Height / 2) - (.Height / 2)
         .Left = (thisForm.Width / 2) - (.Width / 2)
     End With
@@ -2236,7 +2235,7 @@ Function PositionFullScreenControls(thisForm As Form, formFullScreen As Boolean,
         .Top = 975
         .Left = 0
         .Width = thisForm.Width
-        .Height = thisForm.frmButtonFrame.Top - 200 - .Top
+        .Height = thisForm.frmButtonFrame.Top - 300 - .Top
     End With
     
     'Πλέγμα

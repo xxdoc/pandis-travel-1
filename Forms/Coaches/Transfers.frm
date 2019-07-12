@@ -382,11 +382,11 @@ Begin VB.Form Transfers
             _ExtentX        =   953
             _ExtentY        =   953
             ColourDepth     =   8
-            Size            =   8036
+            Size            =   9184
             Images          =   "Transfers.frx":0038
             Version         =   131072
-            KeyCount        =   7
-            Keys            =   "ÿÿÿÿÿÿ"
+            KeyCount        =   8
+            Keys            =   "ÿÿÿÿÿÿÿ"
          End
       End
       Begin VB.Frame frmCriteria 
@@ -432,6 +432,7 @@ Begin VB.Form Transfers
             _ExtentX        =   688
             _ExtentY        =   820
             BackColor       =   14742518
+            ButtonShape     =   3
             ButtonStyle     =   8
             Caption         =   ""
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -444,7 +445,7 @@ Begin VB.Form Transfers
                Strikethrough   =   0   'False
             EndProperty
             ForeColor       =   0
-            PicNormal       =   "Transfers.frx":1FBC
+            PicNormal       =   "Transfers.frx":2438
             PicSizeH        =   16
             PicSizeW        =   16
          End
@@ -695,6 +696,7 @@ Begin VB.Form Transfers
             _ExtentX        =   688
             _ExtentY        =   820
             BackColor       =   14742518
+            ButtonShape     =   3
             ButtonStyle     =   8
             Caption         =   ""
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -707,7 +709,7 @@ Begin VB.Form Transfers
                Strikethrough   =   0   'False
             EndProperty
             ForeColor       =   0
-            PicNormal       =   "Transfers.frx":2556
+            PicNormal       =   "Transfers.frx":29D2
             PicSizeH        =   16
             PicSizeW        =   16
          End
@@ -1450,6 +1452,7 @@ Begin VB.Form Transfers
          _ExtentX        =   688
          _ExtentY        =   820
          BackColor       =   14742518
+         ButtonShape     =   3
          ButtonStyle     =   8
          Caption         =   ""
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1462,7 +1465,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":2AF0
+         PicNormal       =   "Transfers.frx":2F6C
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1477,6 +1480,7 @@ Begin VB.Form Transfers
          _ExtentX        =   688
          _ExtentY        =   820
          BackColor       =   14742518
+         ButtonShape     =   3
          ButtonStyle     =   8
          Caption         =   ""
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1489,7 +1493,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":308A
+         PicNormal       =   "Transfers.frx":3506
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1526,6 +1530,7 @@ Begin VB.Form Transfers
          _ExtentX        =   688
          _ExtentY        =   820
          BackColor       =   14742518
+         ButtonShape     =   3
          ButtonStyle     =   8
          Caption         =   ""
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1538,7 +1543,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":3624
+         PicNormal       =   "Transfers.frx":3AA0
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1553,6 +1558,7 @@ Begin VB.Form Transfers
          _ExtentX        =   688
          _ExtentY        =   820
          BackColor       =   14742518
+         ButtonShape     =   3
          ButtonStyle     =   8
          Caption         =   ""
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1565,7 +1571,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":3BBE
+         PicNormal       =   "Transfers.frx":403A
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1706,6 +1712,7 @@ Begin VB.Form Transfers
          _ExtentX        =   688
          _ExtentY        =   820
          BackColor       =   14742518
+         ButtonShape     =   3
          ButtonStyle     =   8
          Caption         =   ""
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1718,7 +1725,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":4158
+         PicNormal       =   "Transfers.frx":45D4
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -1733,6 +1740,7 @@ Begin VB.Form Transfers
          _ExtentX        =   688
          _ExtentY        =   820
          BackColor       =   14742518
+         ButtonShape     =   3
          ButtonStyle     =   8
          Caption         =   ""
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1745,7 +1753,7 @@ Begin VB.Form Transfers
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   0
-         PicNormal       =   "Transfers.frx":46F2
+         PicNormal       =   "Transfers.frx":4B6E
          PicSizeH        =   16
          PicSizeW        =   16
       End
@@ -2140,12 +2148,6 @@ Private Function AssignPortToPassengers()
         Exit Function
     End If
     
-    frmCriteria(1).Visible = False
-    ClearFields txtPortIDForPassengers, txtPortDescriptionForPassengers
-    DisableFields txtPortDescriptionForPassengers
-    DisableFields cmdIndex(6)
-    UpdateButtons Me, 14, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0
-    
     BeginTrans
     
     For lngRow = 1 To grdCoachesReport.RowCount
@@ -2163,7 +2165,13 @@ Private Function AssignPortToPassengers()
         FindRecordsAndPopulateGrid
         strDummy = MyMsgBox(1, strApplicationName, strStandardMessages(8), 1)
     End If
-
+    
+    frmCriteria(1).Visible = False
+    ClearFields txtPortIDForPassengers, txtPortDescriptionForPassengers
+    DisableFields txtPortDescriptionForPassengers
+    DisableFields cmdIndex(6)
+    UpdateButtons Me, 14, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0
+    
 End Function
 
 Private Function AssignPortToThisCustomer(TransferID)
@@ -2228,12 +2236,6 @@ Private Function AssignRoutesToDriver()
         Exit Function
     End If
     
-    frmCriteria(0).Visible = False
-    ClearFields txtDriverIDForRoutes, txtDriverDescriptionForRoutes
-    DisableFields txtDriverDescriptionForRoutes
-    DisableFields cmdIndex(0)
-    UpdateButtons Me, 14, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0
-    
     BeginTrans
     
     For lngRow = 1 To grdCoachesReport.RowCount
@@ -2251,6 +2253,12 @@ Private Function AssignRoutesToDriver()
         FindRecordsAndPopulateGrid
         strDummy = MyMsgBox(1, strApplicationName, strStandardMessages(8), 1)
     End If
+    
+    frmCriteria(0).Visible = False
+    ClearFields txtDriverIDForRoutes, txtDriverDescriptionForRoutes
+    DisableFields txtDriverDescriptionForRoutes
+    DisableFields cmdIndex(0)
+    UpdateButtons Me, 14, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0
 
 End Function
 
@@ -2797,7 +2805,7 @@ Private Function CalculateSummaryPerPort()
             DoEvents
             grdSummaryPerPort.AddRow
             lngRow = lngRow + 1
-            grdSummaryPerPort.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(2)
+            grdSummaryPerPort.CellIcon(lngRow, "Selected") = lstIconList.ItemIndex(8)
             grdSummaryPerPort.CellValue(lngRow, "PortID") = !PortID
             grdSummaryPerPort.CellValue(lngRow, "PortDescription") = !PortDescription
             grdSummaryPerPort.CellValue(lngRow, "TotalPersons") = !SumOfTransferPersons
@@ -4219,11 +4227,11 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
     Select Case KeyCode
         Case vbKeyC And CtrlDown And cmdButton(0).Enabled 'Συνέχεια
             cmdButton_Click 0
-        Case vbKeyN And CtrlDown And cmdButton(1).Enabled 'Δημιουργία
+        Case vbKeyN And CtrlDown And cmdButton(1).Enabled, vbKeyInsert And cmdButton(1).Enabled 'Δημιουργία
             cmdButton_Click 1
-        Case vbKeyS And CtrlDown And cmdButton(2).Enabled 'Αποθήκευση
+        Case vbKeyS And CtrlDown And cmdButton(2).Enabled, vbKeyF10 And cmdButton(2).Enabled 'Αποθήκευση
             cmdButton_Click 2
-        Case vbKeyD And CtrlDown And cmdButton(3).Enabled 'Διαγραφή
+        Case vbKeyD And CtrlDown And cmdButton(3).Enabled, vbKeyF3 And cmdButton(3).Enabled  'Διαγραφή
             cmdButton_Click 3
         Case vbKeyP And CtrlDown And Not AltDown And cmdButton(7).Enabled 'Εκτύπωση
             cmdButton_Click 7
@@ -4246,16 +4254,16 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
         Case vbKey0 And CtrlDown And grdCoachesReport.RowCount > 0
             grdSummaryPerCustomer.SetCurCell 1, 1
             grdCoachesReport.SetFocus
-        Case vbKey1 And CtrlDown And grdSummaryPerDestination.RowCount > 0
+        Case vbKey2 And CtrlDown And grdSummaryPerDestination.RowCount > 0
             grdSummaryPerDestination.SetCurCell 1, 1
             grdSummaryPerDestination.SetFocus
-        Case vbKey2 And CtrlDown And grdSummaryPerCustomer.RowCount > 0
+        Case vbKey3 And CtrlDown And grdSummaryPerCustomer.RowCount > 0
             grdSummaryPerCustomer.SetCurCell 1, 1
             grdSummaryPerCustomer.SetFocus
-        Case vbKey3 And CtrlDown And grdSummaryPerRoute.RowCount > 0
+        Case vbKey4 And CtrlDown And grdSummaryPerRoute.RowCount > 0
             grdSummaryPerRoute.SetCurCell 1, 1
             grdSummaryPerRoute.SetFocus
-        Case vbKey4 And CtrlDown And grdSummaryPerDriver.RowCount > 0
+        Case vbKey5 And CtrlDown And grdSummaryPerDriver.RowCount > 0
             grdSummaryPerDriver.SetCurCell 1, 1
             grdSummaryPerDriver.SetFocus
         Case vbKeyF12 And CtrlDown
@@ -4395,9 +4403,17 @@ End Sub
 
 Private Sub grdCoachesReport_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
+    Dim ShiftDown, AltDown, CtrlDown
+    
+    CtrlDown = (Shift And vbCtrlMask) > 0
+    
     If KeyCode = vbKeySpace And grdCoachesReport.RowCount > 0 Then
         grdCoachesReport.CellIcon(grdCoachesReport.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCoachesReport, 6, KeyCode, grdCoachesReport.CurRow, "TransferID"))
         lblSelectedGridLines.Caption = SumSelectedGridRows(grdCoachesReport, False, "", "TransferTotal", "integer")
+    End If
+
+    If KeyCode = vbKeyA And CtrlDown And grdCoachesReport.RowCount > 0 Then
+        chkAllTransfers.Value = IIf(chkAllTransfers.Value = 0, 1, 0)
     End If
 
 End Sub
@@ -4465,25 +4481,26 @@ End Sub
 
 Private Sub grdSummaryPerCustomer_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
-    'Customers Grid
+    Dim ShiftDown, AltDown, CtrlDown
     
+    CtrlDown = (Shift And vbCtrlMask) > 0
+    
+    'Customers Grid
     If KeyCode = vbKeySpace And grdSummaryPerDestination.RowCount > 0 Then
-        
         'Toggle selected line
         grdSummaryPerCustomer.CellIcon(grdSummaryPerCustomer.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerCustomer, 3, KeyCode, grdSummaryPerCustomer.CurRow, "CustomerDescription"))
-        
         'Routes
         CalculateSummaryPerRouteForSelectedDestinationsAndCustomers
-        
         'Drivers
         CalculateSummaryPerDriverForSelectedDestinationsAndCustomersAndRoutes
-        
         'Toggle checkbox
         chkAllCustomers.Value = ToggleCheckBox(grdSummaryPerCustomer, chkAllCustomers.Value)
-        
         'Main grid
         RefreshList
-        
+    End If
+    
+    If KeyCode = vbKeyA And CtrlDown And grdSummaryPerCustomer.RowCount > 0 Then
+        chkAllCustomers.Value = IIf(chkAllCustomers.Value = 0, 1, 0)
     End If
 
 End Sub
@@ -4537,30 +4554,30 @@ End Sub
 
 Private Sub grdSummaryPerDestination_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
+    Dim ShiftDown, AltDown, CtrlDown
+    
+    CtrlDown = (Shift And vbCtrlMask) > 0
+    
     'Destinations Grid
-        
     If KeyCode = vbKeySpace And grdSummaryPerDestination.RowCount > 0 Then
-        
         'Toggle selected line
         grdSummaryPerDestination.CellIcon(grdSummaryPerDestination.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerDestination, 2, KeyCode, grdSummaryPerDestination.CurRow, "DestinationDescription"))
-        
         'Customers
         CalculateSummaryPerCustomerForSelectedDestinations
-        
         'Routes
         CalculateSummaryPerRouteForSelectedDestinationsAndCustomers
-        
         'Drivers
         CalculateSummaryPerDriverForSelectedDestinationsAndCustomersAndRoutes
-        
         'Toggle checkbox
         chkAllDestinations.Value = ToggleCheckBox(grdSummaryPerDestination, chkAllDestinations.Value)
-        
         'Main grid
         RefreshList
-    
     End If
- 
+    
+    If KeyCode = vbKeyA And CtrlDown And grdSummaryPerDestination.RowCount > 0 Then
+        chkAllDestinations.Value = IIf(chkAllDestinations.Value = 0, 1, 0)
+    End If
+    
 End Sub
 
 Private Sub grdSummaryPerDriver_ColHeaderMouseEnter(ByVal lCol As Long)
@@ -4604,19 +4621,22 @@ End Sub
 
 Private Sub grdSummaryPerDriver_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
-    'Drivers Grid
+    Dim ShiftDown, AltDown, CtrlDown
     
+    CtrlDown = (Shift And vbCtrlMask) > 0
+    
+    'Drivers Grid
     If KeyCode = vbKeySpace And grdSummaryPerRoute.RowCount > 0 Then
-        
         'Toggle selected line
         grdSummaryPerDriver.CellIcon(grdSummaryPerDriver.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerDriver, 5, KeyCode, grdSummaryPerDriver.CurRow, "DriverDescription"))
-        
         'Toggle checkbox
         chkAllDrivers.Value = ToggleCheckBox(grdSummaryPerDriver, chkAllDrivers.Value)
-        
         'Main grid
         RefreshList
+    End If
     
+    If KeyCode = vbKeyA And CtrlDown And grdSummaryPerDriver.RowCount > 0 Then
+        chkAllDrivers.Value = IIf(chkAllDrivers.Value = 0, 1, 0)
     End If
 
 End Sub
@@ -4686,22 +4706,24 @@ End Sub
 
 Private Sub grdSummaryPerRoute_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefault As Boolean)
 
-    'Routes Grid
+    Dim ShiftDown, AltDown, CtrlDown
     
+    CtrlDown = (Shift And vbCtrlMask) > 0
+
+    'Routes Grid
     If KeyCode = vbKeySpace And grdSummaryPerRoute.RowCount > 0 Then
-        
         'Toggle selected line
         grdSummaryPerRoute.CellIcon(grdSummaryPerRoute.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSummaryPerRoute, 4, KeyCode, grdSummaryPerRoute.CurRow, "RouteShortDescription"))
-        
         'Drivers
         CalculateSummaryPerDriverForSelectedDestinationsAndCustomersAndRoutes
-        
         'Toggle checkbox
         chkAllRoutes.Value = ToggleCheckBox(grdSummaryPerRoute, chkAllRoutes.Value)
-        
         'Main grid
         RefreshList
+    End If
     
+    If KeyCode = vbKeyA And CtrlDown And grdSummaryPerRoute.RowCount > 0 Then
+        chkAllRoutes.Value = IIf(chkAllRoutes.Value = 0, 1, 0)
     End If
 
 End Sub

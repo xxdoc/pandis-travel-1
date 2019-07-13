@@ -1316,7 +1316,7 @@ Private Sub grdChecksIndex_KeyDown(KeyCode As Integer, Shift As Integer, bDoDefa
     If KeyCode = vbKeySpace And grdChecksIndex.RowCount > 0 Then
         grdChecksIndex.CellIcon(grdChecksIndex.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdChecksIndex, 2, KeyCode, grdChecksIndex.CurRow, "TrnID"))
         lblSelectedGridLines.Caption = CountSelected(grdChecksIndex)
-        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdChecksIndex, False, "", "Amount", "decimal")
+        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdChecksIndex, False, "Ποσό", "Amount", "Ποσό", "decimal")
     End If
 
 End Sub

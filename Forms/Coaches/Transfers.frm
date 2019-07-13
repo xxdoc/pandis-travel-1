@@ -4409,7 +4409,7 @@ Private Sub grdCoachesReport_KeyDown(KeyCode As Integer, Shift As Integer, bDoDe
     
     If KeyCode = vbKeySpace And grdCoachesReport.RowCount > 0 Then
         grdCoachesReport.CellIcon(grdCoachesReport.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCoachesReport, 6, KeyCode, grdCoachesReport.CurRow, "TransferID"))
-        lblSelectedGridLines.Caption = SumSelectedGridRows(grdCoachesReport, False, "", "TransferTotal", "integer")
+        lblSelectedGridLines.Caption = SumSelectedGridRows(grdCoachesReport, False, "TransferTotal", "", "integer")
     End If
 
     If KeyCode = vbKeyA And CtrlDown And grdCoachesReport.RowCount > 0 Then

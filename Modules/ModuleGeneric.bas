@@ -1717,7 +1717,7 @@ Function CountSelected(myGrid As iGrid)
 
 End Function
 
-Function SumSelectedGridRows(myGrid As iGrid, myLastColumnIsSpecial, customHeaderText, ParamArray myColumns() As Variant)
+Function SumSelectedGridRows(myGrid As iGrid, myLastColumnIsSpecial, ParamArray myColumns() As Variant)
 
     Dim lngRow As Long
     Dim intLoop As Integer
@@ -1730,21 +1730,21 @@ Function SumSelectedGridRows(myGrid As iGrid, myLastColumnIsSpecial, customHeade
     For lngRow = 1 To myGrid.RowCount
         If myGrid.CellIcon(lngRow, "Selected") > 0 Then
             blnSelected = True
-            For intLoop = 0 To UBound(myColumns) + IIf(myLastColumnIsSpecial, -2, 0) Step 2
+            For intLoop = 0 To UBound(myColumns) + IIf(myLastColumnIsSpecial, -3, 0) Step 3
                 curGridColumnTotals(intLoop + 1) = curGridColumnTotals(intLoop + 1) + myGrid.CellValue(lngRow, myColumns(intLoop))
             Next intLoop
-            If intLoop + 1 = UBound(myColumns) And myLastColumnIsSpecial Then
-                curGridColumnTotals(intLoop + 1) = curGridColumnTotals(intLoop + 1) + myGrid.CellValue(lngRow, myColumns(intLoop - 4)) - myGrid.CellValue(lngRow, myColumns(intLoop - 2))
+            If myLastColumnIsSpecial Then
+                curGridColumnTotals(intLoop + 1) = curGridColumnTotals(intLoop + 1) + myGrid.CellValue(lngRow, myColumns(intLoop - 6)) - myGrid.CellValue(lngRow, myColumns(intLoop - 3))
             End If
         End If
     Next lngRow
     
     If blnSelected Then
-        For intLoop = 1 To UBound(myColumns) + 1 Step 2
+        For intLoop = 2 To UBound(myColumns) Step 3
             strFormat = IIf(myColumns(intLoop) = "integer", "#,##0", "#,##0.00")
-            strDummy = strDummy & strHeaderText & " " & format(curGridColumnTotals(intLoop), strFormat) & " "
+            strDummy = strDummy & myColumns(intLoop - 1) & " " & format(curGridColumnTotals(intLoop - 1), strFormat) & " "
         Next intLoop
-        SumSelectedGridRows = Replace(Left(strDummy, Len(strDummy) - 1), Chr(13), " ")
+        SumSelectedGridRows = Replace(Replace(Left(strDummy, Len(strDummy) - 1), Chr(13), " "), "   ", " ")
     End If
 
 End Function

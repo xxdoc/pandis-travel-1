@@ -754,7 +754,7 @@ Begin VB.Form PersonsBalanceSheet
          Left            =   75
          TabIndex        =   4
          TabStop         =   0   'False
-         Top             =   1500
+         Top             =   1575
          Width           =   18840
          _ExtentX        =   33232
          _ExtentY        =   12859
@@ -1723,7 +1723,7 @@ Private Sub grdPersonsBalanceSheet_KeyDown(KeyCode As Integer, Shift As Integer,
     If KeyCode = vbKeySpace And grdPersonsBalanceSheet.RowCount > 0 Then
         grdPersonsBalanceSheet.CellIcon(grdPersonsBalanceSheet.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdPersonsBalanceSheet, 2, KeyCode, grdPersonsBalanceSheet.CurRow, "ID"))
         lblSelectedGridLines.Caption = CountSelected(grdPersonsBalanceSheet)
-        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdPersonsBalanceSheet, False, "", "BalanceSoFar", "decimal", "DebitPeriod", "decimal", "CreditPeriod", "decimal", "Balance", "decimal")
+        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdPersonsBalanceSheet, False, "BalanceSoFar", grdPersonsBalanceSheet.ColHeaderText(5), "decimal", "DebitPeriod", grdPersonsBalanceSheet.ColHeaderText(6), "decimal", "CreditPeriod", grdPersonsBalanceSheet.ColHeaderText(7), "decimal", "Balance", grdPersonsBalanceSheet.ColHeaderText(8), "decimal")
     End If
 
 End Sub

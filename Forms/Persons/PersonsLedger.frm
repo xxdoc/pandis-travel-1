@@ -3039,7 +3039,7 @@ Private Sub grdCustomersLedger_KeyDown(KeyCode As Integer, Shift As Integer, bDo
     If KeyCode = vbKeySpace And grdCustomersLedger.RowCount > 0 Then
         grdCustomersLedger.CellIcon(grdCustomersLedger.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCustomersLedger, 2, KeyCode, grdCustomersLedger.CurRow, "TrnID"))
         lblSelectedGridLines.Caption = CountSelected(grdCustomersLedger)
-        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdCustomersLedger, True, "", "AdultsAmount", "decimal", "KidsAmount", "decimal", "DirectAmount", "decimal", "Debit", "decimal", "Credit", "decimal", "Balance", "decimal")
+        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdCustomersLedger, True, "", "AdultsAmount", "Χρέωση ενηλίκων", "decimal", "KidsAmount", "Χρέωση παιδιών", "decimal", "DirectAmount", "Απευθείας χρέωση", "decimal", "Debit", "Σύνολο χρέωσης", "decimal", "Credit", "Πίστωση", "decimal", "Balance", "Υπόλοιπο", "decimal")
     End If
 
 End Sub
@@ -3109,7 +3109,7 @@ Private Sub grdSuppliersLedger_KeyDown(KeyCode As Integer, Shift As Integer, bDo
     If KeyCode = vbKeySpace And grdSuppliersLedger.RowCount > 0 Then
         grdSuppliersLedger.CellIcon(grdSuppliersLedger.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdSuppliersLedger, 2, KeyCode, grdSuppliersLedger.CurRow, "TrnID"))
         lblSelectedGridLines.Caption = CountSelected(grdSuppliersLedger)
-        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdSuppliersLedger, True, "", "Debit", "decimal", "Credit", "decimal", "Balance", "decimal")
+        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdSuppliersLedger, True, "Debit", "Χρέωση", "decimal", "Credit", "Πίστωση", "decimal", "Balance", "Υπόλοιπο", "decimal")
     End If
 
 End Sub

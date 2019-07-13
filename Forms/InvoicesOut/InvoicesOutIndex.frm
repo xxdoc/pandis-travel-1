@@ -1807,8 +1807,8 @@ Private Sub grdInvoicesOutIndex_KeyDown(KeyCode As Integer, Shift As Integer, bD
     If KeyCode = vbKeySpace And grdInvoicesOutIndex.RowCount > 0 Then
         grdInvoicesOutIndex.CellIcon(grdInvoicesOutIndex.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdInvoicesOutIndex, 2, KeyCode, grdInvoicesOutIndex.CurRow, "TrnID"))
         lblSelectedGridLines.Caption = CountSelected(grdInvoicesOutIndex)
-        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdInvoicesOutIndex, False, "", "InvoiceTotalAmount", "decimal", "InvoiceTotalPersons", "integer")
-     End If
+        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdInvoicesOutIndex, False, "InvoiceTotalAmount", "Ποσό", "decimal", "InvoiceTotalPersons", "Ατομα", "integer")
+      End If
 
 End Sub
 

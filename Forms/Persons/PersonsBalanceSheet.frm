@@ -754,7 +754,7 @@ Begin VB.Form PersonsBalanceSheet
          Left            =   75
          TabIndex        =   4
          TabStop         =   0   'False
-         Top             =   1575
+         Top             =   1500
          Width           =   18840
          _ExtentX        =   33232
          _ExtentY        =   12859
@@ -1129,6 +1129,28 @@ Private Function CalculateSoFarTotalsForCustomers(rstTransactions As Recordset)
     End With
 
 End Function
+Private Function EditRecord()
+
+    With PersonsLedger 'OK
+        .lblTitle.Caption = IIf(txtCustomersOrSuppliers.text = "Customers", "Καρτέλα πελάτη", "Καρτέλα πιστωτή")
+        .txtInvoiceMasterRefersTo.text = IIf(txtCustomersOrSuppliers.text = "Customers", "2", "1")
+        .txtCustomersOrSuppliers.text = txtCustomersOrSuppliers.text
+        .txtPaymentInOrPaymentOut.text = IIf(txtCustomersOrSuppliers.text = "Customers", "PaymentIn", "PaymentOut")
+        .txtBatchReport.text = "No"
+        .frmCriteria(0).Visible = True
+        .frmCriteria(1).Visible = False
+        .txtInvoicePersonID.text = grdPersonsBalanceSheet.CellValue(grdPersonsBalanceSheet.CurRow, "ID")
+        .txtPersonDescription.text = grdPersonsBalanceSheet.CellValue(grdPersonsBalanceSheet.CurRow, "Description")
+        .mskInvoiceDateIssueFrom(0).text = mskInvoiceDateIssueFrom.text
+        .mskInvoiceDateIssueFrom(1).text = mskInvoiceDateIssueFrom.text
+        .mskInvoiceDateIssueTo(0).text = mskInvoiceDateIssueTo.text
+        .mskInvoiceDateIssueTo(1).text = mskInvoiceDateIssueTo.text
+        .Tag = "True"
+        .Show 1, Me
+    End With
+    
+End Function
+
 Private Function FindRecordsAndPopulateGrid()
 
     If ValidateFields Then
@@ -1137,7 +1159,7 @@ Private Function FindRecordsAndPopulateGrid()
             UpdateCriteriaLabels mskInvoiceDateIssueFrom.text, mskInvoiceDateIssueTo.text, txtFilterDescription.text
             EnableGrid grdPersonsBalanceSheet, False
             HighlightRow grdPersonsBalanceSheet, 1, 1, "", True
-            UpdateButtons Me, 6, 0, 0, 1, 1, 1, 1, 0
+            UpdateButtons Me, 6, 0, 1, 1, 1, 1, 1, 0
             Exit Function
         Else
             UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
@@ -1177,7 +1199,7 @@ Private Sub cmdButton_Click(index As Integer)
         Case 0
             FindRecordsAndPopulateGrid
         Case 1
-            'EditRecord
+            EditRecord
         Case 2
             DoReport "Print"
         Case 3
@@ -1500,8 +1522,8 @@ Private Function RefreshList()
     With grdPersonsBalanceSheet
         .Clear
         .TabStop = False
-        .ColHeaderText("BalanceSoFar") = "Υπόλοιπο " & Chr(13) & " έως " & CDate(mskInvoiceDateIssueFrom.text) - 1
-        .ColHeaderText("Balance") = "Υπόλοιπο " & Chr(13) & " έως " & CDate(mskInvoiceDateIssueTo.text)
+        .ColHeaderText("BalanceSoFar") = "Υπόλοιπο " & Chr(13) & " έως " & format(CDate(mskInvoiceDateIssueFrom.text) - 1, "dd/mm/yyyy")
+        .ColHeaderText("Balance") = "Υπόλοιπο " & Chr(13) & " έως " & format(CDate(mskInvoiceDateIssueTo.text), "dd/mm/yyyy")
         .ColHeaderTextFlags(8) = 32789
         .Redraw = False
     End With
@@ -1668,16 +1690,18 @@ End Sub
 
 Private Function CheckFunctionKeys(KeyCode, Shift)
 
-    Dim CtrlDown
+    Dim ShiftDown, AltDown, CtrlDown
     
-    CtrlDown = Shift + vbCtrlMask
+    ShiftDown = (Shift And vbShiftMask) > 0
+    AltDown = (Shift And vbAltMask) > 0
+    CtrlDown = (Shift And vbCtrlMask) > 0
     
     Select Case KeyCode
-        Case vbKeyF10 And cmdButton(0).Enabled, vbKeyC And CtrlDown = 4 And cmdButton(0).Enabled
+        Case vbKeyF10 And cmdButton(0).Enabled, vbKeyC And CtrlDown And cmdButton(0).Enabled
             cmdButton_Click 0
-        Case vbKeyE And CtrlDown = 4 And cmdButton(1).Enabled
+        Case vbKeyE And CtrlDown And cmdButton(1).Enabled
             cmdButton_Click 1
-        Case vbKeyP And CtrlDown = 4 And cmdButton(2).Enabled
+        Case vbKeyP And CtrlDown And cmdButton(2).Enabled
             cmdButton_Click 2
         Case vbKeyP And CtrlDown = 5 And cmdButton(3).Enabled
             cmdButton_Click 3
@@ -1686,7 +1710,7 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
         Case vbKeyEscape
             If cmdButton(5).Enabled Then cmdButton_Click 5: Exit Function
             If cmdButton(6).Enabled Then cmdButton_Click 6
-        Case vbKeyF12 And CtrlDown = 4
+        Case vbKeyF12 And CtrlDown
             ToggleInfoPanel Me
     End Select
 

@@ -1735,23 +1735,25 @@ End Sub
 
 Private Function CheckFunctionKeys(KeyCode, Shift)
 
-    Dim CtrlDown
+    Dim ShiftDown, AltDown, CtrlDown
     
-    CtrlDown = Shift + vbCtrlMask
+    ShiftDown = (Shift And vbShiftMask) > 0
+    AltDown = (Shift And vbAltMask) > 0
+    CtrlDown = (Shift And vbCtrlMask) > 0
     
     Select Case KeyCode
-        Case vbKeyF10 And cmdButton(0).Enabled, vbKeyC And CtrlDown = 4 And cmdButton(0).Enabled
+        Case vbKeyF10 And cmdButton(0).Enabled, vbKeyC And CtrlDown And cmdButton(0).Enabled
             cmdButton_Click 0
-        Case vbKeyE And CtrlDown = 4 And cmdButton(1).Enabled
+        Case vbKeyE And CtrlDown And cmdButton(1).Enabled
             cmdButton_Click 1
-        Case vbKeyF3 And cmdButton(2).Enabled, vbKeyD And CtrlDown = 4 And cmdButton(2).Enabled
+        Case vbKeyF3 And cmdButton(2).Enabled, vbKeyD And CtrlDown And cmdButton(2).Enabled
             cmdButton_Click 2
-        Case vbKeyP And CtrlDown = 4 And cmdButton(3).Enabled
+        Case vbKeyP And CtrlDown And cmdButton(3).Enabled
             cmdButton_Click 3
         Case vbKeyEscape
             If cmdButton(8).Enabled Then cmdButton_Click 8: Exit Function
             If cmdButton(9).Enabled Then cmdButton_Click 9
-        Case vbKeyF12 And CtrlDown = 4
+        Case vbKeyF12 And CtrlDown
             ToggleInfoPanel Me
     End Select
 
@@ -1837,7 +1839,7 @@ Private Sub grdShipsRouteReport_KeyDown(KeyCode As Integer, Shift As Integer, bD
     
     'Επιλογή όλων των γραμμών
     If grdShipsRouteReport.RowCount > 0 Then
-        If KeyCode = vbKeyAdd And CtrlDown = 4 Then
+        If KeyCode = vbKeyAdd And CtrlDown Then
             For lngRow = 1 To grdShipsRouteReport.RowCount
                 grdShipsRouteReport.CellIcon(lngRow, "Selected") = 2
             Next lngRow
@@ -1847,7 +1849,7 @@ Private Sub grdShipsRouteReport_KeyDown(KeyCode As Integer, Shift As Integer, bD
     
     'Αποεπιλογή όλων των γραμμών
     If grdShipsRouteReport.RowCount > 0 Then
-        If KeyCode = vbKeySubtract And CtrlDown = 4 Then
+        If KeyCode = vbKeySubtract And CtrlDown Then
             For lngRow = 1 To grdShipsRouteReport.RowCount
                 grdShipsRouteReport.CellIcon(lngRow, "Selected") = 0
             Next lngRow

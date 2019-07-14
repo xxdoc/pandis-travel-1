@@ -1,13 +1,13 @@
 VERSION 5.00
 Begin {9EB8768B-CDFA-44DF-8F3E-857A8405E1DB} rptInvoice 
    Caption         =   "Τιμολόγιο"
-   ClientHeight    =   13350
+   ClientHeight    =   15630
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   16080
+   ClientWidth     =   28560
    StartUpPosition =   2  'CenterScreen
-   _ExtentX        =   28363
-   _ExtentY        =   23548
+   _ExtentX        =   50377
+   _ExtentY        =   27570
    SectionData     =   "rptInvoice.dsx":0000
 End
 Attribute VB_Name = "rptInvoice"

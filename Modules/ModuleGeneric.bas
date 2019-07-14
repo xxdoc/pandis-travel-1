@@ -502,7 +502,7 @@ ErrTrap:
 End Function
 
 
-Function ChangeEditButtonStatus(grdGrid, strTag, lngRow, lngCol)
+Function ChangeEditButtonStatus(grdGrid As iGrid, strTag, lngRow, lngCol)
 
     ChangeEditButtonStatus = False
     

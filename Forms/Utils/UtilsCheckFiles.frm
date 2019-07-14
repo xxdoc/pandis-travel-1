@@ -351,12 +351,14 @@ End Sub
 
 Private Function CheckFunctionKeys(KeyCode, Shift)
 
-    Dim CtrlDown
+    Dim ShiftDown, AltDown, CtrlDown
     
-    CtrlDown = Shift + vbCtrlMask
+    ShiftDown = (Shift And vbShiftMask) > 0
+    AltDown = (Shift And vbAltMask) > 0
+    CtrlDown = (Shift And vbCtrlMask) > 0
     
     Select Case KeyCode
-        Case vbKeyF10 And cmdButton(0).Enabled, vbKeyC And CtrlDown = 4 And cmdButton(0).Enabled
+        Case vbKeyF10 And cmdButton(0).Enabled, vbKeyC And CtrlDown And cmdButton(0).Enabled
             cmdButton_Click 0
         Case vbKeyEscape
             cmdButton_Click 1

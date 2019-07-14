@@ -1532,8 +1532,8 @@ End Function
 Private Function CalculateCurrentLineForPaymentsOut(rstTransactions As Recordset)
 
     With rstTransactions
-        curTotalCreditLine = 0
-        curTotalDebitLine = IIf(!CodeSuppliers = "-", !Amount, -!Amount)
+        If !CodeSuppliers = "-" Then curTotalDebitLine = !Amount
+        If !CodeSuppliers = "+" Then curTotalCreditLine = !Amount
     End With
 
 End Function
@@ -1599,14 +1599,25 @@ Private Function CalculatePeriodTotalsForExpenses(rstTransactions As Recordset)
             'Αν η κίνηση είναι μετρητοίς βάζω το ποσό και στη χρέωση
             curDebitPeriod = IIf(!PaymentTermCreditID = 0, curDebitPeriod + curTotals, curDebitPeriod)
         End If
-        'Πληρωμή
+        'Πληρωμή ή πιστωτική απογραφή
         If rstTransactions!InvoiceMasterRefersTo = "3" Then
-            'Αυξάνω τη χρέωση
-            curDebitPeriod = curDebitPeriod + curTotalDebitLine
+            'Κίνηση αυξάνει το υπόλοιπο
+            If !CodeSuppliers = "+" Then
+                'Αυξάνω την πίστωση
+                curCreditPeriod = curCreditPeriod + curTotalCreditLine
+            End If
+            'Κίνηση μειώνει το υπόλοιπο
+            If !CodeSuppliers = "-" Then
+                'Αυξάνω τη χρέωση
+                curDebitPeriod = curDebitPeriod + curTotalDebitLine
+            End If
         End If
     End With
     
     curBalancePeriod = curBalancePeriod + curTotalDebitLine - curTotalCreditLine
+    
+    curTotalDebitLine = 0
+    curTotalCreditLine = 0
 
 End Function
 
@@ -1693,6 +1704,10 @@ Private Function CalculateCurrentLine(rstTransactions As Recordset)
     
     'Υπόλοιπο γραμμής
     curBalanceLine = curTotalDebitLine - curTotalCreditLine
+    
+    'Μηδενίζω
+    'curTotalDebitLine = 0
+    'curTotalCreditLine = 0
     
     'Προοδευτικό υπόλοιπο
     curAccBalance = curAccBalance + curBalanceLine
@@ -1956,12 +1971,13 @@ Private Function FindRecordsAndPopulateGrid()
             If txtInvoiceMasterRefersTo.text = "1" Then
                 EnableGrid grdSuppliersLedger, False
                 HighlightRow grdSuppliersLedger, 1, 1, "", True
+                UpdateButtons Me, 6, 0, ChangeEditButtonStatus(grdSuppliersLedger, Me.Tag, 1, 1), 1, 1, 1, 1, 0
             End If
             If txtInvoiceMasterRefersTo.text = "2" Then
                 EnableGrid grdCustomersLedger, False
                 HighlightRow grdCustomersLedger, 1, 1, "", True
+                UpdateButtons Me, 6, 0, ChangeEditButtonStatus(grdCustomersLedger, Me.Tag, 1, 1), 1, 1, 1, 1, 0
             End If
-            UpdateButtons Me, 6, 0, 0, 1, 1, 1, 1, 0
             Exit Function
         Else
             UpdateButtons Me, 6, 1, 0, 0, 0, 0, 0, 1
@@ -2254,8 +2270,8 @@ End Function
 
 Private Function EditRecord()
 
-    If txtInvoiceMasterRefersTo.text = "1" Then EditInvoiceInRecord
-    If txtInvoiceMasterRefersTo.text = "2" Then EditInvoiceOutRecord
+    If txtInvoiceMasterRefersTo.text = "1" Then EditInvoiceInRecord:: grdSuppliersLedger.SetFocus
+    If txtInvoiceMasterRefersTo.text = "2" Then EditInvoiceOutRecord: grdCustomersLedger.SetFocus
     
 End Function
 
@@ -2732,6 +2748,9 @@ Private Function RefreshList(personID As String, fromDate As String, toDate As S
     curCreditPeriod = 0
     curBalancePeriod = 0
     
+    curTotalDebitLine = 0
+    curTotalCreditLine = 0
+    
     curAccBalance = 0
     
     frmCriteria(0).Visible = False
@@ -2975,7 +2994,7 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
     Select Case KeyCode
         Case vbKeyC And CtrlDown And cmdButton(0).Enabled
             cmdButton_Click 0
-        Case vbKeyE And CtrlDown = 4 And cmdButton(1).Enabled
+        Case vbKeyE And CtrlDown And cmdButton(1).Enabled
             cmdButton_Click 1
         Case vbKeyP And CtrlDown And Not AltDown And cmdButton(2).Enabled
             cmdButton_Click 2
@@ -2984,7 +3003,7 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
         Case vbKeyEscape
             If cmdButton(5).Enabled Then cmdButton_Click 5: Exit Function
             If cmdButton(6).Enabled Then cmdButton_Click 6
-        Case vbKeyF12 And CtrlDown = 4
+        Case vbKeyF12 And CtrlDown
             ToggleInfoPanel Me
     End Select
 
@@ -3039,7 +3058,7 @@ Private Sub grdCustomersLedger_KeyDown(KeyCode As Integer, Shift As Integer, bDo
     If KeyCode = vbKeySpace And grdCustomersLedger.RowCount > 0 Then
         grdCustomersLedger.CellIcon(grdCustomersLedger.CurRow, "Selected") = lstIconList.ItemIndex(SelectRow(grdCustomersLedger, 2, KeyCode, grdCustomersLedger.CurRow, "TrnID"))
         lblSelectedGridLines.Caption = CountSelected(grdCustomersLedger)
-        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdCustomersLedger, True, "", "AdultsAmount", "Χρέωση ενηλίκων", "decimal", "KidsAmount", "Χρέωση παιδιών", "decimal", "DirectAmount", "Απευθείας χρέωση", "decimal", "Debit", "Σύνολο χρέωσης", "decimal", "Credit", "Πίστωση", "decimal", "Balance", "Υπόλοιπο", "decimal")
+        lblSelectedGridTotals.Caption = SumSelectedGridRows(grdCustomersLedger, True, "AdultsAmount", "Χρέωση ενηλίκων", "decimal", "KidsAmount", "Χρέωση παιδιών", "decimal", "DirectAmount", "Απευθείας χρέωση", "decimal", "Debit", "Σύνολο χρέωσης", "decimal", "Credit", "Πίστωση", "decimal", "Balance", "Υπόλοιπο", "decimal")
     End If
 
 End Sub

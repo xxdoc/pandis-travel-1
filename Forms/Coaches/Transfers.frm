@@ -923,7 +923,7 @@ Begin VB.Form Transfers
          Caption         =   "ÅðéëïãÞ üëùí"
          ForeColor       =   &H00FFFFFF&
          Height          =   315
-         Left            =   7875
+         Left            =   6675
          TabIndex        =   58
          TabStop         =   0   'False
          Top             =   1050
@@ -939,7 +939,7 @@ Begin VB.Form Transfers
          ScaleWidth      =   5865
          TabIndex        =   57
          TabStop         =   0   'False
-         Top             =   7425
+         Top             =   7950
          Width           =   5865
       End
       Begin VB.Frame frmSummaries 
@@ -1255,14 +1255,14 @@ Begin VB.Form Transfers
          End
       End
       Begin iGrid300_10Tec.iGrid grdCoachesReport 
-         Height          =   5640
-         Left            =   7875
+         Height          =   6540
+         Left            =   6675
          TabIndex        =   11
          TabStop         =   0   'False
          Top             =   1425
-         Width           =   10440
-         _ExtentX        =   18415
-         _ExtentY        =   9948
+         Width           =   11640
+         _ExtentX        =   20532
+         _ExtentY        =   11536
          Appearance      =   0
          ForeColor       =   -2147483631
       End
@@ -1292,12 +1292,12 @@ Begin VB.Form Transfers
          Left            =   2025
          TabIndex        =   2
          Top             =   2175
-         Width           =   4965
-         _ExtentX        =   8758
+         Width           =   3765
+         _ExtentX        =   6641
          _ExtentY        =   820
          ForeColor       =   0
          MaxLength       =   40
-         Text            =   "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+         Text            =   "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
          BackColor       =   4210688
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Ubuntu Condensed"
@@ -1314,12 +1314,12 @@ Begin VB.Form Transfers
          Left            =   2025
          TabIndex        =   1
          Top             =   1650
-         Width           =   4965
-         _ExtentX        =   8758
+         Width           =   3765
+         _ExtentX        =   6641
          _ExtentY        =   820
          ForeColor       =   0
          MaxLength       =   40
-         Text            =   "ÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁ"
+         Text            =   "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
          BackColor       =   4210688
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Ubuntu Condensed"
@@ -1336,12 +1336,12 @@ Begin VB.Form Transfers
          Left            =   2025
          TabIndex        =   3
          Top             =   2700
-         Width           =   4965
-         _ExtentX        =   8758
+         Width           =   3765
+         _ExtentX        =   6641
          _ExtentY        =   820
          ForeColor       =   0
          MaxLength       =   50
-         Text            =   "ÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁ"
+         Text            =   "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
          BackColor       =   4210688
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Ubuntu Condensed"
@@ -1357,13 +1357,13 @@ Begin VB.Form Transfers
          Height          =   465
          Left            =   2025
          TabIndex        =   7
-         Top             =   4800
-         Width           =   4965
-         _ExtentX        =   8758
+         Top             =   5325
+         Width           =   3765
+         _ExtentX        =   6641
          _ExtentY        =   820
          ForeColor       =   0
          MaxLength       =   40
-         Text            =   "ÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁ"
+         Text            =   "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
          BackColor       =   4210688
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Ubuntu Condensed"
@@ -1379,7 +1379,7 @@ Begin VB.Form Transfers
          Height          =   465
          Left            =   2025
          TabIndex        =   4
-         Top             =   3225
+         Top             =   3750
          Width           =   690
          _ExtentX        =   1217
          _ExtentY        =   820
@@ -1401,7 +1401,7 @@ Begin VB.Form Transfers
          Height          =   465
          Left            =   2025
          TabIndex        =   5
-         Top             =   3750
+         Top             =   4275
          Width           =   690
          _ExtentX        =   1217
          _ExtentY        =   820
@@ -1423,7 +1423,7 @@ Begin VB.Form Transfers
          Height          =   465
          Left            =   2025
          TabIndex        =   6
-         Top             =   4275
+         Top             =   4800
          Width           =   690
          _ExtentX        =   1217
          _ExtentY        =   820
@@ -1444,7 +1444,7 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdIndex 
          Height          =   465
          Index           =   2
-         Left            =   7050
+         Left            =   5850
          TabIndex        =   16
          TabStop         =   0   'False
          Top             =   2175
@@ -1472,7 +1472,7 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdIndex 
          Height          =   465
          Index           =   3
-         Left            =   7050
+         Left            =   5850
          TabIndex        =   17
          TabStop         =   0   'False
          Top             =   2700
@@ -1501,13 +1501,13 @@ Begin VB.Form Transfers
          Height          =   465
          Left            =   2025
          TabIndex        =   9
-         Top             =   5850
-         Width           =   4965
-         _ExtentX        =   8758
+         Top             =   6375
+         Width           =   3765
+         _ExtentX        =   6641
          _ExtentY        =   820
          ForeColor       =   0
          MaxLength       =   50
-         Text            =   "ÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁ"
+         Text            =   "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
          BackColor       =   4210688
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Ubuntu Condensed"
@@ -1522,10 +1522,10 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdIndex 
          Height          =   465
          Index           =   4
-         Left            =   7050
+         Left            =   5850
          TabIndex        =   26
          TabStop         =   0   'False
-         Top             =   5850
+         Top             =   6375
          Width           =   390
          _ExtentX        =   688
          _ExtentY        =   820
@@ -1550,7 +1550,7 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdIndex 
          Height          =   465
          Index           =   1
-         Left            =   7050
+         Left            =   5850
          TabIndex        =   56
          TabStop         =   0   'False
          Top             =   1650
@@ -1578,10 +1578,10 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdButton 
          Height          =   465
          Index           =   1
-         Left            =   1050
+         Left            =   525
          TabIndex        =   72
          TabStop         =   0   'False
-         Top             =   6675
+         Top             =   7200
          Width           =   1365
          _ExtentX        =   2408
          _ExtentY        =   820
@@ -1604,10 +1604,10 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdButton 
          Height          =   465
          Index           =   3
-         Left            =   3900
+         Left            =   3375
          TabIndex        =   73
          TabStop         =   0   'False
-         Top             =   6675
+         Top             =   7200
          Width           =   1365
          _ExtentX        =   2408
          _ExtentY        =   820
@@ -1630,10 +1630,10 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdButton 
          Height          =   465
          Index           =   4
-         Left            =   5325
+         Left            =   4800
          TabIndex        =   74
          TabStop         =   0   'False
-         Top             =   6675
+         Top             =   7200
          Width           =   1365
          _ExtentX        =   2408
          _ExtentY        =   820
@@ -1656,10 +1656,10 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdButton 
          Height          =   465
          Index           =   2
-         Left            =   2475
+         Left            =   1950
          TabIndex        =   75
          TabStop         =   0   'False
-         Top             =   6675
+         Top             =   7200
          Width           =   1365
          _ExtentX        =   2408
          _ExtentY        =   820
@@ -1683,13 +1683,13 @@ Begin VB.Form Transfers
          Height          =   465
          Left            =   2025
          TabIndex        =   8
-         Top             =   5325
-         Width           =   4965
-         _ExtentX        =   8758
+         Top             =   5850
+         Width           =   3765
+         _ExtentX        =   6641
          _ExtentY        =   820
          ForeColor       =   0
          MaxLength       =   50
-         Text            =   "ÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁ"
+         Text            =   "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
          BackColor       =   4210688
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Ubuntu Condensed"
@@ -1704,10 +1704,10 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdIndex 
          Height          =   465
          Index           =   5
-         Left            =   7050
+         Left            =   5850
          TabIndex        =   78
          TabStop         =   0   'False
-         Top             =   5325
+         Top             =   5850
          Width           =   390
          _ExtentX        =   688
          _ExtentY        =   820
@@ -1757,6 +1757,41 @@ Begin VB.Form Transfers
          PicSizeH        =   16
          PicSizeW        =   16
       End
+      Begin UserControls.newText txtExactPoint 
+         Height          =   465
+         Left            =   2025
+         TabIndex        =   103
+         Top             =   3225
+         Width           =   3765
+         _ExtentX        =   6641
+         _ExtentY        =   820
+         Enabled         =   0   'False
+         ForeColor       =   0
+         MaxLength       =   50
+         Text            =   "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+         BackColor       =   4210688
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Ubuntu Condensed"
+            Size            =   11.25
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin VB.Label lblLabel 
+         AutoSize        =   -1  'True
+         BackColor       =   &H000080FF&
+         Caption         =   "Óçìåßï ðáñáëáâÞò"
+         ForeColor       =   &H00FFFFFF&
+         Height          =   315
+         Index           =   10
+         Left            =   225
+         TabIndex        =   104
+         Top             =   3300
+         Width           =   1365
+      End
       Begin VB.Label Label5 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -1774,7 +1809,7 @@ Begin VB.Form Transfers
          Height          =   1410
          Left            =   2850
          TabIndex        =   102
-         Top             =   3165
+         Top             =   3690
          Width           =   315
       End
       Begin VB.Label lblTotalPersons 
@@ -1871,7 +1906,7 @@ Begin VB.Form Transfers
          Index           =   1
          Left            =   225
          TabIndex        =   79
-         Top             =   5400
+         Top             =   5925
          Width           =   1365
       End
       Begin VB.Shape shpWedge 
@@ -1938,7 +1973,7 @@ Begin VB.Form Transfers
          Height          =   465
          Left            =   3300
          TabIndex        =   76
-         Top             =   3735
+         Top             =   4260
          Width           =   1215
       End
       Begin VB.Label lblLabel 
@@ -1949,7 +1984,7 @@ Begin VB.Form Transfers
          Index           =   4
          Left            =   225
          TabIndex        =   27
-         Top             =   5925
+         Top             =   6450
          Width           =   1365
       End
       Begin VB.Label lblLabel 
@@ -2009,7 +2044,7 @@ Begin VB.Form Transfers
          Index           =   9
          Left            =   225
          TabIndex        =   21
-         Top             =   3300
+         Top             =   3825
          Width           =   1365
       End
       Begin VB.Label lblLabel 
@@ -2021,7 +2056,7 @@ Begin VB.Form Transfers
          Index           =   6
          Left            =   225
          TabIndex        =   20
-         Top             =   3825
+         Top             =   4350
          Width           =   615
       End
       Begin VB.Label lblLabel 
@@ -2033,7 +2068,7 @@ Begin VB.Form Transfers
          Index           =   2
          Left            =   225
          TabIndex        =   19
-         Top             =   4350
+         Top             =   4875
          Width           =   615
       End
       Begin VB.Label lblLabel 
@@ -2045,7 +2080,7 @@ Begin VB.Form Transfers
          Index           =   0
          Left            =   225
          TabIndex        =   18
-         Top             =   4875
+         Top             =   5400
          Width           =   1365
       End
       Begin VB.Shape shpWedge 
@@ -2055,8 +2090,8 @@ Begin VB.Form Transfers
          FillColor       =   &H00008000&
          Height          =   840
          Index           =   6
-         Left            =   7425
-         Top             =   3300
+         Left            =   6225
+         Top             =   2325
          Visible         =   0   'False
          Width           =   465
       End
@@ -3229,7 +3264,7 @@ Private Function DeleteRecord()
     If MainDeleteRecord("CommonDB", "Transfers", strApplicationName, "ID", txtTransferID.text, "True") Then
         blnCancel = True
         ClearFields txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID, txtPortID
-        ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+        ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, txtExactPoint, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
         ClearFields mskTotal
         DisableFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
         DisableFields cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5)
@@ -3806,13 +3841,13 @@ Private Function NewRecord()
             DisplayLastRecord txtTransferID.text
             blnStatus = True
             ClearFields txtTransferID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID, txtPortID
-            ClearFields txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+            ClearFields txtCustomerDescription, txtPickupPointDescription, txtExactPoint, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
             ClearFields mskTotal
             txtCustomerDescription.SetFocus
         Else
             blnStatus = True
             ClearFields txtTransferID, txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID
-            ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+            ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, txtExactPoint, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
             ClearFields mskTotal
             txtDestinationDescription.SetFocus
         End If
@@ -3838,7 +3873,7 @@ Private Function SaveRecord()
         SaveRecord = True
         blnCancel = True
         ClearFields txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID, txtPortID
-        ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+        ClearFields txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, txtExactPoint, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
         ClearFields mskTotal
         DisableFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
         DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6)
@@ -4007,7 +4042,7 @@ Private Function AbortProcedure(blnStatus)
             blnStatus = False
             blnCancel = True
             ClearFields txtTransferID, txtCustomerID, txtPickupPointID, txtRouteID, txtDestinationID, txtDriverID, txtPortID
-            ClearFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+            ClearFields txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, txtExactPoint, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
             ClearFields mskTotal
             DisableFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
             DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6)
@@ -4100,7 +4135,7 @@ Private Sub cmdIndex_Click(index As Integer)
                 'Âñßóêù ôá óçìåßá ðáñáëáâÞò ðïõ åßíáé óõíäåäåìÝíá ìå ôïí äïóìÝíï ðñïïñéóìü
                 intSize = Len(txtPickupPointDescription.text)
                 If intSize = 0 Then Exit Sub
-                strSQL = "SELECT DestinationID, PickupPointRouteID, DestinationsRoutesPickupPoints.PickupPointID, PickupPointHotelDescription, PickupPointTime, PickupRoutePortID, PortDescription " _
+                strSQL = "SELECT DestinationID, PickupPointRouteID, DestinationsRoutesPickupPoints.PickupPointID, PickupPointHotelDescription, PickupPointExactPoint, PickupPointTime, PickupRoutePortID, PortDescription " _
                     & "FROM ((DestinationsRoutesPickupPoints " _
                     & "INNER JOIN PickupPoints ON DestinationsRoutesPickupPoints.PickupPointID = PickupPoints.PickupPointID) " _
                     & "INNER JOIN PickupRoutes ON DestinationsRoutesPickupPoints.RouteID = PickupRoutes.PickupRouteID) " _
@@ -4110,12 +4145,13 @@ Private Sub cmdIndex_Click(index As Integer)
                     & "ORDER BY PickUpPointTime"
                 Set tmpRecordset = FindAndReturnRecords(strSQL)
                 If tmpRecordset.RecordCount > 0 Then
-                    tmpTableData = DisplayIndex(tmpRecordset, 4, True, 6, 1, 2, 3, 4, 5, 6, "ID", "RouteID", "ÐåñéãñáöÞ", "Ùñá", "PortID", "PortDescription", 0, 0, 40, 7, 0, 0, 1, 0, 0, 1, 0, 0)
+                    tmpTableData = DisplayIndex(tmpRecordset, 4, True, 7, 1, 2, 3, 4, 5, 6, 7, "ID", "RouteID", "ÐåñéãñáöÞ", "ÁêñéâÝò óçìåßï", "Ùñá", "PortID", "PortDescription", 0, 0, 40, 40, 7, 0, 0, 1, 0, 0, 0, 1, 0, 0)
+                    txtRouteID.text = tmpTableData.strCode
                     txtPickupPointID.text = tmpTableData.strFirstField
                     txtPickupPointDescription.text = tmpTableData.strSecondField
-                    txtRouteID.text = tmpTableData.strCode
-                    txtPortID.text = tmpTableData.strFourthField
-                    txtPortDescription.text = tmpTableData.strFifthField
+                    txtExactPoint.text = tmpTableData.strThirdField
+                    txtPortID.text = tmpTableData.strFifthField
+                    txtPortDescription.text = tmpTableData.strSixthField
                 End If
             End If
         Case 4
@@ -4276,7 +4312,7 @@ Private Sub Form_Load()
 
     blnCancel = True
     
-    lngMinimumSeperatorTop = 7665
+    lngMinimumSeperatorTop = 8145
     lngMaximumSeperatorTop = 11585
     
     SetUpGrid lstIconList, grdCoachesReport, grdSummaryPerPort, grdSummaryPerDestination, grdSummaryPerCustomer, grdSummaryPerRoute, grdSummaryPerDriver
@@ -4291,7 +4327,7 @@ Private Sub Form_Load()
     frmCriteria(1).Visible = False
     
     ClearFields txtTransferID, txtCustomerID, txtPickupPointID, txtRouteID, txtDestinationID, txtDriverID, txtPortID
-    ClearFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+    ClearFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, txtExactPoint, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
     ClearFields mskTotal, lblUnassignedPersons
     ClearFields chkAllTransfers, chkAllDestinations, chkAllCustomers, chkAllRoutes, chkAllDrivers
     ClearFields lblTotalPersons, lblSelectedGridLines
@@ -4320,7 +4356,7 @@ Private Function SeekRecord(TransferID)
     Dim tmpTableData As typTableData
     
     ClearFields txtDestinationID, txtCustomerID, txtRouteID, txtPickupPointID, txtDriverID, txtPortID
-    ClearFields mskDate, txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
+    ClearFields mskDate, txtDestinationDescription, txtCustomerDescription, txtPickupPointDescription, txtExactPoint, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
     ClearFields mskTotal
     DisableFields mskDate, txtCustomerDescription, txtDestinationDescription, txtPickupPointDescription, mskAdults, mskKids, mskFree, txtRemarks, txtDriverDescription, txtPortDescription
     DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6)
@@ -4340,6 +4376,7 @@ Private Function SeekRecord(TransferID)
         Set tmpRecordset = CheckForMatch("CommonDB", "PickupPoints", "PickupPointID", "Numeric", txtPickupPointID.text)
         txtPickupPointID.text = tmpRecordset.Fields(0)
         txtPickupPointDescription.text = tmpRecordset.Fields(2)
+        txtExactPoint.text = tmpRecordset.Fields(3)
         'Ïäçãüò (Áí Ý÷ù)
         If txtDriverID.text <> "" Then
             Set tmpRecordset = CheckForMatch("CommonDB", "Drivers", "DriverID", "Numeric", txtDriverID.text)
@@ -5092,7 +5129,7 @@ End Sub
 Private Sub txtPickupPointDescription_Change()
 
     If txtPickupPointDescription.text = "" Then
-        ClearFields txtRouteID, txtPickupPointID, txtPortID, txtPortDescription
+        ClearFields txtRouteID, txtPickupPointID, txtPortID, txtPortDescription, txtExactPoint
     End If
 
 End Sub

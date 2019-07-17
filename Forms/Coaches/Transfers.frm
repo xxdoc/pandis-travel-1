@@ -926,7 +926,7 @@ Begin VB.Form Transfers
          Left            =   6675
          TabIndex        =   58
          TabStop         =   0   'False
-         Top             =   1050
+         Top             =   1125
          Width           =   2340
       End
       Begin VB.PictureBox Seperator 
@@ -1259,7 +1259,7 @@ Begin VB.Form Transfers
          Left            =   6675
          TabIndex        =   11
          TabStop         =   0   'False
-         Top             =   1425
+         Top             =   1500
          Width           =   11640
          _ExtentX        =   20532
          _ExtentY        =   11536
@@ -1268,7 +1268,7 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newDate mskDate 
          Height          =   465
-         Left            =   2025
+         Left            =   1950
          TabIndex        =   0
          Top             =   1125
          Width           =   1515
@@ -1289,7 +1289,7 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newText txtCustomerDescription 
          Height          =   465
-         Left            =   2025
+         Left            =   1950
          TabIndex        =   2
          Top             =   2175
          Width           =   3765
@@ -1311,7 +1311,7 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newText txtDestinationDescription 
          Height          =   465
-         Left            =   2025
+         Left            =   1950
          TabIndex        =   1
          Top             =   1650
          Width           =   3765
@@ -1333,7 +1333,7 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newText txtPickupPointDescription 
          Height          =   465
-         Left            =   2025
+         Left            =   1950
          TabIndex        =   3
          Top             =   2700
          Width           =   3765
@@ -1355,7 +1355,7 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newText txtRemarks 
          Height          =   465
-         Left            =   2025
+         Left            =   1950
          TabIndex        =   7
          Top             =   5325
          Width           =   3765
@@ -1377,7 +1377,7 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newInteger mskAdults 
          Height          =   465
-         Left            =   2025
+         Left            =   1950
          TabIndex        =   4
          Top             =   3750
          Width           =   690
@@ -1399,7 +1399,7 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newInteger mskKids 
          Height          =   465
-         Left            =   2025
+         Left            =   1950
          TabIndex        =   5
          Top             =   4275
          Width           =   690
@@ -1421,7 +1421,7 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newInteger mskFree 
          Height          =   465
-         Left            =   2025
+         Left            =   1950
          TabIndex        =   6
          Top             =   4800
          Width           =   690
@@ -1444,7 +1444,7 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdIndex 
          Height          =   465
          Index           =   2
-         Left            =   5850
+         Left            =   5775
          TabIndex        =   16
          TabStop         =   0   'False
          Top             =   2175
@@ -1472,7 +1472,7 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdIndex 
          Height          =   465
          Index           =   3
-         Left            =   5850
+         Left            =   5775
          TabIndex        =   17
          TabStop         =   0   'False
          Top             =   2700
@@ -1499,9 +1499,11 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newText txtDriverDescription 
          Height          =   465
-         Left            =   2025
+         Left            =   7725
          TabIndex        =   9
-         Top             =   6375
+         TabStop         =   0   'False
+         Top             =   11625
+         Visible         =   0   'False
          Width           =   3765
          _ExtentX        =   6641
          _ExtentY        =   820
@@ -1522,10 +1524,11 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdIndex 
          Height          =   465
          Index           =   4
-         Left            =   5850
+         Left            =   11550
          TabIndex        =   26
          TabStop         =   0   'False
-         Top             =   6375
+         Top             =   11625
+         Visible         =   0   'False
          Width           =   390
          _ExtentX        =   688
          _ExtentY        =   820
@@ -1550,7 +1553,7 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdIndex 
          Height          =   465
          Index           =   1
-         Left            =   5850
+         Left            =   5775
          TabIndex        =   56
          TabStop         =   0   'False
          Top             =   1650
@@ -1681,7 +1684,7 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newText txtPortDescription 
          Height          =   465
-         Left            =   2025
+         Left            =   1950
          TabIndex        =   8
          Top             =   5850
          Width           =   3765
@@ -1704,7 +1707,7 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdIndex 
          Height          =   465
          Index           =   5
-         Left            =   5850
+         Left            =   5775
          TabIndex        =   78
          TabStop         =   0   'False
          Top             =   5850
@@ -1732,7 +1735,7 @@ Begin VB.Form Transfers
       Begin Dacara_dcButton.dcButton cmdButton 
          Height          =   465
          Index           =   0
-         Left            =   3600
+         Left            =   3525
          TabIndex        =   101
          TabStop         =   0   'False
          Top             =   1125
@@ -1759,7 +1762,7 @@ Begin VB.Form Transfers
       End
       Begin UserControls.newText txtExactPoint 
          Height          =   465
-         Left            =   2025
+         Left            =   1950
          TabIndex        =   103
          Top             =   3225
          Width           =   3765
@@ -1783,14 +1786,14 @@ Begin VB.Form Transfers
       Begin VB.Label lblLabel 
          AutoSize        =   -1  'True
          BackColor       =   &H000080FF&
-         Caption         =   "Σημείο παραλαβής"
+         Caption         =   "Ακριβές σημείο"
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   10
-         Left            =   225
+         Left            =   150
          TabIndex        =   104
          Top             =   3300
-         Width           =   1365
+         Width           =   1140
       End
       Begin VB.Label Label5 
          AutoSize        =   -1  'True
@@ -1807,7 +1810,7 @@ Begin VB.Form Transfers
          EndProperty
          ForeColor       =   &H00FFFF00&
          Height          =   1410
-         Left            =   2850
+         Left            =   2775
          TabIndex        =   102
          Top             =   3690
          Width           =   315
@@ -1831,7 +1834,7 @@ Begin VB.Form Transfers
          Height          =   465
          Left            =   17175
          TabIndex        =   87
-         Top             =   0
+         Top             =   -75
          Width           =   315
       End
       Begin VB.Label Label3 
@@ -1852,7 +1855,7 @@ Begin VB.Form Transfers
          Height          =   240
          Left            =   17625
          TabIndex        =   86
-         Top             =   525
+         Top             =   450
          Width           =   915
       End
       Begin VB.Label lblSelectedGridLines 
@@ -1874,7 +1877,7 @@ Begin VB.Form Transfers
          Height          =   465
          Left            =   17175
          TabIndex        =   85
-         Top             =   375
+         Top             =   300
          Width           =   315
       End
       Begin VB.Label Label2 
@@ -1895,7 +1898,7 @@ Begin VB.Form Transfers
          Height          =   240
          Left            =   17625
          TabIndex        =   84
-         Top             =   150
+         Top             =   75
          Width           =   615
       End
       Begin VB.Label lblLabel 
@@ -1904,7 +1907,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   1
-         Left            =   225
+         Left            =   150
          TabIndex        =   79
          Top             =   5925
          Width           =   1365
@@ -1971,7 +1974,7 @@ Begin VB.Form Transfers
          EndProperty
          ForeColor       =   &H0000FFFF&
          Height          =   465
-         Left            =   3300
+         Left            =   3225
          TabIndex        =   76
          Top             =   4260
          Width           =   1215
@@ -1982,9 +1985,10 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   4
-         Left            =   225
+         Left            =   5925
          TabIndex        =   27
-         Top             =   6450
+         Top             =   11700
+         Visible         =   0   'False
          Width           =   1365
       End
       Begin VB.Label lblLabel 
@@ -1994,7 +1998,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   3
-         Left            =   225
+         Left            =   150
          TabIndex        =   25
          Top             =   1200
          Width           =   1365
@@ -2006,7 +2010,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   5
-         Left            =   225
+         Left            =   150
          TabIndex        =   24
          Top             =   2250
          Width           =   1365
@@ -2018,7 +2022,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   7
-         Left            =   225
+         Left            =   150
          TabIndex        =   23
          Top             =   1725
          Width           =   1365
@@ -2030,7 +2034,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   8
-         Left            =   225
+         Left            =   150
          TabIndex        =   22
          Top             =   2775
          Width           =   1365
@@ -2042,7 +2046,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   9
-         Left            =   225
+         Left            =   150
          TabIndex        =   21
          Top             =   3825
          Width           =   1365
@@ -2056,7 +2060,7 @@ Begin VB.Form Transfers
          Index           =   6
          Left            =   225
          TabIndex        =   20
-         Top             =   4350
+         Top             =   4275
          Width           =   615
       End
       Begin VB.Label lblLabel 
@@ -2068,7 +2072,7 @@ Begin VB.Form Transfers
          Index           =   2
          Left            =   225
          TabIndex        =   19
-         Top             =   4875
+         Top             =   4800
          Width           =   615
       End
       Begin VB.Label lblLabel 
@@ -2078,7 +2082,7 @@ Begin VB.Form Transfers
          ForeColor       =   &H00FFFFFF&
          Height          =   315
          Index           =   0
-         Left            =   225
+         Left            =   150
          TabIndex        =   18
          Top             =   5400
          Width           =   1365
@@ -2102,7 +2106,7 @@ Begin VB.Form Transfers
          FillColor       =   &H00008000&
          Height          =   840
          Index           =   5
-         Left            =   1575
+         Left            =   1500
          Top             =   2025
          Visible         =   0   'False
          Width           =   465
@@ -2125,7 +2129,7 @@ Begin VB.Form Transfers
          Height          =   765
          Left            =   0
          TabIndex        =   12
-         Top             =   0
+         Top             =   -75
          Width           =   6165
       End
       Begin VB.Shape shpBackground 
@@ -2133,8 +2137,8 @@ Begin VB.Form Transfers
          BackStyle       =   1  'Opaque
          BorderStyle     =   0  'Transparent
          Height          =   840
-         Left            =   150
-         Top             =   900
+         Left            =   75
+         Top             =   1050
          Width           =   18240
       End
    End
@@ -4312,7 +4316,7 @@ Private Sub Form_Load()
 
     blnCancel = True
     
-    lngMinimumSeperatorTop = 8145
+    lngMinimumSeperatorTop = 7635
     lngMaximumSeperatorTop = 11585
     
     SetUpGrid lstIconList, grdCoachesReport, grdSummaryPerPort, grdSummaryPerDestination, grdSummaryPerCustomer, grdSummaryPerRoute, grdSummaryPerDriver

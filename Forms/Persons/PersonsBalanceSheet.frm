@@ -1256,7 +1256,7 @@ Private Function ExportToExcel()
     
     End With
     
-    oBook.SaveAs strReportsPathName & lblTitle.Caption & ".xls"
+    oBook.SaveAs strReportsPathName & " " & UCase(CommonMain.lblCompany.Caption) & " " & lblTitle.Caption & ".xls"
     
     oExcel.Quit
     
@@ -1352,6 +1352,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
     intProcessedDetailLines = 0
     
     Open strUnicodeFile For Output As #1
+    
     GoSub Headers
     
     'Εγγραφές

@@ -2828,7 +2828,7 @@ Private Function PrintThisInvoice(blnPreview As Boolean, blnExportPDF As Boolean
         rptInvoice.Run False
         pdf.AcrobatVersion = 2
         pdf.SemiDelimitedNeverEmbedFonts = ""
-        pdf.fileName = strReportsPathName & "Invoice" & Right("00000" & strInvoiceNo, 5) & ".pdf"
+        pdf.fileName = strReportsPathName & UCase(CommonMain.lblCompany.Caption) & " " & "Invoice" & Right("00000" & strInvoiceNo, 5) & ".pdf"
         pdf.Export rptInvoice.Pages
     Else
         For intLoop = 1 To intInvoiceCopies + 1

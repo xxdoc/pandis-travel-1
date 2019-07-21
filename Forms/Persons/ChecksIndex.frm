@@ -898,7 +898,7 @@ Private Function ExportToExcel()
     
     End With
     
-    oBook.SaveAs strReportsPathName & format(Date, "yyyy.mm.dd") & "-" & format(Time, "hh.mm.ss") & ".xlsx"
+    oBook.SaveAs strReportsPathName & " " & UCase(CommonMain.lblCompany.Caption) & " " & lblTitle.Caption & " " & format(Date, "yyyy.mm.dd") & "-" & format(Time, "hh.mm.ss") & ".xlsx"
     oExcel.Quit
     
     grdChecksIndex.SetFocus
@@ -951,6 +951,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
     intProcessedDetailLines = 0
     
     Open strUnicodeFile For Output As #1
+    
     GoSub Headers
     
     'Εγγραφές

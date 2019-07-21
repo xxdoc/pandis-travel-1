@@ -3,7 +3,7 @@ Object = "{396F7AC0-A0DD-11D3-93EC-00C0DFE7442A}#1.0#0"; "ImageList.ocx"
 Object = "{158C2A77-1CCD-44C8-AF42-AA199C5DCC6C}#1.0#0"; "dcButton.ocx"
 Object = "{55473EAC-7715-4257-B5EF-6E14EBD6A5DD}#1.0#0"; "ProgressBar.ocx"
 Object = "{839D0F5D-B7D7-41B7-A3B4-85D69300B8C1}#98.0#0"; "iGrid300_10Tec.ocx"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Object = "{FFE4AEB4-0D55-4004-ADF2-3C1C84D17A72}#1.0#0"; "userControls.ocx"
 Begin VB.Form ShipsRouteReport 
    Appearance      =   0  'Flat
@@ -1247,7 +1247,7 @@ Private Function CreatePDF()
         .Restart
         .Run False
         pdf.SemiDelimitedNeverEmbedFonts = ""
-        pdf.fileName = strReportsPathName & "йатастасг епибатым " + Right(mskDate.text, 4) & "-" + Mid(mskDate.text, 4, 2) & "-" + Left(mskDate.text, 2) & " " & txtShip.text & ".pdf"
+        pdf.fileName = strReportsPathName & UCase(CommonMain.lblCompany.Caption) & " " & "йатастасг епибатым " + Right(mskDate.text, 4) & "-" + Mid(mskDate.text, 4, 2) & "-" + Left(mskDate.text, 2) & " " & txtShip.text & ".pdf"
         pdf.Export .Pages
     End With
     

@@ -487,7 +487,7 @@ Public Function CreateUnisexPDF(fileName As String, reportName As ActiveReport, 
         pdf.fileName = Replace(pdf.fileName, "[", "")
         pdf.fileName = Replace(pdf.fileName, "]", "")
         pdf.fileName = Replace(pdf.fileName, "  ", " ")
-        pdf.fileName = strReportsPathName & Replace(pdf.fileName, ":", "") & ".pdf"
+        pdf.fileName = strReportsPathName & UCase(CommonMain.lblCompany.Caption) & " " & Replace(pdf.fileName, ":", "") & ".pdf"
         .Export pdf
     End With
     

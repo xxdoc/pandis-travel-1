@@ -1824,6 +1824,7 @@ Private Function CreateUnicodeFileForSuppliers(strReportTitle, strReportSubTitle
     intProcessedDetailLines = 0
     
     Open strUnicodeFile For Output As #1
+    
     GoSub Headers
     
     'Πλέγμα
@@ -2296,6 +2297,7 @@ Private Function CreateUnicodeFileForCustomers(strReportTitle, strReportSubTitle
     intProcessedDetailLines = 0
     
     Open strUnicodeFile For Output As #1
+    
     GoSub Headers
     
     'Πλέγμα
@@ -2514,7 +2516,7 @@ Private Function ExportToExcel()
     
     End With
     
-    oBook.SaveAs strReportsPathName & lblTitle.Caption & ".xlsx"
+    oBook.SaveAs strReportsPathName & " " & UCase(CommonMain.lblCompany.Caption) & " " & lblTitle.Caption & " " & txtPersonDescription.text & ".xlsx"
     
     oExcel.Quit
     

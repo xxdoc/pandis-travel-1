@@ -1282,7 +1282,7 @@ Private Function ExportToExcel()
     If blnProcessing Then
         blnError = False
         GoSub DoFinals
-        oBook.SaveAs strReportsPathName & format(Date, "yyyy.mm.dd") & "-" & format(Time, "hh.mm.ss") & ".xlsx"
+        oBook.SaveAs strReportsPathName & " " & UCase(CommonMain.lblCompany.Caption) & " " & format(Date, "yyyy.mm.dd") & "-" & format(Time, "hh.mm.ss") & ".xlsx"
         oExcel.Quit
         MyMsgBox 1, strApplicationName, strStandardMessages(8), 1
     Else

@@ -1340,6 +1340,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
     intProcessedDetailLines = 0
     
     Open strUnicodeFile For Output As #1
+    
     GoSub Headers
     
     With grdPickupPoints
@@ -1397,7 +1398,7 @@ Private Function ExportRecords()
         .Run False
         pdf.AcrobatVersion = 2
         pdf.SemiDelimitedNeverEmbedFonts = ""
-        pdf.fileName = strReportsPathName & "сглеиа паяакабгс дяолокоциоу " & txtPickupRouteID.text & ".pdf"
+        pdf.fileName = strReportsPathName & UCase(CommonMain.lblCompany.Caption) & " " & "сглеиа паяакабгс дяолокоциоу " & txtPickupRouteID.text & ".pdf"
         pdf.Export .Pages
         If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
         End If

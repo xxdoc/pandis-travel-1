@@ -3639,8 +3639,8 @@ Private Function RefreshList()
             grdCoachesReport.CellValue(lngRow, "TransferTotal") = !TransferAdults + !TransferKids + !TransferFree
             grdCoachesReport.CellValue(lngRow, "TransferRemarks") = !TransferRemarks
             grdCoachesReport.CellValue(lngRow, "DriverDescription") = IIf(IsNull(!DriverDescription), "-", !DriverDescription)
-            'grdCoachesReport.CellValue(lngRow, "PortDescription") = IIf(IsNull(!PortDescription), "-", !PortDescription)
             grdCoachesReport.CellIcon(lngRow, "PortDescription") = IIf(IsNull(!PortDescription), lstIconList.ItemIndex(7), lstIconList.ItemIndex(1))
+            grdCoachesReport.CellValue(lngRow, "PortDescription") = IIf(IsNull(!PortDescription), "", !PortDescription)
             rstRecordset.MoveNext
             DoEvents
             If Not blnProcessing Then Exit Do
@@ -3909,7 +3909,10 @@ Private Function DoReport(action As String)
     Dim strDriverName As String
     
     strDriverName = GetDriverName
-    If strDriverName = "" Then Exit Function
+    If strDriverName = "" Then
+        MyMsgBox 4, strApplicationName, strStandardMessages(6), 1
+        Exit Function
+    End If
     
     grdCoachesReport.SortObject.colCount = 3
     grdCoachesReport.SortObject.SortCol(1) = grdCoachesReport.ColIndex("DriverDescription")
@@ -4843,7 +4846,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
                     If intPickupPointCount > 1 Then
                         'Τυπώνω τα σύνολα του σημείου παραλαβής
                         Print #1, _
-                            Tab(7); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 18); _
+                            Tab(7); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 42); _
                             Tab(60 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
                             Tab(63 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
                             Tab(66 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _
@@ -4907,7 +4910,7 @@ Private Function CreateUnicodeFile(strReportTitle, strReportSubTitle1, intReport
         If intPickupPointCount > 1 Then
             'Τυπώνω τα σύνολα του σημείου παραλαβής
             Print #1, _
-                Tab(7); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 18); _
+                Tab(7); "ΣΥΝΟΛΑ " & Left(strPickupPoint, 42); _
                 Tab(60 - Len(format(lngPickupPointAdults, "#,##0"))); IIf(lngPickupPointAdults > 0, format(lngPickupPointAdults, "#,##0"), ""); _
                 Tab(63 - Len(format(lngPickupPointKids, "#,##0"))); IIf(lngPickupPointKids > 0, format(lngPickupPointKids, "#,##0"), ""); _
                 Tab(66 - Len(format(lngPickupPointFree, "#,##0"))); IIf(lngPickupPointFree > 0, format(lngPickupPointFree, "#,##0"), ""); _

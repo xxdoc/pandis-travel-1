@@ -1683,7 +1683,7 @@ Private Sub cmdIndex_Click(index As Integer)
                 txtCodeShortDescriptionA.text = tmpTableData.strFirstField
                 lblCodeDescription.Caption = tmpTableData.strSecondField
                 lblCodeBatch.Caption = IIf(txtInvoiceCodeID.text <> "" And tmpTableData.strThirdField <> "", " сеияа " & tmpTableData.strThirdField, "")
-                lblHand.Caption = IIf(tmpTableData.strFourthField = "1", "веияоцяажо", "лгвамоцяажийо")
+                lblHand.Caption = IIf(tmpTableData.strFourthField <> "", IIf(tmpTableData.strFourthField = "1", "веияоцяажо", "лгвамоцяажийо"), "")
             End If
         Case 1
             'пЕКэТГР - F2

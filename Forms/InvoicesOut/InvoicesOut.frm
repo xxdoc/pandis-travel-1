@@ -2698,12 +2698,15 @@ Public Function DoPostFoundJobs(rstRecordset As Recordset)
         mskAdultsWithoutTransfer, mskAdultsAmountWithoutTransfer, mskKidsWithoutTransfer, mskKidsAmountWithoutTransfer, mskFreeWithoutTransfer, _
         mskDirectAmount, _
         txtRemarks, txtPaymentTermDescription
+    blnCancel = False
     DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6), cmdIndex(7), cmdIndex(8), cmdIndex(9)
     PopulateFields rstRecordset
     AddAmounts
     AddPersons
     EnableOrDisableFields
-    UpdateButtons Me, 6, IIf(chkCodeHandID.Value = 1, 0, 1), IIf(chkCodeHandID.Value = 1, 1, 0), IIf(chkCodeHandID.Value = 1, 0, 1), IIf(CheckForTheLastInvoice = 0, 0, 1), IIf(CheckForLoadedForm("InvoicesOutIndex"), 0, 1), IIf(chkCodeHandID.Value = 1, 1, 0), IIf(chkCodeHandID.Value = 1, 0, 1)
+    'Temp use only!
+    UpdateButtons Me, 6, 0, 1, 0, IIf(CheckForTheLastInvoice = 0, 0, 1), IIf(CheckForLoadedForm("InvoicesOutIndex"), 0, 1), 0, 1
+    'UpdateButtons Me, 6, IIf(chkCodeHandID.Value = 1, 0, 1), IIf(chkCodeHandID.Value = 1, 1, 0), IIf(chkCodeHandID.Value = 1, 0, 1), IIf(CheckForTheLastInvoice = 0, 0, 1), IIf(CheckForLoadedForm("InvoicesOutIndex"), 0, 1), IIf(chkCodeHandID.Value = 1, 1, 0), IIf(chkCodeHandID.Value = 1, 0, 1)
         
     Exit Function
     
@@ -2756,7 +2759,9 @@ Private Function AskToPrintInvoice()
     Dim arrDummy()
     
     'Ερώτηση για εκτύπωση αν τυπώνεται και αν είμαι σε νέα εγγραφή
-    If chkCodeHandID.Value = 0 And blnStatus Then
+    'Temp use only!
+    'If chkCodeHandID.Value = 0 And blnStatus Then
+    If chkCodeHandID.Value = 0 Then
         If MyMsgBox(2, strApplicationName, strAppMessages(7), 2) Then
             ProcessSelectedInvoicesForPrinting txtInvoiceTrnID.text, arrDummy
         End If
@@ -3049,7 +3054,9 @@ Private Function ValidateFields()
     End If
     
     'Καταχώρηση σε προηγούμενη ημερομηνία και όχι χειρόγραφο
-    If IsDate(txtCodeLastDate.text) And chkCodeHandID.Value = 0 Then
+    'Temp use only!
+    'If IsDate(txtCodeLastDate.text) And chkCodeHandID.Value = 0 Then
+    If (IsDate(txtCodeLastDate.text) And chkCodeHandID.Value = 0) And blnStatus Then
         If CDate(txtCodeLastDate.text) > CDate(mskDateIssue.text) Then
             If MyMsgBox(4, strApplicationName, strAppMessages(4) & txtCodeLastDate.text & ".", 1) Then
             End If
@@ -3099,17 +3106,22 @@ Private Function ValidateFields()
     End If
     
     'Μηχανογραφικό στοιχείο ήδη καταχωρημένο: Ελέγχω αν το νούμερο του στοιχείου υπάρχει ήδη στην χρήση
-    If chkCodeHandID.Value = 0 Then
-        If CheckForDuplicateInvoice(mskDateIssue.text, txtInvoiceCodeID.text, txtInvoiceNo.text) Then
-            If MyMsgBox(4, strApplicationName, strStandardMessages(22), 1) Then
+    'Temp use only!
+    If blnStatus Then
+        If chkCodeHandID.Value = 0 Then
+            If CheckForDuplicateInvoice(mskDateIssue.text, txtInvoiceCodeID.text, txtInvoiceNo.text) Then
+                If MyMsgBox(4, strApplicationName, strStandardMessages(22), 1) Then
+                End If
+                txtCodeShortDescriptionA.SetFocus
+                Exit Function
             End If
-            txtCodeShortDescriptionA.SetFocus
-            Exit Function
         End If
     End If
     
     'Μηχανογραφικό στοιχείο: Εχω καταχωρήσει σε μεταγενέστερη ημερομηνία
-    If chkCodeHandID.Value = 0 Then
+    'Temp use only!
+    'If chkCodeHandID.Value = 0 Then
+    If chkCodeHandID.Value = 0 And blnStatus Then
         If CDate(mskDateIssue.text) < CDate(txtCodeLastDate) Then
             If MyMsgBox(4, strApplicationName, strAppMessages(4) & txtCodeLastDate.text, 1) Then
             End If
@@ -3369,12 +3381,18 @@ Private Sub chkAgreement_Click()
         'Απενεργοποιώ τα πεδία
         DisableFields mskAdultsAmountWithTransfer, mskKidsAmountWithTransfer, mskAdultsAmountWithoutTransfer, mskKidsAmountWithoutTransfer
     Else
-        If blnStatus Or (chkAgreement.Value = 1 And chkCodeHandID.Value = 1) Then
-            'Ενεργοποιώ τα πεδία
-            EnableFields mskAdultsAmountWithTransfer, mskKidsAmountWithTransfer, mskAdultsAmountWithoutTransfer, mskKidsAmountWithoutTransfer
-            'Υπολογίζω τα σύνολα
-            AddAmounts
-        End If
+        'If blnStatus Or (chkAgreement.Value = 1 And chkCodeHandID.Value = 1) Then
+        '    'Ενεργοποιώ τα πεδία
+        '    EnableFields mskAdultsAmountWithTransfer, mskKidsAmountWithTransfer, mskAdultsAmountWithoutTransfer, mskKidsAmountWithoutTransfer
+        '    'Υπολογίζω τα σύνολα
+        '    AddAmounts
+        'End If
+        'Temp use only!
+        'Ενεργοποιώ τα πεδία
+        EnableFields mskAdultsWithTransfer, mskAdultsAmountWithTransfer, mskKidsWithTransfer, mskKidsAmountWithTransfer, mskFreeWithTransfer
+        EnableFields mskAdultsWithoutTransfer, mskAdultsAmountWithoutTransfer, mskKidsWithoutTransfer, mskKidsAmountWithoutTransfer, mskFreeWithoutTransfer
+        'Υπολογίζω τα σύνολα
+        AddAmounts
     End If
 
 End Sub
@@ -3893,16 +3911,15 @@ End Sub
 
 Private Function EnableOrDisableFields()
 
-    If chkCodeHandID.Value = 1 Then
+    'Temp use only!
+    'If chkCodeHandID.Value = 1 Then
         EnableFields mskDateIssue, txtCodeShortDescriptionA, txtCodeLastNo, txtInvoiceNo, txtCustomerDescription, txtDestinationDescription, txtShipDescription, chkAgreement, _
             mskDirectAmount, _
             txtRemarks, _
             txtPaymentTermDescription, _
             cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6), cmdIndex(7), cmdIndex(8), cmdIndex(9)
-            If chkAgreement.Value = 1 Then
-                EnableFields mskAdultsWithTransfer, mskKidsWithTransfer, mskFreeWithTransfer, mskAdultsWithoutTransfer, mskKidsWithoutTransfer, mskFreeWithoutTransfer
-            End If
-    End If
+        If chkAgreement.Value = 1 Then EnableFields mskAdultsWithTransfer, mskKidsWithTransfer, mskFreeWithTransfer, mskAdultsWithoutTransfer, mskKidsWithoutTransfer, mskFreeWithoutTransfer
+    'End If
 
 End Function
 

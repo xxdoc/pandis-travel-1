@@ -666,12 +666,32 @@ Begin VB.Form CommonMain
    Begin VB.Frame menuFrame 
       BackColor       =   &H00FFFFC0&
       BorderStyle     =   0  'None
-      Height          =   2490
+      Height          =   2940
       Index           =   4
       Left            =   12075
       TabIndex        =   24
       Top             =   225
       Width           =   3915
+      Begin VB.Label menuOption 
+         BackColor       =   &H0080C0FF&
+         Caption         =   "Μαζική εκτύπωση καρτελών"
+         BeginProperty Font 
+            Name            =   "Ubuntu Condensed"
+            Size            =   11.25
+            Charset         =   161
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00000000&
+         Height          =   315
+         Index           =   23
+         Left            =   300
+         TabIndex        =   67
+         Top             =   1275
+         Width           =   3315
+      End
       Begin VB.Label menuOption 
          BackColor       =   &H0080C0FF&
          Caption         =   "Ημερολόγιο πληρωτέων αξιογράφων"
@@ -690,7 +710,7 @@ Begin VB.Form CommonMain
          Left            =   300
          MousePointer    =   2  'Cross
          TabIndex        =   60
-         Top             =   1650
+         Top             =   2025
          Width           =   3315
       End
       Begin VB.Label menuOption 
@@ -752,7 +772,7 @@ Begin VB.Form CommonMain
          Left            =   300
          MousePointer    =   2  'Cross
          TabIndex        =   27
-         Top             =   2025
+         Top             =   2400
          Width           =   3315
       End
       Begin VB.Label menuOption 
@@ -792,7 +812,7 @@ Begin VB.Form CommonMain
          Index           =   19
          Left            =   300
          TabIndex        =   25
-         Top             =   1275
+         Top             =   1650
          Width           =   3315
       End
    End
@@ -1755,6 +1775,18 @@ Private Sub menuOption_Click(index As Integer)
                 .txtBatchReport.text = "No"
                 .frmCriteria(0).Visible = True
                 .frmCriteria(1).Visible = False
+                .Tag = "True"
+                .Show 1, Me
+            End With
+        Case 23
+            With PersonsLedger 'OK
+                .lblTitle.Caption = "Μαζική εκτύπωση καρτελών πιστωτών"
+                .txtInvoiceMasterRefersTo.text = "1"
+                .txtCustomersOrSuppliers.text = "Suppliers"
+                .txtPaymentInOrPaymentOut.text = "PaymentOut"
+                .txtBatchReport.text = "Yes"
+                .frmCriteria(0).Visible = False
+                .frmCriteria(1).Visible = True
                 .Tag = "True"
                 .Show 1, Me
             End With

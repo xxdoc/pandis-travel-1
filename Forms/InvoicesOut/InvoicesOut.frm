@@ -2705,7 +2705,7 @@ Public Function DoPostFoundJobs(rstRecordset As Recordset)
     AddPersons
     EnableOrDisableFields
     'Temp use only!
-    UpdateButtons Me, 6, 0, 1, 0, IIf(CheckForTheLastInvoice = 0, 0, 1), IIf(CheckForLoadedForm("InvoicesOutIndex"), 0, 1), 0, 1
+    UpdateButtons Me, 6, 0, 1, 0, IIf(CheckForTheLastInvoice = 0, 0, 1), IIf(CheckForLoadedForm("InvoicesOutIndex"), 0, 1), 1, 0
     'UpdateButtons Me, 6, IIf(chkCodeHandID.Value = 1, 0, 1), IIf(chkCodeHandID.Value = 1, 1, 0), IIf(chkCodeHandID.Value = 1, 0, 1), IIf(CheckForTheLastInvoice = 0, 0, 1), IIf(CheckForLoadedForm("InvoicesOutIndex"), 0, 1), IIf(chkCodeHandID.Value = 1, 1, 0), IIf(chkCodeHandID.Value = 1, 0, 1)
         
     Exit Function

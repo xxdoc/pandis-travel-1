@@ -2597,7 +2597,7 @@ Private Function DoReport(action As String, Persons As String, PersonDescription
         End If
         If Persons = "Suppliers" Then
             If CreateUnicodeFileForSuppliers("йаятека пяолгхеутг " & txtPersonDescription.text, " АПЭ " & fromDate & " щЫР " & toDate, GetSetting(strApplicationName, "Settings", "Export Report Height") - 4) Then
-                If CreateUnisexPDF("йаятека пяолгхеутг " & txtPersonDescription.text, rptOneLiner, 7) Then
+                If CreateUnisexPDF("йаятека пяолгхеутг " & PersonDescription, rptOneLiner, 7) Then
                     DoReport = True
                 End If
             End If

@@ -1097,6 +1097,27 @@ Begin VB.Form ShipsTransactions
       PicSizeH        =   16
       PicSizeW        =   16
    End
+   Begin VB.Label lblWeekday 
+      AutoSize        =   -1  'True
+      BackColor       =   &H000080FF&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Ημέρα"
+      BeginProperty Font 
+         Name            =   "Ubuntu Condensed"
+         Size            =   9.75
+         Charset         =   161
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00000000&
+      Height          =   255
+      Left            =   3600
+      TabIndex        =   60
+      Top             =   1200
+      Width           =   450
+   End
    Begin VB.Shape shpBottomEdge 
       BackColor       =   &H00800080&
       BackStyle       =   1  'Opaque
@@ -1441,7 +1462,7 @@ Private Function AbortProcedure(blnStatus)
             blnStatus = False
             ClearFields txtID, txtRouteID, txtDestinationID, txtShipID, txtPropertyID, txtSexID, txtAgeID
             ClearFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
-            ClearFields lblRouteDescription
+            ClearFields lblWeekday, lblRouteDescription
             DisableFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
             DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6), cmdIndex(7), cmdIndex(8), cmdIndex(9)
             UpdateButtons Me, 5, 1, 0, 0, IIf(CheckForLoadedForm("ShipsRouteReport"), 0, 1), 0, 1
@@ -1459,7 +1480,7 @@ Private Function DeleteRecord()
     If MainDeleteRecord("CommonDB", "Manifest", strApplicationName, "TripID", txtID.text, "True") Then
         ClearFields txtID, txtRouteID, txtDestinationID, txtShipID, txtPropertyID, txtSexID, txtAgeID
         ClearFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
-        ClearFields lblRouteDescription
+        ClearFields lblWeekday, lblRouteDescription
         DisableFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
         DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6), cmdIndex(7), cmdIndex(8), cmdIndex(9)
         UpdateButtons Me, 5, 1, 0, 0, IIf(CheckForLoadedForm("ShipsRouteReport"), 0, 1), 0, 1
@@ -1479,7 +1500,7 @@ Private Function NewRecord()
     Else
         ClearFields txtID, txtRouteID, txtDestinationID, txtShipID, txtPropertyID, txtSexID, txtAgeID
         ClearFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
-        ClearFields lblRouteDescription
+        ClearFields lblWeekday, lblRouteDescription
         ClearFields mskDate, txtRoute, txtRouteID, lblRouteDescription, txtDestination, txtDestinationID, txtShip, txtShipID, txtProperty, txtPropertyID, txtLastName, txtFirstName, txtSex, txtSexID, txtAge, txtAgeID, txtCare, txtRemarks
     End If
     
@@ -1510,7 +1531,7 @@ Private Function SaveRecord()
         SaveRecord = True
         ClearFields txtRouteID, txtDestinationID, txtShipID, txtPropertyID, txtSexID, txtAgeID
         ClearFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
-        ClearFields lblRouteDescription
+        ClearFields lblWeekday, lblRouteDescription
         DisableFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
         DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6), cmdIndex(7), cmdIndex(8), cmdIndex(9)
         UpdateButtons Me, 5, 1, 0, 0, IIf(CheckForLoadedForm("ShipsRouteReport"), 0, 1), 0, 1
@@ -1531,86 +1552,81 @@ Private Function ValidateFields()
     End If
     
     If Len(mskDate.text) <> 10 Then
-        If MyMsgBox(4, strApplicationName, strStandardMessages(2), 1) Then
-        End If
+        MyMsgBox 4, strApplicationName, strStandardMessages(2), 1
+        mskDate.SetFocus
+        Exit Function
+    End If
+    
+    If blnStatus And CDate(mskDate.text) <> Date Then
+        MyMsgBox 4, strApplicationName, strStandardMessages(2), 1
         mskDate.SetFocus
         Exit Function
     End If
     
     'Δρομολόγιο
     If Len(txtRouteID.text) = 0 Then
-        If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
-        End If
+        MyMsgBox 4, strApplicationName, strStandardMessages(1), 1
         txtRoute.SetFocus
         Exit Function
     End If
     
     'Προορισμός
     If Len(txtDestinationID.text) = 0 Then
-        If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
-        End If
+        MyMsgBox 4, strApplicationName, strStandardMessages(1), 1
         txtDestination.SetFocus
         Exit Function
     End If
     
     'Πλοίο
     If Len(txtShipID.text) = 0 Then
-        If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
-        End If
+        MyMsgBox 4, strApplicationName, strStandardMessages(1), 1
         txtShip.SetFocus
         Exit Function
     End If
     
     'Ιδιότητα
     If Len(txtPropertyID.text) = 0 Then
-        If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
-        End If
+        MyMsgBox 4, strApplicationName, strStandardMessages(1), 1
         txtProperty.SetFocus
         Exit Function
     End If
     
     'Ονομα
     If Len(txtLastName.text) = 0 Then
-        If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
-        End If
+        MyMsgBox 4, strApplicationName, strStandardMessages(1), 1
         txtLastName.SetFocus
         Exit Function
     End If
     If InStr(txtLastName.text, ",") Then
-        If MyMsgBox(4, strApplicationName, strStandardMessages(2), 1) Then
-        End If
+        MyMsgBox 4, strApplicationName, strStandardMessages(2), 1
         txtLastName.SetFocus
         Exit Function
     End If
     
     'Ηλικία
     If Len(txtAgeID.text) = 0 Then
-        If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
-        End If
+        MyMsgBox 4, strApplicationName, strStandardMessages(1), 1
         txtAge.SetFocus
         Exit Function
     End If
     
     'Φύλο
     If Len(txtSexID.text) = 0 Then
-        If MyMsgBox(4, strApplicationName, strStandardMessages(1), 1) Then
-        End If
+        MyMsgBox 4, strApplicationName, strStandardMessages(1), 1
         txtSex.SetFocus
         Exit Function
     End If
     
     'Ειδική φροντίδα
     If InStr(txtCare.text, ",") Then
-        If MyMsgBox(4, strApplicationName, strStandardMessages(2), 1) Then
-        End If
+        MyMsgBox 4, strApplicationName, strStandardMessages(2), 1
         txtCare.SetFocus
         Exit Function
     End If
 
     'Παρατηρήσεις
     If InStr(txtRemarks.text, ",") Then
-        If MyMsgBox(4, strApplicationName, strStandardMessages(2), 1) Then
-        End If
+        MyMsgBox 4, strApplicationName, strStandardMessages(2), 1
         txtRemarks.SetFocus
         Exit Function
     End If
@@ -1625,7 +1641,9 @@ Private Sub cmdButton_Click(index As Integer)
         Case 0
             NewRecord
         Case 1
-            If SaveRecord And blnStatus Then CheckToCreateNewRecord
+            If SaveRecord And blnStatus Then
+                CheckToCreateNewRecord
+            End If
         Case 2
             DeleteRecord
         Case 3
@@ -1758,7 +1776,7 @@ Public Function SeekRecord(strTable, tmpPersonID)
     Dim tmpRecordset As Recordset
     ClearFields txtID, txtRouteID, txtDestinationID, txtShipID, txtPropertyID, txtSexID, txtAgeID
     ClearFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
-    ClearFields lblRouteDescription
+    ClearFields lblWeekday, lblRouteDescription
     DisableFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
     DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6), cmdIndex(7), cmdIndex(8), cmdIndex(9)
     
@@ -1793,6 +1811,7 @@ Public Function SeekRecord(strTable, tmpPersonID)
         txtAgeID.text = tmpRecordset.Fields(0)
         txtAge.text = tmpRecordset.Fields(1)
         'Τα υπόλοιπα
+        lblWeekday.Caption = DisplayWeekDay(mskDate.text)
         EnableFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
         EnableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6), cmdIndex(7), cmdIndex(8), cmdIndex(9)
         UpdateButtons Me, 5, 0, 1, 1, 0, 1, 0
@@ -1828,7 +1847,7 @@ Private Sub CheckFunctionKeys(KeyCode, Shift)
         Case vbKeyEscape
             If cmdButton(4).Enabled Then cmdButton_Click 4: Exit Sub
             If cmdButton(5).Enabled Then cmdButton_Click 5
-        Case vbKeyF12 And CtrlDown
+        Case vbKeyF12
             ToggleInfoPanel Me
     End Select
 
@@ -1840,11 +1859,37 @@ Private Sub Form_Load()
 
     ClearFields txtID, txtRouteID, txtDestinationID, txtShipID, txtPropertyID, txtSexID, txtAgeID
     ClearFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
-    ClearFields lblRouteDescription
+    ClearFields lblWeekday, lblRouteDescription
     DisableFields mskDate, txtRoute, txtDestination, txtShip, txtProperty, txtLastName, txtFirstName, txtSex, txtAge, txtCare, txtRemarks
     DisableFields cmdIndex(0), cmdIndex(1), cmdIndex(2), cmdIndex(3), cmdIndex(4), cmdIndex(5), cmdIndex(6), cmdIndex(7), cmdIndex(8), cmdIndex(9)
     UpdateButtons Me, 5, 1, 0, 0, IIf(CheckForLoadedForm("ShipsRouteReport"), 0, 1), 0, 1
 
+End Sub
+
+Private Sub mskDate_Change()
+
+    If mskDate.text = "" Then ClearFields lblWeekday
+
+End Sub
+
+Private Sub mskDate_LostFocus()
+
+    If mskDate.text <> "" Then
+        lblWeekday.Caption = DisplayWeekDay(mskDate.text)
+    Else
+        ClearFields lblWeekday
+    End If
+    
+End Sub
+
+Private Sub mskDate_Validate(Cancel As Boolean)
+
+    If mskDate.text <> "" Then
+        lblWeekday.Caption = DisplayWeekDay(mskDate.text)
+    Else
+        ClearFields lblWeekday
+    End If
+    
 End Sub
 
 Private Sub txtAge_Change()
@@ -1975,6 +2020,7 @@ Private Function CheckToCreateNewRecord()
 
     If txtShipSaveAndNewID.text = "1" Then
         cmdButton_Click 0
+        lblWeekday.Caption = DisplayWeekDay(mskDate.text)
     End If
 
 End Function

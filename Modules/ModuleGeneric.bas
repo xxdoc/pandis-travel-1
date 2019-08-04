@@ -83,6 +83,14 @@ Public Function CheckForSpecialCharacter(strCharacter)
     End Select
 
 End Function
+Public Function DisplayWeekDay(myDate)
+
+    If IsDate(myDate) Then
+        DisplayWeekDay = WeekdayName(Weekday(myDate, vbUseSystemDayOfWeek), False, vbUseSystemDayOfWeek)
+    End If
+
+End Function
+
 
 Public Function ConvertToSpecialUpperCase(someString)
 
@@ -714,8 +722,8 @@ Function ToggleInfoPanel(thisForm As Form)
             .Visible = False
         Else
             .Visible = True
-            .Left = 10100
-            .Top = 1100
+            .Left = 100
+            .Top = 100
             .ZOrder 0
         End If
     End With

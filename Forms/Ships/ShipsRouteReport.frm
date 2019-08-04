@@ -3,7 +3,7 @@ Object = "{396F7AC0-A0DD-11D3-93EC-00C0DFE7442A}#1.0#0"; "ImageList.ocx"
 Object = "{158C2A77-1CCD-44C8-AF42-AA199C5DCC6C}#1.0#0"; "dcButton.ocx"
 Object = "{55473EAC-7715-4257-B5EF-6E14EBD6A5DD}#1.0#0"; "ProgressBar.ocx"
 Object = "{839D0F5D-B7D7-41B7-A3B4-85D69300B8C1}#98.0#0"; "iGrid300_10Tec.ocx"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Object = "{FFE4AEB4-0D55-4004-ADF2-3C1C84D17A72}#1.0#0"; "userControls.ocx"
 Begin VB.Form ShipsRouteReport 
    Appearance      =   0  'Flat
@@ -808,6 +808,27 @@ Begin VB.Form ShipsRouteReport
             PicNormal       =   "ShipsRouteReport.frx":0EEA
             PicSizeH        =   16
             PicSizeW        =   16
+         End
+         Begin VB.Label lblWeekday 
+            AutoSize        =   -1  'True
+            BackColor       =   &H000080FF&
+            BackStyle       =   0  'Transparent
+            Caption         =   "Ημέρα"
+            BeginProperty Font 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   255
+            Left            =   3225
+            TabIndex        =   50
+            Top             =   900
+            Width           =   450
          End
          Begin VB.Shape shpWedge 
             BackColor       =   &H0000FFFF&
@@ -1765,7 +1786,7 @@ Private Sub Form_Load()
     PositionControls Me, True, grdShipsRouteReport
     ColorizeControls Me, True
     ClearFields lblRecordCount, lblCriteria, lblSelectedGridLines, lblSelectedGridTotals
-    ClearFields txtTripID, txtRouteID, txtShipID
+    ClearFields txtTripID, txtRouteID, txtShipID, lblWeekday, lblRouteDescription
     ClearFields mskDate, txtShip, txtRoute
     ClearFields grdShipsRouteReport
     EnableFields mskDate, txtShip, txtRoute
@@ -1871,11 +1892,37 @@ Private Sub mnuΑποθήκευσηΠλάτουςΣτηλών_Click()
 
 End Sub
 
+Private Sub mskDate_Change()
+
+    If mskDate.text = "" Then ClearFields lblWeekday
+    
+End Sub
+
+Private Sub mskDate_LostFocus()
+
+    If mskDate.text <> "" Then
+        lblWeekday.Caption = DisplayWeekDay(mskDate.text)
+    Else
+        ClearFields lblWeekday
+    End If
+
+End Sub
+
+
+Private Sub mskDate_Validate(Cancel As Boolean)
+
+    If mskDate.text <> "" Then
+        lblWeekday.Caption = DisplayWeekDay(mskDate.text)
+    Else
+        ClearFields lblWeekday
+    End If
+
+End Sub
+
+
 Private Sub txtRoute_Change()
 
-    If txtRoute.text = "" Then
-        ClearFields txtRouteID, lblRouteDescription, txtFrom, txtVia, txtTo, txtTime
-    End If
+    If txtRoute.text = "" Then ClearFields txtRouteID, lblRouteDescription, txtFrom, txtVia, txtTo, txtTime
 
 End Sub
 
@@ -1887,15 +1934,13 @@ End Sub
 
 Private Sub txtRoute_Validate(Cancel As Boolean)
 
-    If txtRouteID.text = "" And txtRoute.text <> "" Then cmdIndex_Click 1
+    If txtRouteID.text = "" And txtRoute.text <> "" Then cmdIndex_Click 1: If txtRouteID = "" Then Cancel = True
 
 End Sub
 
 Private Sub txtShip_Change()
 
-    If txtShip.text = "" Then
-        ClearFields txtShipID
-    End If
+    If txtShip.text = "" Then ClearFields txtShipID
     
 End Sub
 

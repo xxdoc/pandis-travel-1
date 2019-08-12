@@ -1,0 +1,8 @@
+Family Cruises
+	1. Captain Bill
+
+Corfu Cruises
+	1. Paxos Star
+	2. Dionisios
+	
+SELECT TOP 10 TripID, TripDate, TripLastName, TripFirstName FROM Manifest ORDER BY RND(1217*TripID)

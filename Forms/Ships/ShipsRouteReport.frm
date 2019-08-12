@@ -94,7 +94,7 @@ Begin VB.Form ShipsRouteReport
          Left            =   75
          TabIndex        =   39
          Top             =   8850
-         Width           =   14640
+         Width           =   13140
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   690
             Index           =   0
@@ -122,8 +122,8 @@ Begin VB.Form ShipsRouteReport
          End
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   690
-            Index           =   9
-            Left            =   13050
+            Index           =   8
+            Left            =   11625
             TabIndex        =   41
             TabStop         =   0   'False
             Top             =   0
@@ -173,8 +173,8 @@ Begin VB.Form ShipsRouteReport
          End
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   690
-            Index           =   8
-            Left            =   11625
+            Index           =   7
+            Left            =   10200
             TabIndex        =   43
             TabStop         =   0   'False
             Top             =   0
@@ -308,32 +308,7 @@ Begin VB.Form ShipsRouteReport
             _ExtentY        =   1217
             ButtonShape     =   3
             ButtonStyle     =   4
-            Caption         =   "Εισαγωγή εγγραφών"
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Ubuntu Condensed"
-               Size            =   9.75
-               Charset         =   161
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   0
-            PicOpacity      =   0
-         End
-         Begin Dacara_dcButton.dcButton cmdButton 
-            Height          =   690
-            Index           =   7
-            Left            =   10200
-            TabIndex        =   49
-            TabStop         =   0   'False
-            Top             =   0
-            Width           =   1365
-            _ExtentX        =   2408
-            _ExtentY        =   1217
-            ButtonShape     =   3
-            ButtonStyle     =   4
-            Caption         =   "Εξαγωγή εγγραφών"
+            Caption         =   "Δημιουργία εγγραφών"
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Ubuntu Condensed"
                Size            =   9.75
@@ -826,7 +801,7 @@ Begin VB.Form ShipsRouteReport
             ForeColor       =   &H00000000&
             Height          =   255
             Left            =   3225
-            TabIndex        =   50
+            TabIndex        =   49
             Top             =   900
             Width           =   450
          End
@@ -1360,12 +1335,10 @@ Private Sub cmdButton_Click(index As Integer)
         Case 5
             ImportCrew txtShipID.text
         Case 6
-            ImportRecords
+            CreateRandomRecords 10
         Case 7
-            DoReport "CreateFile"
-        Case 8
             AbortProcedure False
-        Case 9
+        Case 8
             AbortProcedure True
     End Select
     
@@ -1467,7 +1440,7 @@ Private Function AbortProcedure(blnStatus)
         ClearFields grdShipsRouteReport, lblCriteria
         frmCriteria(0).Visible = True
         mskDate.SetFocus
-        UpdateButtons Me, 9, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+        UpdateButtons Me, 8, 1, 0, 0, 0, 0, 0, 0, 0, 1
     End If
     
     If blnStatus Then
@@ -1484,10 +1457,10 @@ Private Function FindRecordsAndPopulateGrid()
             UpdateCriteriaLabels mskDate.text, txtShip.text, lblRouteDescription.Caption
             EnableGrid grdShipsRouteReport, False
             HighlightRow grdShipsRouteReport, 1, 1, "", True
-            UpdateButtons Me, 9, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0
+            UpdateButtons Me, 8, 0, 1, 0, 1, 1, 1, 1, 1, 0
             Exit Function
         Else
-            UpdateButtons Me, 9, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1
+            UpdateButtons Me, 8, 1, 0, 0, 0, 0, 0, 0, 0, 1
             If Not blnError Then
                 If blnProcessing Then
                     If MyMsgBox(4, strApplicationName, strStandardMessages(27), 1) Then
@@ -1504,21 +1477,6 @@ Private Function FindRecordsAndPopulateGrid()
         End If
     End If
     
-    'If ValidateFields Then
-    '    If RefreshList Then
-    '        UpdateCriteriaLabels mskDate.text, txtShip.text, lblRouteDescription.Caption
-    '        EnableGrid grdShipsRouteReport, False
-    '        HighlightRow grdShipsRouteReport, 0, 1, "", True
-    '        UpdateButtons Me, 9, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0
-    '        Exit Function
-    '    Else
-    '        If Not blnErrors Then DisplayMessageRecordsNotFound
-    '        UpdateButtons Me, 9, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1
-    '        frmCriteria(0).Visible = True
-    '        mskDate.SetFocus
-    '    End If
-    'End If
-
 End Function
 
 Private Function UpdateCriteriaLabels(myDate, myShip, myRoute)
@@ -1629,8 +1587,8 @@ Private Function RefreshList()
     InitializeProgressBar Me, strApplicationName, rstRecordset
     
     'Προσωρινά
-    UpdateButtons Me, 9, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0
-    cmdButton(8).Caption = "Διακοπή επεξεργασίας"
+    UpdateButtons Me, 8, 0, 0, 0, 0, 0, 0, 0, 1, 0
+    cmdButton(7).Caption = "Διακοπή επεξεργασίας"
     blnProcessing = True
     
     'Γεμίζω το πλέγμα
@@ -1675,7 +1633,7 @@ Private Function RefreshList()
     End If
     
     'Τελικές ενέργειες
-    cmdButton(8).Caption = "Νέα αναζήτηση"
+    cmdButton(7).Caption = "Νέα αναζήτηση"
     frmProgress.Visible = False
     
     Exit Function
@@ -1772,8 +1730,8 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
         Case vbKeyP And CtrlDown And cmdButton(3).Enabled
             cmdButton_Click 3
         Case vbKeyEscape
-            If cmdButton(8).Enabled Then cmdButton_Click 8: Exit Function
-            If cmdButton(9).Enabled Then cmdButton_Click 9
+            If cmdButton(7).Enabled Then cmdButton_Click 7: Exit Function
+            If cmdButton(8).Enabled Then cmdButton_Click 8
         Case vbKeyF12 And CtrlDown
             ToggleInfoPanel Me
     End Select
@@ -1790,7 +1748,7 @@ Private Sub Form_Load()
     ClearFields mskDate, txtShip, txtRoute
     ClearFields grdShipsRouteReport
     EnableFields mskDate, txtShip, txtRoute
-    UpdateButtons Me, 9, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+    UpdateButtons Me, 8, 1, 0, 0, 0, 0, 0, 0, 0, 1
     
 End Sub
 
@@ -1956,28 +1914,56 @@ Private Sub txtShip_Validate(Cancel As Boolean)
     
 End Sub
 
-Private Function ImportRecords()
+Private Function CreateRandomRecords(numberOfRecords As Integer)
     
-    Dim strFileName As String
-    Dim strLineWithError As String
+    'SQL
+    Dim intIndex As Byte
+    Dim strThisQuery As String
+    Dim strParameters As String
+    Dim strParFields As String
+    Dim strThisParameter As String
+    Dim strOrder As String
+    Dim strLogic As String
+    Dim arrQuery() As Variant
+    Dim strSQL As String
     
-    strFileName = ShowOpenFileDialog
+    'Variables
+    Dim rstRecordset As Recordset
+    Dim lngTripID As Long
+    Dim datTripDate As Date
+    Dim lngTripRouteID  As Long
+    Dim lngTripDestinationID As Long
+    Dim lngTripShipID As Long
+    Dim lngTripOccupantDescriptionID As Long
+
     
-    If strFileName <> "" Then
-        strLineWithError = CheckFileForErrors(strFileName)
-        If strLineWithError <> "" Then
-            If MyMsgBox(4, strApplicationName, strStandardMessages(13), 1) Then
-            End If
-        Else
-            strLineWithError = AppendRecords(strFileName)
-            If strLineWithError <> "0" Then
-                If MyMsgBox(4, strApplicationName, strStandardMessages(13), 1) Then
-                End If
-            Else
-                If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
-                End If
-            End If
-        End If
+    'Initialize
+    Set TempQuery = CommonDB.CreateQueryDef("")
+    
+    'Main
+    strSQL = "SELECT TOP " & numberOfRecords & " TripID, TripLastName, TripFirstName, TripGenderID, TripAgeID FROM Manifest WHERE TripOccupantDescriptionID = 4 ORDER BY RND(1217 * TripID)"
+    TempQuery.SQL = strSQL
+    Set rstRecordset = TempQuery.OpenRecordset()
+    
+    'Get the first grid line
+    With grdShipsRouteReport
+        datTripDate = .CellValue(1, "Date")
+        lngTripRouteID = .CellValue(1, "RouteID")
+        lngTripDestinationID = .CellValue(1, "DestinationID")
+        lngTripShipID = .CellValue(1, "ShipID")
+        lngTripOccupantDescriptionID = .CellValue(1, "OccupantDescriptionID")
+    End With
+        
+    'Loop through the random records
+    With rstRecordset
+        Do While Not .EOF
+            lngTripID = MainSaveRecord("CommonDB", "Manifest", True, strApplicationName, "TripID", !TripID, datTripDate, lngTripRouteID, lngTripDestinationID, lngTripShipID, lngTripOccupantDescriptionID, !TripLastName, !TripFirstName, !TripGenderID, !TripAgeID, "", "", 1, strCurrentUser)
+            .MoveNext
+        Loop
+    End With
+    
+    'OK
+    If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
     End If
     
 End Function

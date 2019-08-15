@@ -2221,7 +2221,7 @@ Private Function AssignPortToThisCustomer(TransferID)
     Set rsTable = CommonDB.OpenRecordset("Transfers")
     
     With rsTable
-        .index = "ID"
+        .Index = "ID"
         .Seek "=", TransferID
         If Not .NoMatch Then
             .Edit
@@ -2309,7 +2309,7 @@ Private Function AssignDriverToThisRoute(TransferID)
     Set rsTable = CommonDB.OpenRecordset("Transfers")
     
     With rsTable
-        .index = "ID"
+        .Index = "ID"
         .Seek "=", TransferID
         If Not .NoMatch Then
             .Edit
@@ -3790,9 +3790,9 @@ Private Sub chkAllTransfers_Click()
 
 End Sub
 
-Private Sub cmdButton_Click(index As Integer)
+Private Sub cmdButton_Click(Index As Integer)
                                 
-    Select Case index
+    Select Case Index
         Case 0
             FindRecordsAndPopulateGrid
         Case 1
@@ -4101,7 +4101,7 @@ Private Function AbortProcedure(blnStatus)
     
 End Function
 
-Private Sub cmdIndex_Click(index As Integer)
+Private Sub cmdIndex_Click(Index As Integer)
 
     Dim strShowInList As String
     Dim tmpTableData As typTableData
@@ -4109,7 +4109,7 @@ Private Sub cmdIndex_Click(index As Integer)
     Dim strSQL As String
     Dim intSize As Integer
 
-    Select Case index
+    Select Case Index
         'Οδηγός σε σύνδεση δρομολογίου
         Case 0
             Set tmpRecordset = CheckForMatch("CommonDB", "Drivers", "DriverDescription", "String", txtDriverDescriptionForRoutes.text)
@@ -4197,7 +4197,7 @@ Private Function FindRoute()
     Set rsTable = CommonDB.OpenRecordset("PickupRoutes")
     
     With rsTable
-        .index = "PickupRouteID"
+        .Index = "PickupRouteID"
         .Seek "=", Val(txtRouteID.text)
         If Not .NoMatch Then
             txtRouteID.text = !PickupRouteID

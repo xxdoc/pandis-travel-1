@@ -87,6 +87,246 @@ Begin VB.Form ShipsRouteReport
       TabIndex        =   0
       Top             =   75
       Width           =   18990
+      Begin VB.Frame frmCriteria 
+         BackColor       =   &H0080C0FF&
+         BorderStyle     =   0  'None
+         Height          =   2190
+         Index           =   1
+         Left            =   150
+         TabIndex        =   50
+         Top             =   3375
+         Width           =   7290
+         Begin Dacara_dcButton.dcButton cmdButton 
+            Height          =   465
+            Index           =   9
+            Left            =   1575
+            TabIndex        =   51
+            TabStop         =   0   'False
+            Top             =   1650
+            Width           =   2115
+            _ExtentX        =   3731
+            _ExtentY        =   820
+            ButtonShape     =   3
+            ButtonStyle     =   4
+            Caption         =   "Ακυρο"
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   0
+            PicOpacity      =   0
+         End
+         Begin Dacara_dcButton.dcButton cmdButton 
+            Height          =   465
+            Index           =   10
+            Left            =   3750
+            TabIndex        =   52
+            TabStop         =   0   'False
+            Top             =   1650
+            Width           =   2115
+            _ExtentX        =   3731
+            _ExtentY        =   820
+            ButtonShape     =   3
+            ButtonStyle     =   4
+            Caption         =   "Συνέχεια"
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   0
+            PicOpacity      =   0
+         End
+         Begin UserControls.newInteger mskPersons 
+            Height          =   465
+            Left            =   2100
+            TabIndex        =   58
+            Top             =   825
+            Width           =   4740
+            _ExtentX        =   8361
+            _ExtentY        =   820
+            Alignment       =   1
+            MaxLength       =   2
+            Text            =   "0"
+            BackColor       =   4210688
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   12
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+         End
+         Begin VB.Label lblLabel 
+            BackColor       =   &H000080FF&
+            Caption         =   "Αριθμός ατόμων"
+            BeginProperty Font 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   315
+            Index           =   1
+            Left            =   450
+            TabIndex        =   57
+            Top             =   900
+            Width           =   1215
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   315
+            Index           =   9
+            Left            =   2475
+            Top             =   1275
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   315
+            Index           =   8
+            Left            =   2400
+            Top             =   525
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   840
+            Index           =   7
+            Left            =   6825
+            Top             =   600
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   840
+            Index           =   6
+            Left            =   1650
+            Top             =   675
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Shape shpWedge 
+            BackColor       =   &H0000FFFF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H00008000&
+            Height          =   840
+            Index           =   5
+            Left            =   0
+            Top             =   675
+            Visible         =   0   'False
+            Width           =   465
+         End
+         Begin VB.Label Label2 
+            Alignment       =   1  'Right Justify
+            BackColor       =   &H00808000&
+            Caption         =   "01/05/2017"
+            BeginProperty Font 
+               Name            =   "Aka-Acid-Steelfish"
+               Size            =   14.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H0000FFFF&
+            Height          =   390
+            Left            =   4200
+            TabIndex        =   55
+            Top             =   75
+            Width           =   2940
+         End
+         Begin VB.Label Label1 
+            BackColor       =   &H00808000&
+            Caption         =   "Δημιουργία εγγραφών"
+            BeginProperty Font 
+               Name            =   "Aka-Acid-Steelfish"
+               Size            =   14.25
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   390
+            Index           =   2
+            Left            =   150
+            TabIndex        =   54
+            Top             =   75
+            Width           =   3615
+         End
+         Begin VB.Label Label1 
+            BackColor       =   &H00808000&
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   14.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   615
+            Index           =   1
+            Left            =   0
+            TabIndex        =   53
+            Top             =   1575
+            Width           =   7440
+         End
+         Begin VB.Label Label1 
+            BackColor       =   &H00808000&
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   14.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00FFFFFF&
+            Height          =   540
+            Index           =   5
+            Left            =   0
+            TabIndex        =   56
+            Top             =   0
+            Width           =   7440
+         End
+      End
       Begin VB.Frame frmButtonFrame 
          BackColor       =   &H00FF8080&
          BorderStyle     =   0  'None
@@ -1304,6 +1544,17 @@ Private Function DeleteRecord()
 
 End Function
 
+Private Function DisplayCreatePassengersForm()
+
+    ClearFields mskPersons
+    EnableFields mskPersons
+    frmCriteria(1).Visible = True
+    InitializeFields mskPersons
+    UpdateButtons Me, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+    mskPersons.SetFocus
+
+End Function
+
 Private Function SeekRecord()
 
     With ShipsTransactions
@@ -1335,11 +1586,15 @@ Private Sub cmdButton_Click(index As Integer)
         Case 5
             ImportCrew txtShipID.text
         Case 6
-            CreateRandomRecords 10
+            DisplayCreatePassengersForm
         Case 7
             AbortProcedure False
         Case 8
             AbortProcedure True
+        Case 9
+            AbortProcedure False
+        Case 10
+            CreateRandomRecords mskPersons.text
     End Select
     
 End Sub
@@ -1436,15 +1691,24 @@ Private Function AbortProcedure(blnStatus)
 
     If blnProcessing Then blnProcessing = False: Exit Function
     
-    If Not blnStatus Then
+    'Εξοδος
+    If cmdButton(8).Enabled Then Unload Me: Exit Function
+    
+    'Νέα αναζήτηση
+    If cmdButton(7).Enabled Then
         ClearFields grdShipsRouteReport, lblCriteria
         frmCriteria(0).Visible = True
         mskDate.SetFocus
-        UpdateButtons Me, 8, 1, 0, 0, 0, 0, 0, 0, 0, 1
+        UpdateButtons Me, 10, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0
     End If
     
-    If blnStatus Then
-        Unload Me
+    'Πλαίσιο δημιουργίας επιβατών
+    If cmdButton(9).Enabled Then
+        frmCriteria(1).Visible = False
+        ClearFields mskPersons
+        DisableFields mskPersons
+        UpdateButtons Me, 10, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0
+        grdShipsRouteReport.SetFocus
     End If
 
 End Function
@@ -1457,10 +1721,10 @@ Private Function FindRecordsAndPopulateGrid()
             UpdateCriteriaLabels mskDate.text, txtShip.text, lblRouteDescription.Caption
             EnableGrid grdShipsRouteReport, False
             HighlightRow grdShipsRouteReport, 1, 1, "", True
-            UpdateButtons Me, 8, 0, 1, 0, 1, 1, 1, 1, 1, 0
+            UpdateButtons Me, 10, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0
             Exit Function
         Else
-            UpdateButtons Me, 8, 1, 0, 0, 0, 0, 0, 0, 0, 1
+            UpdateButtons Me, 10, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0
             If Not blnError Then
                 If blnProcessing Then
                     If MyMsgBox(4, strApplicationName, strStandardMessages(27), 1) Then
@@ -1587,7 +1851,7 @@ Private Function RefreshList()
     InitializeProgressBar Me, strApplicationName, rstRecordset
     
     'Προσωρινά
-    UpdateButtons Me, 8, 0, 0, 0, 0, 0, 0, 0, 1, 0
+    UpdateButtons Me, 10, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0
     cmdButton(7).Caption = "Διακοπή επεξεργασίας"
     blnProcessing = True
     
@@ -1723,6 +1987,8 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
     Select Case KeyCode
         Case vbKeyF10 And cmdButton(0).Enabled, vbKeyC And CtrlDown And cmdButton(0).Enabled
             cmdButton_Click 0
+        Case vbKeyF10 And cmdButton(10).Enabled, vbKeyC And CtrlDown And cmdButton(10).Enabled
+            cmdButton_Click 10
         Case vbKeyE And CtrlDown And cmdButton(1).Enabled
             cmdButton_Click 1
         Case vbKeyF3 And cmdButton(2).Enabled, vbKeyD And CtrlDown And cmdButton(2).Enabled
@@ -1731,7 +1997,8 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
             cmdButton_Click 3
         Case vbKeyEscape
             If cmdButton(7).Enabled Then cmdButton_Click 7: Exit Function
-            If cmdButton(8).Enabled Then cmdButton_Click 8
+            If cmdButton(8).Enabled Then cmdButton_Click 8: Exit Function
+            If cmdButton(9).Enabled Then cmdButton_Click 9: Exit Function
         Case vbKeyF12 And CtrlDown
             ToggleInfoPanel Me
     End Select
@@ -1742,13 +2009,15 @@ Private Sub Form_Load()
 
     SetUpGrid lstIconList, grdShipsRouteReport
     PositionControls Me, True, grdShipsRouteReport
+    frmCriteria(1).Visible = False
     ColorizeControls Me, True
     ClearFields lblRecordCount, lblCriteria, lblSelectedGridLines, lblSelectedGridTotals
     ClearFields txtTripID, txtRouteID, txtShipID, lblWeekday, lblRouteDescription
-    ClearFields mskDate, txtShip, txtRoute
+    ClearFields mskDate, txtShip, txtRoute, mskPersons
     ClearFields grdShipsRouteReport
+    DisableFields mskPersons
     EnableFields mskDate, txtShip, txtRoute
-    UpdateButtons Me, 8, 1, 0, 0, 0, 0, 0, 0, 0, 1
+    UpdateButtons Me, 10, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0
     
 End Sub
 
@@ -1914,7 +2183,7 @@ Private Sub txtShip_Validate(Cancel As Boolean)
     
 End Sub
 
-Private Function CreateRandomRecords(numberOfRecords As Integer)
+Private Function CreateRandomRecords(numberOfRecords)
     
     'SQL
     Dim intIndex As Byte
@@ -1935,13 +2204,25 @@ Private Function CreateRandomRecords(numberOfRecords As Integer)
     Dim lngTripDestinationID As Long
     Dim lngTripShipID As Long
     Dim lngTripOccupantDescriptionID As Long
-
     
+    'Ατομα
+    If numberOfRecords = "" Then
+        MyMsgBox 4, strApplicationName, strStandardMessages(1), 1
+        mskPersons.SetFocus
+        Exit Function
+    End If
+    If Val(numberOfRecords) <= 0 Then
+        MyMsgBox 4, strApplicationName, strStandardMessages(2), 1
+        mskPersons.SetFocus
+        Exit Function
+    End If
+
     'Initialize
+    Randomize
     Set TempQuery = CommonDB.CreateQueryDef("")
     
     'Main
-    strSQL = "SELECT TOP " & numberOfRecords & " TripID, TripLastName, TripFirstName, TripGenderID, TripAgeID FROM Manifest WHERE TripOccupantDescriptionID = 4 ORDER BY RND(1217 * TripID)"
+    strSQL = "SELECT TOP " & Val(numberOfRecords) & " TripID, TripLastName, TripFirstName, TripGenderID, TripAgeID FROM Manifest WHERE TripOccupantDescriptionID = 4 ORDER BY RND(1217 * TripID)"
     TempQuery.SQL = strSQL
     Set rstRecordset = TempQuery.OpenRecordset()
     
@@ -1962,9 +2243,14 @@ Private Function CreateRandomRecords(numberOfRecords As Integer)
         Loop
     End With
     
+    frmCriteria(1).Visible = False
+    DisableFields mskPersons
+    UpdateButtons Me, 10, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0
+    grdShipsRouteReport.SetFocus
+    cmdButton_Click 0
+    
     'OK
-    If MyMsgBox(1, strApplicationName, strStandardMessages(8), 1) Then
-    End If
+    MyMsgBox 1, strApplicationName, strStandardMessages(8), 1
     
 End Function
 

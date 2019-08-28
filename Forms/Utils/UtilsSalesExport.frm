@@ -908,7 +908,7 @@ Private Function GetRecords()
     arrQuery(intIndex) = "4"
     
     'Ταξινόμηση
-    strOrder = " ORDER BY InvoiceDateIssue, CodeShortDescriptionB, InvoiceNo"
+    strOrder = " ORDER BY InvoiceDateIssue, Val(InvoiceNo), CodeShortDescriptionB"
     
     Set TempQuery = CommonDB.CreateQueryDef("")
     

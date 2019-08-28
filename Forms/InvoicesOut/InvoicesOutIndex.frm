@@ -472,13 +472,13 @@ Begin VB.Form InvoicesOutIndex
             Left            =   2175
             TabIndex        =   3
             Top             =   1875
-            Width           =   690
-            _ExtentX        =   1217
+            Width           =   1455
+            _ExtentX        =   2566
             _ExtentY        =   820
             Alignment       =   2
             ForeColor       =   0
-            MaxLength       =   6
-            Text            =   "999999"
+            MaxLength       =   10
+            Text            =   "AAAAAAAAAA"
             BackColor       =   4210688
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Ubuntu Condensed"
@@ -1485,11 +1485,11 @@ Private Function RefreshList()
     
     'Νο Παραστατικού
     If txtInvoiceNo.text <> "" Then
-        strThisParameter = "intInvoiceNo Integer"
-        strThisQuery = "InvoiceNo = intInvoiceNo"
+        strThisParameter = "strInvoiceNo String"
+        strThisQuery = "InvoiceNo = strInvoiceNo"
         strLogic = " AND "
         GoSub UpdateSQLString
-        arrQuery(intIndex) = Val(txtInvoiceNo.text)
+        arrQuery(intIndex) = txtInvoiceNo.text
     End If
     
     'Συναλλασόμενος

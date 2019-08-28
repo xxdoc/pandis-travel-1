@@ -2763,7 +2763,7 @@ Private Function AskToPrintInvoice()
     'If chkCodeHandID.Value = 0 And blnStatus Then
     If chkCodeHandID.Value = 0 Then
         If MyMsgBox(2, strApplicationName, strAppMessages(7), 2) Then
-            ProcessSelectedInvoicesForPrinting txtInvoiceTrnID.text, arrDummy
+            ProcessSelectedInvoicesForPrinting txtInvoiceTrnID.text, "Print", arrDummy
         End If
     End If
 
@@ -2824,12 +2824,12 @@ Private Function PopulateFields(rstRecordset As Recordset)
 
 End Function
 
-Private Function PrintThisInvoice(blnPreview As Boolean, blnExportPDF As Boolean, strInvoiceNo As String)
+Private Function PrintThisInvoice(blnPreview As Boolean, printOrPDF As String, strInvoiceNo As String)
 
     Dim intLoop As Integer
     Dim pdf As New ARExportPDF
     
-    If blnExportPDF Then
+    If printOrPDF = "PDF" Then
         rptInvoice.Run False
         pdf.AcrobatVersion = 2
         pdf.SemiDelimitedNeverEmbedFonts = ""
@@ -3419,7 +3419,7 @@ Private Sub cmdButton_Click(index As Integer)
         Case 1
             SaveRecord
         Case 2
-            ProcessSelectedInvoicesForPrinting txtInvoiceTrnID.text, arrDummy 'Called when the print button is clicked
+            ProcessSelectedInvoicesForPrinting txtInvoiceTrnID.text, "Print", arrDummy 'Called when the print button is clicked
         Case 3
             DeleteRecord
         Case 4
@@ -3923,13 +3923,18 @@ Private Function EnableOrDisableFields()
 
 End Function
 
-Public Function ProcessSelectedInvoicesForPrinting(strInvoiceTrnID, arrInvoicesTrnID())
+Public Function ProcessSelectedInvoicesForPrinting(strInvoiceTrnID, whatToDo, arrInvoicesTrnID())
 
     Dim intLoop As Integer
     Dim rstRecordset As Recordset
+    Dim printOrPDF As String
     
-    If Not SelectPrinter("PrinterPrintsReports") Then Exit Function
-    If Not PrinterExists(strPrinterName) Then Exit Function
+    printOrPDF = whatToDo
+    
+    If printOrPDF = "Print" Then
+        If Not SelectPrinter("PrinterPrintsReports") Then Exit Function
+        If Not PrinterExists(strPrinterName) Then Exit Function
+    End If
     
     If strInvoiceTrnID <> "" Then
         ReDim arrInvoicesTrnID(0)
@@ -3941,8 +3946,10 @@ Public Function ProcessSelectedInvoicesForPrinting(strInvoiceTrnID, arrInvoicesT
         If rstRecordset.RecordCount = 0 Then MyMsgBox 4, strApplicationName, strStandardMessages(9), 1: Exit Function
         ClearInvoiceFields
         UpdateInvoiceFieldsWithData rstRecordset
-        PrintThisInvoice blnPreviewInvoices, True, rstRecordset!InvoiceNo 'False = Do not preview, True = Create PDF instead of print
+        PrintThisInvoice blnPreviewInvoices, printOrPDF, rstRecordset!InvoiceNo 'False = Do not preview, True = Create PDF instead of print
     Next intLoop
+    
+    If printOrPDF = "PDF" Then MyMsgBox 1, strApplicationName, strStandardMessages(8), 1
 
 End Function
 

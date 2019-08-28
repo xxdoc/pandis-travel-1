@@ -87,7 +87,7 @@ Begin VB.Form InvoicesOutIndex
          Left            =   75
          TabIndex        =   27
          Top             =   8850
-         Width           =   7515
+         Width           =   8940
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   690
             Index           =   0
@@ -115,8 +115,8 @@ Begin VB.Form InvoicesOutIndex
          End
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   690
-            Index           =   4
-            Left            =   5925
+            Index           =   5
+            Left            =   7350
             TabIndex        =   29
             TabStop         =   0   'False
             Top             =   0
@@ -166,8 +166,8 @@ Begin VB.Form InvoicesOutIndex
          End
          Begin Dacara_dcButton.dcButton cmdButton 
             Height          =   690
-            Index           =   3
-            Left            =   4500
+            Index           =   4
+            Left            =   5925
             TabIndex        =   31
             TabStop         =   0   'False
             Top             =   0
@@ -202,6 +202,31 @@ Begin VB.Form InvoicesOutIndex
             ButtonShape     =   3
             ButtonStyle     =   4
             Caption         =   "Εκτύπωση επιλεγμένων"
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Ubuntu Condensed"
+               Size            =   9.75
+               Charset         =   161
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   8388736
+            PicOpacity      =   0
+         End
+         Begin Dacara_dcButton.dcButton cmdButton 
+            Height          =   690
+            Index           =   3
+            Left            =   4500
+            TabIndex        =   54
+            TabStop         =   0   'False
+            Top             =   0
+            Width           =   1365
+            _ExtentX        =   2408
+            _ExtentY        =   1217
+            ButtonShape     =   3
+            ButtonStyle     =   4
+            Caption         =   "Δημιουργία PDF επιλεγμένων"
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Ubuntu Condensed"
                Size            =   9.75
@@ -1284,7 +1309,7 @@ Private Function AbortProcedure(blnStatus)
         ClearFields grdInvoicesOutIndex
         frmCriteria(0).Visible = True
         mskInvoiceDateIssueFrom.SetFocus
-        UpdateButtons Me, 4, 1, 0, 0, 0, 1
+        UpdateButtons Me, 5, 1, 0, 0, 0, 0, 1
     End If
     
     If blnStatus Then
@@ -1301,10 +1326,10 @@ Private Function FindRecordsAndPopulateGrid()
             UpdateCriteriaLabels mskInvoiceDateIssueFrom.text, mskInvoiceDateIssueTo.text, txtPersonDescription.text, txtDestinationDescription.text, txtShipDescription.text
             EnableGrid grdInvoicesOutIndex, False
             HighlightRow grdInvoicesOutIndex, 1, 1, "", True
-            UpdateButtons Me, 4, 0, 1, 1, 1, 0
+            UpdateButtons Me, 5, 0, 1, 1, 1, 1, 0
             Exit Function
         Else
-            UpdateButtons Me, 4, 1, 0, 0, 0, 1
+            UpdateButtons Me, 5, 1, 0, 0, 0, 0, 1
             If Not blnError Then
                 If blnProcessing Then
                     If MyMsgBox(4, strApplicationName, strStandardMessages(27), 1) Then
@@ -1338,7 +1363,7 @@ Private Function UpdateCriteriaLabels(InvoiceDateIssueFrom, InvoiceDateIssueTo, 
 End Function
 
 
-Private Function PrintSelectedInvoices()
+Private Function PrintSelectedInvoices(whatToDo)
 
     Dim lngRow As Long
     Dim intIndex As Integer
@@ -1361,7 +1386,7 @@ Private Function PrintSelectedInvoices()
         End If
     Next lngRow
     
-    InvoicesOut.ProcessSelectedInvoicesForPrinting "", arrInvoicesTrnID 'Called when the array is processed
+    InvoicesOut.ProcessSelectedInvoicesForPrinting "", whatToDo, arrInvoicesTrnID 'Called when the array is processed
 
 End Function
 
@@ -1549,8 +1574,8 @@ Private Function RefreshList()
     InitializeProgressBar Me, strApplicationName, rstRecordset
     
     'Προσωρινά
-    UpdateButtons Me, 4, 0, 0, 0, 1, 0
-    cmdButton(3).Caption = "Διακοπή επεξεργασίας"
+    UpdateButtons Me, 5, 0, 0, 0, 0, 1, 0
+    cmdButton(4).Caption = "Διακοπή επεξεργασίας"
     blnProcessing = True
     
     'Γεμίζω το πλέγμα
@@ -1604,7 +1629,7 @@ Private Function RefreshList()
     End If
     
     'Τελικές ενέργειες
-    cmdButton(3).Caption = "Νέα αναζήτηση"
+    cmdButton(4).Caption = "Νέα αναζήτηση"
     frmProgress.Visible = False
     
     Exit Function
@@ -1634,10 +1659,12 @@ Private Sub cmdButton_Click(index As Integer)
         Case 1
             EditRecord
         Case 2
-            PrintSelectedInvoices
+            PrintSelectedInvoices "Print"
         Case 3
-            AbortProcedure False
+            PrintSelectedInvoices "PDF"
         Case 4
+            AbortProcedure False
+        Case 5
             AbortProcedure True
     End Select
     
@@ -1753,8 +1780,8 @@ Private Function CheckFunctionKeys(KeyCode, Shift)
         Case vbKeyP And CtrlDown And cmdButton(2).Enabled
             cmdButton_Click 2
         Case vbKeyEscape
-            If cmdButton(3).Enabled Then cmdButton_Click 3: Exit Function
-            If cmdButton(4).Enabled Then cmdButton_Click 4
+            If cmdButton(4).Enabled Then cmdButton_Click 4: Exit Function
+            If cmdButton(5).Enabled Then cmdButton_Click 5
         Case vbKeyF12 And CtrlDown
             ToggleInfoPanel Me
     End Select
@@ -1771,7 +1798,7 @@ Private Sub Form_Load()
     ClearFields mskInvoiceDateIssueFrom, mskInvoiceDateIssueTo, txtCodeShortDescriptionA, txtInvoiceNo, txtPersonDescription, txtShipDescription, txtDestinationDescription
     EnableFields mskInvoiceDateIssueFrom, mskInvoiceDateIssueTo, txtShipDescription, txtDestinationDescription, txtDestinationDescription
     EnableFields cmdIndex(0), cmdIndex(1), cmdIndex(2)
-    UpdateButtons Me, 4, 1, 0, 0, 0, 1
+    UpdateButtons Me, 5, 1, 0, 0, 0, 0, 1
 
 End Sub
 

@@ -3941,7 +3941,7 @@ Public Function ProcessSelectedInvoicesForPrinting(strInvoiceTrnID, arrInvoicesT
         If rstRecordset.RecordCount = 0 Then MyMsgBox 4, strApplicationName, strStandardMessages(9), 1: Exit Function
         ClearInvoiceFields
         UpdateInvoiceFieldsWithData rstRecordset
-        PrintThisInvoice blnPreviewInvoices, False, rstRecordset!InvoiceNo 'False = Do not preview, True = Create PDF instead of print
+        PrintThisInvoice blnPreviewInvoices, True, rstRecordset!InvoiceNo 'False = Do not preview, True = Create PDF instead of print
     Next intLoop
 
 End Function
